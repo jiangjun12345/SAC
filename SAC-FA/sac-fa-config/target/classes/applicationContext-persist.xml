@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd" default-lazy-init="true">
+
+	<!-- Enable @Transactional support -->
+	<tx:annotation-driven />
+
+	<!-- Enable @AspectJ support -->
+	<aop:aspectj-autoproxy />
+
+
+	<!-- Activates scanning of @Autowired -->
+	<context:annotation-config />
+
+	<!-- Activates scanning of @Repository -->
+	<context:component-scan base-package="net.easipay.cbp.dao" />
+
+
+	<aop:config proxy-target-class="true">
+		<aop:pointcut expression="execution(* net.easipay.cbp.service..*.*(..))" id="pointcut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+	</aop:config>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="call*" propagation="REQUIRES_NEW" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:sql-map-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@10.68.5.24:1521:ora10g" />
+		<property name="username" value="SAC_SYN" />
+		<property name="password" value="SAC_SYN" />
+		<property name="maxActive" value="30" />
+		<property name="maxWait" value="3000" />
+		<property name="minIdle" value="3"/>
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxOpenPreparedStatements" value="30"></property> 
+		<property name="defaultAutoCommit" value="true" />
+	</bean>
+
+</beans>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacFundTransferCmd" class="net.easipay.cbp.model.SacFundTransferCmd">
+	 <result property="id" column="ID" />
+	 <result property="trxSerialNo" column="TRX_SERIAL_NO" />
+	 <result property="craccNo" column="CRACC_NO" />
+	 <result property="craccNodeCode" column="CRACC_NODE_CODE" />
+	 <result property="draccNo" column="DRACC_NO" />
+	 <result property="draccNodeCode" column="DRACC_NODE_CODE" />
+	 <result property="payCurrency" column="PAY_CURRENCY" />
+	 <result property="payAmount" column="PAY_AMOUNT" />
+	 <result property="payWay" column="PAY_WAY" />
+	 <result property="memo" column="MEMO" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="updateTime" column="UPDATE_TIME" />
+	 <result property="cmdState" column="CMD_STATE" />
+	 <result property="cmdMemo" column="CMD_MEMO" />
+ </resultMap>
+   
+  <select id="listSacFundTransferCmd" parameterClass="java.util.Map" resultMap="SacFundTransferCmd">  
+      SELECT 
+	       ID,
+	       TRX_SERIAL_NO,
+	       CRACC_NO,
+	       CRACC_NODE_CODE,
+	       DRACC_NO,
+	       DRACC_NODE_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       PAY_WAY,
+	       MEMO,
+	       CREATE_TIME,
+	       UPDATE_TIME,
+	       CMD_STATE,
+	       CMD_MEMO
+	  FROM SAC_FUND_TRANSFER_CMD
+        <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payWay">  PAY_WAY = #payWay#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdMemo">  CMD_MEMO = #cmdMemo#  </isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+				create_time >= to_date(#beginDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				create_time < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+          </dynamic> 
+		  ORDER BY CREATE_TIME DESC
+  </select>
+  
+  <update id="updateSacFundTransferCmd" parameterClass="net.easipay.cbp.model.SacFundTransferCmd">  
+      UPDATE SAC_FUND_TRANSFER_CMD        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payWay">  PAY_WAY = #payWay#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdMemo">  CMD_MEMO = #cmdMemo#  </isNotEmpty>
+        </dynamic>
+       WHERE TRX_SERIAL_NO = #trxSerialNo#
+  </update>
+
+  <select id="getSacFundTransferCmdCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_FUND_TRANSFER_CMD
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payWay">  PAY_WAY = #payWay#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdMemo">  CMD_MEMO = #cmdMemo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryDate"> <![CDATA[create_time >= to_date(#queryDate#,'yyyyMMdd') and create_time < to_date(#queryDate#,'yyyyMMdd')+1 ]]></isNotEmpty>
+          </dynamic> 
+	</select>
+  
+  <select id="listSplitSacFundTransferCmd" parameterClass="java.util.Map" resultMap="SacFundTransferCmd"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       ID,
+	       TRX_SERIAL_NO,
+	       CRACC_NO,
+	       CRACC_NODE_CODE,
+	       DRACC_NO,
+	       DRACC_NODE_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       PAY_WAY,
+	       MEMO,
+	       CREATE_TIME,
+	       UPDATE_TIME,
+	       CMD_STATE,
+	       CMD_MEMO
+	       from SAC_FUND_TRANSFER_CMD  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payWay">  PAY_WAY = #payWay#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdMemo">  CMD_MEMO = #cmdMemo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="queryDate"> <![CDATA[create_time >= to_date(#queryDate#,'yyyyMMdd') and create_time < to_date(#queryDate#,'yyyyMMdd')+1 ]]></isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> create_time DESC </isEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

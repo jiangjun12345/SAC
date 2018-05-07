@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.Person">
+
+    <typeAlias alias="person" type="net.easipay.cbp.model.Person"/>
+
+    <resultMap id="userResult" class="person">
+        <result property="id" column="ID"/>
+        <result property="personName" column="PERSON_NAME"/>
+        <result property="personState" column="PERSON_STATE"/>
+        <result property="identifyType" column="IDENTIFY_TYPE"/>
+        <result property="identifyCode" column="IDENTIFY_CODE"/>
+        <result property="identifyVerifyFlag" column="IDENTIFY_VERIFY_FLAG"/>
+        <result property="customerCode" column="CUSTOMER_CODE"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="mobileVerifyFlag" column="MOBILE_VERIFY_FLAG"/>
+        <result property="email" column="EMAIL"/>
+        <result property="emailVerifyFlag" column="EMAIL_VERIFY_FLAG"/>
+    </resultMap>
+
+    <insert id="addPerson" parameterClass="person">
+        <selectKey resultClass="java.lang.Integer" keyProperty="id" type="pre">
+            select seq_user_id.nextval from dual
+        </selectKey>
+       <![CDATA[
+           insert into UC_USER 
+           (
+               ID,
+               PERSON_NAME,
+               PERSON_STATE,
+               IDENTIFY_TYPE,
+               IDENTIFY_CODE,
+               IDENTIFY_VERIFY_FLAG,
+               CUSTOMER_CODE,
+               MOBILE,
+               MOBILE_VERIFY_FLAG,
+               EMAIL,
+               EMAIL_VERIFY_FLAG
+           ) values 
+           ( #id#,
+             #personName#,
+             #personState#,
+             #identifyType#,
+             #identifyCode#,
+             #identifyVerifyFlag#,
+             #customerCode#,
+             #mobile#,
+             #mobileVerifyFlag#,
+             #email#,
+             #emailVerifyFlag#)
+       ]]> 
+    </insert>
+
+    <select id="getPersons" resultMap="userResult">
+    <![CDATA[
+        select 
+        	* 
+        from 
+        	UC_USER 
+    ]]>
+    </select>
+  
+    <!-- 
+    <insert id="addUserRole" parameterClass="map">
+    <![CDATA[
+        insert into 
+        	user_role 
+        	(
+        		user_id, 
+        		role_id
+        	) 
+        values 
+        	(
+        		#userId#, 
+        		#roleId#
+        	)
+    ]]>
+    </insert>
+
+    <update id="updateUser" parameterClass="user">
+    <![CDATA[
+        update 
+        	app_user 
+        SET
+            username = #username#,
+            password = #password#,
+            first_name = #firstName#,
+            last_name = #lastName#,
+            address = #address.address#,
+            city = #address.city#,
+            province = #address.province#,
+            country = #address.country#,
+            postal_code = #address.postalCode#,
+            email = #email#,
+            phone_number = #phoneNumber#,
+            website = #website#,
+            password_hint = #passwordHint#,
+            version = #version#,
+            account_enabled = #enabled#,
+            account_expired = #accountExpired#,
+            account_locked = #accountLocked#,
+            credentials_expired = #credentialsExpired#
+        where 
+        	id = #id#
+    ]]>
+    </update>
+
+    <select id="getUser" resultMap="userResult">
+    <![CDATA[
+        select 
+        	* 
+        from 
+        	app_user 
+        where 
+        	id=#id#
+    ]]>
+    </select>
+    
+    <select id="getUserByUsername" resultMap="userResult">
+    <![CDATA[
+        select 
+        	* 
+        from 
+        	app_user 
+        where 
+        	username=#username#
+    ]]>
+    </select>
+
+    <select id="getUsers" resultMap="userResult">
+    <![CDATA[
+        select 
+        	* 
+        from 
+        	app_user 
+        ORDER BY 
+        	UPPER(username)
+    ]]>
+    </select>
+
+    <select id="getUserRoles" resultClass="role">
+    <![CDATA[
+        select 
+        	r.id, 
+        	r.name, 
+        	r.description 
+        from 
+        	role r, 
+        	user_role ur
+        where 
+        	(
+        	ur.role_id = r.id
+        	) 
+        and 
+        	ur.user_id=#id#
+    ]]>
+    </select>
+
+    <delete id="deleteUser" parameterClass="java.lang.Long">
+    <![CDATA[
+        delete from 
+        	app_user 
+        where 
+        	id = #id#
+    ]]>
+    </delete>
+
+    <delete id="deleteUserRoles" parameterClass="java.lang.Long">
+    <![CDATA[
+        delete from 
+        	user_role 
+        where 
+        	user_id = #id#
+    ]]>
+    </delete>
+    
+    <select id="getUserPassword" resultClass="java.lang.String">
+    <![CDATA[
+        select 
+        	password 
+        from 
+        	app_user 
+        where 
+        	username=#username#
+    ]]>
+    </select>
+     -->
+</sqlMap>

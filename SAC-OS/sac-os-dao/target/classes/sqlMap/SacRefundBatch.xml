@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacRefundBatch" class="net.easipay.cbp.model.SacRefundBatch">
+	 <result property="oflWithdrawBatchId" column="OFL_WITHDRAW_BATCH_ID" />
+	 <result property="batchSerialNo" column="BATCH_SERIAL_NO" />
+	 <result property="batchTcount" column="BATCH_TCOUNT" />
+	 <result property="batchTamount" column="BATCH_TAMOUNT" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="batchState" column="BATCH_STATE" />
+	 <result property="operatorId" column="OPERATOR_ID" />
+	 <result property="operatorName" column="OPERATOR_NAME" />
+	 <result property="auditorId" column="AUDITOR_ID" />
+	 <result property="auditorName" column="AUDITOR_NAME" />
+	 <result property="auditTime" column="AUDIT_TIME" />
+	 <result property="auditMemo" column="AUDIT_MEMO" />
+	 <result property="bankNodeCode" column="BANK_NODE_CODE" />
+ </resultMap>
+   <insert id="insertSacRefundBatch" parameterClass="net.easipay.cbp.model.SacRefundBatch">
+        INSERT INTO SAC_REFUND_BATCH ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="oflWithdrawBatchId">  OFL_WITHDRAW_BATCH_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchTcount">  BATCH_TCOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchTamount">  BATCH_TAMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchState">  BATCH_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditMemo">  AUDIT_MEMO  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="oflWithdrawBatchId">  #oflWithdrawBatchId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchSerialNo">  #batchSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchTcount">  #batchTcount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchTamount">  #batchTamount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchState">  #batchState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operatorId">  #operatorId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operatorName">  #operatorName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditorId">  #auditorId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditorName">  #auditorName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditTime">  #auditTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditMemo">  #auditMemo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankNodeCode">  #bankNodeCode#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacRefundBatch" resultMap="SacRefundBatch" parameterClass="java.util.Map">  
+        SELECT 
+	       OFL_WITHDRAW_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       BATCH_TCOUNT,
+	       BATCH_TAMOUNT,
+	       CREATE_TIME,
+	       BATCH_STATE,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       AUDIT_MEMO,
+	       BANK_NODE_CODE
+         FROM SAC_REFUND_BATCH
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="oflWithdrawBatchId"> OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId# </isNotEmpty>      
+         <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+              
+      </dynamic>
+  </select>
+  <select id="listSacRefundBatch" parameterClass="java.util.Map" resultMap="SacRefundBatch">  
+      SELECT 
+	       OFL_WITHDRAW_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       BATCH_TCOUNT,
+	       BATCH_TAMOUNT,
+	       CREATE_TIME,
+	       BATCH_STATE,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       AUDIT_MEMO,
+	       BANK_NODE_CODE
+	  FROM SAC_REFUND_BATCH
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+             
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacRefundBatch" parameterClass="net.easipay.cbp.model.SacRefundBatch">  
+      UPDATE SAC_REFUND_BATCH        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="oflWithdrawBatchId">  OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchTcount">  BATCH_TCOUNT = #batchTcount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchTamount">  BATCH_TAMOUNT = #batchTamount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditMemo">  AUDIT_MEMO = #auditMemo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+        </dynamic>
+       WHERE OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId#
+  </update>
+  
+  <update id="batchUpdateSacRefundBatch" parameterClass="net.easipay.cbp.model.SacRefundBatch">  
+      UPDATE SAC_REFUND_BATCH        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="oflWithdrawBatchId">  OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchTcount">  BATCH_TCOUNT = #batchTcount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchTamount">  BATCH_TAMOUNT = #batchTamount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditMemo">  AUDIT_MEMO = #auditMemo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+        </dynamic>
+       WHERE OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId#
+  </update>
+  <delete id="deleteSacRefundBatch" parameterClass="java.util.Map">  
+        Delete   
+          from SAC_REFUND_BATCH 
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="oflWithdrawBatchId">  OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId#</isNotEmpty>    
+          <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+        </dynamic>
+        
+  </delete>
+  <delete id="deleteListSacRefundBatch">  
+        Delete 
+        from SAC_REFUND_BATCH
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacRefundBatchCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_REFUND_BATCH
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="oflWithdrawBatchId">  OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchTcount">  BATCH_TCOUNT = #batchTcount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchTamount">  BATCH_TAMOUNT = #batchTamount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditMemo">  AUDIT_MEMO = #auditMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+			
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacRefundBatch" parameterClass="java.util.Map" resultMap="SacRefundBatch"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       OFL_WITHDRAW_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       BATCH_TCOUNT,
+	       BATCH_TAMOUNT,
+	       CREATE_TIME,
+	       BATCH_STATE,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       AUDIT_MEMO,
+	       BANK_NODE_CODE
+	       from SAC_REFUND_BATCH  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="oflWithdrawBatchId">  OFL_WITHDRAW_BATCH_ID = #oflWithdrawBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchTcount">  BATCH_TCOUNT = #batchTcount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchTamount">  BATCH_TAMOUNT = #batchTamount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditMemo">  AUDIT_MEMO = #auditMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

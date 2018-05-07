@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn" charset="UTF-8" />
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-config" charset="UTF-8" />
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-core" charset="UTF-8" />
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-dao" charset="UTF-8" />
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-model" charset="UTF-8" />
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-page" charset="UTF-8" />
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-util" charset="UTF-8" />
+    <file url="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-view" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sac-os-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sac-os-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sac-os-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sac-os-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sac-os-page" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sac-os-util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sac-os-view" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-page" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-view" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-page" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-view" charset="UTF-8" />
+  </component>
+</project>

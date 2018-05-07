@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacRecDetail" class="net.easipay.cbp.model.SacRecDetail">
+	 <result property="id" column="id"/>
+	 <result property="recBatchId" column="rec_batch_id"/>
+	 <result property="trxSerialNo" column="trx_serial_no"/>
+	 <result property="chnCode" column="chn_code"/>
+	 <result property="memo" column="memo"/>
+	 <result property="trxTime" column="trx_time"/>
+	 <result property="payAmount" column="pay_amount"/>
+	 <result property="bankSerialNo" column="bank_serial_no"/>
+	 <result property="payconType" column="paycon_type"/>
+	 <result property="recOper" column="rec_oper"/>
+	 <result property="diffType" column="diff_type"/>
+	 <result property="currencyType" column="currency_type"/>
+	 <result property="busiType" column="busi_type"/>
+	 <result property="recStartDate" column="rec_start_date"/>
+	 <result property="recEndDate" column="rec_end_date"/>
+	 <result property="trxCode" column="trx_code"/>
+ </resultMap>
+   
+  <select id="listSacRecDetail" parameterClass="java.util.Map" resultMap="SacRecDetail">
+	SELECT
+		id,
+		rec_batch_id,
+		trx_serial_no,
+		chn_code,
+		memo,
+		trx_time,
+		pay_amount,
+		bank_serial_no,
+		paycon_type,
+		rec_oper,
+		diff_type,
+		currency_type,
+		busi_type,
+		rec_start_date,
+		rec_end_date,
+		trx_code
+	FROM SAC_REC_DETAIL
+        <dynamic prepend="WHERE">
+        	<isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_Batch_Id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="diffType">  diff_type = #diffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  busi_Type = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recStartDate"> 	 rec_start_date   = #recStartDate# </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recEndDate"> 	 rec_end_date   = #recEndDate# </isNotEmpty>
+         </dynamic> 
+		 order by  rec_start_date desc;
+  </select>
+  
+   <select id="getSacRecDetailCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM 
+		(
+			SELECT
+			a.id,
+			a.rec_batch_id,
+			a.trx_serial_no,
+			b.chn_no as chn_code,
+			a.memo,
+			a.trx_time,
+			a.pay_amount,
+			a.bank_serial_no,
+			a.paycon_type,
+			a.rec_oper,
+			a.diff_type,
+			a.currency_type,
+			a.busi_type,
+			a.rec_start_date,
+			a.rec_end_date,
+			a.trx_code
+		FROM SAC_REC_DETAIL a,sac_trx_detail b
+	       where a.trx_serial_no = b.trx_serial_no(+)
+	        	<isNotEmpty prepend="AND" property="id">  a.id = #id#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recBatchId">  a.rec_Batch_Id = #recBatchId#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="trxSerialNo">  a.trx_serial_no = #trxSerialNo#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="chnCode">  a.chn_code = #chnCode#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="memo">  a.memo = #memo#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ a.trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="payAmount">  a.pay_amount = #payAmount#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="bankSerialNo">  a.bank_serial_no = #bankSerialNo#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="payconType">  a.paycon_type = #payconType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recOper">  a.rec_oper = #recOper#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="diffType">  a.diff_type = #diffType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="currencyType">  a.currency_type = #currencyType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="busiType">  a.busi_Type = #busiType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recStartDate"> 	 a.rec_start_date   = #recStartDate# </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recEndDate"> 	 a.rec_end_date   = #recEndDate# </isNotEmpty>
+		)
+	</select>
+  
+  <select id="listSplitSacRecDetail" parameterClass="java.util.Map" resultMap="SacRecDetail"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT
+			a.id,
+			a.rec_batch_id,
+			a.trx_serial_no,
+			b.chn_no as chn_code,
+			a.memo,
+			a.trx_time,
+			a.pay_amount,
+			a.bank_serial_no,
+			a.paycon_type,
+			a.rec_oper,
+			a.diff_type,
+			a.currency_type,
+			a.busi_type,
+			a.rec_start_date,
+			a.rec_end_date,
+			a.trx_code
+		FROM SAC_REC_DETAIL a,sac_trx_detail b
+	       where a.trx_serial_no = b.trx_serial_no(+)
+	        	<isNotEmpty prepend="AND" property="id">  a.id = #id#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recBatchId">  a.rec_Batch_Id = #recBatchId#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="trxSerialNo">  a.trx_serial_no = #trxSerialNo#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="chnCode">  a.chn_code = #chnCode#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="memo">  a.memo = #memo#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ a.trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="payAmount">  a.pay_amount = #payAmount#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="bankSerialNo">  a.bank_serial_no = #bankSerialNo#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="payconType">  a.paycon_type = #payconType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recOper">  a.rec_oper = #recOper#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="diffType">  a.diff_type = #diffType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="currencyType">  a.currency_type = #currencyType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="busiType">  a.busi_Type = #busiType#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recStartDate"> 	 a.rec_start_date   = #recStartDate# </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="recEndDate"> 	 a.rec_end_date   = #recEndDate# </isNotEmpty>
+			 order by  rec_start_date desc
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+</sqlMap>

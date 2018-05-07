@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+   <resultMap id="sacRecordLog" class="net.easipay.cbp.model.SacRecordLog">
+	 <result property="id" column="id"/>
+	 <result property="channel" column="channel"/>
+	 <result property="origin" column="origin"/>
+	 <result property="serverIp" column="serverIp"/>
+	 <result property="clientIp" column="clientIp"/>
+	 <result property="timemillis" column="timemillis"/>
+	 <result property="interfaceId" column="interfaceId"/>
+	 <result property="url" column="url"/>
+	 <result property="trxcode" column="trxcode"/>
+	 <result property="code" column="code"/>
+	 <result property="message" column="message"/>
+	 <result property="data" column="data"/>
+	 <result property="demo" column="demo"/>
+	 <result property="createTime" column="create_Time"/>
+ </resultMap>
+ 
+   <select id="getSacRecordLogById" resultMap="sacRecordLog">  
+        SELECT 
+	         id,
+	       channel,
+	       origin,
+	       serverIp,
+	       clientIp,
+	       timemillis,
+	       interfaceId,
+	       url,
+	       trxcode,
+	       code,
+	       message,
+	       data,
+	       demo,
+	       create_time
+         FROM SAC_RECORD_LOG
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+    
+   <select id="getSacRecordLogCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_RECORD_LOG
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="" property="id"> #id# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="transactionId"> transactionId #transactionId# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="channel"> channel like '%$channel$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="origin"> origin like '%$origin$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="serverIp"> serverIp like '%$serverIp$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="clientIp"> clientIp like '%$clientIp$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="timemillis"> timemillis = #timemillis# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="interfaceId"> interfaceId = #interfaceId# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="url"> url like '%$url$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="trxcode"> trxcode = #trxcode# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="code"> code = #code# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="message"> message like '%$message$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="data"> data like '%$data$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="demo"> demo like '%$demo$%' </isNotEmpty>    
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ create_time >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ create_time < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacRecordLog" parameterClass="java.util.Map" resultMap="sacRecordLog"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       channel,
+	       origin,
+	       serverIp,
+	       clientIp,
+	       timemillis,
+	       interfaceId,
+	       url,
+	       trxcode,
+	       code,
+	       message,
+	       data,
+	       demo,
+	       create_time
+	       from SAC_RECORD_LOG  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="" property="id"> #id# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="transactionId"> transactionId #transactionId# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="channel"> channel like '%$channel$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="origin"> origin like '%$origin$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="serverIp"> serverIp like '%$serverIp$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="clientIp"> clientIp like '%$clientIp$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="timemillis"> timemillis = #timemillis# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="interfaceId"> interfaceId = #interfaceId# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="url"> url like '%$url$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="trxcode"> trxcode = #trxcode# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="code"> code = #code# </isNotEmpty> 
+			<isNotEmpty prepend="and" property="message"> message like '%$message$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="data"> data like '%$data$%' </isNotEmpty> 
+			<isNotEmpty prepend="and" property="demo"> demo like '%$demo$%' </isNotEmpty>    
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ create_time >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ create_time < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty> 
+          </dynamic> 
+          ORDER BY create_time DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+
+ 
+  
+</sqlMap>

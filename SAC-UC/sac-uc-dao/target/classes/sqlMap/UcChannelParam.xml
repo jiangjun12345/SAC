@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.UcChannelParam">
+
+	<typeAlias alias="UcChannelParam" type="net.easipay.cbp.model.UcChannelParam" />
+
+	<resultMap id="UcChannelParamResult" class="UcChannelParam">
+		<result property="id" column="ID" />
+		<result property="chnNo" column="CHN_NO" />   
+		<result property="chnName" column="CHN_NAME" />   
+		<result property="sacBankName" column="SAC_BANK_NAME" />
+		<result property="accountName" column="ACCOUNT_NAME" />
+		<result property="bankAcc" column="BANK_ACC" />
+		<result property="craccBankCode" column="CRACC_BANK_CODE" />
+		<result property="currencyType" column="CURRENCY_TYPE" />
+		<result property="sacPeriod" column="SAC_PERIOD" />
+		<result property="costRate" column="COST_RATE" />
+		<result property="costComWay" column="COST_COM_WAY" />
+		<result property="costSacWay" column="COST_SAC_WAY" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="memo" column="MEMO" />
+	</resultMap>
+
+	<insert id="insertUcChannelParam" parameterClass="UcChannelParam">
+	      <![CDATA[
+	         insert into UC_CHANNEL_PARAM
+	         (
+	            ID             
+				,CHN_NO         
+				,CHN_NAME       
+				,SAC_BANK_NAME  
+				,ACCOUNT_NAME   
+				,BANK_ACC       
+				,CRACC_BANK_CODE
+				,CURRENCY_TYPE  
+				,SAC_PERIOD     
+				,COST_RATE      
+				,COST_COM_WAY   
+				,COST_SAC_WAY   
+				,CREATE_TIME    
+				,MEMO                     
+	         )
+	         values
+	         (
+	            #id#,
+				#chnNo#,
+				#chnName#,
+				#sacBankName#,
+				#accountName#,
+				#bankAcc#,
+				#craccBankCode#,
+				#currencyType#,
+				#sacPeriod#,
+				#costRate#,
+				#costComWay#,
+				#costSacWay#,
+				#createTime#,
+				#memo#
+	         )
+	      ]]>
+	</insert>
+	
+	 <update id="updateUcChannelParam" parameterClass="UcChannelParam">
+	    <![CDATA[
+	          update 
+	        	UC_CHANNEL_PARAM 
+	          set
+	         ]]>
+		<isNotEmpty prepend="" property="chnNo">
+			CHN_NO =#chnNo# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="chnName">
+			CHN_NAME =#chnName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="sacBankName">
+			SAC_BANK_NAME =#sacBankName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="accountName">
+			ACCOUNT_NAME =#accountName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="bankAcc">
+			BANK_ACC =#bankAcc#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="craccBankCode">
+			CRACC_BANK_CODE =#craccBankCode# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="currencyType">
+			CURRENCY_TYPE =#currencyType#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="sacPeriod">
+			SAC_PERIOD =#sacPeriod#,			
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="costRate">
+			COST_RATE =#costRate#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="costComWay">
+			COST_COM_WAY =#costComWay#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="costSacWay">
+			COST_SAC_WAY =#costSacWay#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="memo">
+			MEMO =#memo#,	
+		</isNotEmpty>		
+		<![CDATA[		
+				ID = #id#
+				where ID = #id#	
+	    ]]>
+	</update>
+	
+
+</sqlMap>

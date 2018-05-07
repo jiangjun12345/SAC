@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+   <insert id="insertSacRecordLog" parameterClass="net.easipay.cbp.model.SacRecordLog">
+        INSERT INTO SAC_RECORD_LOG ( 
+         <dynamic prepend="">
+				<isNotEmpty prepend="" property="id"> id </isNotEmpty> 
+				<isNotEmpty prepend="," property="transactionId"> transactionId </isNotEmpty> 
+				<isNotEmpty prepend="," property="channel"> channel </isNotEmpty> 
+				<isNotEmpty prepend="," property="origin"> origin </isNotEmpty> 
+				<isNotEmpty prepend="," property="serverIp"> serverIp </isNotEmpty> 
+				<isNotEmpty prepend="," property="clientIp"> clientIp </isNotEmpty> 
+				<isNotEmpty prepend="," property="timemillis"> timemillis </isNotEmpty> 
+				<isNotEmpty prepend="," property="interfaceId"> interfaceId </isNotEmpty> 
+				<isNotEmpty prepend="," property="url"> url </isNotEmpty> 
+				<isNotEmpty prepend="," property="trxcode"> trxcode </isNotEmpty> 
+				<isNotEmpty prepend="," property="code"> code </isNotEmpty> 
+				<isNotEmpty prepend="," property="message"> message </isNotEmpty> 
+				<isNotEmpty prepend="," property="data"> data </isNotEmpty> 
+				<isNotEmpty prepend="," property="createTime"> create_time </isNotEmpty> 
+				<isNotEmpty prepend="," property="demo"> demo </isNotEmpty> 
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		   		<isNotEmpty prepend="" property="id"> #id# </isNotEmpty> 
+				<isNotEmpty prepend="," property="transactionId"> #transactionId# </isNotEmpty> 
+				<isNotEmpty prepend="," property="channel"> #channel# </isNotEmpty> 
+				<isNotEmpty prepend="," property="origin"> #origin# </isNotEmpty> 
+				<isNotEmpty prepend="," property="serverIp"> #serverIp# </isNotEmpty> 
+				<isNotEmpty prepend="," property="clientIp"> #clientIp# </isNotEmpty> 
+				<isNotEmpty prepend="," property="timemillis"> #timemillis# </isNotEmpty> 
+				<isNotEmpty prepend="," property="interfaceId"> #interfaceId# </isNotEmpty> 
+				<isNotEmpty prepend="," property="url"> #url# </isNotEmpty> 
+				<isNotEmpty prepend="," property="trxcode"> #trxcode# </isNotEmpty> 
+				<isNotEmpty prepend="," property="code"> #code# </isNotEmpty> 
+				<isNotEmpty prepend="," property="message"> #message# </isNotEmpty> 
+				<isNotEmpty prepend="," property="data"> #data# </isNotEmpty> 
+				<isNotEmpty prepend="," property="createTime"> #createTime# </isNotEmpty> 
+				<isNotEmpty prepend="," property="demo"> #demo# </isNotEmpty>    
+           </dynamic>
+         )
+    </insert>
+
+ 
+  
+</sqlMap>

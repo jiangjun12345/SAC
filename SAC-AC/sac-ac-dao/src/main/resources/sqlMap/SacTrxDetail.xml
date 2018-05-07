@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacTrxDetail" class="net.easipay.cbp.model.SacTrxDetail">
+	 <result property="id" column="id"/>
+	 <result property="chnNo" column="chn_no"/>
+	 <result property="cusBillNo" column="cus_bill_no"/>
+	 <result property="platBillNo" column="plat_bill_no"/>
+	 <result property="trxBatchNo" column="trx_batch_no"/>
+	 <result property="trxSerialNo" column="trx_serial_no"/>
+	 <result property="otrxSerialNo" column="otrx_serial_no"/>
+	 <result property="receiverPlatAcc" column="receiver_plat_acc"/>
+	 <result property="paymentPlatAcc" column="payment_plat_acc"/>
+	 <result property="bussType" column="buss_type"/>
+	 <result property="trxType" column="trx_type"/>
+	 <result property="trxAmount" column="trx_amount"/>
+	 <result property="trxCurrencyType" column="trx_currency_type"/>
+	 <result property="sacCurrency" column="sac_currency"/>
+	 <result property="sacAmount" column="sac_amount"/>
+	 <result property="exRate" column="ex_rate"/>
+	 <result property="issuingBank" column="issuing_bank"/>
+	 <result property="payconType" column="paycon_type"/>
+	 <result property="payWay" column="pay_way"/>
+	 <result property="reversalStatus" column="reversal_status"/>
+	 <result property="trxState" column="trx_state"/>
+	 <result property="trxTime" column="trx_time"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="draccNodeCode" column="dracc_node_code"/>
+	 <result property="craccNodeCode" column="cracc_node_code"/>
+	 <result property="chaConStatus" column="cha_con_status"/>
+	 <result property="channelCost" column="channel_cost"/>
+	 <result property="cusCharge" column="cus_charge"/>
+	 <result property="trxSuccTime" column="trx_succ_time"/>
+ 	 <result property="craccAreaCode" column="cracc_area_code"/>
+  	 <result property="draccAreaCode" column="dracc_area_code"/>
+ </resultMap>
+   <insert id="insertSacTrxDetail" parameterClass="net.easipay.cbp.model.SacTrxDetail">
+        INSERT INTO SAC_TRX_DETAIL (
+        	update_time,
+            create_time
+         <dynamic prepend="">
+            <isNotEmpty prepend="," property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnNo">  chn_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusBillNo">  cus_bill_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="platBillNo">  plat_bill_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxBatchNo">  trx_batch_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  otrx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="receiverPlatAcc">  receiver_plat_acc  </isNotEmpty>
+            <isNotEmpty prepend="," property="paymentPlatAcc">  payment_plat_acc  </isNotEmpty>
+            <isNotEmpty prepend="," property="bussType">  buss_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxType">  trx_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxAmount">  trx_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCurrencyType">  trx_currency_type  </isNotEmpty>
+			<isNotEmpty prepend="," property="sacCurrency">  sac_currency  </isNotEmpty>
+			<isNotEmpty prepend="," property="sacAmount">  sac_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="exRate">  ex_rate  </isNotEmpty>
+            <isNotEmpty prepend="," property="issuingBank">  issuing_bank  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="payWay">  pay_way  </isNotEmpty>
+            <isNotEmpty prepend="," property="reversalStatus">  reversal_status  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxState">  trx_state  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxTime">  trx_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNodeCode">  dracc_node_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  cracc_node_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="chaConStatus">  cha_con_status  </isNotEmpty>
+            <isNotEmpty prepend="," property="channelCost">  channel_cost  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusCharge">  cus_charge  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSuccTime">  trx_succ_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccAreaCode">  cracc_area_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccAreaCode">  dracc_area_code  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+         	sysdate,
+		    sysdate
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="chnNo">  #chnNo#  </isNotEmpty>	       	       
+		    <isNotEmpty prepend="," property="cusBillNo">  #cusBillNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="platBillNo">  #platBillNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxBatchNo">  #trxBatchNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxSerialNo">  #trxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxSerialNo">  #otrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="receiverPlatAcc">  #receiverPlatAcc#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="paymentPlatAcc">  #paymentPlatAcc#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bussType">  #bussType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxType">  #trxType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxAmount">  #trxAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxCurrencyType">  #trxCurrencyType#  </isNotEmpty>	  
+		    <isNotEmpty prepend="," property="sacCurrency">  #sacCurrency#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="sacAmount">  #sacAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="exRate">  #exRate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="issuingBank">  #issuingBank#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payconType">  #payconType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payWay">  #payWay#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reversalStatus">  #reversalStatus#  </isNotEmpty> 
+		    <isNotEmpty prepend="," property="trxState">  #trxState#  </isNotEmpty>	  
+		    <isNotEmpty prepend="," property="trxTime">  #trxTime#  </isNotEmpty>      
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccNodeCode">  #draccNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNodeCode">  #craccNodeCode#  </isNotEmpty>	  
+		    <isNotEmpty prepend="," property="chaConStatus">  #chaConStatus#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="channelCost">  #channelCost#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="cusCharge">  #cusCharge#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="trxSuccTime">  #trxSuccTime#  </isNotEmpty>      
+  		    <isNotEmpty prepend="," property="craccAreaCode">  #craccAreaCode#  </isNotEmpty>	       
+   		    <isNotEmpty prepend="," property="draccAreaCode">  #draccAreaCode#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+    
+	<update id="updateSacTrxDetailState" parameterClass="java.util.Map">  
+          UPDATE SAC_TRX_DETAIL 
+      	  <dynamic prepend="SET">
+      	  		update_time = sysdate,
+     	  	   <isNotEmpty prepend="," property="trxState">  trx_state = #trxState#  </isNotEmpty>
+     	  	   <isNotEmpty prepend="," property="trxSuccTime">  trx_succ_time = #trxSuccTime#  </isNotEmpty>        
+     	   </dynamic>
+          WHERE trx_serial_no = #trxSerialNo# AND trx_state = 'N'
+	 </update>
+	 
+	 <update id="deleteSacTrxDetail" parameterClass="java.util.Map">  
+          DELETE FROM SAC_TRX_DETAIL WHERE trx_serial_no = #trxSerialNo# AND trx_state = #trxState#
+	 </update>
+  
+</sqlMap>

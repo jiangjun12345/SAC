@@ -1,0 +1,287 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="net.easipay.cbp.cas.users.SecurityOperator"%>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@ page import="net.easipay.cbp.cas.auth.Menu"%>
+<%@ page import="java.util.*,net.easipay.cbp.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%
+ SecurityOperator oper = (SecurityOperator)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+ List<Menu> menus = oper.getMenus();
+ request.setAttribute("menus", menus);
+
+ String prjectName = request.getContextPath().substring(1); 
+ List<Menu> listMe1 = (oper != null)?(oper.getProjectNames()):null;
+ List<Menu> listMe =new ArrayList<Menu>();
+ if(listMe1!=null){
+	 for(Menu menu:listMe1){
+		 if(menu!=null && !StringUtil.isEmptyString(menu.getResourceName()) && !prjectName.equalsIgnoreCase(menu.getResourceName())){
+			 listMe.add(menu);
+		 }
+	 }
+ }
+ request.setAttribute("listMe", listMe);
+%>
+
+<div class="header">
+	<div class="center">
+		<div class="left fontsize1 fontcolor1">
+			<img src="${ctx}/images/userPic.png" />hello:${loginNameCh}
+		</div>
+		<div class="right fontsize1 fontcolor1">
+			<!-- <img src="${ctx}/images/logout.png" /> <a href="${ctx}/j_spring_cas_security_logout">退出</a> -->
+		 	<img src="${ctx}/images/logout.png" /> <a href="javascript:logout();">退出</a> 
+		</div>
+		<div class="right fontsize1 fontcolor1" style="margin-right: 20px;">
+			<img src="${ctx}/images/profile.png" /> <a href="#" id="showbtn"
+				name="showbtn" onclick="showid('smallLay');">修改密码</a>
+		</div>
+		<c:if test="${fn:length(listMe)>= 1}">
+			<div class="right fontsize1 fontcolor1" style="margin-right: 20px;">
+				<form name="form1">
+				<select id = "listMe" name="listMe" onchange="toOthers();">
+				<option value = "">请选择</option>
+				<c:forEach items="${listMe}" var="listMe">			    
+					<option value="${listMe.resourceUrl}">${listMe.description}</option>
+				</c:forEach>
+				</select>
+				</form>
+			</div>
+			<div class="right fontsize1 fontcolor1" style="margin-right: 20px;">系统切换：</div>
+		</c:if>
+	</div>
+</div>
+<div class="top">
+	<div class="left fontfamily2 fontsize4 fontcolor4">东方电子支付公司-清结算系统</div>
+	<div class="right fontsize1 fontfamily2 fontcolor4">
+		<img src="${ctx}/images/users.png" /><br />用户列表
+	</div>
+</div>
+
+
+
+
+
+<div id="fullbg"></div>
+<!-- end JS遮罩层 -->
+<!-- 对话框 -->
+
+<div id="smallLay" style="display: none;">
+	<div class="passtitle fontfamily2 fontsize1 fontcolor4">
+		<span style="float: left">修改密码</span><a href="#" onclick="closeBg();"
+			style="float: right">关闭</a>
+	</div>
+	<div class="passtable fontcolor5 fontsize2 fontfamily2">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td align="right" width="20%">旧密码：</td>
+				<td width="80%"><input id="opwd" name="opwd" type="password"
+					maxlength="20" class="txt1" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">新密码：</td>
+				<td><input id="npwd" name="npwd" type="password" maxlength="20"
+					class="txt1" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">确认新密码：</td>
+				<td><input id="rpwd" name="rpwd" type="password" maxlength="20"
+					class="txt1" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">&nbsp;</td>
+				<td><input id="changeBtn" name="" type="button" value="提交"
+					class="bluebtn" style="margin-left: 10px;" />
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="passcon fontcolor5 fontsize2 fontfamily2">
+		<div class="left">
+			<img src="${ctx }/images/confirmation.png" />
+		</div>
+		<div class="right fontcolor4 fontsize4 fontfamily2">
+			修改密码成功<br>
+			<input name="" type="button" value="返回" onclick="closeBg()"
+				class="bluebtn" style="margin-top: 20px;" />
+		</div>
+	</div>
+</div>
+<div id="logoutdiv" hidden="true"> 	
+</div>
+<%--
+
+<div class="header">
+	<div class="logo"><img src="${ctx}/images/logo1.png" /></div>
+    <div class="profile">
+    	<span class="icon"><img src="${ctx}/images/pro.png" /></span>
+        <span class="name fontcolor4 fontsize1 fontfamily2">${sessionScope.USER.loginName}</span>
+        <span class="arrow"><a href="#"><img src="${ctx}/images/arr.png" /></a></span>
+        <div class="adminpop fontcolor4 fontsize2 fontfamily2">
+        	<ul>
+            	<li class="set"><a href="#" id="showbtn" name="showbtn" class="hide" onclick="showid('smallLay');">修改密码</a></li>
+            	<li class="out"><a href="${ctx}/user/exit.do">登出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+--%>
+<script type="text/javascript">
+	$(document).ready(function(event) {
+        $('.arrow').click(function (event) {
+			$(".adminpop").toggle();
+		});
+	});
+</script>
+
+<script type="text/javascript">
+function logout(){
+	$("#logoutdiv").empty();
+	var imgString = "";
+	$('#listMe option').each(function(){ 
+		if( $(this).val() != ''){ 
+			imgString += '<img src="'+$(this).val()+'/j_spring_cas_security_logout"></img>'; 
+		} 
+		}); 
+	$("#logoutdiv").html(imgString);
+	window.location.href = '${ctx}/j_spring_cas_security_logout';
+};
+</script>
+ 
+
+<script type="text/javascript"> 
+function showid(idname){
+	var isIE = (document.all) ? true : false;
+	var isIE6 = isIE && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6);
+	var newbox=document.getElementById(idname);
+	newbox.style.zIndex="9999";
+	newbox.style.display="block";
+	newbox.style.position = !isIE6 ? "fixed" : "absolute";
+	newbox.style.top =newbox.style.left = "50%";
+	newbox.style.marginTop = - newbox.offsetHeight / 2 + "px";
+	newbox.style.marginLeft = - newbox.offsetWidth / 2 + "px";  
+	var layer=document.createElement("div");
+	layer.id="layer";
+	layer.style.width=layer.style.height="100%";
+	layer.style.position= !isIE6 ? "fixed" : "absolute";
+	layer.style.top=layer.style.left=0;
+	layer.style.backgroundColor="#000";
+	layer.style.zIndex="9998";
+	layer.style.opacity="0.6";
+	layer.style.filter='alpha(opacity=60)';
+	document.body.appendChild(layer);
+
+//	var sel=document.getElementsByTagName("select");
+//	for(var i=0;i<sel.length;i++){        
+//		sel[i].style.visibility="hidden";
+//	}
+	
+	function layer_iestyle(){      
+		layer.style.width=Math.max(document.documentElement.scrollWidth, document.documentElement.clientWidth)
+		+ "px";
+		layer.style.height= Math.max(document.documentElement.scrollHeight, document.documentElement.clientHeight) +
+		"px";
+	}
+	function newbox_iestyle(){      
+		newbox.style.marginTop = document.documentElement.scrollTop - newbox.offsetHeight / 2 + "px";
+		newbox.style.marginLeft = document.documentElement.scrollLeft - newbox.offsetWidth / 2 + "px";
+	}
+}
+function toOthers(){
+	var url = $("#listMe option:selected").val();
+	if(url != ""){
+		//if(confirm("是否跳转其它子系统？")){
+			window.location.href = url;
+		//}
+	}
+
+}
+//关闭密码框
+function closeBg(){
+	document.getElementById("smallLay").style.cssText="display:none";
+	$("#layer").remove();
+	$(".passtable").show();
+	$(".passcon .left").hide();
+	$(".passcon .right").hide();
+	$('#opwd').val('');
+	$('#npwd').val('');
+	$('#rpwd').val('');
+}
+
+//修改密码
+$('#changeBtn').click(function(){
+	var opwd = $('#opwd').val();
+	var npwd = $('#npwd').val();
+	var rpwd = $('#rpwd').val();
+	if(opwd=='' ||opwd==null){
+		alert('旧密码不能为空!');
+		return false;
+	}
+	if(npwd=='' ||npwd==null){
+		alert('新密码不能为空!');
+		return false;
+	}
+	if(rpwd=='' ||rpwd==null){
+		alert('确认新密码不能为空!');
+		return false;
+	}
+	if(npwd.length < 6 || npwd.length > 20){
+		alert('新密码非法,密码为6-20位字母、数字或符号的组合.');
+		return false;
+	}
+	url = '${ctx}/changePwd';
+	var json = { 'opwd' : opwd , 'npwd' : npwd};
+	 $.ajax({
+		type : 'post',
+		url : url,
+		data : json,
+		dataType: "json",
+		success : function(data){
+			if(data.success){
+				$(".passtable").hide();
+				$(".passcon .left").show();
+				$(".passcon .right").show();
+			}else{
+					alert(data.msg);
+			}
+		},
+		beforeSend :function(){
+			if(opwd == npwd){
+				alert('新密码不能与原密码相同!');
+				return false;
+			}
+			if(npwd != rpwd){
+				alert('两次输入的新密码不一致!');
+				return false;
+			}
+		}
+	});
+});
+
+
+</script>
+
+<style type="text/css">
+.font {
+	color: #1276bc;
+}
+
+#smallLay {
+	display: none;
+	left: 50%;
+	top: 50%;
+	margin-left: -220px;
+	margin-top: -140px;
+	width: 500px;
+	z-index: 1001;
+	position: absolute;
+	background-color: White;
+	border: solid 1px #dddddd;
+	padding: 0 0 10px;
+	height: 250px;
+}
+</style>

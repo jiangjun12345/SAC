@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="SacRecDifferences" class="net.easipay.cbp.model.SacRecDifferences">
+		<result property="id" column="id" />
+		<result property="recDetailId" column="rec_detail_id" />
+		<result property="recStartDate" column="rec_start_date" />
+		<result property="recEndDate" column="rec_end_date" />
+		<result property="recOper" column="rec_oper" />
+		<result property="trxSerialNo" column="trx_serial_no" />
+		<result property="recDiffType" column="rec_diff_type" />
+		<result property="recDiffDesc" column="rec_diff_desc" />
+		<result property="chnCode" column="chn_code" />
+		<result property="status" column="status" />
+		<result property="dealType" column="deal_type" />
+		<result property="dealOper" column="deal_oper" />
+		<result property="createTime" column="create_time" />
+		<result property="memo" column="memo" />
+		<result property="recBatchId" column="rec_batch_id" />
+		<result property="trxTime" column="trx_time" />
+		<result property="payAmount" column="pay_amount" />
+		<result property="currencyType" column="currency_type" />
+		<result property="bankSerialNo" column="bank_serial_no" />
+		<result property="payconType" column="paycon_type" />
+		<result property="updateTime" column="update_time" />
+		<result property="oriTrxState" column="ori_trx_state" />
+		<result property="oriInnConAmount" column="ori_inn_con_amount" />
+		<result property="oriChaConAmount" column="ori_cha_con_amount" />
+		<result property="trxCode" column="trx_code" />
+		<result property="privDomain" column="priv_domain" />
+	</resultMap>
+	<select id="listSacRecDifferences" parameterClass="java.util.Map" resultMap="SacRecDifferences">
+		
+		SELECT
+		id,
+		rec_detail_id,
+		rec_start_date,
+		rec_end_date,
+		rec_oper,
+		trx_serial_no,
+		rec_diff_type,
+		rec_diff_desc,
+		chn_code,
+		status,
+		deal_type,
+		deal_oper,
+		create_time,
+		memo,
+		rec_batch_id,
+		trx_time,
+		pay_amount,
+		currency_type,
+		bank_serial_no,
+		paycon_type,
+		update_time,
+		ori_trx_state,
+		ori_inn_con_amount,
+		ori_cha_con_amount,
+		trx_code,
+		priv_domain
+		FROM SAC_REC_DIFFERENCES
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="payconType"> paycon_type = #payconType# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recOper"> rec_oper = #recOper# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recStartDate"><![CDATA[ rec_start_date >= #recStartDate#]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="recEndDate"><![CDATA[ rec_end_date <= #recEndDate#]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="status"> status = #status# </isNotEmpty>
+		</dynamic>
+		
+	</select>
+
+	<update id="updateSacRecDifferences" parameterClass="net.easipay.cbp.model.SacRecDifferences">
+		UPDATE SAC_REC_DIFFERENCES
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="status"> status = #status#  </isNotEmpty>
+			<isNotEmpty prepend="," property="dealType"> deal_type = #dealType#  </isNotEmpty>
+			<isNotEmpty prepend="," property="dealOper"> deal_oper = #dealOper#  </isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> update_time = #updateTime#  </isNotEmpty>
+		</dynamic>
+		WHERE rec_detail_id = #recDetailId#
+		and trx_serial_no = #trxSerialNo#
+		and bank_serial_no = #bankSerialNo#
+		and rec_start_date = #recStartDate#
+		and rec_end_date = #recEndDate#
+	</update>
+
+</sqlMap>

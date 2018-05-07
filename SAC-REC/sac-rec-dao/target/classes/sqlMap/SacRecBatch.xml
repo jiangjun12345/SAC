@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacRecBatch" class="net.easipay.cbp.model.SacRecBatch">
+	 <result property="recBatchId" column="rec_batch_id"/>
+	 <result property="recType" column="rec_type"/>
+	 
+	 <result property="recStartDate" column="rec_start_date"/>
+	 <result property="recEndDate" column="rec_end_date"/>
+	 <result property="recUnionId" column="rec_union_id"/>
+	 
+	 
+	 <result property="recOper" column="rec_oper"/>
+	 <result property="recCount" column="rec_count"/>
+	 <result property="recStatus" column="rec_status"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="payconType" column="paycon_type"/>
+	 <result property="chnCode" column="chn_code"/>
+ </resultMap>
+   <insert id="insertSacRecBatch" parameterClass="net.easipay.cbp.model.SacRecBatch">
+        INSERT INTO SAC_REC_BATCH ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="recBatchId">  rec_batch_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="recType">  rec_type  </isNotEmpty>
+            
+            <isNotEmpty prepend="," property="recStartDate">  rec_start_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="recUnionId">  rec_union_id  </isNotEmpty>
+            
+            <isNotEmpty prepend="," property="recOper">  rec_oper  </isNotEmpty>
+            <isNotEmpty prepend="," property="recCount">  rec_count  </isNotEmpty>
+            <isNotEmpty prepend="," property="recStatus">  rec_status  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend=""  property="recBatchId">  #recBatchId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recType">  #recType#  </isNotEmpty>
+		         
+		    <isNotEmpty prepend="," property="recStartDate">  #recStartDate#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="recEndDate">  #recEndDate#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="recUnionId">  #recUnionId#  </isNotEmpty>
+		    	       
+		    <isNotEmpty prepend="," property="recOper">  #recOper#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recCount">  #recCount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recStatus">  #recStatus#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateTime">  #updateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	  
+		    <isNotEmpty prepend="," property="chnCode">  #chnCode#  </isNotEmpty>	     
+		    <isNotEmpty prepend="," property="payconType">  #payconType#  </isNotEmpty>	      
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacRecBatch" resultMap="SacRecBatch">  
+        SELECT 
+	       rec_batch_id,
+	       rec_type,
+	       rec_start_date,
+	       rec_end_date,
+	       rec_union_id,
+	       rec_oper,
+	       rec_count,
+	       rec_status,
+	       update_time,
+	       create_time,
+	       memo,
+	       chn_code,
+	       paycon_type
+         FROM SAC_REC_BATCH
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="recBatchId"> rec_batch_id = #recBatchId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="getSacRecBatchs" parameterClass="java.util.Map" resultMap="SacRecBatch">  
+      SELECT 
+	       rec_batch_id,
+	       rec_type,
+	       rec_start_date,
+	       rec_end_date,
+	       rec_union_id,
+	       rec_oper,
+	       rec_count,
+	       rec_status,
+	       update_time,
+	       create_time,
+	       memo,
+	       chn_code,
+	       paycon_type
+	  FROM SAC_REC_BATCH
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="oneMonthFlag"> 
+			<![CDATA[ 
+			CREATE_TIME >=  TRUNC(add_months(sysdate,-1),'dd') 
+			]]>
+		  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="recBatchId"> rec_batch_id = #recBatchId# </isNotEmpty>
+          <isNotEmpty prepend="AND" property="recType"> rec_type = #recType# </isNotEmpty>    
+          <isNotEmpty prepend="AND" property="recStatus"> rec_status = #recStatus# </isNotEmpty>
+          <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="recRelativePreDate"> 
+			<![CDATA[ 
+			(
+			rec_start_date >= to_date(#recRelativePreDate#,'yyyyMMdd')
+			AND
+			rec_start_date< to_date(#recRelativePreDate#,'yyyyMMdd')+1
+			)
+			
+			]]>
+		  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="recRelativeNextDate"> 
+			<![CDATA[ 
+			(
+			rec_start_date >= to_date(#recRelativeNextDate#,'yyyyMMdd')
+			AND
+			rec_start_date< to_date(#recRelativeNextDate#,'yyyyMMdd')+1
+			)
+			]]>
+		  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			CREATE_TIME >= to_date(#beginDate#,'yyyy-MM-dd')
+			]]>
+		  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			CREATE_TIME < to_date(#endDate#,'yyyy-MM-dd')
+			]]> 
+		  </isNotEmpty>                   
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacRecBatch" parameterClass="net.easipay.cbp.model.SacRecBatch">  
+      UPDATE SAC_REC_BATCH        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recType">  rec_type = #recType#  </isNotEmpty>
+            
+            <isNotEmpty prepend="," property="recStartDate">  rec_start_date = #recStartDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recUnionId">  rec_union_id = #recUnionId#  </isNotEmpty>
+            
+            
+            <isNotEmpty prepend="," property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recCount">  rec_count = #recCount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recStatus">  rec_status = #recStatus#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+        </dynamic>
+       WHERE rec_batch_id = #recBatchId#
+  </update>
+  <delete id="deleteSacRecBatch">  
+        Delete   
+          from SAC_REC_BATCH WHERE
+         rec_batch_id = #recBatchId#
+  </delete>
+  <delete id="deleteListSacRecBatch">  
+        Delete 
+        from SAC_REC_BATCH
+        WHERE rec_batch_id IN ( $recBatchId$ )
+  </delete>
+  
+   <select id="getSacRecBatchCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_REC_BATCH
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recType">  rec_type = #recType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recStatus">  rec_status = #recStatus#  </isNotEmpty>
+            
+            <isNotEmpty prepend="AND" property="recStartDate">  rec_start_date = #recStartDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recUnionId">  rec_union_id = #recUnionId#  </isNotEmpty>
+            
+            
+            <isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recCount">  rec_count = #recCount#  </isNotEmpty>
+            
+            <isNotEmpty prepend="AND" property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+			
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacRecBatch" parameterClass="java.util.Map" resultMap="SacRecBatch"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       rec_batch_id,
+	       rec_type,
+	       rec_start_date,
+	       rec_end_date,
+	       rec_union_id,
+	       rec_oper,
+	       rec_count,
+	       rec_status,
+	       update_time,
+	       create_time,
+	       memo,
+	       chn_code,
+	       paycon_type
+	       from SAC_REC_BATCH  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recType">  rec_type = #recType#  </isNotEmpty>
+            
+            <isNotEmpty prepend="AND" property="recStartDate">  rec_start_date = #recStartDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recUnionId">  rec_union_id = #recUnionId#  </isNotEmpty>
+            
+            
+            <isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recCount">  rec_count = #recCount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recStatus">  rec_status = #recStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+			
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> create_time DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

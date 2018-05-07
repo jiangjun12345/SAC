@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacCusBalance" class="net.easipay.cbp.model.SacCusBalance">
+	 <result property="id" column="ID" />
+	 <result property="platAccount" column="PLAT_ACCOUNT" />
+	 <result property="trxAmount" column="TRX_AMOUNT" />
+	 <result property="currencyType" column="CURRENCY_TYPE" />
+	 <result property="trxBlance" column="TRX_BLANCE" />
+	 <result property="rpFlag" column="RP_FLAG" />
+	 <result property="chnName" column="CHN_NAME" />
+	 <result property="platBillNo" column="PLAT_BILL_NO" />
+	 <result property="againstPltAcc" column="AGAINST_PLT_ACC" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="updateTime" column="UPDATE_TIME" />
+	 <result property="memo" column="MEMO" />
+	 <result property="trxType" column="TRX_TYPE" />
+	 <result property="balanceDetailId" column="BALANCE_DETAIL_ID" />
+	 <result property="credentialId" column="CREDENTIAL_ID" />
+	 <result property="cost" column="COST" />
+	 <result property="chnNo" column="CHN_NO" />
+ </resultMap>
+  
+   <select id="listSacCusBalance2" parameterClass="java.util.Map" resultClass="java.util.HashMap">  
+      select 
+        d.ye_id as "cusNoId",
+        d.code5_id as "bussType",
+        d.code6_id as "childAccType",
+        d.cus_name as "cusName",
+      	c.total_amount as "totalAmount",
+      	d.cus_no as "cusNo",
+        d.sac_currency as "sacCurrency"
+      from fin_ye c,
+          (select
+          		 <isNotEmpty property="childAccType">
+                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id,
+                  	b.code5_id,
+                    b.code6_id,
+                  </isNotEmpty>
+                  <isEmpty property="childAccType">
+                  	<isEmpty property="bussType">
+                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+                  	null as code5_id,
+                    null as code6_id,
+                  	</isEmpty>
+                  </isEmpty>
+                  <isEmpty property="childAccType">
+                  	<isNotEmpty property="bussType">
+                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id,
+                  	b.code5_id,
+                  	null as code6_id,
+                  	</isNotEmpty>
+                  </isEmpty>
+          		  a.cus_no,
+                  a.cus_name,
+                  a.sac_currency
+              from sac_cus_parameter a, fin_code b,fin_code4 g
+            where a.cus_no = b.code3_id
+             and  a.buss_Type = b.code5_id
+             and  a.sac_currency = g.code_value
+             and  g.code4_id = b.code4_id
+             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+	 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+             <isNotEmpty prepend="AND" property="cusName"> a.cus_name like '%$cusName$%' </isNotEmpty>
+			 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no like '%$cusNo$%' </isNotEmpty>
+			  order by ye_id
+           ) d
+      where c.ye_id = d.ye_id
+  </select>
+ 
+  <select id="listSplitSacCusBalance2" parameterClass="java.util.Map" resultClass="java.util.HashMap"> 
+		SELECT * FROM
+		( SELECT e.*, ROWNUM R FROM
+		(  	
+		select 
+	        d.ye_id as "cusNoId",
+	        d.code5_id as "bussType",
+	        d.code6_id as "childAccType",
+	        d.cus_name as "cusName",
+	      	c.total_amount as "totalAmount",
+	      	d.cus_no as "cusNo",
+	        d.sac_currency as "sacCurrency",
+	        d.org_card_id as "orgCardId",
+	        d.merchant_ncode as "merchantNcode"
+	      from fin_ye c,
+	          (select
+	          		 <isNotEmpty property="childAccType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id,
+	                  	b.code5_id,
+	                    b.code6_id,
+	                  </isNotEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+	                  	null as code5_id,
+	                    null as code6_id,
+	                  	</isEmpty>
+	                  </isEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isNotEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id,
+	                  	b.code5_id,
+	                  	null as code6_id,
+	                  	</isNotEmpty>
+	                  </isEmpty>
+	          		  a.cus_no,
+	                  a.cus_name,
+	                  a.sac_currency,
+	                  a.org_card_id,
+	                  a.merchant_ncode
+	              from sac_cus_parameter a, fin_code b,fin_code4 g
+	            where a.cus_no = b.code3_id
+	             and  a.buss_Type = b.code5_id
+	             and  a.sac_currency = g.code_value
+	             and  g.code4_id = b.code4_id
+	             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+		 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+	             <isNotEmpty prepend="AND" property="cusName"> a.cus_name like '%$cusName$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no like '%$cusNo$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="orgCardId"> a.org_card_id like '%$orgCardId$%' </isNotEmpty>
+				  order by ye_id
+	           ) d
+	      where c.ye_id = d.ye_id
+	      <isNotEmpty prepend="AND" property="amountFlag"> c.total_amount > 0  </isNotEmpty>
+		) e
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) f
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	
+	<select id="listSplitSacCusBalanceFundDay" parameterClass="java.util.Map" resultClass="java.util.HashMap"> 
+		SELECT * FROM
+		( SELECT e.*, ROWNUM R FROM
+		(  	
+		select 
+		  d.ye_id          as "CUSNOID",
+          c.FDEBIT         as "FDEBIT",
+          c.FCREDIT        as "FCREDIT",
+          c.AMOUNT         as "AMOUNT",
+          c.OPEN_BAL       as "OPENBAL",
+          c.CLOSE_BAL      as "CLOSEBAL",
+          to_char(c.STAT_TIME, 'yyyy-MM-dd')      as "STATTIME",
+          d.code5_id       as "BUSSTYPE",
+          d.code6_id       as "CHILDACCTYPE",
+          d.cus_name       as "CUSNAME",
+          d.cus_no         as "cusNo",
+          d.sac_currency   as "SACCURRENCY"
+     	from FIN_STAT_ORG c,
+	          (select
+	          		 <isNotEmpty property="childAccType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id,
+	                  	b.code5_id,
+	                    b.code6_id,
+	                  </isNotEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+	                  	null as code5_id,
+	                    null as code6_id,
+	                  	</isEmpty>
+	                  </isEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isNotEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id,
+	                  	b.code5_id,
+	                  	null as code6_id,
+	                  	</isNotEmpty>
+	                  </isEmpty>
+	          		  a.cus_no,
+	                  a.cus_name,
+	                  a.sac_currency
+	              from sac_cus_parameter a, fin_code b,fin_code4 g
+	            where a.cus_no = b.code3_id
+	             and  a.buss_Type = b.code5_id
+	             and  a.sac_currency = g.code_value
+	             and  g.code4_id = b.code4_id
+	             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+		 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+	             <isNotEmpty prepend="AND" property="cusName"> a.cus_name like '%$cusName$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no like '%$cusNo$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="orgCardId"> a.org_card_id like '%$orgCardId$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="currency"> g.code_value = #currency# </isNotEmpty>
+				  order by ye_id
+	           ) d
+	      where c.code_id = d.ye_id
+	      	<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ stat_time >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ stat_time < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			order by stat_time desc,d.ye_id
+		) e 
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) f
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	
+	<select id="getCusBalanceFundDayCount" resultClass="java.lang.Integer">  
+	SELECT COUNT(1) C FROM 
+			(
+			select 
+		  d.ye_id          as "cusNoId",
+          c.FDEBIT         as "fDebit",
+          c.FCREDIT        as "fCredit",
+          c.AMOUNT         as "amount",
+          c.OPEN_BAL       as "openBal",
+          c.CLOSE_BAL      as "closeBal",
+          to_char('c.STAT_TIME','yyyy-MM-dd')       as "statTime",
+          d.code5_id       as "bussType",
+          d.code6_id       as "childAccType",
+          d.cus_name       as "cusName",
+          d.cus_no         as "cusNo",
+          d.sac_currency   as "sacCurrency"
+     	from FIN_STAT_ORG c,
+	          (select
+	          		 <isNotEmpty property="childAccType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id,
+	                  	b.code5_id,
+	                    b.code6_id,
+	                  </isNotEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+	                  	null as code5_id,
+	                    null as code6_id,
+	                  	</isEmpty>
+	                  </isEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isNotEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id,
+	                  	b.code5_id,
+	                  	null as code6_id,
+	                  	</isNotEmpty>
+	                  </isEmpty>
+	          		  a.cus_no,
+	                  a.cus_name,
+	                  a.sac_currency
+	              from sac_cus_parameter a, fin_code b,fin_code4 g
+	            where a.cus_no = b.code3_id
+	             and  a.buss_Type = b.code5_id
+	             and  a.sac_currency = g.code_value
+	             and  g.code4_id = b.code4_id
+	             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+		 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+	             <isNotEmpty prepend="AND" property="cusName"> a.cus_name like '%$cusName$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no like '%$cusNo$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="orgCardId"> a.org_card_id like '%$orgCardId$%' </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="currency"> g.code_value = #currency# </isNotEmpty>
+				  order by ye_id
+	           ) d
+	      where c.code_id = d.ye_id
+	      	<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ stat_time >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ stat_time < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			order by stat_time desc,d.ye_id
+			)
+	</select>
+	
+	<select id="listSplitSacCusBalanceFundDay2" parameterClass="java.util.Map" resultClass="java.util.HashMap"> 
+		SELECT * FROM
+		( SELECT e.*, ROWNUM R FROM
+		(  		
+	   select     #startDate# as statTime,
+			       d.ye_id as cusNoId,
+		           nvl(t1.fDebit,0) as fDebit,
+		           nvl(t1.fCredit,0) as fCredit,
+		           nvl(abs(t1.fCredit - t1.fDebit),0) as amount,
+			       (case
+			         when t2.openBal is not null then
+			          t2.openBal
+			         when t4.openBal is not null then
+			          t4.openBal
+			         else
+			          nvl(t5.total_amount, 0)
+			       end) as openBal,
+			       (case
+			         when t3.closeBal is not null then
+			          t3.closeBal
+			         when t4.openBal is not null then
+			          t4.openBal
+			         else
+			          nvl(t5.total_amount, 0)
+			       end) as closeBal,
+			       d.code5_id as bussType,
+			       d.code6_id as childAccType,
+			       d.cus_name as cusName,
+			       d.cus_no as cusNo,
+			       d.sac_currency as sacCurrency
+			  from (select
+	          		 <isNotEmpty property="childAccType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id,
+	                  	b.code5_id,
+	                    b.code6_id,
+	                  </isNotEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+	                  	null as code5_id,
+	                    null as code6_id,
+	                  	</isEmpty>
+	                  </isEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isNotEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id,
+	                  	b.code5_id,
+	                  	null as code6_id,
+	                  	</isNotEmpty>
+	                  </isEmpty>
+	          		  a.cus_no,
+	                  a.cus_name,
+	                  a.sac_currency
+	              from sac_cus_parameter a, fin_code b,fin_code4 g
+	            where a.cus_no = b.code3_id
+	             and  a.buss_Type = b.code5_id
+	             and  a.sac_currency = g.code_value
+	             and  g.code4_id = b.code4_id
+	             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+		 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+	             <isNotEmpty prepend="AND" property="cusName"> a.cus_name = #cusName# </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no = #cusNo# </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="currency"> g.code_value = #currency# </isNotEmpty>
+				  order by ye_id
+	           ) d,
+			       (select to_char(MX_TIME, 'yyyy-MM-dd') as mxTime,
+			               code_id as code_id,
+			               sum(FDEBIT) as fDebit,
+			               sum(FCREDIT) as fCredit
+			          from fin_mx
+			         where  is_show = '1'
+		    <isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ MX_TIME < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			 <isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             </isNotEmpty>    
+			         group by to_char(MX_TIME, 'yyyy-MM-dd'), code_id) t1,
+			       (SELECT open_bal as openBal,
+			               code_id as code_id,
+			               to_char(MX_TIME, 'yyyy-MM-dd') as mxTime
+			          FROM (SELECT ROW_NUMBER() OVER(partition by code_id, to_char(MX_TIME, 'yyyy-MM-dd') ORDER BY PZ_NO, MX_TIME) rn,
+			                       fin_mx.*
+			                  FROM fin_mx
+			                 where is_show = '1'
+			<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ MX_TIME < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             </isNotEmpty>    
+				)
+			         WHERE rn = 1) t2,
+			       (SELECT close_bal as closeBal,
+			               code_id as code_id,
+			               to_char(MX_TIME, 'yyyy-MM-dd') as mxTime
+			          FROM (SELECT ROW_NUMBER() OVER(partition by code_id, to_char(MX_TIME, 'yyyy-MM-dd') ORDER BY PZ_NO DESC, MX_TIME DESC) rn,
+			                       fin_mx.*
+			                  FROM fin_mx
+			                 where is_show = '1'
+			<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ MX_TIME < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             </isNotEmpty>       		
+				)
+			         WHERE rn = 1) t3,
+			       (SELECT open_bal as openBal,
+			               code_id as code_id,
+			               to_char(MX_TIME, 'yyyy-MM-dd') as mxTime
+			          from (select f.*, rownum
+			                  FROM fin_mx f
+			                 where is_show = '1'
+			                   <isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME > to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			                  <isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             				</isNotEmpty>    
+			                 order by MX_TIME) k
+			         where rownum = 1) t4,
+			         fin_ye t5
+			 where d.ye_id = t1.code_id(+)
+			   and d.ye_id = t2.code_id(+)
+			   and d.ye_id = t3.code_id(+)
+			   and d.ye_id = t4.code_id(+)
+			   and d.ye_id = t5.ye_id(+)
+		) e 
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) f
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	<select id="getCusBalanceFundDayCount2" resultClass="java.lang.Integer">  
+	SELECT COUNT(1) C FROM 
+			(
+			select  #startDate# as statTime,
+			       d.ye_id as cusNoId,
+		           nvl(t1.fDebit,0) as fDebit,
+		           nvl(t1.fCredit,0) as fCredit,
+		           nvl(abs(t1.fCredit - t1.fDebit),0) as amount,
+			       (case
+			         when t2.openBal is not null then
+			          t2.openBal
+			         when t4.openBal is not null then
+			          t4.openBal
+			         else
+			          nvl(t5.total_amount, 0)
+			       end) as openBal,
+			       (case
+			         when t3.closeBal is not null then
+			          t3.closeBal
+			         when t4.openBal is not null then
+			          t4.openBal
+			         else
+			          nvl(t5.total_amount, 0)
+			       end) as closeBal,
+			       d.code5_id as bussType,
+			       d.code6_id as childAccType,
+			       d.cus_name as cusName,
+			       d.cus_no as cusNo,
+			       d.sac_currency as sacCurrency
+			  from (select
+	          		 <isNotEmpty property="childAccType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id,
+	                  	b.code5_id,
+	                    b.code6_id,
+	                  </isNotEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+	                  	null as code5_id,
+	                    null as code6_id,
+	                  	</isEmpty>
+	                  </isEmpty>
+	                  <isEmpty property="childAccType">
+	                  	<isNotEmpty property="bussType">
+	                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id,
+	                  	b.code5_id,
+	                  	null as code6_id,
+	                  	</isNotEmpty>
+	                  </isEmpty>
+	          		  a.cus_no,
+	                  a.cus_name,
+	                  a.sac_currency
+	              from sac_cus_parameter a, fin_code b,fin_code4 g
+	            where a.cus_no = b.code3_id
+	             and  a.buss_Type = b.code5_id
+	             and  a.sac_currency = g.code_value
+	             and  g.code4_id = b.code4_id
+	             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+		 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+	             <isNotEmpty prepend="AND" property="cusName"> a.cus_name = #cusName# </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no = #cusNo# </isNotEmpty>
+				 <isNotEmpty prepend="AND" property="currency"> g.code_value = #currency# </isNotEmpty>
+				  order by ye_id
+	           ) d,
+			       (select to_char(MX_TIME, 'yyyy-MM-dd') as mxTime,
+			               code_id as code_id,
+			               sum(FDEBIT) as fDebit,
+			               sum(FCREDIT) as fCredit
+			          from fin_mx
+			         where is_show = '1'
+		    <isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ MX_TIME < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             </isNotEmpty>    
+			         group by to_char(MX_TIME, 'yyyy-MM-dd'), code_id) t1,
+			       (SELECT open_bal as openBal,
+			               code_id as code_id,
+			               to_char(MX_TIME, 'yyyy-MM-dd') as mxTime
+			          FROM (SELECT ROW_NUMBER() OVER(partition by code_id, to_char(MX_TIME, 'yyyy-MM-dd') ORDER BY PZ_NO, MX_TIME) rn,
+			                       fin_mx.*
+			                  FROM fin_mx
+			                 where is_show = '1'
+			<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ MX_TIME < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             </isNotEmpty>    
+				)
+			         WHERE rn = 1) t2,
+			       (SELECT close_bal as closeBal,
+			               code_id as code_id,
+			               to_char(MX_TIME, 'yyyy-MM-dd') as mxTime
+			          FROM (SELECT ROW_NUMBER() OVER(partition by code_id, to_char(MX_TIME, 'yyyy-MM-dd') ORDER BY PZ_NO DESC, MX_TIME DESC) rn,
+			                       fin_mx.*
+			                  FROM fin_mx
+			                 where is_show = '1'
+			<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ MX_TIME < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             </isNotEmpty>    
+				)
+			         WHERE rn = 1) t3,
+			       (SELECT open_bal as openBal,
+			               code_id as code_id,
+			               to_char(MX_TIME, 'yyyy-MM-dd') as mxTime
+			          from (select f.*, rownum
+			                  FROM fin_mx f
+			                 where is_show = '1'
+			                   <isNotEmpty prepend="AND" property="startDate" > <![CDATA[ MX_TIME > to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			                   <isNotEmpty prepend="AND" property="codeId" >
+							   code_id in 
+							 <iterate property="codeId" open="(" conjunction="," close=")">  
+					              #codeId[]#
+					             </iterate>   
+             				</isNotEmpty>    
+			                 order by MX_TIME) k
+			         where rownum = 1) t4,
+			         fin_ye t5
+			 where d.ye_id = t1.code_id(+)
+			   and d.ye_id = t2.code_id(+)
+			   and d.ye_id = t3.code_id(+)
+			   and d.ye_id = t4.code_id(+)
+			   and d.ye_id = t5.ye_id(+)
+	)	
+	</select>
+	
+  <select id="getSacCusBalanceCount2" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM 
+			( select 
+		        d.ye_id as "cusNoId",
+		        d.code5_id as "bussType",
+		        d.code6_id as "childAccType",
+		        d.cus_name as "cusName",
+		      	c.total_amount as "totalAmount",
+		      	d.cus_no as "cusNo",
+		        d.sac_currency as "sacCurrency"
+		      from fin_ye c,
+		          (select
+		          		 <!-- 子账户类型不为空，查31位 -->
+		          		 <isNotEmpty property="childAccType">
+		                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id,
+		                  	b.code5_id,
+		                    b.code6_id,
+		                  </isNotEmpty>
+		                  <!-- 子账户类型为空、业务类型为空，查27位 -->
+		                  <isEmpty property="childAccType">
+		                  	<isEmpty property="bussType">
+		                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+		                  	null as code5_id,
+		                    null as code6_id,
+		                  	</isEmpty>
+		                  </isEmpty>
+		                  <!-- 子账户为空、业务类型不为空，查29位 -->
+		                  <isEmpty property="childAccType">
+		                  	<isNotEmpty property="bussType">
+		                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id,
+		                  	b.code5_id,
+		                  	null as code6_id,
+		                  	</isNotEmpty>
+		                  </isEmpty>
+		          		  a.cus_no,
+		                  a.cus_name,
+		                  a.sac_currency
+		              from sac_cus_parameter a, fin_code b,fin_code4 g
+		            where a.cus_no = b.code3_id
+		             and  a.buss_Type = b.code5_id
+		             and  a.sac_currency = g.code_value
+		             and  g.code4_id = b.code4_id
+		             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+			 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+		             <isNotEmpty prepend="AND" property="cusName"> a.cus_name like '%$cusName$%' </isNotEmpty>
+					 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no like '%$cusNo$%' </isNotEmpty>
+					  order by ye_id
+		           ) d
+		      where c.ye_id = d.ye_id
+		      <isNotEmpty prepend="AND" property="amountFlag"> c.total_amount > 0  </isNotEmpty>
+			 )
+	</select>
+	
+	
+	<select id="getCusBalance" parameterClass="java.util.Map" resultClass="java.util.HashMap"> 
+	  	select 
+	      	c.total_amount as "totalAmount"
+	      from fin_ye c,
+	          (select
+	                  distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id,
+	          		  a.cus_no,
+	                  a.cus_plat_acc_name,
+	                  a.sac_currency
+	             from sac_cus_parameter a, fin_code b,fin_code4 g
+	            where a.cus_no = b.code3_id
+	             and  a.buss_Type = b.code5_id
+	             and  a.sac_currency = g.code_value
+	             and  g.code4_id = b.code4_id
+	             and  a.ORG_CARD_ID = #orgCardId#
+				 and  a.sac_currency = #sacCurrency#
+				  order by ye_id
+	           ) d
+	      where c.ye_id = d.ye_id
+	</select>
+	
+	<select id="getCodeIdsByCusparamMap" resultClass="java.lang.String"  parameterClass="java.util.Map">  
+				select
+		          		 <!-- 子账户类型不为空，查31位 -->
+		          		 <isNotEmpty property="childAccType">
+		                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id || b.code6_id as ye_id
+		                  </isNotEmpty>
+		                  <!-- 子账户类型为空、业务类型为空，查27位 -->
+		                  <isEmpty property="childAccType">
+		                  	<isEmpty property="bussType">
+		                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id as ye_id
+		                  	</isEmpty>
+		                  </isEmpty>
+		                  <!-- 子账户为空、业务类型不为空，查29位 -->
+		                  <isEmpty property="childAccType">
+		                  	<isNotEmpty property="bussType">
+		                  	distinct b.code1_id||b.code2_id||b.code3_id || b.code4_id || b.code5_id  as ye_id
+		                  	</isNotEmpty>
+		                  </isEmpty>
+		              from sac_cus_parameter a, fin_code b,fin_code4 g
+		            where a.cus_no = b.code3_id
+		             and  a.buss_Type = b.code5_id
+		             and  a.sac_currency = g.code_value
+		             and  g.code4_id = b.code4_id
+		             <isNotEmpty prepend="AND" property="bussType"> b.code5_id = #bussType# </isNotEmpty>
+			 		 <isNotEmpty prepend="AND" property="childAccType"> b.code6_id = #childAccType# </isNotEmpty>
+		             <isNotEmpty prepend="AND" property="cusName"> a.cus_name = #cusName# </isNotEmpty>
+					 <isNotEmpty prepend="AND" property="cusNo"> a.cus_no = #cusNo# </isNotEmpty>
+					 <isNotEmpty prepend="AND" property="currency"> g.code_value = #currency# </isNotEmpty>
+					  order by ye_id
+	</select>
+  
+</sqlMap>

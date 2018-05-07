@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	 <resultMap id="SacFinInsRule" class="net.easipay.cbp.model.SacFinInsRule">
+		 <result property="id" column="id"/>
+		 <result property="trxCode" column="trx_code"/>
+		 <result property="trxName" column="trx_name"/>
+		 <result property="trxState" column="trx_state"/>
+		 <result property="step" column="step"/>
+		 <result property="paramsTemp" column="params_temp"/>
+		 <result property="digestTemp" column="digest_temp"/>
+		 <result property="debitRule" column="debit_rule"/>
+		 <result property="creditRule" column="credit_rule"/>
+		 <result property="currencyRule" column="currency_rule"/>
+		 <result property="debitTemp" column="debit_temp"/>
+		 <result property="creditTemp" column="credit_temp"/>
+		 <result property="processType" column="process_type"/>
+		 <result property="memo" column="memo"/>
+	 </resultMap>
+ 
+	<select id="listSacFinInsRule" parameterClass="java.util.Map" resultMap="SacFinInsRule">  
+      SELECT
+	       id,
+	       trx_code,
+	       trx_name,
+	       trx_state,
+	       step,
+	       params_temp,
+	       digest_temp,
+	       debit_rule,
+		   credit_rule,
+		   currency_rule,
+		   debit_temp,
+		   credit_temp,
+		   process_type,
+	       memo
+	  FROM SAC_FIN_INS_RULE
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="trxCode"> trx_code = #trxCode# </isNotEmpty>
+          <isNotEmpty prepend="AND" property="trxState"> trx_state = #trxState# </isNotEmpty>  
+        </dynamic>
+      order by trx_code , step
+    </select>  
+  
+</sqlMap>

@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>net.easipay.cbp.sac</groupId>
+		<artifactId>sac</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.easipay.cbp.sac</groupId>
+	<artifactId>cas-support-jdbc</artifactId>
+	<packaging>jar</packaging>
+	<name>CBP SSO BACK END JDBC Support</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.easipay.cbp.sac</groupId>
+			<artifactId>cas-server-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	</dependencies>
+</project>

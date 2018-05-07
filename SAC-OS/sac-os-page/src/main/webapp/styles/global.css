@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+ 
+body{
+	margin:0;
+	padding:0;
+	background-color:#efeded;
+}
+img{
+	border:0;
+}
+a{
+	text-decoration:none;
+}
+.fontfamily1{
+	font-family:"宋体";
+}
+.fontfamily2{
+	font-family:"微软雅黑";
+}
+.fontsize1{
+	font-size:12px;
+}
+.fontsize2{
+	font-size:14px;
+}
+.fontsize3{
+	font-size:30px;
+}
+.fontsize4{
+	font-size:24px;
+}
+.fontcolor1{
+	color:#ffffff;
+}
+.fontcolor2{
+	color:#3a74ae;
+}
+.fontcolor3{
+	color:#333333;
+}
+.fontcolor4{
+	color:#666666;
+}
+.fontcolor5{
+	color:#999999;
+}
+.fontcolor6{
+	color:#333333;
+}
+.fontcolor7{
+	color:#f3a50e;
+}
+.txt2{
+	width:200px;
+	height:25px;
+	border:1px solid #cccccc;
+	margin-left:5px;
+	line-height:25px;
+}
+.btn1{
+	width:220px;
+	height:30px;
+	border:1px solid #33608d;
+	background-color:#3a74ae;
+	color:#ffffff;
+	font-family:"微软雅黑";
+	margin-top:15px;
+}
+.bluebtn{
+	width:75px;
+	height:30px;
+	margin-left:10px;
+	border:1px solid #cccccc;
+	background-color:#cccccc;
+	text-align:center;
+	color:#666666;
+	font-family:"微软雅黑";
+	cursor:pointer;
+}
+.select1{
+	width:203px;
+	height:30px;
+	border:1px solid #cccccc;
+	margin-left:5px;
+	line-height:25px;
+}
+.tablefixed{
+	table-layout:fixed;
+	word-wrap:break-word;
+}
+.truncate {
+	width: 405px;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis; /* Opera */
+	-moz-binding: url("ellipsis.xml#ellipsis");
+	}

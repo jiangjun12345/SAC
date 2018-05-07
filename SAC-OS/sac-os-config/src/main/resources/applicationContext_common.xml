@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+	    xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+	                        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+    
+       <context:annotation-config></context:annotation-config>
+       
+       <context:component-scan base-package="net.easipay.cbp.dao,net.easipay.cbp.service,net.easipay.cbp.view"/>
+       
+       <aop:config>
+	    <aop:pointcut expression="execution(* net.easipay.cbp.service..*.*(..))" id="pointcut"/>
+	    <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	    <tx:attributes>
+	       <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+	       <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+	       <tx:method name="call*" propagation="REQUIRES_NEW"/>
+	       <tx:method name="*" propagation="REQUIRED"/>
+	    </tx:attributes>
+	</tx:advice>
+	
+	 <bean  id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+		
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocation" value="classpath:sql-map-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- Transaction manager for a single JDBC DataSource -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxActive" value="5"/>
+        <property name="minIdle" value="2"/>
+        <property name="maxWait" value="60"/>
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxOpenPreparedStatements" value="30"></property>
+        <property name="defaultAutoCommit" value="true"/>
+    </bean>
+    
+    <!-- 支持上传文件 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    
+    <bean class="net.easipay.dsfc.ApplicationContextInitializer" init-method="initApplicationContext">
+		<property name="dsfsConfig">
+			<props>
+				<prop key="protocol">${dsfsConfig.protocol}</prop>
+				<prop key="ip">${dsfsConfig.ip}</prop>
+				<prop key="port">${dsfsConfig.port}</prop>
+				<prop key="context">${dsfsConfig.context}</prop>
+				<prop key="desc">分布式服务服务端地址配置</prop>
+			</props>
+		</property>
+		
+		<property name="applicationRegister">
+			<bean class="net.easipay.dsfc.ApplicationRegister">
+				<property name="autowiredService" value="true" />
+				<property name="servletMappingPath" value="/wss" />
+				<property name="wssPackages">
+					<list>
+						<value>net.easipay.cbp.wss</value>
+					</list>
+				</property>
+				<property name="serviceAutowiredExecutor">
+					<bean class="net.easipay.dsfc.ws.wss.WssServiceAutowiredExecutor" />
+				</property>
+			</bean>
+		</property>
+		<property name="commonConfig">
+            <props>
+                <prop key="keystorePath">${easipay.keystore.path}</prop>
+                <prop key="keystorePwd">${easipay.keystore.pwd}</prop>
+                <prop key="cerDir">${easipay.cer.dir}</prop>
+                <prop key="encryptMode">${easipay.encrypt.mode}</prop>
+                <prop key="ownerCerName">${easipay.cer.name}</prop>
+            </props>
+        </property>
+	</bean>
+	
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">    
+        <property name="sqlMapClient" ref="sqlMapClient"></property>   
+    </bean>  
+    
+   	<bean id="notifyOperResultToB2BServiceImpl" class="net.easipay.cbp.service.impl.NotifyOperResultToB2BServiceImpl">    
+        <property name="PRESTORE_CHECK_PASS_URL" value="${prestoreNotify.url}"/>  
+        <property name="OFL_PRESTORE_MANUAL_CHECK_PASS_URL" value="${prestoreManualNotify.url}"/>  
+        <property name="ONL_FUND_GIVE_PASS_URL" value="${fundGiveOnlNotify.url}"/>  
+        <property name="FUND_ALLOT_URL" value="${b2b.fund.allot.url}"/>  
+    </bean>
+   	<bean id="transactionService" class="net.easipay.cbp.service.impl.TransactionServiceImpl">    
+        <property name="B2B_SUPPLEMENT_NOTIFY" value="${b2bSupplementNotify.url}"/>  
+        <property name="B2C_SUPPLEMENT_NOTIFY_AC" value="${b2cSupplementNotifyAc.url}"/>  
+        <property name="B2C_SUPPLEMENT_NOTIFY_ORDER" value="${b2cSupplementNotifyOrder.url}"/>  
+        <property name="B2B_GFH_SUPPLEMENT_NOTIFY" value="${b2bSupplementGfhNotify.url}"/>  
+        <property name="WHT_SUPPLEMENT_NOTIFY_AC" value="${wftSupplementNotify.url}"/>  
+    </bean>
+    
+    <bean id="refundB2cServiceImpl" class="net.easipay.cbp.service.impl.RefundB2cServiceImpl">    
+        <property name="refundB2CUrl" value="${refund.b2c.url}"></property>   
+        <property name="refundB2CSettlementExchangeUrl" value="${refund.b2c.settlement.exchange.url}"></property>
+    </bean>  
+    
+    <bean id="refundServiceImpl" class="net.easipay.cbp.service.impl.RefundServiceImpl">    
+        <property name="refundB2BUrl" value="${refund.b2b.url}"></property>   
+    </bean>  
+    
+    <!-- 接口开关 -->
+    <bean id="sacConstants" class="net.easipay.cbp.constant.Constants">    
+        <property name="INTERFACE_SWITCH" value="${interface.switch}"></property>   
+    </bean>  
+    
+    <bean class="net.easipay.cbp.export.DataExportContext">
+		<property name="filePageIndex" value="10000" />
+		<property name="absoluteCachePath" value="${down.path}" />
+		<property name="threadCorePoolSize" value="10" />
+		<property name="threadMaximumPoolSize" value="10" />
+	</bean>
+    
+    <bean class="net.easipay.commons.ca.config.CAConfigInitializer">
+        <property name="caConfig">
+            <props>
+                <prop key="encryptMode">${easipay.encrypt.mode}</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

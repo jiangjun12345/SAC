@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacB2BCommand" class="net.easipay.cbp.model.SacB2BCommand">
+	 <result property="cmdId" column="CMD_ID" />
+	 <result property="cmdType" column="CMD_TYPE" />
+	 <result property="cmdSerialNo" column="CMD_SERIAL_NO" />
+	 <result property="reqTime" column="REQ_TIME" />
+	 <result property="cmdState" column="CMD_STATE" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="rtrxSerialNo" column="RTRX_SERIAL_NO" />
+	 <result property="rtnCode" column="RTN_CODE" />
+	 <result property="ertnCode" column="ERTN_CODE" />
+	 <result property="ertnInfo" column="ERTN_INFO" />
+	 <result property="rdoTime" column="RDO_TIME" />
+	 <result property="msgReceiver" column="MSG_RECEIVER" />
+	 <result property="dbtCode" column="DBT_CODE" />
+	 <result property="draccNo" column="DRACC_NO" />
+	 <result property="draccName" column="DRACC_NAME" />
+	 <result property="draccBankCode" column="DRACC_BANK_CODE" />
+	 <result property="draccBankBranch" column="DRACC_BANK_BRANCH" />
+	 <result property="payCurrency" column="PAY_CURRENCY" />
+	 <result property="payCount" column="PAY_COUNT" />
+	 <result property="payAmount" column="PAY_AMOUNT" />
+	 <result property="payPri" column="PAY_PRI" />
+	 <result property="vldDate" column="VLD_DATE" />
+	 <result property="crtCode" column="CRT_CODE" />
+	 <result property="craccNo" column="CRACC_NO" />
+	 <result property="craccName" column="CRACC_NAME" />
+	 <result property="craccBankCode" column="CRACC_BANK_CODE" />
+	 <result property="craccBankBranch" column="CRACC_BANK_BRANCH" />
+	 <result property="reqSpt1" column="REQ_SPT1" />
+	 <result property="reqSpt2" column="REQ_SPT2" />
+	 <result property="reqSpt3" column="REQ_SPT3" />
+	 <result property="reqMemo" column="REQ_MEMO" />
+	 <result property="batchSerialNo" column="BATCH_SERIAL_NO" />
+	 <result property="otrxSerialNo" column="OTRX_SERIAL_NO" />
+	 <result property="orgId" column="ORG_ID" />
+ </resultMap>
+   <insert id="insertSacB2BCommand" parameterClass="net.easipay.cbp.model.SacB2BCommand">
+        INSERT INTO SAC_B2B_COMMAND ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="cmdId">  CMD_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdType">  CMD_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdSerialNo">  CMD_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqTime">  REQ_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdState">  CMD_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtrxSerialNo">  RTRX_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtnCode">  RTN_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnCode">  ERTN_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnInfo">  ERTN_INFO  </isNotEmpty>
+            <isNotEmpty prepend="," property="rdoTime">  RDO_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="msgReceiver">  MSG_RECEIVER  </isNotEmpty>
+            <isNotEmpty prepend="," property="dbtCode">  DBT_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankCode">  DRACC_BANK_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankBranch">  DRACC_BANK_BRANCH  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCount">  PAY_COUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="payPri">  PAY_PRI  </isNotEmpty>
+            <isNotEmpty prepend="," property="vldDate">  VLD_DATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCode">  CRT_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  CRACC_BANK_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankBranch">  CRACC_BANK_BRANCH  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt1">  REQ_SPT1  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt2">  REQ_SPT2  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt3">  REQ_SPT3  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqMemo">  REQ_MEMO  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  OTRX_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="orgId">  ORG_ID  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="cmdId">  #cmdId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cmdType">  #cmdType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cmdSerialNo">  #cmdSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqTime">  #reqTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cmdState">  #cmdState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="rtrxSerialNo">  #rtrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="rtnCode">  #rtnCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="ertnCode">  #ertnCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="ertnInfo">  #ertnInfo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="rdoTime">  #rdoTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="msgReceiver">  #msgReceiver#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="dbtCode">  #dbtCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccNo">  #draccNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccName">  #draccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccBankCode">  #draccBankCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccBankBranch">  #draccBankBranch#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payCurrency">  #payCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payCount">  #payCount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payPri">  #payPri#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="vldDate">  #vldDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="crtCode">  #crtCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNo">  #craccNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccName">  #craccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBankCode">  #craccBankCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBankBranch">  #craccBankBranch#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqSpt1">  #reqSpt1#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqSpt2">  #reqSpt2#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqSpt3">  #reqSpt3#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqMemo">  #reqMemo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchSerialNo">  #batchSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxSerialNo">  #otrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="orgId">  #orgId#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacB2BCommand" resultMap="SacB2BCommand">  
+        SELECT 
+	       CMD_ID,
+	       CMD_TYPE,
+	       CMD_SERIAL_NO,
+	       REQ_TIME,
+	       CMD_STATE,
+	       CREATE_TIME,
+	       RTRX_SERIAL_NO,
+	       RTN_CODE,
+	       ERTN_CODE,
+	       ERTN_INFO,
+	       RDO_TIME,
+	       MSG_RECEIVER,
+	       DBT_CODE,
+	       DRACC_NO,
+	       DRACC_NAME,
+	       DRACC_BANK_CODE,
+	       DRACC_BANK_BRANCH,
+	       PAY_CURRENCY,
+	       PAY_COUNT,
+	       PAY_AMOUNT,
+	       PAY_PRI,
+	       VLD_DATE,
+	       CRT_CODE,
+	       CRACC_NO,
+	       CRACC_NAME,
+	       CRACC_BANK_CODE,
+	       CRACC_BANK_BRANCH,
+	       REQ_SPT1,
+	       REQ_SPT2,
+	       REQ_SPT3,
+	       REQ_MEMO,
+	       BATCH_SERIAL_NO,
+	       OTRX_SERIAL_NO,
+	       ORG_ID
+         FROM SAC_B2B_COMMAND
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacB2BCommand" parameterClass="java.util.Map" resultMap="SacB2BCommand">  
+      SELECT 
+	       CMD_ID,
+	       CMD_TYPE,
+	       CMD_SERIAL_NO,
+	       REQ_TIME,
+	       CMD_STATE,
+	       CREATE_TIME,
+	       RTRX_SERIAL_NO,
+	       RTN_CODE,
+	       ERTN_CODE,
+	       ERTN_INFO,
+	       RDO_TIME,
+	       MSG_RECEIVER,
+	       DBT_CODE,
+	       DRACC_NO,
+	       DRACC_NAME,
+	       DRACC_BANK_CODE,
+	       DRACC_BANK_BRANCH,
+	       PAY_CURRENCY,
+	       PAY_COUNT,
+	       PAY_AMOUNT,
+	       PAY_PRI,
+	       VLD_DATE,
+	       CRT_CODE,
+	       CRACC_NO,
+	       CRACC_NAME,
+	       CRACC_BANK_CODE,
+	       CRACC_BANK_BRANCH,
+	       REQ_SPT1,
+	       REQ_SPT2,
+	       REQ_SPT3,
+	       REQ_MEMO,
+	       BATCH_SERIAL_NO,
+	       OTRX_SERIAL_NO,
+	       ORG_ID
+	  FROM SAC_B2B_COMMAND
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacB2BCommand" parameterClass="net.easipay.cbp.model.SacB2BCommand">  
+      UPDATE SAC_B2B_COMMAND        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="cmdId">  CMD_ID = #cmdId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdSerialNo">  CMD_SERIAL_NO = #cmdSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqTime">  REQ_TIME = #reqTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtrxSerialNo">  RTRX_SERIAL_NO = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtnCode">  RTN_CODE = #rtnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnCode">  ERTN_CODE = #ertnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnInfo">  ERTN_INFO = #ertnInfo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rdoTime">  RDO_TIME = #rdoTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankCode">  DRACC_BANK_CODE = #draccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankBranch">  DRACC_BANK_BRANCH = #draccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCount">  PAY_COUNT = #payCount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payPri">  PAY_PRI = #payPri#  </isNotEmpty>
+            <isNotEmpty prepend="," property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCode">  CRT_CODE = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  CRACC_BANK_CODE = #craccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankBranch">  CRACC_BANK_BRANCH = #craccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqMemo">  REQ_MEMO = #reqMemo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="orgId">  ORG_ID = #orgId#  </isNotEmpty>
+        </dynamic>
+       WHERE CMD_ID = #cmdId#
+  </update>
+  <delete id="deleteSacB2BCommand">  
+        Delete   
+          from SAC_B2B_COMMAND WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacB2BCommand">  
+        Delete 
+        from SAC_B2B_COMMAND
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacB2BCommandCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_B2B_COMMAND
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="cmdId">  CMD_ID = #cmdId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdSerialNo">  CMD_SERIAL_NO = #cmdSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqTime">  REQ_TIME = #reqTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rtrxSerialNo">  RTRX_SERIAL_NO = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rtnCode">  RTN_CODE = #rtnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="ertnCode">  ERTN_CODE = #ertnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="ertnInfo">  ERTN_INFO = #ertnInfo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rdoTime">  RDO_TIME = #rdoTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankCode">  DRACC_BANK_CODE = #draccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankBranch">  DRACC_BANK_BRANCH = #draccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCount">  PAY_COUNT = #payCount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payPri">  PAY_PRI = #payPri#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtCode">  CRT_CODE = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME like '%$craccName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankCode">  CRACC_BANK_CODE = #craccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankBranch">  CRACC_BANK_BRANCH = #craccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqMemo">  REQ_MEMO = #reqMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="orgId">  ORG_ID = #orgId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdStates">  CMD_STATE in ($cmdStates$) </isNotEmpty>
+            <isNotEmpty prepend="AND" property="flag">  FLAG = #flag#   </isNotEmpty>
+            <isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ create_time >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ create_time < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacB2BCommand" parameterClass="java.util.Map" resultMap="SacB2BCommand"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       CMD_ID,
+	       CMD_TYPE,
+	       CMD_SERIAL_NO,
+	       REQ_TIME,
+	       CMD_STATE,
+	       CREATE_TIME,
+	       RTRX_SERIAL_NO,
+	       RTN_CODE,
+	       ERTN_CODE,
+	       ERTN_INFO,
+	       RDO_TIME,
+	       MSG_RECEIVER,
+	       DBT_CODE,
+	       DRACC_NO,
+	       DRACC_NAME,
+	       DRACC_BANK_CODE,
+	       DRACC_BANK_BRANCH,
+	       PAY_CURRENCY,
+	       PAY_COUNT,
+	       PAY_AMOUNT,
+	       PAY_PRI,
+	       VLD_DATE,
+	       CRT_CODE,
+	       CRACC_NO,
+	       CRACC_NAME,
+	       CRACC_BANK_CODE,
+	       CRACC_BANK_BRANCH,
+	       REQ_SPT1,
+	       REQ_SPT2,
+	       REQ_SPT3,
+	       REQ_MEMO,
+	       BATCH_SERIAL_NO,
+	       OTRX_SERIAL_NO,
+	       ORG_ID
+	       from SAC_B2B_COMMAND  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="cmdId">  CMD_ID = #cmdId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdSerialNo">  CMD_SERIAL_NO = #cmdSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqTime">  REQ_TIME = #reqTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rtrxSerialNo">  RTRX_SERIAL_NO = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rtnCode">  RTN_CODE = #rtnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="ertnCode">  ERTN_CODE = #ertnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="ertnInfo">  ERTN_INFO = #ertnInfo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rdoTime">  RDO_TIME = #rdoTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankCode">  DRACC_BANK_CODE = #draccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankBranch">  DRACC_BANK_BRANCH = #draccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCount">  PAY_COUNT = #payCount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payPri">  PAY_PRI = #payPri#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtCode">  CRT_CODE = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME like '%$craccName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankCode">  CRACC_BANK_CODE = #craccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankBranch">  CRACC_BANK_BRANCH = #craccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqMemo">  REQ_MEMO = #reqMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="orgId">  ORG_ID = #orgId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdStates">  CMD_STATE in ($cmdStates$) </isNotEmpty>
+            <isNotEmpty prepend="AND" property="flag">  FLAG = #flag# </isNotEmpty>
+           <isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ create_time >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ create_time < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty>
+          </dynamic> 
+          ORDER BY CREATE_TIME DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	<update id="updateCommandState" parameterClass="net.easipay.cbp.model.SacB2BCommand">  
+      UPDATE SAC_B2B_COMMAND        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="cmdId">  CMD_ID = #cmdId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdSerialNo">  CMD_SERIAL_NO = #cmdSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqTime">  REQ_TIME = #reqTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtrxSerialNo">  RTRX_SERIAL_NO = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtnCode">  RTN_CODE = #rtnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnCode">  ERTN_CODE = #ertnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnInfo">  ERTN_INFO = #ertnInfo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rdoTime">  RDO_TIME = #rdoTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankCode">  DRACC_BANK_CODE = #draccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankBranch">  DRACC_BANK_BRANCH = #draccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCount">  PAY_COUNT = #payCount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payPri">  PAY_PRI = #payPri#  </isNotEmpty>
+            <isNotEmpty prepend="," property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCode">  CRT_CODE = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  CRACC_BANK_CODE = #craccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankBranch">  CRACC_BANK_BRANCH = #craccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqMemo">  REQ_MEMO = #reqMemo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="orgId">  ORG_ID = #orgId#  </isNotEmpty>
+        </dynamic>
+       WHERE BATCH_SERIAL_NO = #batchSerialNo#
+       		 AND CRT_CODE = #crtCode#
+  </update>
+  
+  	<update id="updateOflCommandState" parameterClass="net.easipay.cbp.model.SacB2BCommand">  
+      UPDATE SAC_B2B_COMMAND        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdSerialNo">  CMD_SERIAL_NO = #cmdSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqTime">  REQ_TIME = #reqTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtrxSerialNo">  RTRX_SERIAL_NO = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtnCode">  RTN_CODE = #rtnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnCode">  ERTN_CODE = #ertnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="ertnInfo">  ERTN_INFO = #ertnInfo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rdoTime">  RDO_TIME = #rdoTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankCode">  DRACC_BANK_CODE = #draccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankBranch">  DRACC_BANK_BRANCH = #draccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCount">  PAY_COUNT = #payCount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payPri">  PAY_PRI = #payPri#  </isNotEmpty>
+            <isNotEmpty prepend="," property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCode">  CRT_CODE = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  CRACC_BANK_CODE = #craccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankBranch">  CRACC_BANK_BRANCH = #craccBankBranch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqMemo">  REQ_MEMO = #reqMemo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="orgId">  ORG_ID = #orgId#  </isNotEmpty>
+        </dynamic>
+       WHERE CMD_ID = #cmdId#
+  </update>
+  
+</sqlMap>

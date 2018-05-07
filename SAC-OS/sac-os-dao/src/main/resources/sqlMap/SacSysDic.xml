@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.SacSysDic">
+
+    <typeAlias alias="SacSysDic" type="net.easipay.cbp.model.SacSysDic"/>
+	
+    <resultMap id="sysDicResult" class="SacSysDic">
+        <result property="dicCode" column="DIC_CODE"/>
+		<result property="dicDesc" column="DIC_DESC"/>
+        <result property="dicType" column="DIC_TYPE"/>
+		<result property="dicTypeDesc" column="DIC_TYPE_DESC"/>
+		<result property="parentCode" column="PARENT_CODE"/>
+		<result property="memo" column="memo"/>
+    </resultMap>
+    
+    <resultMap id="CodeMap" class="SacSysDic">
+        <result property="dicCode" column="DIC_CODE"/>
+		<result property="dicDesc" column="DIC_DESC"/>
+    </resultMap>
+
+      <select id="selectSysDic" resultMap="sysDicResult" parameterClass="SacSysDic">
+          <![CDATA[
+            select * from sac_sys_dic where 1=1		
+	      ]]>
+         <isNotEmpty prepend=" AND " property="dicCode">  
+           DIC_CODE = #dicCode#      
+         </isNotEmpty> 
+         <isNotEmpty prepend=" AND " property="dicType">  
+           DIC_TYPE = #dicType#      
+         </isNotEmpty> 
+         order by dic_code asc
+   </select>  
+         
+	 <select id="selectChildAccType" resultMap="CodeMap" >
+         select 
+         	code6_id as dic_code, 
+         	code_name as dic_desc
+         from fin_code6
+         order by dic_code asc
+   </select>    
+   
+   <select id="selectCode1" resultMap="CodeMap" >
+         select 
+         	code1_id as dic_code, 
+         	code_name as dic_desc
+         from fin_code1
+         order by dic_code asc
+   </select>     
+   
+   <select id="selectCode2" resultMap="CodeMap" >
+         select 
+         	code2_id as dic_code, 
+         	code_name as dic_desc
+         from fin_code2
+         order by dic_code asc
+   </select>   
+	  
+</sqlMap>

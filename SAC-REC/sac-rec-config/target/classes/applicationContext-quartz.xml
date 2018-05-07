@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       ">
+
+	<bean id="内部对账任务 - 每天早上6点" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessInnerRecJob" />
+		<property name="scheduler" value="0 0 6 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	<!--  临时关闭
+	<bean id="处理内部对账完成自动增补遗漏差错交易任务 - 每天早上6点30分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessAutoSupplementJob" />
+		<property name="scheduler" value="0 30 6 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	
+	<bean id="更新内部对账完成自动增补遗漏差错交易状态任务 - 每天早上6点40分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessUpdateStateAutoSupplementJob" />
+		<property name="scheduler" value="0 40 6 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+    -->
+	<bean id="渠道对账长款任务- 每天早上6点50分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessChannelRecLongTermJob" />
+		<property name="scheduler" value="0 50 6 * * ?" />
+		<property name="triggerDataMap" value="onlyPositive=true" />
+	</bean>
+	
+	<bean id="处理长款手工补单任务- 每天早上7点10分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessReplenishmentsJob" />
+		<property name="scheduler" value="0 10 7 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="渠道对账短款任务 - 每天早上7点20分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessChannelRecShortTermjob" />
+		<property name="scheduler" value="0 20 7 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+
+	<bean id="渠道对账差错对账任务 - 每天早上7点30分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessChannelRecDiffJob" />
+		<property name="scheduler" value="0 30 7 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="处理对账成功的交易记账任务 - 每天早上7点40分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessFinTaskJob" />
+		<property name="scheduler" value="0 40 7 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<!--  
+	<bean id="内部对账差错处理任务 - 每晚10点" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessRecDiffJob" />
+		<property name="scheduler" value="0 0 22 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+    -->
+    <bean id="清分渠道应收明细任务 - 每天早上8点" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessChnSettlementJob" />
+		<property name="scheduler" value="0 0 8 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	
+	<bean id="客户每日余额任务 - 每天早上1点" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessCusDailyBalanceJob" />
+		<property name="scheduler" value="0 0 1 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="渠道每日余额任务 - 每天早上2点" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessBankDailyBalanceJob" />
+		<property name="scheduler" value="0 0 2 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<!--  
+	<bean id="跨境B2C调账支付 - 每天早上9点25分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessAutoReconciliationAccPayJob" />
+		<property name="scheduler" value="0 25 9 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="跨境B2C调账退款- 每天早上9点35分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessAutoReconciliationAccRefundJob" />
+		<property name="scheduler" value="0 35 9 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean> 
+	-->
+	<bean id="3411记账任务 - 每2分执行一次" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.Process3411FinTaskJob" />
+		<property name="scheduler" value="0 0/2 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<!-- 已经合并逻辑到3411中
+	<bean id="3803记账任务 - 每天晚上9点15分" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.Process3803FinTaskJob" />
+		<property name="scheduler" value="0 0/2 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+    --> 
+    
+	<bean id="处理试算平衡任务- 每天晚上11点" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessTrialBalancingJob" />
+		<property name="scheduler" value="0 0 23 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="异步处理未处理的记账任务 - 每分执行一次" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessScanUndoFinTaskJob" />
+		<property name="scheduler" value="0 0/1 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="定时更新付汇批次号- 每天早上11点" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessTrxRemittanceJob" />
+		<property name="scheduler" value="0 0 11 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+</beans>

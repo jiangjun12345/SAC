@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinCode" class="net.easipay.cbp.model.FinCode">
+	 <result property="codeId" column="CODE_ID"  />
+	 <result property="code1Id" column="CODE1_ID"  />
+	 <result property="code2Id" column="CODE2_ID"  />
+	 <result property="code3Id" column="CODE3_ID"  />
+	 <result property="code4Id" column="CODE4_ID"  />
+	 <result property="code5Id" column="CODE5_ID"  />
+	 <result property="code6Id" column="CODE6_ID"  />
+ </resultMap>
+   <insert id="insertFinCode" parameterClass="net.easipay.cbp.model.FinCode">
+        INSERT INTO FIN_CODE ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="codeId">  CODE_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="code1Id">  CODE1_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="code2Id">  CODE2_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="code3Id">  CODE3_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="code4Id">  CODE4_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="code5Id">  CODE5_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="code6Id">  CODE6_ID  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="codeId">  #codeId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code1Id">  #code1Id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code2Id">  #code2Id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code3Id">  #code3Id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code4Id">  #code4Id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code5Id">  #code5Id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code6Id">  #code6Id#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getFinCode" resultMap="FinCode">  
+        SELECT 
+	       CODE_ID,
+	       CODE1_ID,
+	       CODE2_ID,
+	       CODE3_ID,
+	       CODE4_ID,
+	       CODE5_ID,
+	       CODE6_ID
+         FROM FIN_CODE
+      <dynamic prepend="WHERE">
+         <isNotEmpty> CODE_ID = #codeId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  
+  <select id="getLikeFinCodes" resultMap="FinCode">  
+        SELECT 
+	       CODE_ID,
+	       CODE1_ID,
+	       CODE2_ID,
+	       CODE3_ID,
+	       CODE4_ID,
+	       CODE5_ID,
+	       CODE6_ID
+         FROM FIN_CODE
+      <dynamic prepend="WHERE">
+         <isNotEmpty> CODE_ID like #codeId#||'%' </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listFinCode" parameterClass="java.util.Map" resultMap="FinCode">  
+      SELECT 
+	       CODE_ID,
+	       CODE1_ID,
+	       CODE2_ID,
+	       CODE3_ID,
+	       CODE4_ID,
+	       CODE5_ID,
+	       CODE6_ID
+	  FROM FIN_CODE
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateFinCode" parameterClass="net.easipay.cbp.model.FinCode">  
+      UPDATE FIN_CODE        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code1Id">  CODE1_ID = #code1Id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code2Id">  CODE2_ID = #code2Id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code3Id">  CODE3_ID = #code3Id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code4Id">  CODE4_ID = #code4Id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code5Id">  CODE5_ID = #code5Id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code6Id">  CODE6_ID = #code6Id#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteFinCode">  
+        Delete   
+          from FIN_CODE WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListFinCode">  
+        Delete 
+        from FIN_CODE
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getFinCodeCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_CODE
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code1Id">  CODE1_ID = #code1Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code2Id">  CODE2_ID = #code2Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code3Id">  CODE3_ID = #code3Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code4Id">  CODE4_ID = #code4Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code5Id">  CODE5_ID = #code5Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code6Id">  CODE6_ID = #code6Id#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty> 
+          </dynamic>
+	</select>
+  
+  <select id="listSplitFinCode" parameterClass="java.util.Map" resultMap="FinCode"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       CODE_ID,
+	       CODE1_ID,
+	       CODE2_ID,
+	       CODE3_ID,
+	       CODE4_ID,
+	       CODE5_ID,
+	       CODE6_ID
+	       from FIN_CODE  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code1Id">  CODE1_ID = #code1Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code2Id">  CODE2_ID = #code2Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code3Id">  CODE3_ID = #code3Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code4Id">  CODE4_ID = #code4Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code5Id">  CODE5_ID = #code5Id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code6Id">  CODE6_ID = #code6Id#  </isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> modify_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

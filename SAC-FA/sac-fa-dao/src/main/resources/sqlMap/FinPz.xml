@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinPz" class="net.easipay.cbp.model.FinPz">
+	 <result property="pzId" column="PZ_ID" />
+	 <result property="codeId" column="CODE_ID" />
+	 <result property="direction" column="DIRECTION" />
+	 <result property="amount" column="AMOUNT" />
+	 <result property="digest" column="DIGEST" />
+	 <result property="pzTime" column="PZ_TIME" />
+	 <result property="tradeTime" column="TRADE_TIME" />
+	 <result property="busiType" column="BUSI_TYPE" />
+	 <result property="serno" column="SERNO" />
+	 <result property="pzNo" column="PZ_NO" />
+	 <result property="taskId" column="TASK_ID" />
+	 <result property="trxCode" column="TRX_CODE" />
+	 <result property="pzKey" column="PZ_KEY" />
+ </resultMap>
+   <insert id="insertFinPz" parameterClass="net.easipay.cbp.model.FinPz">
+        INSERT INTO FIN_PZ ( 
+              PZ_TIME
+         <dynamic prepend="">
+            <isNotEmpty prepend="," property="pzId">  PZ_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="codeId">  CODE_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="direction">  DIRECTION  </isNotEmpty>
+            <isNotEmpty prepend="," property="amount">  AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="digest">  DIGEST  </isNotEmpty>
+            <isNotEmpty prepend="," property="tradeTime">  TRADE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  BUSI_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="serno">  SERNO  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzNo">  PZ_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="taskId">  TASK_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCode">  TRX_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzKey">  PZ_KEY  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+		    systimestamp
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="pzId">  #pzId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="codeId">  #codeId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="direction">  #direction#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="amount">  #amount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="digest">  #digest#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="tradeTime">  #tradeTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="busiType">  #busiType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="serno">  #serno#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="pzNo">  #pzNo#  </isNotEmpty>	  
+		    <isNotEmpty prepend="," property="taskId">  #taskId#  </isNotEmpty>  
+		    <isNotEmpty prepend="," property="trxCode">  #trxCode#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="pzKey">  #pzKey#  </isNotEmpty>
+           </dynamic>
+         )
+    </insert>
+   <select id="getFinPz" resultMap="FinPz">  
+        SELECT 
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       AMOUNT,
+	       DIGEST,
+	       PZ_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       PZ_NO,
+	       TASK_ID,
+	       TRX_CODE,
+	       PZ_KEY
+         FROM FIN_PZ
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="pzId"> PZ_ID = #pzId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listFinPz" parameterClass="java.util.Map" resultMap="FinPz">  
+      SELECT 
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       AMOUNT,
+	       DIGEST,
+	       PZ_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       PZ_NO,
+	       TASK_ID,
+	       TRX_CODE,
+	       PZ_KEY
+	  FROM FIN_PZ
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="pzId"> PZ_ID = #pzId# </isNotEmpty>                  
+        </dynamic>
+		  <isNotEmpty prepend="ORDER BY" property="pzNo"> PZ_NO ASC </isNotEmpty>
+  </select>
+  <update id="updateFinPz" parameterClass="net.easipay.cbp.model.FinPz">  
+      UPDATE FIN_PZ        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="" property="pzId">  PZ_ID = #pzId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="," property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzTime">  PZ_TIME = #pzTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="tradeTime">  TRADE_TIME = #tradeTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzNo">  PZ_NO = #pzNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzKey">  PZ_KEY = #pzKey#  </isNotEmpty>
+        </dynamic>
+       WHERE PZ_ID = #pzId#
+  </update>
+  <delete id="deleteFinPz">  
+        Delete   
+          from FIN_PZ WHERE
+         PZ_ID = #pzId#
+  </delete>
+  <delete id="deleteListFinPz">  
+        Delete 
+        from FIN_PZ
+        WHERE PZ_ID IN ( $pzId$ )
+  </delete>
+  
+   <select id="getFinPzCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_PZ
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="pzId">  PZ_ID = #pzId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzTime">  PZ_TIME = #pzTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime">  TRADE_TIME = #tradeTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzNo">  PZ_NO = #pzNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzKey">  PZ_KEY = #pzKey#  </isNotEmpty>
+          </dynamic>
+	</select>
+ 
+</sqlMap>

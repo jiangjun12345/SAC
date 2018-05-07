@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	
+	<bean id="B2B线上出款指令批次生成 - 每天早上8点跑" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessB2BOnlCmdJob" />
+		<property name="scheduler" value="0 0 8 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="资金调拨状态更新任务 - 每3分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessFundTransferStateJob" />
+		<property name="scheduler" value="0 0/3 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+
+	<bean id="B2B退款指令任务 - 每10分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessB2BRefundCmdJob" />
+		<property name="scheduler" value="0 2/10 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+
+	<bean id="B2C退款指令任务 - 每10分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessB2CRefundCmdJob" />
+		<property name="scheduler" value="0 4/10 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+
+	<bean id="B2B划款指令更新任务 - 每10分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessB2BTransferCmdJob" />
+		<property name="scheduler" value="0 6/10 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="线下预存指令更新任务 - 每10分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessDepositDetailCmdJob" />
+		<property name="scheduler" value="0 8/10 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<bean id="B2B线下出款指令更新任务 - 每10分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessB2BOflCmdJob" />
+		<property name="scheduler" value="0 9/10 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean> 
+	
+	<bean id="汇总清算出款交易任务 - 每天早上一点跑" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessCusSettlementJob" />
+		<property name="scheduler" value="0 0 1 * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean> 
+	
+	<bean id="异常监控定时录入任务 - 每1分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.precessExceptMonitorJob" />
+		<property name="scheduler" value="0 0/1 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean>
+	
+	<!-- <bean id="B2B退款指令更新任务 - 每10分钟" class="org.n3r.quartz.glass.job.GlassTriggerFactoryBean">
+		<property name="jobClass" value="net.easipay.cbp.view.Job.ProcessUpdateB2BRefundCmdJob" />
+		<property name="scheduler" value="0 0/10 * * * ?" />
+		<property name="triggerDataMap" value="" />
+	</bean> -->
+</beans>

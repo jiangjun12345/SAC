@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacB2cExrefundApply" class="net.easipay.cbp.model.SacB2CExrefundApply">
+	 <result property="exrefundApplyId" column="EXREFUND_APPLY_ID" />
+	 <result property="refundSerialNo" column="REFUND_SERIAL_NO" />
+	 <result property="refundTime" column="REFUND_TIME" />
+	 <result property="recNcode" column="REC_NCODE" />
+	 <result property="merchantName" column="MERCHANT_NAME" />
+	 <result property="otrxCode" column="OTRX_CODE" />
+	 <result property="otrxSerialNo" column="OTRX_SERIAL_NO" />
+	 <result property="bankNodeCode" column="BANK_NODE_CODE" />
+	 <result property="payCurrency" column="PAY_CURRENCY" />
+	 <result property="payAmount" column="PAY_AMOUNT" />
+	 <result property="refundAmount" column="REFUND_AMOUNT" />
+	 <result property="applyAmount" column="APPLY_AMOUNT" />
+	 <result property="cnyAmount" column="CNY_AMOUNT" />
+	 <result property="frnAmount" column="FRN_AMOUNT" />
+	 <result property="goodsAmount" column="GOODS_AMOUNT" />
+	 <result property="transAmount" column="TRANS_AMOUNT" />
+	 <result property="taxAmount" column="TAX_AMOUNT" />
+	 <result property="taxFlag" column="TAX_FLAG" />
+	 <result property="applyState" column="APPLY_STATE" />
+	 <result property="applyNo" column="APPLY_NO" />
+	 <result property="refundBatch" column="REFUND_BATCH" />
+	 <result property="rspTime" column="RSP_TIME" />
+	 <result property="operatorId" column="OPERATOR_ID" />
+	 <result property="operatorName" column="OPERATOR_NAME" />
+	 <result property="operateTime" column="OPERATE_TIME" />
+	 <result property="auditorId" column="AUDITOR_ID" />
+	 <result property="auditorName" column="AUDITOR_NAME" />
+	 <result property="auditTime" column="AUDIT_TIME" />
+	 <result property="refundOperId" column="REFUND_OPER_ID" />
+	 <result property="refundOperName" column="REFUND_OPER_NAME" />
+	 <result property="refundOperTime" column="REFUND_OPER_TIME" />
+	 <result property="spt1" column="SPT1" />
+	 <result property="spt2" column="SPT2" />
+	 <result property="spt3" column="SPT3" />
+	 <result property="memo" column="MEMO" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="lastUpdateTime" column="LAST_UPDATE_TIME" />
+	 <result property="etrxSerialNo" column="ETRX_SERIAL_NO" />
+	 <result property="draccName" column="DRACC_NAME" />
+	 <result property="purchState" column="PURCH_STATE" />
+	 <result property="remState" column="REM_STATE" />
+	 <result property="crtCurrency" column="CRT_CURRENCY" />
+	 <result property="crtAmount" column="CRT_AMOUNT" />
+	 <result property="exstState" column="EXST_STATE" />
+	 <result property="rfPayAmount" column="RF_PAY_AMOUNT" />
+	 <result property="exBankCode" column="EX_BANK_CODE" />
+ </resultMap>
+   <insert id="insertSacB2cExrefundApply" parameterClass="net.easipay.cbp.model.SacB2CExrefundApply">
+        INSERT INTO SAC_B2C_EXREFUND_APPLY ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="exrefundApplyId">  EXREFUND_APPLY_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundSerialNo">  REFUND_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundTime">  REFUND_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="recNcode">  REC_NCODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="merchantName">  MERCHANT_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxCode">  OTRX_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  OTRX_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundAmount">  REFUND_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyAmount">  APPLY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="cnyAmount">  CNY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="frnAmount">  FRN_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="goodsAmount">  GOODS_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="transAmount">  TRANS_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="taxAmount">  TAX_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="taxFlag">  TAX_FLAG  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyState">  APPLY_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyNo">  APPLY_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundBatch">  REFUND_BATCH  </isNotEmpty>
+            <isNotEmpty prepend="," property="rspTime">  RSP_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="operateTime">  OPERATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperId">  REFUND_OPER_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperName">  REFUND_OPER_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperTime">  REFUND_OPER_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt1">  SPT1  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt2">  SPT2  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt3">  SPT3  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  LAST_UPDATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="etrxSerialNo">  ETRX_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="purchState">  PURCH_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="remState">  REM_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCurrency">  CRT_CURRENCY  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtAmount">  CRT_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="exstState">  EXST_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="rfPayAmount">  RF_PAY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="exBankCode">  EX_BANK_CODE  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="exrefundApplyId">  #exrefundApplyId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundSerialNo">  #refundSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundTime">  #refundTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recNcode">  #recNcode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="merchantName">  #merchantName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxCode">  #otrxCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxSerialNo">  #otrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankNodeCode">  #bankNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payCurrency">  #payCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundAmount">  #refundAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyAmount">  #applyAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cnyAmount">  #cnyAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="frnAmount">  #frnAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="goodsAmount">  #goodsAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="transAmount">  #transAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="taxAmount">  #taxAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="taxFlag">  #taxFlag#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyState">  #applyState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyNo">  #applyNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundBatch">  #refundBatch#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="rspTime">  #rspTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operatorId">  #operatorId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operatorName">  #operatorName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operateTime">  #operateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditorId">  #auditorId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditorName">  #auditorName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditTime">  #auditTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundOperId">  #refundOperId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundOperName">  #refundOperName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundOperTime">  #refundOperTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="spt1">  #spt1#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="spt2">  #spt2#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="spt3">  #spt3#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="lastUpdateTime">  #lastUpdateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="etrxSerialNo">  #etrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccName">  #draccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="purchState">  #purchState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="remState">  #remState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="crtCurrency">  #crtCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="crtAmount">  #crtAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="exstState">  #exstState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="rfPayAmount">  #rfPayAmount#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="exBankCode">  #exBankCode#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacB2cExrefundApply" resultMap="SacB2cExrefundApply">  
+        SELECT 
+	       EXREFUND_APPLY_ID,
+	       REFUND_SERIAL_NO,
+	       REFUND_TIME,
+	       REC_NCODE,
+	       MERCHANT_NAME,
+	       OTRX_CODE,
+	       OTRX_SERIAL_NO,
+	       BANK_NODE_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       REFUND_AMOUNT,
+	       APPLY_AMOUNT,
+	       CNY_AMOUNT,
+	       FRN_AMOUNT,
+	       GOODS_AMOUNT,
+	       TRANS_AMOUNT,
+	       TAX_AMOUNT,
+	       TAX_FLAG,
+	       APPLY_STATE,
+	       APPLY_NO,
+	       REFUND_BATCH,
+	       RSP_TIME,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       OPERATE_TIME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       REFUND_OPER_ID,
+	       REFUND_OPER_NAME,
+	       REFUND_OPER_TIME,
+	       SPT1,
+	       SPT2,
+	       SPT3,
+	       MEMO,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       ETRX_SERIAL_NO,
+	       DRACC_NAME,
+	       PURCH_STATE,
+	       REM_STATE,
+	       CRT_CURRENCY,
+	       CRT_AMOUNT,
+	       EXST_STATE,
+	       RF_PAY_AMOUNT,
+	       EX_BANK_CODE
+         FROM SAC_B2C_EXREFUND_APPLY
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="exrefundApplyId"> EXREFUND_APPLY_ID = #exrefundApplyId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacB2cExrefundApply" parameterClass="java.util.Map" resultMap="SacB2cExrefundApply">  
+      SELECT 
+	       EXREFUND_APPLY_ID,
+	       REFUND_SERIAL_NO,
+	       REFUND_TIME,
+	       REC_NCODE,
+	       MERCHANT_NAME,
+	       OTRX_CODE,
+	       OTRX_SERIAL_NO,
+	       BANK_NODE_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       REFUND_AMOUNT,
+	       APPLY_AMOUNT,
+	       CNY_AMOUNT,
+	       FRN_AMOUNT,
+	       GOODS_AMOUNT,
+	       TRANS_AMOUNT,
+	       TAX_AMOUNT,
+	       TAX_FLAG,
+	       APPLY_STATE,
+	       APPLY_NO,
+	       REFUND_BATCH,
+	       RSP_TIME,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       OPERATE_TIME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       REFUND_OPER_ID,
+	       REFUND_OPER_NAME,
+	       REFUND_OPER_TIME,
+	       SPT1,
+	       SPT2,
+	       SPT3,
+	       MEMO,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       ETRX_SERIAL_NO,
+	       DRACC_NAME,
+	       PURCH_STATE,
+	       REM_STATE,
+	       CRT_CURRENCY,
+	       CRT_AMOUNT,
+	       EXST_STATE,
+	       RF_PAY_AMOUNT,
+	       EX_BANK_CODE
+	  FROM SAC_B2C_EXREFUND_APPLY
+        <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="refundSerialNo">  REFUND_SERIAL_NO = #refundSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recNcode">  REC_NCODE = #recNcode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="merchantName">  MERCHANT_NAME = #merchantName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+				CREATE_TIME >= to_date(#beginDate#,'yyyyMMdd')
+				]]> 
+		   </isNotEmpty>
+		   <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				CREATE_TIME < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		  </isNotEmpty> 
+        </dynamic>
+		  ORDER BY CREATE_TIME DESC
+  </select>
+  
+  <update id="updateSacB2cExrefundApply" parameterClass="net.easipay.cbp.model.SacB2CExrefundApply">  
+      UPDATE SAC_B2C_EXREFUND_APPLY        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="exrefundApplyId">  EXREFUND_APPLY_ID = #exrefundApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundSerialNo">  REFUND_SERIAL_NO = #refundSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundTime">  REFUND_TIME = #refundTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recNcode">  REC_NCODE = #recNcode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="merchantName">  MERCHANT_NAME = #merchantName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxCode">  OTRX_CODE = #otrxCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundAmount">  REFUND_AMOUNT = #refundAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyAmount">  APPLY_AMOUNT = #applyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cnyAmount">  CNY_AMOUNT = #cnyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="frnAmount">  FRN_AMOUNT = #frnAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="goodsAmount">  GOODS_AMOUNT = #goodsAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="transAmount">  TRANS_AMOUNT = #transAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="taxAmount">  TAX_AMOUNT = #taxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="taxFlag">  TAX_FLAG = #taxFlag#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyNo">  APPLY_NO = #applyNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundBatch">  REFUND_BATCH = #refundBatch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rspTime">  RSP_TIME = #rspTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operateTime">  OPERATE_TIME = #operateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperId">  REFUND_OPER_ID = #refundOperId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperName">  REFUND_OPER_NAME = #refundOperName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperTime">  REFUND_OPER_TIME = #refundOperTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt1">  SPT1 = #spt1#  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt2">  SPT2 = #spt2#  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt3">  SPT3 = #spt3#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="etrxSerialNo">  ETRX_SERIAL_NO = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="purchState">  PURCH_STATE = #purchState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="remState">  REM_STATE = #remState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCurrency">  CRT_CURRENCY = #crtCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtAmount">  CRT_AMOUNT = #crtAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="exstState">  EXST_STATE = #exstState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rfPayAmount">  RF_PAY_AMOUNT = #rfPayAmount#  </isNotEmpty>
+        	<isNotEmpty prepend="," property="exBankCode">  EX_BANK_CODE  = #exBankCode#  </isNotEmpty>
+        	
+        </dynamic>
+       WHERE EXREFUND_APPLY_ID = #exrefundApplyId#
+  </update>
+  
+  
+  <update id="batchUpdateSacB2cExrefundApply" parameterClass="net.easipay.cbp.model.SacB2CExrefundApply">  
+      UPDATE SAC_B2C_EXREFUND_APPLY        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="exrefundApplyId">  EXREFUND_APPLY_ID = #exrefundApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundSerialNo">  REFUND_SERIAL_NO = #refundSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundTime">  REFUND_TIME = #refundTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recNcode">  REC_NCODE = #recNcode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="merchantName">  MERCHANT_NAME = #merchantName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxCode">  OTRX_CODE = #otrxCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundAmount">  REFUND_AMOUNT = #refundAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyAmount">  APPLY_AMOUNT = #applyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cnyAmount">  CNY_AMOUNT = #cnyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="frnAmount">  FRN_AMOUNT = #frnAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="goodsAmount">  GOODS_AMOUNT = #goodsAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="transAmount">  TRANS_AMOUNT = #transAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="taxAmount">  TAX_AMOUNT = #taxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="taxFlag">  TAX_FLAG = #taxFlag#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyNo">  APPLY_NO = #applyNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundBatch">  REFUND_BATCH = #refundBatch#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rspTime">  RSP_TIME = #rspTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operateTime">  OPERATE_TIME = #operateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperId">  REFUND_OPER_ID = #refundOperId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperName">  REFUND_OPER_NAME = #refundOperName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundOperTime">  REFUND_OPER_TIME = #refundOperTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt1">  SPT1 = #spt1#  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt2">  SPT2 = #spt2#  </isNotEmpty>
+            <isNotEmpty prepend="," property="spt3">  SPT3 = #spt3#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="etrxSerialNo">  ETRX_SERIAL_NO = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="purchState">  PURCH_STATE = #purchState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="remState">  REM_STATE = #remState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCurrency">  CRT_CURRENCY = #crtCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtAmount">  CRT_AMOUNT = #crtAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="exstState">  EXST_STATE = #exstState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rfPayAmount">  RF_PAY_AMOUNT = #rfPayAmount#  </isNotEmpty>
+        	<isNotEmpty prepend="," property="exBankCode">  EX_BANK_CODE  = #exBankCode#  </isNotEmpty>
+        	
+        </dynamic>
+       <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="idGrp"> 
+             EXREFUND_APPLY_ID IN ( $idGrp$ )
+          </isNotEmpty>
+        </dynamic>
+  </update>
+  
+  <delete id="deleteSacB2cExrefundApply">  
+        Delete   
+          from SAC_B2C_EXREFUND_APPLY WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacB2cExrefundApply">  
+        Delete 
+        from SAC_B2C_EXREFUND_APPLY
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacB2cExrefundApplyCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_B2C_EXREFUND_APPLY
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="exrefundApplyId">  EXREFUND_APPLY_ID = #exrefundApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundSerialNo">  REFUND_SERIAL_NO = #refundSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundTime">  REFUND_TIME = #refundTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recNcode">  REC_NCODE = #recNcode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="merchantName">  MERCHANT_NAME = #merchantName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxCode">  OTRX_CODE = #otrxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundAmount">  REFUND_AMOUNT = #refundAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyAmount">  APPLY_AMOUNT = #applyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cnyAmount">  CNY_AMOUNT = #cnyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="frnAmount">  FRN_AMOUNT = #frnAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="goodsAmount">  GOODS_AMOUNT = #goodsAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="transAmount">  TRANS_AMOUNT = #transAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taxAmount">  TAX_AMOUNT = #taxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taxFlag">  TAX_FLAG = #taxFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyNo">  APPLY_NO = #applyNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundBatch">  REFUND_BATCH = #refundBatch#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rspTime">  RSP_TIME = #rspTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operateTime">  OPERATE_TIME = #operateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundOperId">  REFUND_OPER_ID = #refundOperId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundOperName">  REFUND_OPER_NAME = #refundOperName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundOperTime">  REFUND_OPER_TIME = #refundOperTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="spt1">  SPT1 = #spt1#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="spt2">  SPT2 = #spt2#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="spt3">  SPT3 = #spt3#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="etrxSerialNo">  ETRX_SERIAL_NO = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="purchState">  PURCH_STATE = #purchState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="remState">  REM_STATE = #remState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtCurrency">  CRT_CURRENCY = #crtCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtAmount">  CRT_AMOUNT = #crtAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="exstState">  EXST_STATE = #exstState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rfPayAmount">  RF_PAY_AMOUNT = #rfPayAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="exBankCode">  EX_BANK_CODE  = #exBankCode#  </isNotEmpty>
+        	
+        	<isNotEmpty prepend="AND" property="startDate"> 
+			<![CDATA[ 
+				REFUND_TIME >= to_date(#startDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				REFUND_TIME < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+		  
+		    <isNotEmpty prepend="AND" property="startDate1"> 
+			<![CDATA[ 
+				OPERATE_TIME >= to_date(#startDate1#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate1">
+			<![CDATA[ 
+				OPERATE_TIME < to_date(#endDate1#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+         
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacB2cExrefundApply" parameterClass="java.util.Map" resultMap="SacB2cExrefundApply"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       EXREFUND_APPLY_ID,
+	       REFUND_SERIAL_NO,
+	       REFUND_TIME,
+	       REC_NCODE,
+	       MERCHANT_NAME,
+	       OTRX_CODE,
+	       OTRX_SERIAL_NO,
+	       BANK_NODE_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       REFUND_AMOUNT,
+	       APPLY_AMOUNT,
+	       CNY_AMOUNT,
+	       FRN_AMOUNT,
+	       GOODS_AMOUNT,
+	       TRANS_AMOUNT,
+	       TAX_AMOUNT,
+	       TAX_FLAG,
+	       APPLY_STATE,
+	       APPLY_NO,
+	       REFUND_BATCH,
+	       RSP_TIME,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       OPERATE_TIME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       REFUND_OPER_ID,
+	       REFUND_OPER_NAME,
+	       REFUND_OPER_TIME,
+	       SPT1,
+	       SPT2,
+	       SPT3,
+	       MEMO,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       ETRX_SERIAL_NO,
+	       DRACC_NAME,
+	       PURCH_STATE,
+	       REM_STATE,
+	       CRT_CURRENCY,
+	       CRT_AMOUNT,
+	       EXST_STATE,
+	       RF_PAY_AMOUNT,
+	       EX_BANK_CODE
+	       from SAC_B2C_EXREFUND_APPLY  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="exrefundApplyId">  EXREFUND_APPLY_ID = #exrefundApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundSerialNo">  REFUND_SERIAL_NO = #refundSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundTime">  REFUND_TIME = #refundTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recNcode">  REC_NCODE = #recNcode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="merchantName">  MERCHANT_NAME = #merchantName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxCode">  OTRX_CODE = #otrxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundAmount">  REFUND_AMOUNT = #refundAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyAmount">  APPLY_AMOUNT = #applyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cnyAmount">  CNY_AMOUNT = #cnyAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="frnAmount">  FRN_AMOUNT = #frnAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="goodsAmount">  GOODS_AMOUNT = #goodsAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="transAmount">  TRANS_AMOUNT = #transAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taxAmount">  TAX_AMOUNT = #taxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taxFlag">  TAX_FLAG = #taxFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyNo">  APPLY_NO = #applyNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundBatch">  REFUND_BATCH = #refundBatch#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rspTime">  RSP_TIME = #rspTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operateTime">  OPERATE_TIME = #operateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundOperId">  REFUND_OPER_ID = #refundOperId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundOperName">  REFUND_OPER_NAME = #refundOperName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundOperTime">  REFUND_OPER_TIME = #refundOperTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="spt1">  SPT1 = #spt1#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="spt2">  SPT2 = #spt2#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="spt3">  SPT3 = #spt3#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="etrxSerialNo">  ETRX_SERIAL_NO = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="purchState">  PURCH_STATE = #purchState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="remState">  REM_STATE = #remState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtCurrency">  CRT_CURRENCY = #crtCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtAmount">  CRT_AMOUNT = #crtAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="exstState">  EXST_STATE = #exstState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rfPayAmount">  RF_PAY_AMOUNT = #rfPayAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="exBankCode">  EX_BANK_CODE  = #exBankCode#  </isNotEmpty>
+        	
+			<isNotEmpty prepend="AND" property="startDate"> 
+			<![CDATA[ 
+				REFUND_TIME >= to_date(#startDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				REFUND_TIME < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+		  
+		    <isNotEmpty prepend="AND" property="startDate1"> 
+			<![CDATA[ 
+				OPERATE_TIME >= to_date(#startDate1#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate1">
+			<![CDATA[ 
+				OPERATE_TIME < to_date(#endDate1#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+         
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

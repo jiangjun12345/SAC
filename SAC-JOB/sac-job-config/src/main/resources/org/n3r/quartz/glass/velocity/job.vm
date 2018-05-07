@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+    #parse("org/n3r/quartz/glass/velocity/macro/macros.vm")
+<html>
+<head>
+    #parse("org/n3r/quartz/glass/velocity/widgets/head.vm")
+</head>
+<body>
+    #parse("org/n3r/quartz/glass/velocity/widgets/menu.vm")
+
+<h1><span>Job $format.html($job.jobKey)</span></h1>
+<div class="actions">
+<a href="$root/jobs/$format.html($job.group)/$format.html($job.name)/edit">edit</a>
+    <a href="$root/logs/$format.html($job.group)/$format.html($job.name)">logs</a>
+    <a onclick="javascript:return(confirm('Are you sure you want to delete ?'));"
+       href="$root/jobs/$format.html($job.group)/$format.html($job.name)/delete">delete</a>
+</div>
+<div class="table">
+    <table>
+        <tbody>
+        <tr>
+            <td>Class</td>
+            <td>$format.html($job.jobClass)</td>
+        </tr>
+        <tr>
+            <td>Desc</td>
+            <td>$format.html($job.jobDesc)</td>
+        </tr>
+        <tr>
+            <td>Team</td>
+            <td>$format.html($job.jobTeam)</td>
+        </tr>
+        <tr>
+            <td>Created</td>
+            <td>$format.html($job.jobCreated)</td>
+        </tr>
+        <tr>
+            <td>Disallow concurrent execution</td>
+            <td>$jobBean.disallowConcurrentExecution</td>
+        </tr>
+        <tr>
+            <td>Persist job data after execution</td>
+            <td>$jobBean.persistJobDataAfterExecution</td>
+        </tr>
+        <tr>
+            <td>Data map</td>
+            <td>
+                <form id="jobActionForm" action="$root/jobs/$format.html($job.group)/$format.html($job.name)/fire" method="POST">
+                <input type="input" name="fireJobMap" style="width:300px" value="$format.dataMap($dataMap)"/>
+                <input type="submit" value="Fire Now"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+    #parse("org/n3r/quartz/glass/velocity/widgets/args.vm")
+
+<h2><span>Defined triggers</span></h2>
+
+<div class="actions">
+    <a href="$root/jobs/$format.html($job.group)/$format.html($job.name)/triggers/new-cron">add cron</a>
+    <a href="$root/jobs/$format.html($job.group)/$format.html($job.name)/triggers/new-simple">add simple</a>
+</div>
+<div class="table">
+    <table>
+        <thead>
+        <tr>
+##            <th>Type</th>
+            <th>TriggerKey</th>
+            <th>Glass Scheduler</th>
+            <th>Explanation</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Last fire</th>
+            <th>Next fire</th>
+            <th>Pause / Resume</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            #foreach ($trigger in $triggers)
+            <tr>
+##                <td style="text-align: center;">$format.html($trigger.type)</td>
+                <td>
+                    <a href="$root/jobs/$format.html($job.group)/$format.html($job.name)/triggers/$format.html($trigger.group)/$format.html($trigger.name)/edit">$format.html($trigger.triggerKey)</a>
+                </td>
+                <td style="text-align: center;">$trigger.glassScheduler</td>
+                <td style="text-align: center;">${trigger.planification}</td>
+                <td style="text-align: center;">
+                    $format.date($trigger.startTime)
+                    #if ($trigger.running) &nbsp;<span style="color: red;">running</span> #end
+                </td>
+                <td style="text-align: center;">$format.date($trigger.endTime)</td>
+                <td style="text-align: center;">$format.date($trigger.previousFireTime)</td>
+                <td style="text-align: center;">$format.date($trigger.nextFireTime)</td>
+                <td style="text-align: center;">
+                    #if ($trigger.paused)
+                        <a onclick="javascript:return(confirm('Are you sure you want to resume ?'));"
+                           href="$root/jobs/$format.html($job.group)/$format.html($job.name)/triggers/$format.html($trigger.group)/$format.html($trigger.name)/resume?redirect=$current"
+                           title="resume">
+                            <img alt="delete" src="$root/image/start.png"/>
+                        </a>
+                    #else
+                        <a onclick="javascript:return(confirm('Are you sure you want to pause ?'));"
+                           href="$root/jobs/$format.html($job.group)/$format.html($job.name)/triggers/$format.html($trigger.group)/$format.html($trigger.name)/pause?redirect=$current"
+                           title="pause">
+                            <img alt="delete" src="$root/image/pause.png"/>
+                        </a>
+                    #end
+                </td>
+                <td style="text-align: center;">
+                    <a onclick="javascript:return(confirm('Are you sure you want to delete ?'));"
+                       href="$root/jobs/$format.html($job.group)/$format.html($job.name)/triggers/$format.html($trigger.group)/$format.html($trigger.name)/delete?redirect=$current"
+                       title="delete">
+                        <img alt="delete" src="$root/image/delete.png"/>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="8">
+                    <span class="code">$!format.dataMap($trigger.dataMap)</span>
+                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+
+    #history("h2" "Recent executions" $history.items)
+
+    #parse("org/n3r/quartz/glass/velocity/widgets/footer.vm")
+</body>
+</html>

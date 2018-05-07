@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.ResourceInfo">
+
+    <typeAlias alias="ResourceInfo" type="net.easipay.cbp.model.ResourceInfo"/>
+
+    <resultMap id="resourceResult" class="resourceInfo">
+        <result property="resourceId" column="RESOURCE_ID"/>
+		<result property="dicCode"  column="DIC_CODE"/>
+		<result property="resourceName" column="RESOURCE_NAME"/>
+		<result property="resourceUrl" column="RESOURCE_URL"/>
+		<result property="parentId" column="PARENT_ID"/>
+		<result property="resourceType" column="RESOURCE_TYPE"/>
+		<result property="validFlag" column="VALID_FLAG"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="orderNum" column="ORDER_NUM"/>
+		<result property="createUser" column="CREATE_USER"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="updateUser" column="UPDATE_USER"/>
+		<result property="updateTime" column="UPDATE_TIME"/>
+		<result property="memo" column="MEMO"/>
+		<result property="resourceCode" column="RESOURCE_CODE"/>
+    </resultMap>
+
+      <select id="selectResourceByOperId" resultMap="resourceResult" parameterClass="java.util.HashMap">
+	    <![CDATA[
+	        select ri.* from uc_operator o,uc_role_resource rr, uc_resource_info ri
+				where o.role_id = rr.role_id
+				and rr.resource_id = ri.resource_id
+				and o.status = 'Y'
+				and ri.valid_flag = 'N'
+				and o.id = #operId#
+				
+				]]>
+          <isNotEmpty prepend=" AND " property="isNeedAuth">  
+              ri.resource_type != '3'      
+            </isNotEmpty> 
+            <isNotEmpty prepend=" AND " property="dicCode">  
+              ri.dic_code = #dicCode#      
+            </isNotEmpty> 
+              order by ri.order_num
+	    </select>
+	    
+	    <select id="selectResourceByRoleId" resultMap="resourceResult" parameterClass="java.util.HashMap">
+	    <![CDATA[
+	         select ri.*
+			  from uc_role r, uc_role_resource rr, uc_resource_info ri
+			   where r.id = rr.role_id
+			   and rr.resource_id = ri.resource_id
+			   and r.status = 'O'
+			   and ri.valid_flag = 'N'
+			   and r.id = #roleId#
+				]]>
+            <isNotEmpty prepend=" AND " property="isNeedAuth">  
+              ri.resource_type != '3'      
+            </isNotEmpty> 
+            <isNotEmpty prepend=" AND " property="dicCode">  
+              ri.dic_code = #dicCode#      
+            </isNotEmpty> 
+            order by ri.order_num
+
+	    </select>
+	    
+	     <select id="getResourceInfos" resultMap="resourceResult">
+    <![CDATA[
+        select 
+        	* 
+        from 
+        	uc_resource_info where valid_flag = 'N'
+    ]]>
+    </select>
+    
+      <select id="getResourceInfo" resultMap="resourceResult" parameterClass="java.lang.Long">
+    <![CDATA[
+        select 
+        	* 
+        from 
+        	uc_resource_info 
+        where 
+            RESOURCE_ID = #id#	
+    ]]>
+    </select>
+    
+      <select id="selectAuthByRoleId" resultMap="resourceResult" parameterClass="java.util.HashMap">
+	    <![CDATA[
+	    select * from uc_resource_info 
+	       where parent_id in (
+	         select ri.resource_id
+			   from uc_role r, uc_role_resource rr, uc_resource_info ri
+			   where r.id = rr.role_id
+			   and rr.resource_id = ri.resource_id
+			   and r.status = 'O'
+			   and ri.valid_flag = 'N'
+			   and r.id = #roleId#
+			   )
+			   and resource_type = '3'
+				]]>
+            <isNotEmpty prepend=" AND " property="dicCode">  
+              ri.dic_code = #dicCode#      
+            </isNotEmpty> 
+
+	    </select>
+	    
+	        <insert id="insertResourceInfo" parameterClass="resourceInfo">
+			    <![CDATA[
+			        insert into 
+			        	uc_resource_info 
+			        	(
+			        		 RESOURCE_ID   
+							,DIC_CODE      
+							,RESOURCE_NAME 
+							,RESOURCE_URL  
+							,PARENT_ID     
+							,RESOURCE_TYPE 
+							,VALID_FLAG    
+							,DESCRIPTION   
+							,ORDER_NUM     
+							,CREATE_USER   
+							,CREATE_TIME   
+							,UPDATE_USER   
+							,UPDATE_TIME   
+							,MEMO
+							,RESOURCE_CODE
+			        	) 
+			        values 
+			        	(
+			        		#resourceId#,
+							#dicCode#,
+							#resourceName#,
+							#resourceUrl#,
+							#parentId#,
+							#resourceType#,
+							#validFlag#,
+							#description#,
+							#orderNum#,
+							#createUser#,
+							#createTime#,
+							#updateUser#,
+							#updateTime#,
+							#memo#,
+							#resourceCode#
+			        	)
+			    ]]>
+    </insert>
+    
+     <insert id="updateResourceInfo" parameterClass="resourceInfo">
+			    <![CDATA[
+			        update 
+			        	uc_resource_info 
+			          set	
+							DIC_CODE      =  #dicCode#,     
+							RESOURCE_NAME =  #resourceName#,
+							RESOURCE_URL  =  #resourceUrl#, 
+							PARENT_ID     =  #parentId#,    
+							RESOURCE_TYPE =  #resourceType#,
+							VALID_FLAG    =  #validFlag#,   
+							DESCRIPTION   =  #description#, 
+							ORDER_NUM     =  #orderNum#,    
+							CREATE_USER   =  #createUser#,  
+							CREATE_TIME   =  #createTime#,  
+							UPDATE_USER   =  #updateUser#,  
+							UPDATE_TIME   =  #updateTime#,  
+							MEMO          =  #memo#,
+							RESOURCE_CODE =  #resourceCode#
+						where RESOURCE_ID = #resourceId#	
+			    ]]>
+    </insert>
+    
+    <select id="selectResourceInfoByPId" resultMap="resourceResult" parameterClass="java.lang.Long">
+	    <![CDATA[
+	       select * from 
+	            uc_resource_info ri
+	            where 
+			    ri.valid_flag = 'N'
+			    and ri.parent_id = #parentId#
+		]]>   
+
+	    </select>
+	    
+	 <select id="selectResourceInfoCountByParam" resultClass="java.lang.Integer" parameterClass="resourceInfo">
+	    <![CDATA[
+	       select count(*) 
+	       from uc_resource_info
+	       where 1=1
+		]]>
+		  <isNotEmpty prepend=" AND " property="resourceCode">  
+             RESOURCE_CODE = #resourceCode#      
+           </isNotEmpty> 
+           <isNotEmpty prepend=" AND " property="resourceName">  
+             RESOURCE_NAME = #resourceName#      
+           </isNotEmpty>  
+
+	    </select>   
+    
+</sqlMap>

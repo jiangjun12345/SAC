@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.UcOperator">
+
+	<typeAlias alias="ucOperator" type="net.easipay.cbp.model.UcOperator" />
+
+	<resultMap id="ucOperatorResult" class="ucOperator">
+		<result property="id" column="ID" />
+		<result property="loginName" column="LOGIN_NAME" />
+		<result property="loginNameCh" column="LOGIN_NAME_CH" />
+		<result property="password" column="PASSWORD" />
+		<result property="mobile" column="MOBILE" />
+		<result property="email" column="EMAIL" />
+		<result property="roleId" column="ROLE_ID" />
+		<result property="orgId" column="ORG_ID" />
+		<result property="createUserId" column="CREATE_USER_ID" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="updateUserId" column="UPDATE_USER_ID" />
+		<result property="updateTime" column="UPDATE_TIME" />
+		<result property="userType" column="USER_TYPE" />
+		<result property="status" column="STATUS" />
+		<result property="memo" column="MEMO" />
+	</resultMap>
+
+	<select id="selectUcOperatorById" resultMap="ucOperatorResult"
+		parameterClass="java.lang.Long">
+	    <![CDATA[
+	            select u.* from uc_operator u 
+				where u.id = #id#
+		]]>
+	</select>
+	
+	<select id="selectAllUcOperator" resultMap="ucOperatorResult" parameterClass="java.util.HashMap">
+	    <![CDATA[
+	    		SELECT *
+				FROM
+				   (SELECT ROWNUM AS RN, XX.*
+				    FROM
+				   (SELECT *
+				      FROM uc_operator
+				   ) XX
+	   
+				   WHERE ROWNUM < #maxNo#)
+				WHERE RN > #minNo#
+		]]>
+	</select>
+	
+	<select id="deleteUcOperator" parameterClass="ucOperator" >
+	    <![CDATA[
+	            delete from uc_operator u 
+	            where u.id = #id#
+		]]>
+		
+	</select>
+	
+	<select id="selectUcOperatorByParameter" resultMap="ucOperatorResult" parameterClass="java.util.HashMap">
+	<![CDATA[
+           SELECT *
+		FROM
+		   (SELECT ROWNUM AS RN, XX.*
+		    FROM
+		   (SELECT *
+		      FROM uc_operator
+		      where 1=1
+	]]>
+		     <isNotEmpty prepend="" property="loginName">
+				<![CDATA[ AND LOGIN_NAME like '%'||#loginName#||'%']]>
+			 </isNotEmpty>
+			 <isNotEmpty prepend="" property="loginNameCh">
+				<![CDATA[ AND LOGIN_NAME_CH like '%'||#loginNameCh#||'%']]>
+			 </isNotEmpty>
+			 <isNotEmpty prepend="" property="status">
+				<![CDATA[ AND STATUS = #status#]]>
+			 </isNotEmpty>
+			 <isNotEmpty prepend="" property="createUserId">
+				<![CDATA[ AND create_user_id = #createUserId#]]>
+			 </isNotEmpty>
+			 <![CDATA[
+		   ) XX
+		   WHERE ROWNUM < #maxNo#)
+		WHERE RN > #minNo#
+		]]>
+	</select>
+	
+	<select id="selectUcOperatorByEmailAndPass" resultMap="ucOperatorResult" parameterClass="java.util.HashMap">
+			<![CDATA[
+		             SELECT *
+				      FROM uc_operator
+				      where 1=1
+			]]>
+			 <isNotEmpty prepend="" property="email">
+				<![CDATA[ AND email = #email#]]>
+			 </isNotEmpty>
+			 <isNotEmpty prepend="" property="password">
+				<![CDATA[ AND password = #password#]]>
+			 </isNotEmpty>
+	</select>
+	
+
+	<select id="selectUcOperatorCountsByParameter" resultClass="java.lang.Integer" parameterClass="ucOperator">
+	    <![CDATA[
+	            select count(1) from uc_operator u
+		]]>
+		where 1=1
+		<isNotEmpty prepend="" property="loginName">
+			AND LOGIN_NAME like '%'||#loginName#||'%'
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="loginNameCh">
+			AND LOGIN_NAME_CH like '%'||#loginNameCh#||'%'
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="password">
+			AND PASSWORD =#password#  
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="mobile">
+			AND MOBILE =#mobile#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="email">
+			AND EMAIL =#email#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="roleId">
+			AND ROLE_ID =#roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="orgId">
+			AND ORG_ID =#orgId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createUserId">
+			AND CREATE_USER_ID=#createUserId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createTime">
+			AND CREATE_TIME =#createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateUserId">
+			AND UPDATE_USER_ID=#updateUserId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateTime">
+			AND UPDATE_TIME =#updateTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="userType">
+			AND USER_TYPE =#userType#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="status">
+			AND STATUS =#status#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="memo">
+			AND MEMO =#memo#
+		</isNotEmpty>
+		
+	</select>
+	<update id="updateUcOperator" parameterClass="ucOperator">
+	    <![CDATA[
+	          update 
+	        	UC_OPERATOR 
+	          set
+	         ]]>
+		<isNotEmpty prepend="" property="loginName">
+			LOGIN_NAME =#loginName# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="loginNameCh">
+			LOGIN_NAME_CH =#loginNameCh#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="password">
+			PASSWORD =#password#,   
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="mobile">
+			MOBILE =#mobile#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="email">
+			EMAIL =#email#,  
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="roleId">
+			ROLE_ID =#roleId#, 
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="orgId">
+			ORG_ID =#orgId#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createUserId">
+			CREATE_USER_ID=#createUserId#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createTime">
+			CREATE_TIME =#createTime#, 
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateUserId">
+			UPDATE_USER_ID=#updateUserId#, 
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateTime">
+			UPDATE_TIME =#updateTime#, 
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="userType">
+			USER_TYPE =#userType#,   
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="status">
+			STATUS =#status# ,   
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="memo">
+			MEMO =#memo#,
+		</isNotEmpty>
+		<![CDATA[		
+				ID = #id#
+				where ID = #id#	
+	    ]]>
+	</update>
+
+	<insert id="insertUcOperator" parameterClass="ucOperator">
+	      <![CDATA[
+	         insert into UC_OPERATOR
+	         (
+	            ID,
+	            LOGIN_NAME,    
+				LOGIN_NAME_CH,
+				PASSWORD,      
+				MOBILE,        
+				EMAIL,         
+				ROLE_ID,       
+				ORG_ID,        
+				CREATE_USER_ID,
+				CREATE_TIME,   
+				UPDATE_USER_ID,
+				UPDATE_TIME,   
+				USER_TYPE,     
+				STATUS,        
+				MEMO          
+	         )
+	         values
+	         (
+	            #id#,
+	            #loginName#,   
+				#loginNameCh#, 
+				#password#,    
+				#mobile#,      
+				#email#,       
+				#roleId#,      
+				#orgId#,       
+				#createUserId#,
+				#createTime#,  
+				#updateUserId#,
+				#updateTime#,  
+				#userType#,    
+				#status#,      
+				#memo#         
+	         )
+	      ]]>
+	</insert>
+	
+	<select id="selectUcOperatorCountsByLoginName" resultClass="java.lang.Integer" parameterClass="ucOperator">
+	    <![CDATA[
+	            select count(1) from uc_operator u
+		]]>
+		where 1=1
+		<isNotEmpty prepend="" property="loginName">
+			AND LOGIN_NAME = #loginName# 
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="loginNameCh">
+			AND LOGIN_NAME_CH = #loginNameCh# 
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="password">
+			AND PASSWORD =#password#  
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="mobile">
+			AND MOBILE =#mobile#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="email">
+			AND EMAIL =#email#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="roleId">
+			AND ROLE_ID =#roleId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="orgId">
+			AND ORG_ID =#orgId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createUserId">
+			AND CREATE_USER_ID=#createUserId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createTime">
+			AND CREATE_TIME =#createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateUserId">
+			AND UPDATE_USER_ID=#updateUserId#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateTime">
+			AND UPDATE_TIME =#updateTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="userType">
+			AND USER_TYPE =#userType#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="status">
+			AND STATUS =#status#
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="memo">
+			AND MEMO =#memo#
+		</isNotEmpty>
+		
+	</select>
+	
+	<select id="getSacCusParameterTemp" resultClass="java.util.HashMap">
+         select distinct 
+         cus_name AS "cusName",
+         org_card_id AS "orgCardId"
+		 from sac_cus_parameter_temp u
+		where 1=1
+		and create_flag='0'
+	</select>
+	
+	<select id="validRepeatCus" resultClass="java.lang.Integer" parameterClass="java.util.Map">
+         select
+         count(1)
+		 from uc_operator u
+		where 1=1
+		and org_id = #orgCardId#
+	</select>
+
+</sqlMap>

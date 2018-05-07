@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinPzNoSequence" class="net.easipay.cbp.model.FinPzNoSequence">
+	 <result property="key" column="KEY" />
+	 <result property="value" column="VALUE" />
+ </resultMap>
+   <insert id="insertFinPzNoSequence" parameterClass="net.easipay.cbp.model.FinPzNoSequence">
+        INSERT INTO FIN_PZNO_SEQUENCE ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="key">  KEY  </isNotEmpty>
+            <isNotEmpty prepend="," property="value">  VALUE  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="key">  #key#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="value">  #value#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getFinPzNoSequence" resultMap="FinPzNoSequence">  
+        SELECT 
+	       KEY,
+	       VALUE
+         FROM FIN_PZNO_SEQUENCE
+      <dynamic prepend="WHERE">
+         <isNotEmpty> KEY = #key# </isNotEmpty>         
+      </dynamic>
+  </select>
+  
+  <update id="updateFinPzNoSequence" parameterClass="net.easipay.cbp.model.FinPzNoSequence">  
+      UPDATE FIN_PZNO_SEQUENCE        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="key">  KEY = #key#  </isNotEmpty>
+            <isNotEmpty prepend="," property="value">  VALUE = #value#  </isNotEmpty>
+        </dynamic>
+       WHERE KEY = #key#
+  </update>
+  
+</sqlMap>

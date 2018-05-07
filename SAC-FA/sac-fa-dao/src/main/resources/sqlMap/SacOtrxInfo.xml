@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="SacOtrxInfo" class="net.easipay.cbp.model.SacOtrxInfo">
+		<result property="id" column="id" />
+		<result property="cusBillNo" column="cus_bill_no" />
+		<result property="platBillNo" column="plat_bill_no" />
+		<result property="trxSerialNo" column="trx_serial_no" />
+		<result property="otrxSerialNo" column="otrx_serial_no" />
+		<result property="etrxSerialNo" column="etrx_serial_no" />
+		<result property="trxState" column="trx_state" />
+		<result property="craccCusCode" column="cracc_cus_code" />
+		<result property="craccCusType" column="cracc_cus_type" />
+		<result property="craccNo" column="cracc_no" />
+		<result property="craccName" column="cracc_name" />
+		<result property="craccNodeCode" column="cracc_node_code" />
+		<result property="craccBankName" column="cracc_bank_name" />
+		<result property="draccCusCode" column="dracc_cus_code" />
+		<result property="draccCusType" column="dracc_cus_type" />
+		<result property="draccNo" column="dracc_no" />
+		<result property="draccName" column="dracc_name" />
+		<result property="draccNodeCode" column="dracc_node_code" />
+		<result property="draccBankName" column="dracc_bank_name" />
+		<result property="payCurrency" column="pay_currency" />
+		<result property="payAmount" column="pay_amount" />
+		<result property="bussType" column="buss_type" />
+		<result property="trxType" column="trx_type" />
+		<result property="payWay" column="pay_way" />
+		<result property="sacFlag" column="sac_flag" />
+		<result property="innConFlag" column="inn_con_flag" />
+		<result property="innConStatus" column="inn_con_status" />
+		<result property="payconType" column="paycon_type" />
+		<result property="chaConFlag" column="cha_con_flag" />
+		<result property="chaConStatus" column="cha_con_status" />
+		<result property="trxBatchNo" column="trx_batch_no" />
+		<result property="updateTime" column="update_time" />
+		<result property="createTime" column="create_time" />
+		<result property="memo" column="memo" />
+		<result property="trxErrDealType" column="trx_err_deal_type" />
+		<result property="exRate" column="ex_rate" nullValue="0" />
+		<result property="sacCurrency" column="sac_currency" />
+		<result property="sacAmount" column="sac_amount" />
+		<result property="craccCusName" column="cracc_cus_name" />
+		<result property="draccCusName" column="dracc_cus_name" />
+		<result property="confirmUser" column="confirm_user"/>
+	    <result property="confirmStatus" column="confirm_status"/>
+	    <result property="confirmTime" column="confirm_time"/>
+	</resultMap>
+	
+	<resultMap id="amountMap" class="net.easipay.cbp.model.SacOtrxInfo">
+		<result property="sacAmount" column="sac_amount" />
+		<result property="payAmount" column="pay_amount" />
+	</resultMap>
+	
+	<select id="getSacOtrxInfo" resultMap="SacOtrxInfo" parameterClass="java.util.Map">
+		SELECT
+			id,
+			cus_bill_no,
+			plat_bill_no,
+			trx_serial_no,
+			otrx_serial_no,
+			etrx_serial_no,
+			trx_state,
+			cracc_cus_code,
+			cracc_cus_type,
+			cracc_no,
+			cracc_name,
+			cracc_node_code,
+			cracc_bank_name,
+			dracc_cus_code,
+			dracc_cus_type,
+			dracc_no,
+			dracc_name,
+			dracc_node_code,
+			dracc_bank_name,
+			pay_currency,
+			pay_amount,
+			buss_type,
+			trx_type,
+			pay_way,
+			sac_flag,
+			inn_con_flag,
+			inn_con_status,
+			paycon_type,
+			cha_con_flag,
+			cha_con_status,
+			trx_batch_no,
+			update_time,
+			create_time,
+			memo,
+			trx_err_deal_type,
+			ex_rate,
+			sac_currency,
+			sac_amount,
+			cracc_cus_name,
+			dracc_cus_name,
+			confirm_user,
+	        confirm_status,
+	        confirm_time
+		FROM SAC_OTRX_INFO
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="trxSerialNo"> trx_serial_no = #trxSerialNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="otrxSerialNo"> otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="listSacOtrxInfo" parameterClass="java.util.Map" resultMap="SacOtrxInfo">
+		SELECT
+			id,
+			cus_bill_no,
+			plat_bill_no,
+			trx_serial_no,
+			otrx_serial_no,
+			etrx_serial_no,
+			trx_state,
+			cracc_cus_code,
+			cracc_cus_type,
+			cracc_no,
+			cracc_name,
+			cracc_node_code,
+			cracc_bank_name,
+			dracc_cus_code,
+			dracc_cus_type,
+			dracc_no,
+			dracc_name,
+			dracc_node_code,
+			dracc_bank_name,
+			pay_currency,
+			pay_amount,
+			buss_type,
+			trx_type,
+			pay_way,
+			sac_flag,
+			inn_con_flag,
+			inn_con_status,
+			paycon_type,
+			cha_con_flag,
+			cha_con_status,
+			trx_batch_no,
+			update_time,
+			create_time,
+			memo,
+			trx_err_deal_type,
+			ex_rate,
+			sac_currency,
+			sac_amount,
+			cracc_cus_name,
+			dracc_cus_name,
+			confirm_user,
+	        confirm_status,
+	        confirm_time
+		FROM SAC_OTRX_INFO
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id"> id = #id#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="cusBillNo"> cus_bill_no =
+				#cusBillNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="platBillNo"> plat_bill_no =
+				#platBillNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="trxSerialNo"> trx_serial_no =
+				#trxSerialNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="otrxSerialNo"> otrx_serial_no =
+				#otrxSerialNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="etrxSerialNo"> etrx_serial_no =
+				#etrxSerialNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="trxState"> trx_state = #trxState#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccCusCode"> cracc_cus_code =
+				#craccCusCode#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccCusType"> cracc_cus_type =
+				#craccCusType#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccNo"> cracc_no = #craccNo#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccName"> cracc_name =
+				#craccName#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccNodeCode"> cracc_node_code =
+				#craccNodeCode#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccBankName"> cracc_bank_name =
+				#craccBankName#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="draccCusCode"> dracc_cus_code =
+				#draccCusCode#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="draccCusType"> dracc_cus_type =
+				#draccCusType#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="draccNo"> dracc_no = #draccNo#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="draccName"> dracc_name =
+				#draccName#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="draccNodeCode"> dracc_node_code =
+				#draccNodeCode#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="draccBankName"> dracc_bank_name =
+				#draccBankName#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="payCurrency"> pay_currency =
+				#payCurrency#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="payAmount"> pay_amount =
+				#payAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="bussType"> buss_type = #bussType#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="trxType"> trx_type = #trxType#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="payWay"> pay_way = #payWay#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacFlag"> sac_flag = #sacFlag#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="innConFlag"> inn_con_flag =
+				#innConFlag#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="innConStatus"> inn_con_status =
+				#innConStatus#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="payconType"> paycon_type =
+				#payconType#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="chaConFlag"> cha_con_flag =
+				#chaConFlag#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="chaConStatus"> cha_con_status =
+				#chaConStatus#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="trxBatchNo"> trx_batch_no =
+				#trxBatchNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateTime"> update_time =
+				#updateTime#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime"> create_time =
+				#createTime#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo"> memo = #memo#
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="confirmUser">  confirm_user = #confirmUser#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmStatus">  confirm_status = #confirmStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmTime"> <![CDATA[ confirm_time between  trunc(#confirmTime#,'dd') and TRUNC(#confirmTime#)+1-1/86400]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="trxErrDealType"> trx_err_deal_type =
+				#trxErrDealType#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="exRate"> ex_rate = #exRate#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacCurrency"> sac_currency = #sacCurrency#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacAmount"> sac_amount = #sacAmount#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cusNo" open="(" close=")">
+				cracc_no = #cusNo# or dracc_no= #cusNo# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="payAmountStart"> 
+				<![CDATA[ 
+				pay_amount >= #payAmountStart# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="payAmountEnd">
+				<![CDATA[ 
+				pay_amount <=  #payAmountEnd#   
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				to_char(create_time,'yyyy-MM-dd') > #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				to_char(create_time,'yyyy-MM-dd') <=  #endDate#   
+				]]>
+			</isNotEmpty>
+		</dynamic>
+		<isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC
+		</isEmpty>
+		<isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+		<isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+	</select>
+
+	<select id="getExchangeGains" parameterClass="java.lang.String" resultMap="amountMap">
+		select 
+			a.sac_amount , 
+			b.pay_amount 
+		from sac_otrx_info a 
+		inner join sac_otrx_info b
+		on a.otrx_serial_no = b.trx_serial_no
+		where a.trx_serial_no = #trxSerialNo#
+	</select>
+
+</sqlMap>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacCusParameter" class="net.easipay.cbp.model.SacCusParameter">
+	 <result property="id" column="id"/>
+	 <result property="cusNo" column="cus_no"/>
+	 <result property="cusType" column="cus_type"/>
+	 <result property="cusName" column="cus_name"/>
+	 <result property="merchantNcode" column="merchant_ncode"/>
+	 <result property="cusPlatAcc" column="cus_plat_acc"/>
+	 <result property="cusPlatAccName" column="cus_plat_acc_name"/>
+	 <result property="refundFlag" column="refund_flag"/>
+	 <result property="sacBankAcc" column="sac_bank_acc"/>
+	 <result property="accName" column="acc_name"/>
+	 <result property="depositBank" column="deposit_bank"/>
+	 <result property="craccBankCode" column="cracc_bank_code"/>
+	 <result property="feeRate" column="fee_rate"/>
+	 <result property="feeComWay" column="fee_com_way"/>
+	 <result property="feeSacWay" column="fee_sac_way"/>
+	 <result property="sacPeriod" column="sac_period"/>
+	 <result property="trxUpLim" column="trx_up_lim"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="sacType" column="sac_type"/>
+	 <result property="sacCurrency" column="sac_currency"/>
+	 <result property="sacStartAmount" column="sac_start_amount"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="isValidFlag" column="is_valid_flag"/>
+	 <result property="cusFeeFlag" column="cus_fee_flag"/>
+	 <result property="orgCardId" column="org_card_id"/>
+	 <result property="bussType" column="buss_type"/>
+ </resultMap>
+   <insert id="insertSacCusParameter" parameterClass="net.easipay.cbp.model.SacCusParameter">
+        INSERT INTO SAC_CUS_PARAMETER ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusNo">  cus_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="merchantNcode">  merchant_ncode  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusPlatAcc">  cus_plat_acc  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusPlatAccName">  cus_plat_acc_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundFlag">  refund_flag  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacBankAcc">  sac_bank_acc  </isNotEmpty>
+            <isNotEmpty prepend="," property="accName">  acc_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="depositBank">  deposit_bank  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  cracc_bank_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="feeRate">  fee_rate  </isNotEmpty>
+            <isNotEmpty prepend="," property="feeComWay">  fee_com_way  </isNotEmpty>
+            <isNotEmpty prepend="," property="feeSacWay">  fee_sac_way  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacPeriod">  sac_period  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxUpLim">  trx_up_lim  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacType">  sac_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacCurrency">  sac_currency  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacStartAmount">  sac_start_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="isValidFlag">  is_valid_flag  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusFeeFlag">  cus_fee_flag  </isNotEmpty>
+            <isNotEmpty prepend="," property="orgCardId">  org_card_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusType">  cus_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="bussType">  buss_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusName">  cus_name  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cusNo">  #cusNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="merchantNcode">  #merchantNcode#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="cusPlatAcc">  #cusPlatAcc#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cusPlatAccName">  #cusPlatAccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundFlag">  #refundFlag#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacBankAcc">  #sacBankAcc#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="accName">  #accName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="depositBank">  #depositBank#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBankCode">  #craccBankCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="feeRate">  #feeRate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="feeComWay">  #feeComWay#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="feeSacWay">  #feeSacWay#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacPeriod">  #sacPeriod#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxUpLim">  #trxUpLim#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacType">  #sacType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacCurrency">  #sacCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacStartAmount">  #sacStartAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateTime">  #updateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="isValidFlag">  #isValidFlag#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="cusFeeFlag">  #cusFeeFlag#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="orgCardId">  #orgCardId#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="cusType">  #cusType#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="bussType">  #bussType#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="cusName">  #cusName#  </isNotEmpty>	
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacCusParameter" resultMap="SacCusParameter">  
+        SELECT 
+	       id,
+	       cus_no,
+	       merchant_ncode,
+	       cus_plat_acc,
+	       cus_plat_acc_name,
+	       refund_flag,
+	       sac_bank_acc,
+	       acc_name,
+	       deposit_bank,
+	       cracc_bank_code,
+	       fee_rate,
+	       fee_com_way,
+	       fee_sac_way,
+	       sac_period,
+	       trx_up_lim,
+	       create_time,
+	       memo,
+	       sac_type,
+	       sac_currency,
+	       sac_start_amount,
+	       update_time,
+	       is_valid_flag,
+	       cus_fee_flag,
+	       org_card_id,
+	       cus_type,
+	       buss_type,
+	       cus_name
+         FROM SAC_CUS_PARAMETER
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="bussType">  buss_type = #bussType#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="sacCurrency">  sac_currency = #sacCurrency#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="cusNo">  cus_no = #cusNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="orgCardId">  org_card_id = #orgCardId#  </isNotEmpty>
+        </dynamic>
+  </select>
+ 
+  <update id="updateSacCusParameter" parameterClass="net.easipay.cbp.model.SacCusParameter">  
+      UPDATE SAC_CUS_PARAMETER        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusNo">  cus_no = #cusNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="merchantNcode">  merchant_ncode = #merchantNcode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusPlatAcc">  cus_plat_acc = #cusPlatAcc#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusPlatAccName">  cus_plat_acc_name = #cusPlatAccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundFlag">  refund_flag = #refundFlag#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacBankAcc">  sac_bank_acc = #sacBankAcc#  </isNotEmpty>
+            <isNotEmpty prepend="," property="accName">  acc_name = #accName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="depositBank">  deposit_bank = #depositBank#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  cracc_bank_code = #craccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="feeRate">  fee_rate = #feeRate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="feeComWay">  fee_com_way = #feeComWay#  </isNotEmpty>
+            <isNotEmpty prepend="," property="feeSacWay">  fee_sac_way = #feeSacWay#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacPeriod">  sac_period = #sacPeriod#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxUpLim">  trx_up_lim = #trxUpLim#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacType">  sac_type = #sacType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacCurrency">  sac_currency = #sacCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacStartAmount">  sac_start_amount = #sacStartAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="isValidFlag">  is_valid_flag = #isValidFlag#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusFeeFlag">  cus_fee_flag = #cusFeeFlag#  </isNotEmpty>
+            <isNotEmpty prepend="," property="orgCardId">  org_card_id = #orgCardId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusType">  cus_type = #cusType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bussType">  buss_type = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusName">  cus_name = #cusName#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  
+  
+</sqlMap>

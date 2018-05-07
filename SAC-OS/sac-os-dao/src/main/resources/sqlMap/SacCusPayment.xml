@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacCusPayment" class="net.easipay.cbp.model.SacCusPayment">
+	 <result property="id" column="ID"/>
+	 <result property="cusNo" column="CUS_NO"/>
+	 <result property="cusName" column="CUS_NAME"/>
+	 <result property="trxDate" column="TRX_DATE"/>
+	 <result property="sacDate" column="SAC_DATE"/>
+	 <result property="bussType" column="BUSS_TYPE"/>
+	 <result property="trxType" column="TRX_TYPE"/>
+	 <result property="totalNum" column="TOTAL_NUM"/>
+	 <result property="totalAmount" column="TOTAL_AMOUNT"/>
+	 <result property="currencyType" column="CURRENCY_TYPE"/>
+	 <result property="fees" column="FEES"/>
+	 <result property="sacAmount" column="SAC_AMOUNT"/>
+	 <result property="createTime" column="CREATE_TIME"/>
+	 <result property="memo" column="MEMO"/>
+	 <result property="updateTime" column="UPDATE_TIME"/>
+	 <result property="sacSign" column="SAC_SIGN"/>
+	 <result property="cusBatchNo" column="CUS_BATCH_NO"/>
+	 <result property="setBatchNo" column="SET_BATCH_NO"/>
+ </resultMap>
+ 
+ <resultMap id="cavResultMap" class="net.easipay.cbp.model.SacCancelVerify">
+  	 <result property="trxSerialNo" column="TRX_SERIAL_NO"/>
+	 <result property="payAmount" column="AMOUNT"/>
+	 <result property="yhxAmount" column="YHX"/>
+	 <result property="whxAmount" column="WHX"/>
+	 <result property="createTime" column="CREATE_TIME"/>
+	 <result property="trxSuccTime" column="TRX_SUCC_TIME"/>
+	 <result property="cavType" column="TYPE"/>
+ </resultMap>
+ 
+ <parameterMap id="cavCountsMap" class="java.util.HashMap" >       
+ 	<parameter property="codeId" jdbcType="VARCHAR2" javaType="java.lang.String" mode="IN"/>
+ 	<parameter property="cavType" jdbcType="VARCHAR2" javaType="java.lang.String" mode="IN"/>
+    <parameter property="rtn_count" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />     
+ </parameterMap>
+
+ <parameterMap id="cavMap" class="java.util.HashMap">
+ 	 	<parameter property="codeId" jdbcType="VARCHAR2" javaType="java.lang.String" mode="IN"/>
+ 	 	<parameter property="cavType" jdbcType="VARCHAR2" javaType="java.lang.String" mode="IN"/>
+ 	 	<parameter property="start" jdbcType="NUMBER" javaType="java.lang.Integer" mode="IN"/>
+ 	 	<parameter property="end" jdbcType="NUMBER" javaType="java.lang.Integer" mode="IN"/>
+		<parameter property="result" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="cavResultMap"/>
+ </parameterMap>
+   <insert id="insertSacCusPayment" parameterClass="net.easipay.cbp.model.SacCusPayment">
+        INSERT INTO SAC_CUS_PAYMENT ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="," property="id">  ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusNo">  CUS_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusName">  CUS_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxDate">  TRX_DATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacDate">  SAC_DATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="bussType">  BUSS_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxType">  TRX_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalNum">  TOTAL_NUM  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalAmount">  TOTAL_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  CURRENCY_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="fees">  FEES  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacAmount">  SAC_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  UPDATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacSign">  SAC_SIGN  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusBatchNo">  CUS_BATCH_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="setBatchNo">  SET_BATCH_NO  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cusNo">  #cusNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cusName">  #cusName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxDate">  #trxDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacDate">  #sacDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bussType">  #bussType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxType">  #trxType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="totalNum">  #totalNum#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="totalAmount">  #totalAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="currencyType">  #currencyType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="fees">  #fees#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacAmount">  #sacAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateTime">  #updateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacSign">  #sacSign#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cusBatchNo">  #cusBatchNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="setBatchNo">  #setBatchNo#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacCusPayment" resultMap="SacCusPayment">  
+        SELECT 
+	       ID,
+	       CUS_NO,
+	       CUS_NAME,
+	       TRX_DATE,
+	       SAC_DATE,
+	       BUSS_TYPE,
+	       TRX_TYPE,
+	       TOTAL_NUM,
+	       TOTAL_AMOUNT,
+	       CURRENCY_TYPE,
+	       FEES,
+	       SAC_AMOUNT,
+	       CREATE_TIME,
+	       MEMO,
+	       UPDATE_TIME,
+	       SAC_SIGN,
+	       CUS_BATCH_NO,
+	       SET_BATCH_NO
+         FROM SAC_CUS_PAYMENT
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacCusPayment" parameterClass="java.util.Map" resultMap="SacCusPayment">  
+      SELECT 
+	       ID,
+	       CUS_NO,
+	       CUS_NAME,
+	       TRX_DATE,
+	       SAC_DATE,
+	       BUSS_TYPE,
+	       TRX_TYPE,
+	       TOTAL_NUM,
+	       TOTAL_AMOUNT,
+	       CURRENCY_TYPE,
+	       FEES,
+	       SAC_AMOUNT,
+	       CREATE_TIME,
+	       MEMO,
+	       UPDATE_TIME,
+	       SAC_SIGN,
+	       CUS_BATCH_NO,
+	       SET_BATCH_NO
+	  FROM SAC_CUS_PAYMENT
+        <dynamic prepend="WHERE">
+          	<isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusNo">  CUS_NO = #cusNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				trx_date >= #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				trx_date <=  #endDate#   
+				]]>
+			</isNotEmpty>
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> trx_date DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacCusPayment" parameterClass="net.easipay.cbp.model.SacCusPayment">  
+      UPDATE SAC_CUS_PAYMENT        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusNo">  CUS_NO = #cusNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacCusPayment">  
+        Delete   
+          from SAC_CUS_PAYMENT WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacCusPayment">  
+        Delete 
+        from SAC_CUS_PAYMENT
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacCusPaymentCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_CUS_PAYMENT
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusNo">  CUS_NO = #cusNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				trx_date >= #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				trx_date <=  #endDate#   
+				]]>
+			</isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacCusPayment" parameterClass="java.util.Map" resultMap="SacCusPayment"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       ID,
+	       CUS_NO,
+	       CUS_NAME,
+	       TRX_DATE,
+	       SAC_DATE,
+	       BUSS_TYPE,
+	       TRX_TYPE,
+	       TOTAL_NUM,
+	       TOTAL_AMOUNT,
+	       CURRENCY_TYPE,
+	       FEES,
+	       SAC_AMOUNT,
+	       CREATE_TIME,
+	       MEMO,
+	       UPDATE_TIME,
+	       SAC_SIGN,
+	       CUS_BATCH_NO,
+	       SET_BATCH_NO
+	       from SAC_CUS_PAYMENT  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusNo">  CUS_NO = #cusNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				trx_date >= #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				trx_date <=  #endDate#   
+				]]>
+			</isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> trx_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  	
+  	<select id="listSplitSacCusPayment2" parameterClass="java.util.Map" resultMap="SacCusPayment"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       ID,
+	       CUS_NO,
+	       CUS_NAME,
+	       TRX_DATE,
+	       SAC_DATE,
+	       BUSS_TYPE,
+	       TRX_TYPE,
+	       TOTAL_NUM,
+	       TOTAL_AMOUNT,
+	       CURRENCY_TYPE,
+	       FEES,
+	       SAC_AMOUNT,
+	       CREATE_TIME,
+	       MEMO,
+	       UPDATE_TIME,
+	       SAC_SIGN,
+	       CUS_BATCH_NO,
+	       SET_BATCH_NO
+	       from SAC_CUS_PAYMENT  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusNo">  (cus_no like '%$cusNo$%' or cus_name like '%$cusNo$%')  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				trx_date >= #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				trx_date <=  #endDate#   
+				]]>
+			</isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> trx_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  	
+  	<select id="listSacCusPayment2" parameterClass="java.util.Map" resultMap="SacCusPayment">  
+      SELECT 
+	       ID,
+	       CUS_NO,
+	       CUS_NAME,
+	       TRX_DATE,
+	       SAC_DATE,
+	       BUSS_TYPE,
+	       TRX_TYPE,
+	       TOTAL_NUM,
+	       TOTAL_AMOUNT,
+	       CURRENCY_TYPE,
+	       FEES,
+	       SAC_AMOUNT,
+	       CREATE_TIME,
+	       MEMO,
+	       UPDATE_TIME,
+	       SAC_SIGN,
+	       CUS_BATCH_NO,
+	       SET_BATCH_NO
+	  FROM SAC_CUS_PAYMENT
+        <dynamic prepend="WHERE">
+          	<isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusNo">  (cus_no like '%$cusNo$%' or cus_name like '%$cusNo$%')  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				trx_date >= #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				trx_date <=  #endDate#   
+				]]>
+			</isNotEmpty>
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> trx_date DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  	
+  	<select id="getSacCusPaymentCount2" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_CUS_PAYMENT
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusNo">  (cus_no like '%$cusNo$%' or cus_name like '%$cusNo$%')  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				trx_date >= #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				trx_date <=  #endDate#   
+				]]>
+			</isNotEmpty>
+          </dynamic>
+	</select>
+	
+	<select id="countCusPaymentAmount" parameterClass="java.util.Map" resultClass="java.util.HashMap">  
+      select 
+      	currency_type,
+      	sum(total_amount) as all_total_amount,
+      	sum(sac_amount) as all_sac_amount
+      from sac_cus_payment
+        <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusNo">  (cus_no like '%$cusNo$%' or cus_name like '%$cusNo$%')  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusName">  CUS_NAME = #cusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fees">  FEES = #fees#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacSign">  SAC_SIGN = #sacSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBatchNo">  CUS_BATCH_NO = #cusBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="setBatchNo">  SET_BATCH_NO = #setBatchNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				trx_date >= #startDate# 
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				trx_date <=  #endDate#   
+				]]>
+			</isNotEmpty>
+          </dynamic>
+        group by currency_type
+  </select>
+  <procedure id="calls_CancellVerify" parameterMap="cavMap">
+
+		{call SP_CANCELL_VERIFY (?,?,?,?,?)}       
+
+   </procedure>
+  <procedure id="calls_CancellVerifyCounts" parameterMap="cavCountsMap">
+
+		{call SP_CANCELL_VERIFY_COUNT (?,?,?)}       
+
+   </procedure>
+</sqlMap>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+   <insert id="insertSacRecDetail" parameterClass="net.easipay.cbp.model.SacRecDetail">
+        INSERT INTO SAC_REC_DETAIL ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  busi_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="recStartDate">  rec_start_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+          	<isNotEmpty prepend="," property="diffType">  diff_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxTime">  trx_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  currency_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  bank_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="recOper">  rec_oper  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCode">  trx_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="privDomain">  priv_domain  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recBatchId">  #recBatchId#  </isNotEmpty>	 
+		    <isNotEmpty prepend="," property="busiType">  #busiType#  </isNotEmpty>	 
+		    <isNotEmpty prepend="," property="recStartDate">  #recStartDate#  </isNotEmpty>	    
+		    <isNotEmpty prepend="," property="recEndDate">  #recEndDate#  </isNotEmpty>	         
+		    <isNotEmpty prepend="," property="trxSerialNo">  #trxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnCode">  #chnCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+			<isNotEmpty prepend="," property="diffType">  #diffType#  </isNotEmpty>     
+		    <isNotEmpty prepend="," property="trxTime">  #trxTime#  </isNotEmpty>	      
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	    
+		    <isNotEmpty prepend="," property="currencyType">  #currencyType#  </isNotEmpty>   
+		    <isNotEmpty prepend="," property="bankSerialNo">  #bankSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payconType">  #payconType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recOper">  #recOper#  </isNotEmpty>	   
+		    <isNotEmpty prepend="," property="trxCode">  #trxCode#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="privDomain">  #privDomain#  </isNotEmpty>    
+           </dynamic>
+         )
+    </insert>
+  
+</sqlMap>

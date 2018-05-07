@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinCodeRule" class="net.easipay.cbp.model.FinCodeRule">
+	 <result property="code1" column="code1"/>
+	 <result property="code2" column="code2"/>
+	 <result property="code3" column="code3"/>
+	 <result property="code4" column="code4"/>
+	 <result property="code5" column="code5"/>
+	 <result property="code6" column="code6"/>
+	 <result property="id" column="id"/>
+ </resultMap>
+   <insert id="insertFinCodeRule" parameterClass="net.easipay.cbp.model.FinCodeRule">
+        INSERT INTO FIN_CODE_RULE ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="code1">  code1  </isNotEmpty>
+            <isNotEmpty prepend="," property="code2">  code2  </isNotEmpty>
+            <isNotEmpty prepend="," property="code3">  code3  </isNotEmpty>
+            <isNotEmpty prepend="," property="code4">  code4  </isNotEmpty>
+            <isNotEmpty prepend="," property="code5">  code5  </isNotEmpty>
+            <isNotEmpty prepend="," property="code6">  code6  </isNotEmpty>
+            <isNotEmpty prepend="," property="id">  id  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="code1">  #code1#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code2">  #code2#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code3">  #code3#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code4">  #code4#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code5">  #code5#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="code6">  #code6#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getFinCodeRule" resultMap="FinCodeRule">  
+        SELECT 
+	       code1,
+	       code2,
+	       code3,
+	       code4,
+	       code5,
+	       code6,
+	       id
+         FROM FIN_CODE_RULE
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>   
+           
+      </dynamic>
+  </select>
+  <select id="getFinCodeRules" parameterClass="java.util.Map" resultMap="FinCodeRule">  
+      SELECT 
+	       code1,
+	       code2,
+	       code3,
+	       code4,
+	       code5,
+	       code6,
+	       id
+	  FROM FIN_CODE_RULE
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty> 
+           <isNotEmpty prepend="AND" property="code3"> CODE3 = #code3# </isNotEmpty>                      
+        </dynamic>
+  </select>
+  
+  <update id="updateFinCodeRule" parameterClass="net.easipay.cbp.model.FinCodeRule">  
+      UPDATE FIN_CODE_RULE        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="code1">  code1 = #code1#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code2">  code2 = #code2#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code3">  code3 = #code3#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code4">  code4 = #code4#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code5">  code5 = #code5#  </isNotEmpty>
+            <isNotEmpty prepend="," property="code6">  code6 = #code6#  </isNotEmpty>
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteFinCodeRule">  
+        Delete   
+          from FIN_CODE_RULE WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListFinCodeRule">  
+        Delete 
+        from FIN_CODE_RULE
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getFinCodeRuleCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_CODE_RULE
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="code1">  code1 = #code1#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code2">  code2 = #code2#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code3">  code3 = #code3#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code4">  code4 = #code4#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code5">  code5 = #code5#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="code6">  code6 = #code6#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+          </dynamic>
+	</select>
+  
+</sqlMap>

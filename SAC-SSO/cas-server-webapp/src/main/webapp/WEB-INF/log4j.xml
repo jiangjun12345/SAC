@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%p [%t] %c{1}.%M(%L) | %m%n"/>
+            <param name="Encoding" value="UTF-8" />    
+        </layout>
+    </appender>
+    
+    <appender name="FILE"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value=".yyyy-MM-dd" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="File" value="${catalina.base}/logs/server.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-d{yyyy-MM-dd HH:mm:ss,SSS} %p [%c]%M(line:%L)[%t]%m%n" />
+		</layout>
+	</appender>
+    <!-- Suppress success logging from InteractiveAuthenticationSuccessEvent -->
+	<logger name="org.tuckey">
+        <level value="WARN"/>
+    </logger>
+	
+	<logger name="org.springframework.security">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.apache">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.dbunit">
+        <level value="WARN"/>
+    </logger>
+    
+    <logger name="com.ibatis" additivity="true">
+	  <level value="DEBUG" />
+	</logger>
+	 
+	<logger name="java.sql.Connection" additivity="true">
+	  <level value="DEBUG" />
+	  <appender-ref ref="FILE" />
+	</logger>
+	
+	<logger name="java.sql.Statement" additivity="true">     
+	   <level value="DEBUG" /> 
+	   <appender-ref ref="FILE" />    
+	</logger>  
+	   
+	<logger name="java.sql.PreparedStatement" additivity="true">     
+	   <level value="DEBUG" /> 
+	   <appender-ref ref="FILE" />    
+	</logger>   
+	 
+	<logger name="java.sql.ResultSet" additivity="true">
+	  <level value="DEBUG" />
+	</logger>
+    
+    <logger name="org.springframework">
+        <level value="DEBUG"/>
+    </logger>
+    
+    <logger name="net.easipay.cbp">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="net.easipay.cbp.tool">
+        <level value="INFO"/>
+    </logger>
+
+    <root>
+        <level value="WARN"/>
+        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</log4j:configuration>
+

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacSysParamDefine" class="net.easipay.cbp.model.SacSysParamDefine">
+	 <result property="id" column="id"/>
+	 <result property="paramKey" column="param_key"/>
+	 <result property="magicType" column="magic_type"/>
+	 <result property="paramName" column="param_name"/>
+	 <result property="paramValue" column="param_value"/>
+	 <result property="paramDesc" column="param_desc"/>
+	 <result property="createUserId" column="create_user_id"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="updateUserId" column="update_user_id"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="memo" column="memo"/>
+ </resultMap>
+   <insert id="insertSacSysParamDefine" parameterClass="net.easipay.cbp.model.SacSysParamDefine">
+        INSERT INTO SAC_SYS_PARAM_DEFINE ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramKey">  param_key  </isNotEmpty>
+            <isNotEmpty prepend="," property="magicType">  magic_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramName">  param_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramValue">  param_value  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramDesc">  param_desc  </isNotEmpty>
+            <isNotEmpty prepend="," property="createUserId">  create_user_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateUserId">  update_user_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="paramKey">  #paramKey#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="magicType">  #magicType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="paramName">  #paramName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="paramValue">  #paramValue#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="paramDesc">  #paramDesc#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createUserId">  #createUserId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateUserId">  #updateUserId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateTime">  #updateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacSysParamDefine" resultMap="SacSysParamDefine">  
+        SELECT 
+	       id,
+	       param_key,
+	       magic_type,
+	       param_name,
+	       param_value,
+	       param_desc,
+	       create_user_id,
+	       create_time,
+	       update_user_id,
+	       update_time,
+	       memo,
+         FROM SAC_SYS_PARAM_DEFINE
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacSysParamDefine" parameterClass="java.util.Map" resultMap="SacSysParamDefine">  
+      SELECT 
+	       id,
+	       param_key,
+	       magic_type,
+	       param_name,
+	       param_value,
+	       param_desc,
+	       create_user_id,
+	       create_time,
+	       update_user_id,
+	       update_time,
+	       memo,
+	  FROM SAC_SYS_PARAM_DEFINE
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacSysParamDefine" parameterClass="net.easipay.cbp.model.SacSysParamDefine">  
+      UPDATE SAC_SYS_PARAM_DEFINE        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramKey">  param_key = #paramKey#  </isNotEmpty>
+            <isNotEmpty prepend="," property="magicType">  magic_type = #magicType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramName">  param_name = #paramName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramValue">  param_value = #paramValue#  </isNotEmpty>
+            <isNotEmpty prepend="," property="paramDesc">  param_desc = #paramDesc#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createUserId">  create_user_id = #createUserId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateUserId">  update_user_id = #updateUserId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacSysParamDefine">  
+        Delete   
+          from SAC_SYS_PARAM_DEFINE WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacSysParamDefine">  
+        Delete 
+        from SAC_SYS_PARAM_DEFINE
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacSysParamDefineCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_SYS_PARAM_DEFINE
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramKey">  param_key = #paramKey#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="magicType">  magic_type = #magicType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramName">  param_name = #paramName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramValue">  param_value = #paramValue#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramDesc">  param_desc = #paramDesc#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createUserId">  create_user_id = #createUserId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateUserId">  update_user_id = #updateUserId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty> 
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacSysParamDefine" parameterClass="java.util.Map" resultMap="SacSysParamDefine"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       param_key,
+	       magic_type,
+	       param_name,
+	       param_value,
+	       param_desc,
+	       create_user_id,
+	       create_time,
+	       update_user_id,
+	       update_time,
+	       memo,
+	       from SAC_SYS_PARAM_DEFINE  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramKey">  param_key = #paramKey#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="magicType">  magic_type = #magicType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramName">  param_name = #paramName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramValue">  param_value = #paramValue#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="paramDesc">  param_desc = #paramDesc#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createUserId">  create_user_id = #createUserId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateUserId">  update_user_id = #updateUserId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> modify_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

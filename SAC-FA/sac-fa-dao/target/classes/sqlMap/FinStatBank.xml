@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinStatBank" class="net.easipay.cbp.model.FinStatBank">
+	 <result property="statBankId" column="STAT_BANK_ID" />
+	 <result property="codeId" column="CODE_ID" />
+	 <result property="openBal" column="OPEN_BAL" />
+	 <result property="fDebit" column="FDEBIT" />
+	 <result property="fCredit" column="FCREDIT" />
+	 <result property="closeBal" column="CLOSE_BAL" />
+	 <result property="amount" column="AMOUNT" />
+	 <result property="direction" column="DIRECTION" />
+	 <result property="statTime" column="STAT_TIME" />
+ </resultMap>
+   <insert id="insertFinStatBank" parameterClass="net.easipay.cbp.model.FinStatBank">
+        INSERT INTO FIN_STAT_BANK ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="statBankId">  STAT_BANK_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="codeId">  CODE_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="openBal">  OPEN_BAL  </isNotEmpty>
+            <isNotEmpty prepend="," property="fDebit">  FDEBIT  </isNotEmpty>
+            <isNotEmpty prepend="," property="fCredit">  FCREDIT  </isNotEmpty>
+            <isNotEmpty prepend="," property="closeBal">  CLOSE_BAL  </isNotEmpty>
+            <isNotEmpty prepend="," property="amount">  AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="direction">  DIRECTION  </isNotEmpty>
+            <isNotEmpty prepend="," property="statTime">  STAT_TIME  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="statBankId">  #statBankId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="codeId">  #codeId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="openBal">  #openBal#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="fDebit">  #fDebit#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="fCredit">  #fCredit#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="closeBal">  #closeBal#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="amount">  #amount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="direction">  #direction#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="statTime">  #statTime#  </isNotEmpty>       
+           </dynamic>
+         )
+    </insert>
+   <select id="getFinStatBank" resultMap="FinStatBank">  
+        SELECT 
+	       STAT_BANK_ID,
+	       CODE_ID,
+	       OPEN_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       CLOSE_BAL,
+	       AMOUNT,
+	       DIRECTION,
+	       STAT_TIME
+         FROM FIN_STAT_BANK
+      <dynamic prepend="WHERE">
+         <isNotEmpty> STAT_BANK_ID = #statBankId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="getFinStatBanks" parameterClass="java.util.Map" resultMap="FinStatBank">  
+      SELECT 
+	       STAT_BANK_ID,
+	       CODE_ID,
+	       OPEN_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       CLOSE_BAL,
+	       AMOUNT,
+	       DIRECTION,
+	       STAT_TIME
+	  FROM FIN_STAT_BANK
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="statBankId"> STAT_BANK_ID = #statBankId# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="codeId"> CODE_ID ASC </isEmpty>
+  </select>
+  
+  
+  <update id="updateFinStatBank" parameterClass="net.easipay.cbp.model.FinStatBank">  
+      UPDATE FIN_STAT_BANK        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="" property="statBankId">  STAT_BANK_ID = #statBankId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="codeId">  CODE_ID = #codeId# </isNotEmpty>
+            <isNotEmpty prepend="," property="openBal">  OPEN_BAL = #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="," property="fDebit">  FDEBIT = #fDebit#  </isNotEmpty>
+            <isNotEmpty prepend="," property="fCredit">  FCREDIT = #fCredit#  </isNotEmpty>
+            <isNotEmpty prepend="," property="closeBal">  CLOSE_BAL = #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="," property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="," property="statTime">  STAT_TIME = #statTime#  </isNotEmpty>
+        </dynamic>
+       WHERE STAT_BANK_ID = #statBankId#
+  </update>
+  <delete id="deleteFinStatBank">  
+        Delete   
+          from FIN_STAT_BANK WHERE
+         STAT_BANK_ID = #statBankId#
+  </delete>
+  <delete id="deleteListFinStatBank">  
+        Delete 
+        from FIN_STAT_BANK
+        WHERE STAT_BANK_ID IN ( $statBankId$ )
+  </delete>
+  
+  <select id="getFinStatBankCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_STAT_BANK
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="statBankId">  STAT_BANK_ID = #statBankId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="openBal">  OPEN_BAL = #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="closeBal">  CLOSE_BAL = #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fDebit">  FDEBIT = #fDebit#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fCredit">  FCREDIT = #fCredit#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="statTime">  STAT_TIME = #statTime#  </isNotEmpty>
+          </dynamic>
+	</select>
+
+	<parameterMap id="callSpFaStatBankReq" class="java.util.HashMap">
+       <parameter property="p_stat_date" javaType="java.lang.String" jdbcType="VARCHAR" mode="IN"/>  
+       <parameter property="err_num" javaType="java.lang.String" jdbcType="VARCHAR" mode="OUT"/>  
+       <parameter property="err_msg" javaType="java.lang.String" jdbcType="VARCHAR" mode="OUT"/>  
+    </parameterMap>
+
+	<procedure id="callSpFaStatBank" parameterMap="callSpFaStatBankReq">
+
+		{call SP_FIN_STAT_BANK(?, ?, ?)}   
+	
+	</procedure>  
+</sqlMap>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%-d{yyyy-MM-dd HH:mm:ss,SSS} %p [%c]%M(line:%L)%m%n"/>
+            <param name="Encoding" value="UTF-8" />
+        </layout>
+    </appender>
+    
+    <appender name="FILE"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value=".yyyy-MM-dd" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="File" value="${catalina.base}/logs/server.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-d{yyyy-MM-dd HH:mm:ss,SSS} %p [%c]%M(line:%L)[%t]%m%n" />
+		</layout>
+	</appender>
+	 
+	<logger name="java.sql" additivity="true">
+	  <level value="DEBUG" />
+	</logger>
+    
+    <logger name="org.springframework">
+        <level value="INFO"/>
+    </logger>
+    
+    <logger name="org.apache.commons.beanutils">
+        <level value="INFO"/>
+    </logger>
+    
+    <logger name="weblogic.jms.client">
+        <level value="INFO"/>
+    </logger>
+    
+    <root>
+        <level value="${log4j.level}"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</log4j:configuration>

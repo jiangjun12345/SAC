@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacChannelParam" class="net.easipay.cbp.model.SacChannelParam">
+	 <result property="id" column="id"/>
+	 <result property="bankNodeCode" column="bank_node_code"/>
+	 <result property="chnNo" column="chn_no"/>
+	 <result property="chnName" column="chn_name"/>
+	 <result property="sacBankName" column="sac_bank_name"/>
+	 <result property="accountName" column="account_name"/>
+	 <result property="bankAcc" column="bank_acc"/>
+	 <result property="craccBankCode" column="cracc_bank_code"/>
+	 <result property="currencyType" column="currency_type"/>
+	 <result property="sacPeriod" column="sac_period"/>
+	 <result property="costRate" column="cost_rate"/>
+	 <result property="costComWay" column="cost_com_way"/>
+	 <result property="costSacWay" column="cost_sac_way"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="isValidFlag" column="is_valid_flag"/>
+	 <result property="memo" column="memo"/>
+	 <result property="chnCode" column="chn_code"/>
+	 <result property="chnType" column="chn_type"/>
+	 <!-- <result property="bankSubjectCode" column="bank_subject_code"/> -->
+ </resultMap>
+ 
+ <resultMap id="SacChannelParamToCache" class="net.easipay.cbp.model.SacChannelParam">
+	 <result property="chnNo" column="chn_no"/>
+	 <result property="chnName" column="chn_name"/>
+ </resultMap>
+   
+   <select id="getSacChannelParam" resultMap="SacChannelParam">  
+        SELECT 
+	         id,
+	         chn_no,
+		     bank_node_code,
+		     chn_code,
+		     chn_type,
+		     chn_name,
+			 sac_bank_name,
+			 account_name,
+			 bank_acc,
+			 cracc_bank_code,
+			 currency_type,
+			 sac_period,
+			 cost_rate,
+			 cost_com_way,
+			 cost_sac_way,
+			 create_time,
+			 update_time,
+			 is_valid_flag,
+			 memo
+         FROM SAC_CHANNEL_PARAM
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacChannelParam" parameterClass="net.easipay.cbp.model.SacChannelParam" resultMap="SacChannelParam">  
+      SELECT 
+         id,
+         chn_no,
+	     bank_node_code,
+	     chn_code,
+	     chn_type,
+	     chn_name,
+		 sac_bank_name,
+		 account_name,
+		 bank_acc,
+		 cracc_bank_code,
+		 currency_type,
+		 sac_period,
+		 cost_rate,
+		 cost_com_way,
+		 cost_sac_way,
+		 create_time,
+		 update_time,
+		 is_valid_flag,
+		 memo
+       FROM SAC_CHANNEL_PARAM
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+  </select>
+  
+  <select id="listSacChannelParamToCache"  resultMap="SacChannelParamToCache">  
+      select  
+      distinct 
+      	chn_no,
+      	chn_name 
+      from sac_channel_param
+      order by chn_name
+  </select>
+  
+  <select id="listUniqueSacChannelParam"  resultClass="net.easipay.cbp.model.SacChannelParam">  
+      SELECT 
+      distinct
+         bank_acc AS "bankAcc",
+         sac_bank_name AS "sacBankName",
+         currency_type AS "currencyType"
+       FROM SAC_CHANNEL_PARAM
+       where is_valid_flag = '1'
+       ORDER BY sac_bank_name,currency_type
+  </select>
+  
+   <select id="getSacChannelParamCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_CHANNEL_PARAM
+          <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnNo">  chn_no = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  bank_node_code like '%$bankNodeCode$%'</isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  chn_name like '%$chnName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacBankName">  sac_bank_name like '%$sacBankName$%'  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="accountName" > account_name like '%$accountName$%' </isNotEmpty>
+			<isNotEmpty prepend="AND" property="bankAcc" > bank_acc =#bankAcc# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccBankCode" > cracc_bank_code=#craccBankCode# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="currencyType" > currency_type=#currencyType# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacPeriod"> sac_period=#sacPeriod# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costRate" > cost_rate=#costRate# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costComWay" > cost_com_way=#costComWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costSacWay" > cost_sac_way=#costSacWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime" > create_time=#createTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateTime" > update_time=#updateTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="isValidFlag" > is_valid_flag=#isValidFlag# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo" > memo=#memo#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnCode" > chn_code like '%$chnCode$%'</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnType" > chn_type=#chnType#</isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacChannelParam" parameterClass="java.util.Map" resultMap="SacChannelParam"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+		      id,
+		      chn_no,
+		      bank_node_code,
+		      chn_Code,
+		      chn_Type,
+		      chn_name,
+			  sac_bank_name,
+			  account_name,
+			  bank_acc,
+			  cracc_bank_code,
+			  currency_type,
+			  sac_period,
+			  cost_rate,
+			  cost_com_way,
+			  cost_sac_way,
+			  create_time,
+			  update_time,
+			  is_valid_flag,
+			  memo
+	       FROM SAC_CHANNEL_PARAM
+           <dynamic prepend="WHERE">
+             <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnNo">  chn_no = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  bank_node_code like '%$bankNodeCode$%'</isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  chn_name like '%$chnName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacBankName">  sac_bank_name like '%$sacBankName$%'  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="accountName" > account_name like '%$accountName$%' </isNotEmpty>
+			<isNotEmpty prepend="AND" property="bankAcc" > bank_acc =#bankAcc# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccBankCode" > cracc_bank_code=#craccBankCode# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="currencyType" > currency_type=#currencyType# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacPeriod"> sac_period=#sacPeriod# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costRate" > cost_rate=#costRate# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costComWay" > cost_com_way=#costComWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costSacWay" > cost_sac_way=#costSacWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime" > create_time=#createTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateTime" > update_time=#updateTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="isValidFlag" > is_valid_flag=#isValidFlag# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo" > memo=#memo#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnCode" > chn_code like '%$chnCode$%'</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnType" > chn_type=#chnType#</isNotEmpty>
+          </dynamic>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+  	<select id="listAllSacChnSettlement" resultMap="SacChannelParam">
+  		SELECT 
+	         id,
+	         chn_no,
+		     bank_node_code,
+		     chn_code,
+		     chn_type,
+		     chn_name,
+			 sac_bank_name,
+			 account_name,
+			 bank_acc,
+			 cracc_bank_code,
+			 currency_type,
+			 sac_period,
+			 cost_rate,
+			 cost_com_way,
+			 cost_sac_way,
+			 create_time,
+			 update_time,
+			 is_valid_flag,
+			 memo
+       FROM SAC_CHANNEL_PARAM
+  	</select>
+  
+  
+  <select id="selectSacChannelParamByAcc" parameterClass="java.util.Map" resultMap="SacChannelParam">
+  		SELECT 
+	         id,
+	         chn_no,
+		     bank_node_code,
+		     chn_code,
+		     chn_type,
+		     chn_name,
+			 sac_bank_name,
+			 account_name,
+			 bank_acc,
+			 cracc_bank_code,
+			 currency_type,
+			 sac_period,
+			 cost_rate,
+			 cost_com_way,
+			 cost_sac_way,
+			 create_time,
+			 update_time,
+			 is_valid_flag,
+			 memo
+       FROM SAC_CHANNEL_PARAM
+       Where bank_acc=#bankAcc#
+       		AND chn_no like '9%'
+       		AND chn_code not in('UPOP000','CFCA000')
+  	</select>
+  	 <select id="listUniqueSacChannelParamOfChnNo"  resultClass="net.easipay.cbp.model.SacChannelParam">  
+      SELECT 
+      distinct
+         chn_no AS "chnNo",
+         chn_name AS "chnName"
+       FROM SAC_CHANNEL_PARAM
+       WHERE chn_no like '9%'
+  </select>
+  	
+  	<!-- 查询渠道备付金余额 -->
+  	<select id="listPreparedFund" parameterClass="java.util.Map" resultClass="java.util.HashMap">
+		select 
+	      a.chn_no as "chnNo",
+	      a.chn_name as "chnName",
+	      a.currency_type as "currencyType",
+	      b.ye_id as "yeId",
+	      b.total_amount as "totalAmount"
+	    from sac_channel_param a,
+	    fin_ye b,
+	    fin_code4 c
+	    where a.chn_no = substr(b.ye_id, 7, 19)
+	    and (length(b.ye_id) = 27 or b.ye_id is null)
+	    and c.code4_id = substr(b.ye_id, 26, 2)
+	    and a.currency_type = c.code_value
+	    and a.chn_no like '9%'
+	 <isNotEmpty prepend="AND" property="chnName"> a.chn_name like '%$chnName$%' </isNotEmpty>
+	 <isNotEmpty prepend="AND" property="chnNo"> a.chn_no like '%$chnNo$%' </isNotEmpty>
+	 order by a.chn_no desc
+  </select>
+  
+  <select id="listSplitPreparedFund" parameterClass="java.util.Map" resultClass="java.util.HashMap"> 
+		SELECT * FROM
+		( SELECT c.*, ROWNUM R FROM
+		(  	select 
+		      a.chn_no as "chnNo",
+		      a.chn_name as "chnName",
+		      a.currency_type as "currencyType",
+		      b.ye_id as "yeId",
+		      b.total_amount as "totalAmount"
+		    from sac_channel_param a,
+		    fin_ye b,
+		    fin_code4 c
+		    where a.chn_no = substr(b.ye_id, 7, 19)
+		    and (length(b.ye_id) = 27 or b.ye_id is null)
+		    and c.code4_id = substr(b.ye_id, 26, 2)
+	    	and a.currency_type = c.code_value
+		    and a.chn_no like '9%'
+		 <isNotEmpty prepend="AND" property="chnName"> a.chn_name like '%$chnName$%' </isNotEmpty>
+		 <isNotEmpty prepend="AND" property="chnNo"> a.chn_no like '%$chnNo$%' </isNotEmpty>
+		 order by a.chn_no desc
+		) c
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) d
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+  <select id="getPreparedFundCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM 
+			( select 
+			      a.chn_no as "chnNo",
+			      a.chn_name as "chnName",
+			      a.currency_type as "currencyType",
+			      b.ye_id as "yeId",
+			      b.total_amount as "totalAmount"
+			    from sac_channel_param a,
+			    fin_ye b,
+			    fin_code4 c
+			    where a.chn_no = substr(b.ye_id, 7, 19)
+			    and (length(b.ye_id) = 27 or b.ye_id is null)
+			    and c.code4_id = substr(b.ye_id, 26, 2)
+	    		and a.currency_type = c.code_value
+			    and a.chn_no like '9%'
+			 <isNotEmpty prepend="AND" property="chnName"> a.chn_name like '%$chnName$%' </isNotEmpty>
+			 <isNotEmpty prepend="AND" property="chnNo"> a.chn_no like '%$chnNo$%' </isNotEmpty>
+			 )
+	</select>
+	
+	<select id="selectAllSacBank" resultClass="java.util.HashMap" >
+		select 
+		distinct 
+		bank_node_code as "bankNodeCode",
+		sac_bank_name as "sacBankName"
+		from sac_channel_param
+		where is_valid_flag = '1'
+		order by sac_bank_name desc
+	</select>
+	
+	<select id="selectBankAccInfoByBankNodeCode" resultClass="java.util.HashMap" parameterClass="java.lang.String">
+		select 
+		distinct 
+		bank_node_code as "bankNodeCode",
+		bank_acc as "bankAcc", 
+		currency_type as "currencyType"
+		from sac_channel_param 
+		where is_valid_flag = '1' 
+		and bank_node_code = #bankNodeCode#
+		order by bank_acc
+	</select>
+	
+	 <select id="selectSacChannelParamForB2C" parameterClass="java.util.Map" resultMap="SacChannelParam">
+  		SELECT 
+	         id,
+	         chn_no,
+		     bank_node_code,
+		     chn_code,
+		     chn_type,
+		     chn_name,
+			 sac_bank_name,
+			 account_name,
+			 bank_acc,
+			 cracc_bank_code,
+			 currency_type,
+			 sac_period,
+			 cost_rate,
+			 cost_com_way,
+			 cost_sac_way,
+			 create_time,
+			 update_time,
+			 is_valid_flag,
+			 memo
+       FROM SAC_CHANNEL_PARAM
+       Where chn_code = #chnCode#
+       		AND currency_type = #currencyType#
+       		AND chn_no like '7%'
+  	</select>
+  	
+  	
+  	<select id="getPreparedAvalibleBal" parameterClass="java.util.Map" resultClass="java.util.HashMap"> 
+		select 
+				a.chn_no as "chnNo",
+				a.chn_name as "chnName",
+				a.currency_type as "currencyType",
+				b.ye_id as "yeId",
+				b.total_amount as "totalAmount"
+			from sac_channel_param a,
+			fin_ye b,
+			fin_code4 c
+			where 
+				   a.chn_no = substr(b.ye_id, 7, 19)
+				   and c.code4_id = substr(b.ye_id, 26, 2)
+	    		   and a.currency_type = c.code_value
+			and length(b.ye_id) = 27
+			and a.bank_node_code = #bankNodeCode#
+			and a.CURRENCY_TYPE = #currencyType#
+			and a.chn_no like '9%'
+			AND chn_code not in('UPOP000','CFCA000')
+		 order by a.chn_no desc
+	</select>
+  	
+</sqlMap>

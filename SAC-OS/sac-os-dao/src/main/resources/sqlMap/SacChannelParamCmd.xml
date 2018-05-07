@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="SacChannelParamCmd" class="net.easipay.cbp.model.SacChannelParamCmd">
+		<result property="id" column="id" />
+		<result property="chnNo" column="chn_no" />
+		<result property="chnName" column="chn_name" />
+		<result property="chnCode" column="chn_code" />
+		<result property="chnType" column="chn_type" />
+		<result property="bankNodeCode" column="bank_node_code" />
+		<result property="sacBankName" column="sac_bank_name" />
+		<result property="accountName" column="account_name" />
+		<result property="bankAcc" column="bank_acc" />
+		<result property="craccBankCode" column="cracc_bank_code" />
+		<result property="currencyType" column="currency_type" />
+		<result property="sacPeriod" column="sac_period" />
+		<result property="costRate" column="cost_rate" />
+		<result property="costComWay" column="cost_com_way" />
+		<result property="costSacWay" column="cost_sac_way" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="isValidFlag" column="is_valid_flag" />
+		<result property="chnFeeFlag" column="chn_fee_flag" />
+		<result property="memo" column="memo" />
+		<result property="cmdState" column="cmd_state" />
+		<result property="cmdMemo" column="cmd_memo" />
+	</resultMap>
+
+	<insert id="insertSacChannelParamCmd" parameterClass="net.easipay.cbp.model.SacChannelParamCmd">
+		INSERT INTO SAC_CHANNEL_PARAM_CMD(
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="id"> id </isNotEmpty>
+			<isNotEmpty prepend="," property="chnNo"> chn_no </isNotEmpty>
+			<isNotEmpty prepend="," property="chnName"> chn_name  </isNotEmpty>
+			<isNotEmpty prepend="," property="chnCode"> chn_code </isNotEmpty>
+			<isNotEmpty prepend="," property="chnType"> chn_type </isNotEmpty>
+			<isNotEmpty prepend="," property="bankNodeCode"> bank_node_code</isNotEmpty>
+			<isNotEmpty prepend="," property="sacBankName"> sac_bank_name </isNotEmpty>
+			<isNotEmpty prepend="," property="accountName"> account_name  </isNotEmpty>
+			<isNotEmpty prepend="," property="bankAcc"> bank_acc </isNotEmpty>
+			<isNotEmpty prepend="," property="craccBankCode"> cracc_bank_code </isNotEmpty>
+			<isNotEmpty prepend="," property="currencyType"> currency_type </isNotEmpty>
+			<isNotEmpty prepend="," property="sacPeriod"> sac_period </isNotEmpty>
+			<isNotEmpty prepend="," property="costRate"> cost_rate </isNotEmpty>
+			<isNotEmpty prepend="," property="costComWay"> cost_com_way </isNotEmpty>
+			<isNotEmpty prepend="," property="costSacWay"> cost_sac_way </isNotEmpty>
+			<isNotEmpty prepend="," property="createTime"> create_time </isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> update_time </isNotEmpty>
+			<isNotEmpty prepend="," property="isValidFlag"> is_valid_flag </isNotEmpty>
+			<isNotEmpty prepend="," property="chnFeeFlag"> chn_fee_flag </isNotEmpty>
+			<isNotEmpty prepend="," property="memo"> memo</isNotEmpty>
+			<isNotEmpty prepend="," property="cmdState"> cmd_state</isNotEmpty>
+			<isNotEmpty prepend="," property="cmdMemo"> cmd_memo</isNotEmpty>
+		</dynamic>
+		) VALUES (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="id"> #id# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnNo"> #chnNo# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnName"> #chnName# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnCode"> #chnCode# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnType"> #chnType# </isNotEmpty>
+			<isNotEmpty prepend="," property="bankNodeCode"> #bankNodeCode# </isNotEmpty>
+			<isNotEmpty prepend="," property="sacBankName"> #sacBankName# </isNotEmpty>
+			<isNotEmpty prepend="," property="accountName"> #accountName# </isNotEmpty>
+			<isNotEmpty prepend="," property="bankAcc"> #bankAcc# </isNotEmpty>
+			<isNotEmpty prepend="," property="craccBankCode"> #craccBankCode# </isNotEmpty>
+			<isNotEmpty prepend="," property="currencyType"> #currencyType# </isNotEmpty>
+			<isNotEmpty prepend="," property="sacPeriod"> #sacPeriod# </isNotEmpty>
+			<isNotEmpty prepend="," property="costRate"> #costRate# </isNotEmpty>
+			<isNotEmpty prepend="," property="costComWay"> #costComWay# </isNotEmpty>
+			<isNotEmpty prepend="," property="costSacWay"> #costSacWay# </isNotEmpty>
+			<isNotEmpty prepend="," property="createTime"> #createTime# </isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> #updateTime# </isNotEmpty>
+			<isNotEmpty prepend="," property="isValidFlag"> #isValidFlag# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnFeeFlag"> #chnFeeFlag# </isNotEmpty>
+			<isNotEmpty prepend="," property="memo"> #memo# </isNotEmpty>
+			<isNotEmpty prepend="," property="cmdState"> #cmdState# </isNotEmpty>
+			<isNotEmpty prepend="," property="cmdMemo"> #cmdMemo# </isNotEmpty>
+		</dynamic>
+		)
+	</insert>
+
+	<update id="updateSacChannelParamCmd" parameterClass="net.easipay.cbp.model.SacChannelParamCmd">
+		UPDATE SAC_CHANNEL_PARAM_CMD
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="chnNo"> chn_no = #chnNo# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnName"> chn_name = #chnName# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnCode"> chn_code = #chnCode# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnType"> chn_type = #chnType# </isNotEmpty>
+			<isNotEmpty prepend="," property="bankNodeCode"> bank_node_code = #bankNodeCode# </isNotEmpty>
+			<isNotEmpty prepend="," property="sacBankName"> sac_bank_name = #sacBankName# </isNotEmpty>
+			<isNotEmpty prepend="," property="accountName"> account_name = #accountName# </isNotEmpty>
+			<isNotEmpty prepend="," property="bankAcc"> bank_acc = #bankAcc# </isNotEmpty>
+			<isNotEmpty prepend="," property="craccBankCode"> cracc_bank_code = #craccBankCode# </isNotEmpty>
+			<isNotEmpty prepend="," property="currencyType"> currency_type = #currencyType# </isNotEmpty>
+			<isNotEmpty prepend="," property="sacPeriod"> sac_period = #sacPeriod# </isNotEmpty>
+			<isNotEmpty prepend="," property="costRate"> cost_rate = #costRate# </isNotEmpty>
+			<isNotEmpty prepend="," property="costComWay"> cost_com_way = #costComWay# </isNotEmpty>
+			<isNotEmpty prepend="," property="costSacWay"> cost_sac_way = #costSacWay# </isNotEmpty>
+			<isNotEmpty prepend="," property="createTime"> create_time = #createTime# </isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> update_time = #updateTime# </isNotEmpty>
+			<isNotEmpty prepend="," property="isValidFlag"> is_valid_flag = #isValidFlag# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnFeeFlag"> chn_fee_flag = #chnFeeFlag# </isNotEmpty>
+			<isNotEmpty prepend="," property="memo"> memo = #memo# </isNotEmpty>
+			<isNotEmpty prepend="," property="cmdState"> cmd_state = #cmdState# </isNotEmpty>
+			<isNotEmpty prepend="," property="cmdMemo"> cmd_memo = #cmdMemo# </isNotEmpty>
+		</dynamic>
+		WHERE ID = #id#
+	</update>
+
+	<delete id="deleteSacChannelParamCmd">
+		Delete from SAC_CHANNEL_PARAM_CMD WHERE ID = #id#
+    </delete>
+
+	<select id="selectSacChannelParamCmd" parameterClass="java.util.Map" resultMap="SacChannelParamCmd">
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT
+		id,
+		chn_no,
+		bank_node_code,
+		chn_Code,
+		chn_Type,
+		chn_name,
+		sac_bank_name,
+		account_name,
+		bank_acc,
+		cracc_bank_code,
+		currency_type,
+		sac_period,
+		cost_rate,
+		cost_com_way,
+		cost_sac_way,
+		create_time,
+		update_time,
+		is_valid_flag,
+		chn_fee_flag,
+		memo,
+		cmd_state,
+		cmd_memo
+		FROM SAC_CHANNEL_PARAM_CMD
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id"> id = #id#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnNo"> chn_no = #chnNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="bankNodeCode"> bank_node_code like '%$bankNodeCode$%'</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnName"> chn_name like '%$chnName$%'  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacBankName"> sac_bank_name like '%$sacBankName$%'  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="accountName"> account_name like '%$accountName$%' </isNotEmpty>
+			<isNotEmpty prepend="AND" property="bankAcc"> bank_acc =#bankAcc# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccBankCode"> cracc_bank_code=#craccBankCode# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="currencyType"> currency_type=#currencyType# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacPeriod"> sac_period=#sacPeriod# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costRate"> cost_rate=#costRate# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costComWay"> cost_com_way=#costComWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costSacWay"> cost_sac_way=#costSacWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime"> create_time=#createTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateTime"> update_time=#updateTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="isValidFlag"> is_valid_flag=#isValidFlag# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo"> memo=#memo#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnCode"> chn_code like '%$chnCode$%'</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnType"> chn_type=#chnType#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmdState"> cmd_state=#cmdState#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				create_time >= to_date(#startDate# ,'yyyyMMdd')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				create_time < to_date(#endDate# ,'yyyyMMdd') +1 
+				]]>
+			</isNotEmpty>
+		</dynamic>
+		order by create_time desc
+		) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]>
+	</select>
+
+	<select id="selectSacChannelParamCmdCount" resultClass="java.lang.Integer">
+		SELECT COUNT(1) C FROM SAC_CHANNEL_PARAM_CMD
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="id"> id = #id#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnNo"> chn_no = #chnNo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="bankNodeCode"> bank_node_code like '%$bankNodeCode$%'</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnName"> chn_name like '%$chnName$%'  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacBankName"> sac_bank_name like '%$sacBankName$%'  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="accountName"> account_name like '%$accountName$%' </isNotEmpty>
+			<isNotEmpty prepend="AND" property="bankAcc"> bank_acc =#bankAcc# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="craccBankCode"> cracc_bank_code=#craccBankCode# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="currencyType"> currency_type=#currencyType# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="sacPeriod"> sac_period=#sacPeriod# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costRate"> cost_rate=#costRate# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costComWay"> cost_com_way=#costComWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="costSacWay"> cost_sac_way=#costSacWay# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime"> create_time=#createTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateTime"> update_time=#updateTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="isValidFlag"> is_valid_flag=#isValidFlag# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo"> memo=#memo#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnCode"> chn_code like '%$chnCode$%'</isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnType"> chn_type=#chnType#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="cmdState"> cmd_state=#cmdState#</isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				create_time >= to_date(#startDate# ,'yyyyMMdd')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				create_time < to_date(#endDate# ,'yyyyMMdd')+1  
+				]]>
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="selectSacChannelParamCmdById" parameterClass="java.lang.Long" resultMap="SacChannelParamCmd">
+		SELECT
+		id,
+		chn_no,
+		bank_node_code,
+		chn_Code,
+		chn_Type,
+		chn_name,
+		sac_bank_name,
+		account_name,
+		bank_acc,
+		cracc_bank_code,
+		currency_type,
+		sac_period,
+		cost_rate,
+		cost_com_way,
+		cost_sac_way,
+		create_time,
+		update_time,
+		is_valid_flag,
+		chn_fee_flag,
+		memo,
+		cmd_state,
+		cmd_memo
+		FROM SAC_CHANNEL_PARAM_CMD
+		where id = #id#
+	</select>
+	
+</sqlMap>

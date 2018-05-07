@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacRecFileParam" class="net.easipay.cbp.model.SacRecFileParam">
+	 <result property="id" column="ID" />
+	 <result property="chnCode" column="chn_code" />
+	 <result property="chnName" column="CHN_NAME" />
+	 <result property="bankNodeCode" column="BANK_NODE_CODE" />
+	 <result property="recFlag" column="REC_FLAG" />
+	 <result property="payconType" column="PAYCON_TYPE" />
+	 <result property="isValidFlag" column="IS_VALID_FLAG" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="memo" column="MEMO" />
+	 <result property="recType" column="REC_TYPE" />
+ </resultMap>
+ 
+ <resultMap id="SacRecFileParam2" class="net.easipay.cbp.model.SacRecFileParam">
+	 <result property="chnCode" column="chn_code" />
+	 <result property="chnName" column="CHN_NAME" />
+	 <result property="bankNodeCode" column="BANK_NODE_CODE" />
+	 <result property="payconType" column="PAYCON_TYPE" />
+ </resultMap>
+ 
+   <insert id="insertSacRecFileParam" parameterClass="net.easipay.cbp.model.SacRecFileParam">
+        INSERT INTO SAC_REC_FILE_PARAM ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="," property="id">  ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnName">  CHN_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="recFlag">  REC_FLAG  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  PAYCON_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="isValidFlag">  IS_VALID_FLAG  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO  </isNotEmpty>
+            <isNotEmpty prepend="," property="recType">  REC_TYPE  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnCode">  #chnCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnName">  #chnName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankNodeCode">  #bankNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recFlag">  #recFlag#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payconType">  #payconType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="isValidFlag">  #isValidFlag#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recType">  #recType#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacRecFileParam" resultMap="SacRecFileParam">  
+        SELECT 
+	       ID,
+	       chn_code,
+	       CHN_NAME,
+	       BANK_NODE_CODE,
+	       REC_FLAG,
+	       PAYCON_TYPE,
+	       IS_VALID_FLAG,
+	       CREATE_TIME,
+	       MEMO,
+	       REC_TYPE
+         FROM SAC_REC_FILE_PARAM
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacRecFileParam" parameterClass="java.util.Map" resultMap="SacRecFileParam2">  
+      SELECT 
+	       distinct
+	       chn_code,
+	       CHN_NAME,
+	       BANK_NODE_CODE,
+	       PAYCON_TYPE
+	  FROM SAC_REC_FILE_PARAM
+	  where chn_code is not null 
+	  	  and  IS_VALID_FLAG = '1'
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>   
+          <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="chnName">  CHN_NAME = #chnName#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="recFlag">  REC_FLAG = #recFlag#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="recType">  REC_TYPE = #recType#  </isNotEmpty> 
+		order by paycon_type,chn_code
+  </select>
+  <update id="updateSacRecFileParam" parameterClass="net.easipay.cbp.model.SacRecFileParam">  
+      UPDATE SAC_REC_FILE_PARAM        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnName">  CHN_NAME = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recFlag">  REC_FLAG = #recFlag#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="isValidFlag">  IS_VALID_FLAG = #isValidFlag#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recType">  REC_TYPE = #recType#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacRecFileParam">  
+        Delete   
+          from SAC_REC_FILE_PARAM WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacRecFileParam">  
+        Delete 
+        from SAC_REC_FILE_PARAM
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacRecFileParamCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_REC_FILE_PARAM
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  CHN_NAME = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recFlag">  REC_FLAG = #recFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="isValidFlag">  IS_VALID_FLAG = #isValidFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recType">  REC_TYPE = #recType#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty> 
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacRecFileParam" parameterClass="java.util.Map" resultMap="SacRecFileParam"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       ID,
+	       chn_code,
+	       CHN_NAME,
+	       BANK_NODE_CODE,
+	       REC_FLAG,
+	       PAYCON_TYPE,
+	       IS_VALID_FLAG,
+	       CREATE_TIME,
+	       MEMO,
+	       REC_TYPE
+	       from SAC_REC_FILE_PARAM  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  CHN_NAME = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recFlag">  REC_FLAG = #recFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="isValidFlag">  IS_VALID_FLAG = #isValidFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recType">  REC_TYPE = #recType#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> modify_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

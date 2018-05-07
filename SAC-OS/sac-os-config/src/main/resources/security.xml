@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+      http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+    
+    <!-- http 过滤器 -->
+	<sec:http pattern="/images/**" security="none"></sec:http>
+	<sec:http pattern="/htmls/**" security="none"></sec:http>
+	<sec:http pattern="/styles/**" security="none"></sec:http>
+	<sec:http pattern="/scripts/**" security="none"></sec:http>
+	<sec:http pattern="/resourceManageTree" security="none"></sec:http>
+	<sec:http pattern="/interface/**" security="none"></sec:http>
+	<sec:http pattern="/favicon.ico" security="none"></sec:http>
+	
+	
+	<sec:http entry-point-ref="casEntryPoint" access-decision-manager-ref="accessDecisionManager" access-denied-page="/htmls/denied.html">
+	    <sec:intercept-url pattern="/**" access="ROLE_USER"/>
+	    <sec:custom-filter ref="casFilter" position="CAS_FILTER"/>
+	    <sec:custom-filter ref="singleLogoutFilter" before="LOGOUT_FILTER"/>
+	    <sec:custom-filter ref="requestSingleLogoutFilter" position="LOGOUT_FILTER"/>
+	    <sec:custom-filter ref="timeoutFilter" after="LOGOUT_FILTER"/>
+	    <sec:custom-filter ref="savedRequestFilter" before="CAS_FILTER"/>
+	</sec:http>	
+	
+	<!-- 自定义验证管理器 -->
+	<sec:authentication-manager alias="authenticationManager">
+	   <sec:authentication-provider ref="casAuthenticationProvider"/>
+	</sec:authentication-manager>
+	
+	<!-- CAS验证过滤器 -->
+	<bean id="casFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+	  <property name="authenticationManager" ref="authenticationManager"/>
+	  <property name="authenticationSuccessHandler">
+	     <bean class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+	         <property name="redirectStrategy">
+	            <bean class="net.easipay.cbp.cas.ParametersRedirectStrategy">
+	                <property name="parameters">
+	                    <map>
+	                      <entry key="requestType" value="innerType"/>
+	                    </map>
+	                </property>
+	            </bean>
+	         </property>
+	     </bean>
+	  </property>
+	  <property name="filterProcessesUrl" value="/j_spring_cas_security_check"/>
+	</bean>
+	
+	<!-- 超时过滤器  -->
+	<bean id="timeoutFilter" class="net.easipay.cbp.cas.filter.CbpTimeoutAndSSIDFilter">
+	    <property name="timeoutUrl" value="${cas.timeout.url}"/>
+	    <property name="filterProcessesUrl" value="/j_spring_cas_security_check"/>
+	</bean>
+	
+	<!-- request保存过滤器 -->
+	<bean id="savedRequestFilter" class="net.easipay.cbp.cas.filter.CbpSavedRequestFilter">
+	  <property name="filterProcessesUrl" value="/j_spring_cas_security_check"/>
+	</bean>
+	
+	<!-- 目标应用链接配置 -->
+	<bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+        <property name="service" value="${cas.currentService}/j_spring_cas_security_check"/>
+        <property name="sendRenew" value="false"/>
+    </bean>
+	
+	<!-- CAS 验证的核心代码 -->
+	<bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+    <property name="authenticationUserDetailsService" ref="userAuthService"/>
+    <property name="serviceProperties" ref="serviceProperties" />
+    <property name="ticketValidator">
+      <bean class="net.easipay.cbp.cas.validation.BalancedCas20ServiceTicketValidator">
+        <constructor-arg index="0" value="${cas.valid}" />
+        <property name="encoding" value = "UTF-8" />
+      </bean>
+    </property>
+    <property name="key" value="an_id_for_this_auth_provider_only"/>
+  </bean>
+  
+  <!-- CAS验证失败后跳转处理 -->
+   <bean id="casEntryPoint"
+      class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+	  <property name="loginUrl" value="${cas.url}/login"/>
+	  <property name="serviceProperties" ref="serviceProperties"/>
+	</bean>
+	
+	<!-- 用户验证后,组装用户信息的类 -->
+	<bean id="userAuthService" class="net.easipay.cbp.cas.auth.CbpAuthenticationUserDetailService">
+	   <property name="dicCode" value="SAC000"/>
+	   <property name="abstractUserInfoService" ref="abstractUserInfoService"/>
+<!-- 	   <property name="messageSender" ref="authMsgSender"/>
+	   <property name="orgMessageSender" ref="orgInfoMsgSender"/> -->
+	</bean>
+	<bean id="abstractUserInfoService" class="net.easipay.cbp.cas.message.UserInfoServiceSimple">
+    </bean>
+	
+	<!-- 授权管理器,使用的是所有投票器全部验证通过的策略 -->
+	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased">
+	   <constructor-arg>
+	       <list>
+	          <bean class="org.springframework.security.access.vote.RoleVoter"/>
+	          <bean class="net.easipay.cbp.cas.access.UrlMacherVoter"/>
+	       </list>
+	   </constructor-arg>
+	</bean>
+	
+	<bean id="requestFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+	     <property name="connectTimeout" value="10000"/>
+         <property name="readTimeout" value="20000"/>
+	</bean>
+    
+     <!-- 用户信息获取接口 -->
+<!--     <bean id="authMsgSender" class="net.easipay.cbp.cas.message.UserAuthritiesMenuMessageSender">
+        <property name="uri" value="${uc.url}/resourceManageTree"/>
+        <property name="acceptMediaType" value="application/json"/>
+        <property name="requestFactory" ref="requestFactory"/>
+    </bean>
+    
+    商户信息获取接口
+    <bean id="orgInfoMsgSender" class="net.easipay.cbp.cas.message.OrgInfoMessageSender">
+        <property name="uri" value="${uc.url}/selectOrgInfoById"/>
+        <property name="acceptMediaType" value="application/json"/>
+        <property name="requestFactory" ref="requestFactory"/>
+    </bean> -->
+    
+    <!-- 登出 -->
+    <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
+    
+    <bean id="requestSingleLogoutFilter"
+	      class="org.springframework.security.web.authentication.logout.LogoutFilter">
+	 <!--  <constructor-arg value="${cas.url}/logout"/> -->
+	  <constructor-arg value="${cas.url}/logout?service=${cas.currentService}"/>	 
+	  <constructor-arg>
+	    <bean class=
+	          "org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+	  </constructor-arg>
+	  <property name="filterProcessesUrl" value="/j_spring_cas_security_logout"/>
+	</bean>
+</beans>

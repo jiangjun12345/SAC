@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacDepositDetail" class="net.easipay.cbp.model.SacDepositDetail">
+	 <result property="oflDepositId" column="OFL_DEPOSIT_ID" />
+	 <result property="oflDepositBatchId" column="OFL_DEPOSIT_BATCH_ID" />
+	 <result property="batchSerialNo" column="BATCH_SERIAL_NO" />
+	 <result property="trxSerialNo" column="TRX_SERIAL_NO" />
+	 <result property="applyCode" column="APPLY_CODE" />
+	 <result property="payCurrency" column="PAY_CURRENCY" />
+	 <result property="payAmount" column="PAY_AMOUNT" />
+	 <result property="dbtCode" column="DBT_CODE" />
+	 <result property="draccNo" column="DRACC_NO" />
+	 <result property="draccName" column="DRACC_NAME" />
+	 <result property="draccBankName" column="DRACC_BANK_NAME" />
+	 <result property="bankSerialNo" column="BANK_SERIAL_NO" />
+	 <result property="bankTrxDate" column="BANK_TRX_DATE" />
+	 <result property="dealState" column="DEAL_STATE" />
+	 <result property="chargeApplyId" column="CHARGE_APPLY_ID" />
+	 <result property="checkState" column="CHECK_STATE" />
+	 <result property="dealMemo" column="DEAL_MEMO" />
+	 <result property="operTime" column="OPER_TIME" />
+	 <result property="auditorId" column="AUDITOR_ID" />
+	 <result property="auditorName" column="AUDITOR_NAME" />
+	 <result property="auditTime" column="AUDIT_TIME" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="lastUpdateTime" column="LAST_UPDATE_TIME" />
+	 <result property="operatorId" column="OPERATOR_ID" />
+	 <result property="operatorName" column="OPERATOR_NAME" />
+	 <result property="memo" column="MEMO" />
+ </resultMap>
+   <insert id="insertSacDepositDetail" parameterClass="net.easipay.cbp.model.SacDepositDetail">
+        INSERT INTO SAC_DEPOSIT_DETAIL ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="oflDepositId">  OFL_DEPOSIT_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="oflDepositBatchId">  OFL_DEPOSIT_BATCH_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  TRX_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyCode">  APPLY_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="dbtCode">  DBT_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankName">  DRACC_BANK_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  BANK_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankTrxDate">  BANK_TRX_DATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealState">  DEAL_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="chargeApplyId">  CHARGE_APPLY_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="checkState">  CHECK_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealMemo">  DEAL_MEMO  </isNotEmpty>
+            <isNotEmpty prepend="," property="operTime">  OPER_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  LAST_UPDATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  MEMO  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="oflDepositId">  #oflDepositId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="oflDepositBatchId">  #oflDepositBatchId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchSerialNo">  #batchSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxSerialNo">  #trxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyCode">  #applyCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payCurrency">  #payCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="dbtCode">  #dbtCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccNo">  #draccNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccName">  #draccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccBankName">  #draccBankName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankSerialNo">  #bankSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankTrxDate">  #bankTrxDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="dealState">  #dealState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chargeApplyId">  #chargeApplyId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="checkState">  #checkState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="dealMemo">  #dealMemo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operTime">  #operTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditorId">  #auditorId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditorName">  #auditorName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="auditTime">  #auditTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="lastUpdateTime">  #lastUpdateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operatorId">  #operatorId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operatorName">  #operatorName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacDepositDetail" resultMap="SacDepositDetail">  
+        SELECT 
+	       OFL_DEPOSIT_ID,
+	       OFL_DEPOSIT_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       TRX_SERIAL_NO,
+	       APPLY_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       DBT_CODE,
+	       DRACC_NO,
+	       DRACC_NAME,
+	       DRACC_BANK_NAME,
+	       BANK_SERIAL_NO,
+	       BANK_TRX_DATE,
+	       DEAL_STATE,
+	       CHARGE_APPLY_ID,
+	       CHECK_STATE,
+	       DEAL_MEMO,
+	       OPER_TIME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       MEMO
+         FROM SAC_DEPOSIT_DETAIL
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacDepositDetail" parameterClass="java.util.Map" resultMap="SacDepositDetail">  
+      SELECT 
+	       OFL_DEPOSIT_ID,
+	       OFL_DEPOSIT_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       TRX_SERIAL_NO,
+	       APPLY_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       DBT_CODE,
+	       DRACC_NO,
+	       DRACC_NAME,
+	       DRACC_BANK_NAME,
+	       BANK_SERIAL_NO,
+	       BANK_TRX_DATE,
+	       DEAL_STATE,
+	       CHARGE_APPLY_ID,
+	       CHECK_STATE,
+	       DEAL_MEMO,
+	       OPER_TIME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       MEMO
+	  FROM SAC_DEPOSIT_DETAIL
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="oflDepositId">  OFL_DEPOSIT_ID = #oflDepositId#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="oflDepositBatchId">  OFL_DEPOSIT_BATCH_ID = #oflDepositBatchId#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyCode">  APPLY_CODE = #applyCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="bankSerialNo">  BANK_SERIAL_NO = #bankSerialNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="bankTrxDate">  BANK_TRX_DATE = #bankTrxDate#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="dealState">  DEAL_STATE = #dealState#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="checkState">  CHECK_STATE = #checkState#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="dealMemo">  DEAL_MEMO = #dealMemo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="operTime">  OPER_TIME = #operTime#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+		  <isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+				create_time >= to_date(#beginDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				create_time < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+        </dynamic>
+  </select>
+  <update id="updateSacDepositDetail" parameterClass="net.easipay.cbp.model.SacDepositDetail">  
+      UPDATE SAC_DEPOSIT_DETAIL        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="oflDepositId">  OFL_DEPOSIT_ID = #oflDepositId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="oflDepositBatchId">  OFL_DEPOSIT_BATCH_ID = #oflDepositBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyCode">  APPLY_CODE = #applyCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  BANK_SERIAL_NO = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankTrxDate">  BANK_TRX_DATE = #bankTrxDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealState">  DEAL_STATE = #dealState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="checkState">  CHECK_STATE = #checkState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealMemo">  DEAL_MEMO = #dealMemo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operTime">  OPER_TIME = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+        </dynamic>
+       WHERE TRX_SERIAL_NO = #trxSerialNo#
+  </update>
+  <delete id="deleteSacDepositDetail">  
+        Delete   
+          from SAC_DEPOSIT_DETAIL WHERE
+         OFL_DEPOSIT_ID = #oflDepositId#
+  </delete>
+  <delete id="deleteListSacDepositDetail">  
+        Delete 
+        from SAC_DEPOSIT_DETAIL
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacDepositDetailCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_DEPOSIT_DETAIL
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="oflDepositId">  OFL_DEPOSIT_ID = #oflDepositId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oflDepositBatchId">  OFL_DEPOSIT_BATCH_ID = #oflDepositBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyCode">  APPLY_CODE like '%$applyCode$%'   </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME like '%$draccName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  BANK_SERIAL_NO = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankTrxDate">  BANK_TRX_DATE = #bankTrxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealState">  DEAL_STATE = #dealState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="checkState">  CHECK_STATE = #checkState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealMemo">  DEAL_MEMO = #dealMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operTime">  OPER_TIME = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="startDate"> 
+			<![CDATA[ 
+				create_time >= to_date(#startDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				create_time < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacDepositDetail" parameterClass="java.util.Map" resultMap="SacDepositDetail"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       OFL_DEPOSIT_ID,
+	       OFL_DEPOSIT_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       TRX_SERIAL_NO,
+	       APPLY_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       DBT_CODE,
+	       DRACC_NO,
+	       DRACC_NAME,
+	       DRACC_BANK_NAME,
+	       BANK_SERIAL_NO,
+	       BANK_TRX_DATE,
+	       DEAL_STATE,
+	       CHARGE_APPLY_ID,
+	       CHECK_STATE,
+	       DEAL_MEMO,
+	       OPER_TIME,
+	       AUDITOR_ID,
+	       AUDITOR_NAME,
+	       AUDIT_TIME,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       OPERATOR_ID,
+	       OPERATOR_NAME,
+	       MEMO
+	       from SAC_DEPOSIT_DETAIL  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="oflDepositId">  OFL_DEPOSIT_ID = #oflDepositId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oflDepositBatchId">  OFL_DEPOSIT_BATCH_ID = #oflDepositBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyCode">  APPLY_CODE like '%$applyCode$%'   </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dbtCode">  DBT_CODE = #dbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME like '%$draccName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  BANK_SERIAL_NO = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankTrxDate">  BANK_TRX_DATE = #bankTrxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealState">  DEAL_STATE = #dealState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="checkState">  CHECK_STATE = #checkState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealMemo">  DEAL_MEMO = #dealMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operTime">  OPER_TIME = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorId">  AUDITOR_ID = #auditorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditorName">  AUDITOR_NAME = #auditorName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="auditTime">  AUDIT_TIME = #auditTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorId">  OPERATOR_ID = #operatorId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operatorName">  OPERATOR_NAME = #operatorName#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+			<![CDATA[ 
+				create_time >= to_date(#startDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				create_time < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+			
+			
+          </dynamic> 
+ 		ORDER BY BANK_TRX_DATE DESC , OFL_DEPOSIT_ID DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

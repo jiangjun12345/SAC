@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sac-job-page">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="sac-job-view-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-job-view/sac-job-view">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-job-core-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-job-core/sac-job-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-job-dao-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-job-dao/sac-job-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-job-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-job-model/sac-job-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-job-config-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-job-config/sac-job-config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-job-util-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-job-util/sac-job-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/sac-job-page/target/classes"/>
+        <property name="context-root" value="job-${warName.suf}-${maven.build.timestamp}-1.0.1"/>
+    </wb-module>
+</project-modules>

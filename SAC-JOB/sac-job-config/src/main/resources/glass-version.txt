@@ -1,0 +1,2 @@
+application.version=0.0.5
+compilation.date=2014-09-07 22:26:11

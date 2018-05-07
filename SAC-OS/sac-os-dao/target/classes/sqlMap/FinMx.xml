@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinMx" class="net.easipay.cbp.model.FinMx">
+	 <result property="mxId" column="MX_ID" />
+	 <result property="pzId" column="PZ_ID" />
+	 <result property="codeId" column="CODE_ID" />
+	 <result property="direction" column="DIRECTION" />
+	 <result property="digest" column="DIGEST" />
+	 <result property="mxTime" column="MX_TIME" />
+	 <result property="tradeTime" column="TRADE_TIME" />
+	 <result property="busiType" column="BUSI_TYPE" />
+	 <result property="serno" column="SERNO" />
+	 <result property="openBal" column="OPEN_BAL" />
+	 <result property="pzNo" column="PZ_NO" />
+	 <result property="closeBal" column="CLOSE_BAL" />
+	 <result property="fDebit" column="FDEBIT" />
+	 <result property="fCredit" column="FCREDIT" />
+	 <result property="isShow" column="IS_SHOW" />
+	 <result property="amount" column="AMOUNT" />
+	 <result property="taskId" column="TASK_ID" />
+	 <result property="trxCode" column="TRX_CODE" />
+	 <result property="gains" column="GAINS" />
+ </resultMap>
+  
+   <select id="getFinMx" resultMap="FinMx">  
+        SELECT 
+	       MX_ID,
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       DIGEST,
+	       MX_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       OPEN_BAL,
+	       PZ_NO,
+	       CLOSE_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       IS_SHOW,
+	       AMOUNT,
+	       TASK_ID,
+	       TRX_CODE,
+	       GAINS
+         FROM FIN_MX
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listFinMx" parameterClass="java.util.Map" resultMap="FinMx">  
+      SELECT 
+	       MX_ID,
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       DIGEST,
+	       MX_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       OPEN_BAL,
+	       PZ_NO,
+	       CLOSE_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       IS_SHOW,
+	       AMOUNT,
+	       TASK_ID,
+	       TRX_CODE,
+	       GAINS
+	  FROM FIN_MX
+        <dynamic prepend="WHERE">
+           <isNotEmpty prepend="AND" property="mxId">  MX_ID = #mxId#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="pzId">  PZ_ID = #pzId#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="direction">  DIRECTION = #direction#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="digest">  DIGEST = #digest#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="mxTime">  MX_TIME = #mxTime#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ TRADE_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+           <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ TRADE_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+           <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="serno">  SERNO = #serno#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="openBal">  OPEN_BAL = #openBal#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="pzNo">  PZ_NO = #pzNo#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="closeBal">  CLOSE_BAL = #closeBal#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="fDebit">  FDEBIT = #fDebit#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="fCredit">  FCREDIT = #fCredit#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="isShow">  IS_SHOW = #isShow#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="amount">  AMOUNT = #amount#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="gains">  GAINS = #gains#  </isNotEmpty>
+         </dynamic>
+		  ORDER BY MX_TIME DESC
+  </select>
+  
+   <select id="getFinMxCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_MX
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="mxId">  MX_ID = #mxId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzId">  PZ_ID = #pzId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="mxTime">  MX_TIME = #mxTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ MX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ MX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="openBal">  OPEN_BAL = #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzNo">  PZ_NO = #pzNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="closeBal">  CLOSE_BAL = #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fDebit">  FDEBIT = #fDebit#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fCredit">  FCREDIT = #fCredit#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="isShow">  IS_SHOW = #isShow#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="gains">  GAINS = #gains#  </isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitFinMx" parameterClass="java.util.Map" resultMap="FinMx"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       MX_ID,
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       DIGEST,
+	       MX_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       OPEN_BAL,
+	       PZ_NO,
+	       CLOSE_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       IS_SHOW,
+	       AMOUNT,
+	       TASK_ID,
+	       TRX_CODE,
+	       GAINS
+	       from FIN_MX  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="mxId">  MX_ID = #mxId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzId">  PZ_ID = #pzId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="mxTime">  MX_TIME = #mxTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ MX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+           <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ MX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+           <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="openBal">  OPEN_BAL = #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzNo">  PZ_NO = #pzNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="closeBal">  CLOSE_BAL = #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fDebit">  FDEBIT = #fDebit#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fCredit">  FCREDIT = #fCredit#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="isShow">  IS_SHOW = #isShow#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="gains">  GAINS = #gains#  </isNotEmpty>
+          </dynamic>
+ 		ORDER BY MX_TIME DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+  	<select id="getFinMxCollectCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM (
+			  select 
+				   f.mx_id,
+				   f.pz_id,
+			       f.code_id,
+			       f.direction,
+			       f.digest,
+			       f.mx_time,
+			       f.trade_time,
+			       f.busi_type,
+			       f.serno,
+			       f.open_bal,
+			       f.pz_no,
+			       f.close_bal,
+			       f.fdebit,
+			       f.fcredit,
+			       f.is_show,
+			       f.amount,
+			       f.task_id,
+			       f.trx_code,
+			       f.gains
+			  from fin_mx f, sac_otrx_info o
+			 where f.serno = o.trx_serial_no
+			   and o.trx_type != '3411'
+			<isNotEmpty prepend="AND" property="codeId">  f.CODE_ID = #codeId#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			union all
+			select
+				min(f.mx_id) as mx_id,
+				min(f.pz_id) as pz_id,
+			    min(f.code_id) as code_id, 
+			    min(f.direction) as direction,
+			    min(f.digest) as digest,
+			    min(f.mx_time) as mx_time,
+			    min(f.trade_time) as trade_time,
+			    min(f.busi_type) as busi_type,
+			    o.trx_batch_no as serno,
+			    min(f.open_bal) as open_bal,
+			    min(f.pz_no) as pz_no,
+			    max(f.close_bal) as close_bal,
+			    sum(f.fdebit) as fdebit,
+			    sum(f.fcredit) as fcredit,
+			    max(f.is_show) as is_show,
+			    sum(f.amount) as amount,
+			    min(f.task_id) as task_id,
+			    min(f.trx_code) as trx_code,
+			    min(f.gains) as gains
+			  from fin_mx f, sac_otrx_info o
+			 where f.serno = o.trx_serial_no
+			   and o.trx_type = '3411'
+			 <isNotEmpty prepend="AND" property="codeId">  f.CODE_ID = #codeId#  </isNotEmpty>
+			 <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			group by o.trx_type, o.trx_batch_no
+			 order by mx_time desc
+		)
+	</select>
+	
+	<select id="listSplitFinMxCollect" parameterClass="java.util.Map" resultMap="FinMx"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( select 
+				   f.mx_id,
+				   f.pz_id,
+			       f.code_id,
+			       f.direction,
+			       f.digest,
+			       f.mx_time,
+			       f.trade_time,
+			       f.busi_type,
+			       f.serno,
+			       f.open_bal,
+			       f.pz_no,
+			       f.close_bal,
+			       f.fdebit,
+			       f.fcredit,
+			       f.is_show,
+			       f.amount,
+			       f.task_id,
+			       f.trx_code,
+			       f.gains
+			  from fin_mx f, sac_otrx_info o
+			 where f.serno = o.trx_serial_no
+			   and o.trx_type != '3411'
+			<isNotEmpty prepend="AND" property="codeId">  f.CODE_ID = #codeId#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			union all
+			select
+				min(f.mx_id) as mx_id,
+				min(f.pz_id) as pz_id,
+			    min(f.code_id) as code_id, 
+			    min(f.direction) as direction,
+			    min(f.digest) as digest,
+			    min(f.mx_time) as mx_time,
+			    min(f.trade_time) as trade_time,
+			    min(f.busi_type) as busi_type,
+			    o.trx_batch_no as serno,
+			    min(f.open_bal) as open_bal,
+			    min(f.pz_no) as pz_no,
+			    max(f.close_bal) as close_bal,
+			    sum(f.fdebit) as fdebit,
+			    sum(f.fcredit) as fcredit,
+			    max(f.is_show) as is_show,
+			    sum(f.amount) as amount,
+			    min(f.task_id) as task_id,
+			    min(f.trx_code) as trx_code,
+			    min(f.gains) as gains
+			  from fin_mx f, sac_otrx_info o
+			 where f.serno = o.trx_serial_no
+			   and o.trx_type = '3411'
+			 <isNotEmpty prepend="AND" property="codeId">  f.CODE_ID = #codeId#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ f.MX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME >= to_date(#tradeTime#,'yyyyMMdd') ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime"> <![CDATA[ o.TRX_TIME < to_date(#tradeTime#,'yyyyMMdd')+1 ]]> </isNotEmpty>
+			group by o.trx_type, o.trx_batch_no
+			 order by mx_time desc
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

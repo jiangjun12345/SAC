@@ -1,0 +1,199 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<!-- Scheduler -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+			<!-- 定时触发前一天内部交易对账-->
+			<ref bean="innerRecProcessTrigger"/> 
+			
+			<!-- 定时触发和普通渠道交易对账:长款-->
+			<ref bean="channelRecLongTermProcessTrigger"/> 
+			
+			<!-- 定时触发普通渠道交易对账:补单-->
+			<ref bean="channelReplenishmentsProcessTrigger"/> 
+			
+			<!-- 定时触发普通渠道交易对账:短款-->
+			<ref bean="channelRecShortTermProcessTrigger"/> 
+			
+			<!-- 定时触发渠道差错交易对账:渠道差错-->
+			<ref bean="channelRecDiffProcessTrigger"/> 
+			
+			<!-- 定时触发前一天内部交易对账差错处理-->
+			<ref bean="innerRecDiffProcessTrigger"/> 
+			
+			<!-- 定时触发前一天成功对账的交易发送会计核算记账处理-->
+			<ref bean="finTaskProcessTrigger"/> 
+			
+			
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 内部对账 -->
+	<bean id="processInnerRecTrigger" class="net.easipay.cbp.view.Trigger.ProcessInnerRecController" >
+	</bean>
+	 <!-- 定义触发时间1 -->
+	<bean id="innerRecProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="innerRecProcessJobDetail" />
+		<!-- cron表达式 --><!-- 每隔5分执行一次
+		<property name="cronExpression" value="0 0/5 * * * ?" />
+		 --> 
+		<!-- cron表达式 --><!-- 每天凌晨8点执行一次 --> 
+		<property name="cronExpression" value="0 0 8 * * ?" />
+		
+	</bean>
+	<!--调度业务1 : 定义调用对象和调用对象的方法 -->  
+	<bean id="innerRecProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->  
+		<property name="targetObject" ref="processInnerRecTrigger" />
+		<!-- 调用类中的方法 --> 
+		<property name="targetMethod" value="onProcessInnerRec" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	<!-- 渠道对账:长款 -->
+	<bean id="processChannelRecLongTermTrigger" class="net.easipay.cbp.view.Trigger.ProcessChannelRecLongTermController" >
+	</bean>
+	 <!-- 定义触发时间1 -->
+	<bean id="channelRecLongTermProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="channelRecLongTermProcessJobDetail" />
+		<!-- cron表达式 --><!-- 每隔10分执行一次  
+		<property name="cronExpression" value="0 0/10 * * * ?" />
+		-->
+		<!-- cron表达式 --><!-- 每天凌晨8点15分执行一次 -->
+		<property name="cronExpression" value="0 15 8 * * ?" />
+		 
+	</bean>
+	<!--调度业务1 : 定义调用对象和调用对象的方法 -->  
+	<bean id="channelRecLongTermProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->  
+		<property name="targetObject" ref="processChannelRecLongTermTrigger" />
+		<!-- 调用类中的方法 --> 
+		<property name="targetMethod" value="onProcessChannelRecLongTerm" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	<!-- 渠道对账:补单 -->
+	<bean id="processChannelReplenishmentsTrigger" class="net.easipay.cbp.view.Trigger.ProcessReplenishmentsController" >
+	</bean>
+	 <!-- 定义触发时间1 -->
+	<bean id="channelReplenishmentsProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="channelReplenishmentsProcessJobDetail" />
+		<!-- cron表达式 --><!-- 每隔1分执行一次  
+		<property name="cronExpression" value="0 0/3 * * * ?" />
+		-->
+		<!-- cron表达式 --><!-- 每天凌晨8点30分执行一次 -->
+		<property name="cronExpression" value="0 30 8 * * ?" />
+		 
+	</bean>
+	<!--调度业务1 : 定义调用对象和调用对象的方法 -->  
+	<bean id="channelReplenishmentsProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->  
+		<property name="targetObject" ref="processChannelReplenishmentsTrigger" />
+		<!-- 调用类中的方法 --> 
+		<property name="targetMethod" value="onProcessReplenishmentsRecDiff" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<!-- 渠道对账:短款 -->
+	<bean id="processChannelRecShortTermTrigger" class="net.easipay.cbp.view.Trigger.ProcessChannelRecShortTermController" >
+	</bean>
+	 <!-- 定义触发时间1 -->
+	<bean id="channelRecShortTermProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="channelRecShortTermProcessJobDetail" />
+		<!-- cron表达式 --><!-- 每隔15分执行一次  
+		<property name="cronExpression" value="0 0/15 * * * ?" />
+		-->
+		<!-- cron表达式 --><!-- 每天凌晨8点35执行一次 --> 
+		<property name="cronExpression" value="0 35 8 * * ?" />
+		
+	</bean>
+	<!--调度业务1 : 定义调用对象和调用对象的方法 -->  
+	<bean id="channelRecShortTermProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->  
+		<property name="targetObject" ref="processChannelRecShortTermTrigger" />
+		<!-- 调用类中的方法 --> 
+		<property name="targetMethod" value="onProcessChannelRecShortTerm" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	<!-- 渠道对账:渠道差错 -->
+	<bean id="processChannelRecDiffTrigger" class="net.easipay.cbp.view.Trigger.ProcessChannelRecDiffController" >
+	</bean>
+	 <!-- 定义触发时间1 -->
+	<bean id="channelRecDiffProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="channelRecDiffProcessJobDetail" />
+		<!-- cron表达式 --><!-- 每隔20分执行一次 
+		<property name="cronExpression" value="0 0/20 * * * ?" />
+		--> 
+		<!-- cron表达式 --><!-- 每天凌晨8点40分执行一次 --> 
+		<property name="cronExpression" value="0 40 8 * * ?" />
+		
+	</bean>
+	<!--调度业务1 : 定义调用对象和调用对象的方法 -->  
+	<bean id="channelRecDiffProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->  
+		<property name="targetObject" ref="processChannelRecDiffTrigger" />
+		<!-- 调用类中的方法 --> 
+		<property name="targetMethod" value="onProcessChannelRecDiff" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	
+	  
+	<!-- 内部对账差错处理 -->
+	<bean id="processInnerRecDiffTrigger" class="net.easipay.cbp.view.Trigger.ProcessRecDiffController" >
+	</bean>
+	 <!-- 定义触发时间1 -->
+	<bean id="innerRecDiffProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="innerRecDiffProcessJobDetail" />
+		<!-- cron表达式 --><!-- 每隔25分执行一次  
+		<property name="cronExpression" value="0 0/25 * * * ?" />
+		-->
+		<!-- cron表达式 --><!-- 每天晚上22点执行一次 -->
+		<property name="cronExpression" value="0 0 22 * * ?" />
+		 
+	</bean>
+	<!--调度业务1 : 定义调用对象和调用对象的方法 -->  
+	<bean id="innerRecDiffProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->  
+		<property name="targetObject" ref="processInnerRecDiffTrigger" />
+		<!-- 调用类中的方法 --> 
+		<property name="targetMethod" value="onProcessInnerRecDiff" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<!-- 成功对账的交易发送会计核算记账处理 -->
+	<bean id="processFinTaskTrigger" class="net.easipay.cbp.view.Trigger.ProcessFinTaskController" >
+	</bean>
+	 <!-- 定义触发时间1 -->
+	<bean id="finTaskProcessTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="finTaskProcessJobDetail" />
+		<!-- cron表达式 --><!-- 每隔30分执行一次 
+		<property name="cronExpression" value="0 0/30 * * * ?" />
+		--> 
+		<!-- cron表达式 --><!-- 每天晚上23点执行一次 --> 
+		<property name="cronExpression" value="0 0 23 * * ?" />
+		
+	</bean>
+	<!--调度业务1 : 定义调用对象和调用对象的方法 -->  
+	<bean id="finTaskProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->  
+		<property name="targetObject" ref="processFinTaskTrigger" />
+		<!-- 调用类中的方法 --> 
+		<property name="targetMethod" value="onProcessFinTask" />
+		<property name="concurrent" value="false" />
+	</bean>
+</beans>
+
+
+

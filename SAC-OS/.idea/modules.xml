@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn.iml" />
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-config/fd-chn-config.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-config/fd-chn-config.iml" />
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-core/fd-chn-core.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-core/fd-chn-core.iml" />
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-dao/fd-chn-dao.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-dao/fd-chn-dao.iml" />
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-model/fd-chn-model.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-model/fd-chn-model.iml" />
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-page/fd-chn-page.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-page/fd-chn-page.iml" />
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-util/fd-chn-util.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-util/fd-chn-util.iml" />
+      <module fileurl="file://E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-view/fd-chn-view.iml" filepath="E:/B2B-CODE/PEPP-FUND/FD-CHN/fd-chn/fd-chn-view/fd-chn-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-config/sac-ac-config.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-config/sac-ac-config.iml" group="sac-ac" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-core/sac-ac-core.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-core/sac-ac-core.iml" group="sac-ac" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-dao/sac-ac-dao.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-dao/sac-ac-dao.iml" group="sac-ac" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-model/sac-ac-model.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-model/sac-ac-model.iml" group="sac-ac" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-page/sac-ac-page.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-page/sac-ac-page.iml" group="sac-ac" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-util/sac-ac-util.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-util/sac-ac-util.iml" group="sac-ac" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-view/sac-ac-view.iml" filepath="$PROJECT_DIR$/../branches/SAC-AC/2.0.1/sac-ac-view/sac-ac-view.iml" group="sac-ac" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-config/sac-fa-config.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-config/sac-fa-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-core/sac-fa-core.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-core/sac-fa-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-dao/sac-fa-dao.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-dao/sac-fa-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-model/sac-fa-model.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-model/sac-fa-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-page/sac-fa-page.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-page/sac-fa-page.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-util/sac-fa-util.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-util/sac-fa-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-view/sac-fa-view.iml" filepath="$PROJECT_DIR$/../branches/SAC-FA/2.0.1/sac-fa-view/sac-fa-view.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,51 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- Scheduler -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+	 			<ref bean="finAccountingTrigger" /> 
+				<ref bean="finStatBankTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 定义触发时间1 -->
+	<bean id="finAccountingTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<bean id="taskProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+				<!-- 调用的类 -->
+				<property name="targetObject">
+					<bean class="net.easipay.cbp.Trigger.FinAccountingTrigger"></bean>
+				</property>
+				<!-- 调用类中的方法 -->
+				<property name="targetMethod" value="onProcessFinTask" />
+				<property name="concurrent" value="false" />
+			</bean>
+
+		</property>
+		<!-- cron表达式 --><!-- 每隔5分执行一次 -->
+		<property name="cronExpression" value="0 */5 * * * ?" />
+	</bean>
+
+
+	<!-- 日统计银行数据 -->
+	<bean id="finStatBankTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<bean id="dailyStatBankProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+				<property name="targetObject">
+					<bean class="net.easipay.cbp.Trigger.FinStatBankTrigger"></bean>
+				</property>
+				<property name="targetMethod" value="onProcessFinDailyStatBank" />
+				<property name="concurrent" value="false" />
+			</bean>
+		</property>
+		<!-- <property name="cronExpression" value="0 */1 * * * ?" /> -->
+		<property name="cronExpression" value="0 0 1 * * ?" />
+	</bean>
+
+</beans>
+
+
+

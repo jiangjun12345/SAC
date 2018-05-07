@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sac-rec-page">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="sac-rec-view-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-rec-view/sac-rec-view">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-rec-core-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-rec-core/sac-rec-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-rec-dao-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-rec-dao/sac-rec-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-rec-model-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-rec-model/sac-rec-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-rec-config-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-rec-config/sac-rec-config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-rec-util-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-rec-util/sac-rec-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dsfc-support-http-3.2.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsfc-support-http/dsfc-support-http">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dsfc-core-3.2.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsfc-core/dsfc-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dsfc-cache-3.2.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsfc-cache/dsfc-cache">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dsfc-monitor-3.2.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsfc-monitor/dsfc-monitor">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dsfc-support-springmvc-3.2.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dsfc-support-springmvc/dsfc-support-springmvc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="rec${maven.build.timestamp}-1.0.0"/>
+        <property name="java-output-path" value="/sac-rec-page/target/classes"/>
+    </wb-module>
+</project-modules>

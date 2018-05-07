@@ -1,0 +1,408 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.easipay.cbp</groupId>
+	<artifactId>sac-ac</artifactId>
+	<packaging>pom</packaging>
+	<version>2.0.1</version>
+	<name>cbp registrer center parent project</name>
+
+	<modules>
+		<module>sac-ac-model</module>
+		<module>sac-ac-util</module>
+		<module>sac-ac-config</module>
+		<module>sac-ac-dao</module>
+		<module>sac-ac-core</module>
+		<module>sac-ac-view</module>
+		<module>sac-ac-page</module>
+	</modules>
+
+	<prerequisites>
+		<maven>2.2.1</maven>
+	</prerequisites>
+
+	<developers>
+		<developer>
+			<id>mchen</id>
+			<name>mchen</name>
+			<email>mchen@easipay.net</email>
+		</developer>
+	</developers>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.easipay.dsf</groupId>
+			<artifactId>dsfc-support-http</artifactId>
+  			<version>3.2.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.easipay.dsf</groupId>
+			<artifactId>dsfc-support-springmvc</artifactId>
+  			<version>3.2.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.easipay.cbp</groupId>
+			<artifactId>cbp-commons</artifactId>
+			<version>1.0.20</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${jdbc.groupId}</groupId>
+			<artifactId>${jdbc.artifactId}</artifactId>
+			<version>${jdbc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${commons.dbcp.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xercesImpl</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-collections</artifactId>
+					<groupId>commons-collections</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons.collections.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons.beanutils.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons.lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons.fileupload.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+			<version>2.3.4.726</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.easipay.cbp</groupId>
+			<artifactId>cbp-base</artifactId>
+			<version>1.0.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>${jackson-jaxrs.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>javax.el-api</artifactId>
+					<groupId>javax.el</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>javax.el</artifactId>
+					<groupId>org.glassfish.web</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>  
+            <groupId>org.springframework</groupId>  
+            <artifactId>spring-jms</artifactId>  
+            <version>${spring.version}</version>  
+        </dependency>
+		
+		<dependency>
+		  <groupId>net.apache.activemq</groupId>
+		  <artifactId>activemq-all</artifactId>
+		  <version>5.10.1</version>
+		</dependency> 
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<log4j.level>DEBUG</log4j.level>
+				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:oracle:thin:@10.68.5.24:1521:ORA10G</jdbc.url>
+				<jdbc.username>SAC_SYN</jdbc.username>
+				<jdbc.password>SAC_SYN</jdbc.password>
+				<dsfsConfig.protocol>HTTP</dsfsConfig.protocol>
+				<dsfsConfig.ip>10.68.7.50</dsfsConfig.ip>
+				<dsfsConfig.port>8083</dsfsConfig.port>
+				<dsfsConfig.context>dsf</dsfsConfig.context>
+				<activemq.url>failover://(tcp://10.68.5.187:61616,tcp://10.68.5.188:61616)</activemq.url>
+				<activemq.queue>queueDev</activemq.queue>
+				<warName.suf>dev</warName.suf>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<log4j.level>DEBUG</log4j.level>
+				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:oracle:thin:@10.68.5.23:1521:ORA10G</jdbc.url>
+				<jdbc.username>SAC_SYN</jdbc.username>
+				<jdbc.password>SAC_SYN</jdbc.password>
+				<dsfsConfig.protocol>HTTP</dsfsConfig.protocol>
+				<dsfsConfig.ip>10.68.5.189,10.68.5.179</dsfsConfig.ip>
+				<dsfsConfig.port>8083,8083</dsfsConfig.port>
+				<dsfsConfig.context>dsf</dsfsConfig.context>
+				<activemq.url>failover://(tcp://10.68.5.187:61616,tcp://10.68.5.188:61616)</activemq.url>
+				<activemq.queue>queueTest</activemq.queue>
+				<warName.suf>test</warName.suf>
+			</properties>
+		</profile>
+		<profile>
+			<id>uat</id>
+			<properties>
+				<log4j.level>debug</log4j.level>
+				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:oracle:thin:@192.168.154.210:1521:qspressdb</jdbc.url>
+				<jdbc.username>SYN_SAC</jdbc.username>
+				<jdbc.password>SYN_SAC</jdbc.password>
+				<dsfsConfig.protocol>HTTP</dsfsConfig.protocol>
+				<dsfsConfig.ip>192.168.154.141</dsfsConfig.ip>
+				<dsfsConfig.port>8080</dsfsConfig.port>
+				<dsfsConfig.context>dsf</dsfsConfig.context>
+				<activemq.url>failover://(tcp://10.68.5.187:61616,tcp://10.68.5.188:61616)</activemq.url>
+				<activemq.queue>queueTest</activemq.queue>
+				<warName.suf>uat</warName.suf>
+			</properties>
+		</profile>
+		<profile>
+			<id>pro</id>
+			<properties>
+				<log4j.level>debug</log4j.level>
+				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:oracle:thin:@192.168.153.180:1521/qsracdb</jdbc.url>
+				<jdbc.username>PRO_SAC</jdbc.username>
+				<jdbc.password>PRO_SAC</jdbc.password>
+				<dsfsConfig.protocol>HTTP</dsfsConfig.protocol>
+				<dsfsConfig.ip>192.168.153.141,192.168.153.150</dsfsConfig.ip>
+				<dsfsConfig.port>8080,8080</dsfsConfig.port>
+				<dsfsConfig.context>dsf</dsfsConfig.context>
+				<activemq.url>failover://(tcp://192.168.204.132:61616,tcp://192.168.204.137:61616)</activemq.url>
+				<activemq.queue>queuePro</activemq.queue>
+				<warName.suf>pro</warName.suf>
+			</properties>
+		</profile>
+	</profiles>
+
+	<properties>
+		<!-- Application settings -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<copyright.year>2012</copyright.year>
+		<dao.framework>ibatis</dao.framework>
+		<web.framework>spring</web.framework>
+		<amp.genericCore>false</amp.genericCore>
+		<amp.fullSource>true</amp.fullSource>
+		<db.name>myproject</db.name>
+		<log4j.level>DEBUG</log4j.level>
+
+		<!-- Framework dependency versions -->
+		<appfuse.version>2.2.1</appfuse.version>
+		<commons.fileupload.version>1.2.1</commons.fileupload.version>
+		<commons.io.version>1.3.2</commons.io.version>
+		<displaytag.version>1.2</displaytag.version>
+		<spring.version>3.2.6.RELEASE</spring.version>
+		<springmodules.validation.version>0.8</springmodules.validation.version>
+
+		<!-- Testing dependency versions -->
+		<cargo.version>1.2.4</cargo.version>
+		<mockito.version>1.8.5</mockito.version>
+		<jsp.version>2.2</jsp.version>
+		<junit.version>4.10</junit.version>
+		<servlet.version>2.5</servlet.version>
+		<wiser.version>1.2</wiser.version>
+
+		<!-- WebTest default target -->
+		<webtest.target>run-all-tests</webtest.target>
+		<skipTests>true</skipTests>
+
+		<ibatis.version>2.3.4.726</ibatis.version>
+		<jdbc.groupId>com.oracle</jdbc.groupId>
+		<jdbc.artifactId>ojdbc14</jdbc.artifactId>
+		<jdbc.version>10.2.0.2.0</jdbc.version>
+		<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+		<jdbc.url>jdbc:oracle:thin:@10.68.5.24:1521:ora10g</jdbc.url>
+		<jdbc.username>SAC_SYN</jdbc.username>
+		<jdbc.password>SAC_SYN</jdbc.password>
+
+		<!-- Properties calculated by AppFuse when running full-source plugin -->
+		<aspectj.version>1.6.10</aspectj.version>
+		<commons.beanutils.version>1.8.3</commons.beanutils.version>
+		<commons.collections.version>3.2.1</commons.collections.version>
+		<commons.dbcp.version>1.3</commons.dbcp.version>
+		<commons.lang.version>2.6</commons.lang.version>
+		<jpa.version>2.0-cr-1</jpa.version>
+		<jstl.version>1.2</jstl.version>
+		<log4j.version>1.2.17</log4j.version>
+		<sitemesh.version>2.4.2</sitemesh.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<spring.security.version>3.2.0.RELEASE</spring.security.version>
+		<urlrewrite.version>3.1.0</urlrewrite.version>
+		
+		<validation-api.version>1.1.0.Final</validation-api.version>
+		<jackson-jaxrs.version>1.9.12</jackson-jaxrs.version>
+		<hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
+	</properties>
+
+</project>

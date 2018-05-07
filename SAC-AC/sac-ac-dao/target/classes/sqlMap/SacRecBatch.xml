@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<insert id="insertSacRecBatch" parameterClass="net.easipay.cbp.model.SacRecBatch">
+		INSERT INTO SAC_REC_BATCH (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="recBatchId"> rec_batch_id  </isNotEmpty>
+			<isNotEmpty prepend="," property="recUnionId"> rec_union_id  </isNotEmpty>
+			<isNotEmpty prepend="," property="recType"> rec_type  </isNotEmpty>
+			<isNotEmpty prepend="," property="recStartDate"> rec_start_date  </isNotEmpty>
+			<isNotEmpty prepend="," property="recEndDate"> rec_end_date  </isNotEmpty>
+			<isNotEmpty prepend="," property="recOper"> rec_oper  </isNotEmpty>
+			<isNotEmpty prepend="," property="recCount"> rec_count  </isNotEmpty>
+			<isNotEmpty prepend="," property="chnCode"> chn_code  </isNotEmpty>
+			<isNotEmpty prepend="," property="recStatus"> rec_status  </isNotEmpty>
+			<isNotEmpty prepend="," property="payconType"> paycon_type  </isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> update_time  </isNotEmpty>
+			<isNotEmpty prepend="," property="createTime"> create_time  </isNotEmpty>
+			<isNotEmpty prepend="," property="memo"> memo  </isNotEmpty>
+		</dynamic>
+		) VALUES (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="recBatchId"> #recBatchId#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recUnionId"> #recUnionId#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recType"> #recType#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recStartDate"> #recStartDate#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recEndDate"> #recEndDate#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recOper"> #recOper#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recCount"> #recCount#  </isNotEmpty>
+			<isNotEmpty prepend="," property="chnCode"> #chnCode#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recStatus"> #recStatus#  </isNotEmpty>
+			<isNotEmpty prepend="," property="payconType"> #payconType#  </isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> #updateTime#  </isNotEmpty>
+			<isNotEmpty prepend="," property="createTime"> #createTime#  </isNotEmpty>
+			<isNotEmpty prepend="," property="memo"> #memo#  </isNotEmpty>
+		</dynamic>
+		)
+	</insert>
+
+</sqlMap>

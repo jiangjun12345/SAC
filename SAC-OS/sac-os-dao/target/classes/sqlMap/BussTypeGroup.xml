@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="BussTypeGroup" class="net.easipay.cbp.model.BussTypeGroup">
+	 <result property="bussType" column="buss_type"/>
+	<!--  <result property="chnNo" column="chn_no"/> -->
+	 <result property="bussTypeName" column="buss_type_Name"/>
+	 <result property="bussTypeCount" column="buss_type_count"/>
+	 <result property="bussTypeSum" column="buss_type_sum"/>
+	 <result property="bussTypeDate" column="buss_type_date"/>
+ </resultMap>
+ 
+   
+<!--    <select id="getBussTypeGroupList" resultMap="BussTypeGroup">  
+        SELECT 
+	       buss_type,
+	       buss_type_Name,
+	       buss_type_count,
+	       buss_type_sum,
+	       buss_type_date
+         FROM v_buss_type
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="bussTypeDate"> buss_type_date = #bussTypeDate# </isNotEmpty>                   
+      </dynamic>
+  </select> -->
+  
+  
+  
+   <select id="getBussTypeGroupCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM v_buss_type
+           <dynamic prepend="WHERE">
+             <isNotEmpty prepend="AND" property="bussTypeDate"> buss_type_date = #bussTypeDate# </isNotEmpty>           
+          </dynamic>
+	</select>
+  
+  <select id="getBussTypeGroupList" parameterClass="java.util.Map" resultMap="BussTypeGroup"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       buss_type,
+	       buss_type_Name,
+	       buss_type_count,
+	       buss_type_sum,
+	       buss_type_date
+         FROM v_buss_type
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="bussTypeDate"> buss_type_date = #bussTypeDate# </isNotEmpty>                   
+      </dynamic>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

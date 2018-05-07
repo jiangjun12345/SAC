@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    #parse("org/n3r/quartz/glass/velocity/widgets/head.vm")
+</head>
+<body>
+    #parse("org/n3r/quartz/glass/velocity/widgets/menu.vm")
+
+<h1><span>Defined jobs</span></h1>
+
+<div class="table">
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Jobkey</th>
+            <th>triggers</th>
+            <th>Class</th>
+            <th>Desc</th>
+            <th>Team</th>
+            <th>Created</th>
+            <th>JobDataMap</th>
+##            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            #set($seq = 0)
+            #foreach ($job in $jobs)
+                #set( $seq = $seq + 1 )
+            <tr>
+                <td style="text-align: center;">$seq</td>
+                <td style="text-align: center;"><a
+                        href="$root/jobs/$format.html($job.group)/$format.html($job.name)">$format.html($job.jobKey)</a></td>
+                <td style="text-align: center;">${job.triggersNum}</td>
+                <td style="text-align: center;">${job.jobClass}</td>
+                <td style="text-align: center;">$format.html(${job.jobDesc})</td>
+                <td style="text-align: center;">$format.html(${job.jobTeam})</td>
+                <td style="text-align: center;">$format.html(${job.jobCreated})</td>
+                <td style="text-align: center;">$format.html(${job.jobDataMap})</td>
+##                <td style="text-align: center;">
+##                    <a onclick="javascript:return(confirm('Are you sure you want to delete ?'));"
+##                       href="$root/jobs/$format.html($job.group)/$format.html($job.name)/delete">
+##                        <img alt="delete" src="$root/image/delete.png"/>
+##                    </a>
+##                </td>
+            </tr>
+            #end
+        </tbody>
+    </table>
+</div>
+
+    #parse("org/n3r/quartz/glass/velocity/widgets/footer.vm")
+</body>
+</html>

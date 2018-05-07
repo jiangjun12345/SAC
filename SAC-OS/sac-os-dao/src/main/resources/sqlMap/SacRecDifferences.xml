@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacRecDifferences" class="net.easipay.cbp.model.SacRecDifferences">
+	 <result property="id" column="id"/>
+	 <result property="recDetailId" column="rec_detail_id"/>
+	 <result property="recStartDate" column="rec_start_date"/>
+	 <result property="recEndDate" column="rec_end_date"/>
+	 <result property="trxSerialNo" column="trx_serial_no"/>
+	 <result property="recDiffType" column="rec_diff_type"/>
+	 <result property="recDiffDesc" column="rec_diff_desc"/>
+	 <result property="chnCode" column="chn_code"/>
+	 <result property="status" column="status"/>
+	 <result property="dealType" column="deal_type"/>
+	 <result property="dealOper" column="deal_oper"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="recBatchId" column="rec_batch_id"/>
+	 <result property="trxTime" column="trx_time"/>
+	 <result property="payAmount" column="pay_amount"/>
+	 <result property="currencyType" column="currency_type"/>
+	 <result property="bankSerialNo" column="bank_serial_no"/>
+	 <result property="payconType" column="paycon_type"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="oriTrxState" column="ori_trx_state"/>
+	 <result property="oriInnConAmount" column="ori_inn_con_amount"/>
+	 <result property="oriChaConAmount" column="ori_cha_con_amount"/>
+	 <result property="recOper" column="rec_oper"/>
+	 <result property="trxCode" column="trx_code"/>
+	 <result property="supplementFlag" column="supplement_flag"/>
+ </resultMap>
+   <insert id="insertSacRecDifferences" parameterClass="net.easipay.cbp.model.SacRecDifferences">
+        INSERT INTO SAC_REC_DIFFERENCES ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDetailId">  rec_detail_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="recStartDate">  rec_start_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDiffType">  rec_diff_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDiffDesc">  rec_diff_desc  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="status">  status  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealType">  deal_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealOper">  deal_oper  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxTime">  trx_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  bank_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="oriTrxState">  ori_trx_state  </isNotEmpty>
+            <isNotEmpty prepend="," property="oriInnConAmount">  ori_inn_con_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="oriChaConAmount">  ori_cha_con_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="recOper">  rec_oper  </isNotEmpty>
+            <isNotEmpty prepend="," property="supplementFlag">  supplement_flag  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recDetailId">  #recDetailId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recStartDate">  #recStartDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxSerialNo">  #trxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recDiffType">  #recDiffType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recDiffDesc">  #recDiffDesc#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnCode">  #chnCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="status">  #status#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="dealType">  #dealType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="dealOper">  #dealOper#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recBatchId">  #recBatchId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxTime">  #trxTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankSerialNo">  #bankSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payconType">  #payconType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateTime">  #updateTime#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="oriTrxState">  #oriTrxState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="oriInnConAmount">  #oriInnConAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="oriChaConAmount">  #oriChaConAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recOper">  #recOper#  </isNotEmpty>       
+            <isNotEmpty prepend="," property="supplementFlag">  #supplementFlag#  </isNotEmpty>       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacRecDifferences" resultMap="SacRecDifferences">  
+        SELECT 
+	       id,
+	       rec_detail_id,
+	       rec_start_date,
+	       rec_end_date,
+	       trx_serial_no,
+	       rec_diff_type,
+	       rec_diff_desc,
+	       chn_code,
+	       status,
+	       deal_type,
+	       deal_oper,
+	       create_time,
+	       memo,
+	       rec_batch_id,
+	       trx_time,
+	       pay_amount,
+	       bank_serial_no,
+	       paycon_type,
+	       update_time,
+	       ori_trx_state,
+			ori_inn_con_amount,
+			ori_cha_con_amount,
+			currency_type,
+			rec_oper,
+			supplement_flag,
+			trx_code
+         FROM SAC_REC_DIFFERENCES
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacRecDifferences" parameterClass="java.util.Map" resultMap="SacRecDifferences">  
+      SELECT 
+	       id,
+	       rec_detail_id,
+	       rec_start_date,
+	       rec_end_date,
+	       trx_serial_no,
+	       rec_diff_type,
+	       rec_diff_desc,
+	       chn_code,
+	       status,
+	       deal_type,
+	       deal_oper,
+	       create_time,
+	       memo,
+	       rec_batch_id,
+	       trx_time,
+	       pay_amount,
+	       bank_serial_no,
+	       paycon_type,
+	       update_time,
+	       ori_trx_state,
+			ori_inn_con_amount,
+			ori_cha_con_amount,
+			currency_type,
+			rec_oper,
+			supplement_flag,
+			trx_code
+	  FROM SAC_REC_DIFFERENCES
+        <dynamic prepend="WHERE">
+        	<isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDetailId">  rec_detail_id = #recDetailId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recStartDate"><![CDATA[  rec_start_date >= trunc(#recStartDate#,'dd')  ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recEndDate"><![CDATA[  rec_end_date < TRUNC(#recEndDate#)+1  ]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="etrxSerialNo">  etrx_serial_no = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffType">  rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffDesc">  rec_diff_desc = #recDiffDesc#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealType">  deal_type = #dealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealOper">  deal_oper = #dealOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriTrxState">  ori_trx_state = #oriTrxState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriInnConAmount">  ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriChaConAmount">  ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime"> <![CDATA[ update_time between  trunc(#updateTime#,'dd') and TRUNC(#updateTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriTrxState">  ori_trx_state = #oriTrxState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriInnConAmount">  ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriChaConAmount">  ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="supplementFlag">  supplement_flag = #supplementFlag#  </isNotEmpty>
+          </dynamic> 
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacRecDifferences" parameterClass="net.easipay.cbp.model.SacRecDifferences">  
+      UPDATE SAC_REC_DIFFERENCES        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDetailId">  rec_detail_id = #recDetailId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recStartDate">  rec_start_date = #recStartDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDiffType">  rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDiffDesc">  rec_diff_desc = #recDiffDesc#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="status">  status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealType">  deal_type = #dealType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealOper">  deal_oper = #dealOper#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxTime">  trx_time = #trxTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="oriTrxState">  ori_trx_state = #oriTrxState#  </isNotEmpty>
+			<isNotEmpty prepend="," property="oriInnConAmount">  ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="," property="oriChaConAmount">  ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+			<isNotEmpty prepend="," property="supplementFlag">  supplement_flag = #supplementFlag#  </isNotEmpty>
+        </dynamic>
+       WHERE id = #id#
+  </update>
+  
+  
+  <update id="updateSacRecDifferencesBySerailNo" parameterClass="net.easipay.cbp.model.SacRecDifferences">  
+      UPDATE SAC_REC_DIFFERENCES        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDetailId">  rec_detail_id = #recDetailId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDiffType">  rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recDiffDesc">  rec_diff_desc = #recDiffDesc#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="status">  status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealType">  deal_type = #dealType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="dealOper">  deal_oper = #dealOper#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxTime">  trx_time = #trxTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="oriTrxState">  ori_trx_state = #oriTrxState#  </isNotEmpty>
+			<isNotEmpty prepend="," property="oriInnConAmount">  ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="," property="oriChaConAmount">  ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="," property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+			<isNotEmpty prepend="," property="supplementFlag">  supplement_flag = #supplementFlag#  </isNotEmpty>
+        </dynamic>
+       	WHERE trx_serial_no = #trxSerialNo#
+        <isNotEmpty prepend="AND" property="recDiffType">  rec_diff_type = #recDiffType#  </isNotEmpty>
+        <isNotEmpty prepend="AND" property="recStartDate"><![CDATA[  rec_start_date = trunc(#recStartDate#,'dd')  ]]> </isNotEmpty>
+  </update>
+  
+  <delete id="deleteSacRecDifferences">  
+        Delete   
+          from SAC_REC_DIFFERENCES WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacRecDifferences">  
+        Delete 
+        from SAC_REC_DIFFERENCES
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacRecDifferencesCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_REC_DIFFERENCES
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDetailId">  rec_detail_id = #recDetailId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffType">  rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffDesc">  rec_diff_desc = #recDiffDesc#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealType">  deal_type = #dealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealOper">  deal_oper = #dealOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime"> <![CDATA[ update_time between  trunc(#updateTime#,'dd') and TRUNC(#updateTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriTrxState">  ori_trx_state = #oriTrxState#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriInnConAmount">  ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriChaConAmount">  ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recStartDate"><![CDATA[  rec_start_date >= trunc(#recStartDate#,'dd')  ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recEndDate"><![CDATA[  rec_end_date < TRUNC(#recEndDate#)+1 ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplementFlag"> supplement_flag = #supplementFlag# </isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacRecDifferences" parameterClass="java.util.Map" resultMap="SacRecDifferences"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       rec_detail_id,
+	       rec_start_date,
+	       rec_end_date,
+	       trx_serial_no,
+	       rec_diff_type,
+	       rec_diff_desc,
+	       chn_code,
+	       status,
+	       deal_type,
+	       deal_oper,
+	       create_time,
+	       memo,
+	       rec_batch_id,
+	       trx_time,
+	       pay_amount,
+	       bank_serial_no,
+	       paycon_type,
+	       update_time,
+	       ori_trx_state,
+			ori_inn_con_amount,
+			ori_cha_con_amount,
+			currency_type,
+			rec_oper,
+			supplement_flag,
+			trx_code
+	       from SAC_REC_DIFFERENCES 
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDetailId">  rec_detail_id = #recDetailId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffType">  rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffDesc">  rec_diff_desc = #recDiffDesc#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealType">  deal_type = #dealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealOper">  deal_oper = #dealOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime"> <![CDATA[ update_time between  trunc(#updateTime#,'dd') and TRUNC(#updateTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriTrxState">  ori_trx_state = #oriTrxState#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriInnConAmount">  ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriChaConAmount">  ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplementFlag">  supplement_flag = #supplementFlag#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recStartDate"><![CDATA[  rec_start_date >= trunc(#recStartDate#,'dd')  ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recEndDate"><![CDATA[  rec_end_date < TRUNC(#recEndDate#)+1  ]]> </isNotEmpty>
+          </dynamic> 
+          	order by rec_start_date desc,create_time desc
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	<select id="getSacRecDifferencesCount2" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM 
+		(
+		   SELECT 
+	       a.id,
+	       a.rec_detail_id,
+	       a.rec_start_date,
+	       a.rec_end_date,
+	       a.trx_serial_no,
+	       a.rec_diff_type,
+	       a.rec_diff_desc,
+	       <!-- a.chn_code, -->
+	       b.chn_no as chn_code,
+	       a.status,
+	       a.deal_type,
+	       a.deal_oper,
+	       a.create_time,
+	       a.memo,
+	       a.rec_batch_id,
+	       a.trx_time,
+	       a.pay_amount,
+	       a.bank_serial_no,
+	       a.paycon_type,
+	       a.update_time,
+	       a.ori_trx_state,
+		   a.ori_inn_con_amount,
+		   a.ori_cha_con_amount,
+		   a.currency_type,
+		   a.rec_oper,
+		   a.supplement_flag,
+		   a.trx_code
+	       from SAC_REC_DIFFERENCES a,sac_trx_detail b
+	       where a.trx_serial_no = b.trx_serial_no(+)
+           	<isNotEmpty prepend="AND" property="recBatchId">  a.rec_batch_id = #recBatchId#  </isNotEmpty>
+           	<isNotEmpty prepend="AND" property="id">  a.id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDetailId">  a.rec_detail_id = #recDetailId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  a.trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffType">  a.rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffDesc">  a.rec_diff_desc = #recDiffDesc#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  a.chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  a.status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealType">  a.deal_type = #dealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealOper">  a.deal_oper = #dealOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ a.create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  a.memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ a.trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  a.pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  a.currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  a.bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  a.paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime"> <![CDATA[ a.update_time between  trunc(#updateTime#,'dd') and TRUNC(#updateTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriTrxState">  a.ori_trx_state = #oriTrxState#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriInnConAmount">  a.ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriChaConAmount">  a.ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recOper">  a.rec_oper = #recOper#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplementFlag">  a.supplement_flag = #supplementFlag#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recStartDate"><![CDATA[  a.rec_start_date >= trunc(#recStartDate#,'dd')  ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recEndDate"><![CDATA[  a.rec_end_date < TRUNC(#recEndDate#)+1  ]]> </isNotEmpty>
+		)
+	</select>
+  
+  <select id="listSplitSacRecDifferences2" parameterClass="java.util.Map" resultMap="SacRecDifferences"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       a.id,
+	       a.rec_detail_id,
+	       a.rec_start_date,
+	       a.rec_end_date,
+	       a.trx_serial_no,
+	       a.rec_diff_type,
+	       a.rec_diff_desc,
+	       <!-- a.chn_code, -->
+	       b.chn_no as chn_code,
+	       a.status,
+	       a.deal_type,
+	       a.deal_oper,
+	       a.create_time,
+	       a.memo,
+	       a.rec_batch_id,
+	       a.trx_time,
+	       a.pay_amount,
+	       a.bank_serial_no,
+	       a.paycon_type,
+	       a.update_time,
+	       a.ori_trx_state,
+		   a.ori_inn_con_amount,
+		   a.ori_cha_con_amount,
+		   a.currency_type,
+		   a.rec_oper,
+		   a.supplement_flag,
+		   a.trx_code
+	       from SAC_REC_DIFFERENCES a,sac_trx_detail b
+	       where a.trx_serial_no = b.trx_serial_no(+)
+            <isNotEmpty prepend="AND" property="recBatchId">  a.rec_batch_id = #recBatchId#  </isNotEmpty>
+           	<isNotEmpty prepend="AND" property="id">  a.id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDetailId">  a.rec_detail_id = #recDetailId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  a.trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffType">  a.rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffDesc">  a.rec_diff_desc = #recDiffDesc#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  a.chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  a.status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealType">  a.deal_type = #dealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="dealOper">  a.deal_oper = #dealOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ a.create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  a.memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime"> <![CDATA[ a.trx_time between  trunc(#trxTime#,'dd') and TRUNC(#trxTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  a.pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  a.currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  a.bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  a.paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime"> <![CDATA[ a.update_time between  trunc(#updateTime#,'dd') and TRUNC(#updateTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="oriTrxState">  a.ori_trx_state = #oriTrxState#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriInnConAmount">  a.ori_inn_con_amount = #oriInnConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="oriChaConAmount">  a.ori_cha_con_amount = #oriChaConAmount#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recOper">  a.rec_oper = #recOper#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="supplementFlag">  a.supplement_flag = #supplementFlag#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recStartDate"><![CDATA[  a.rec_start_date >= trunc(#recStartDate#,'dd')  ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="recEndDate"><![CDATA[  a.rec_end_date < TRUNC(#recEndDate#)+1  ]]> </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	<!-- 过滤b2c真长款交易 只针对B2B的真假长款以及b2c的假长款进行补单操作，b2c真长款在交易系统已经做好了 -->
+	 <select id="selectDifferencesForSupplement" parameterClass="java.util.Map" resultClass="java.util.HashMap" > 
+		 SELECT B.* FROM
+		( SELECT A.*, ROWNUM AS rownums FROM
+		( select 
+			a.id AS "ID",
+			a.rec_detail_id AS "recDetailId",
+			to_char(a.rec_start_date,'yyyy-MM-dd') AS "recStartDate",
+			a.trx_serial_no AS "trxSerialNo",
+			'('||a.rec_diff_type||')'||DECODE(b.rec_diff_type,a.rec_diff_type,'','','','('||b.rec_diff_type||')') AS "recDiffType",
+			'('||a.rec_diff_desc||')'||DECODE(b.rec_diff_desc,a.rec_diff_desc,'','','','('||b.rec_diff_desc||')') AS "recDiffDesc",
+			a.chn_code AS "chnCode",
+			a.status AS "status",
+			a.deal_type AS "dealType",
+			a.deal_oper AS "dealOper",
+			a.create_time AS "createTime",
+			a.memo AS "memo",
+			a.rec_batch_id AS "recBatchId",
+			to_char(a.trx_time,'yyyy-MM-dd') AS "trxTime",
+			a.pay_amount AS "payAmount",
+			a.bank_serial_no AS "bankSerialNo",
+			a.paycon_type AS "payconType",
+			to_char(a.update_time,'yyyy-MM-dd') AS "updateTime",
+			a.ori_trx_state AS "oriTrxState",
+			a.ori_inn_con_amount AS "oriInnConAmount",
+			a.ori_cha_con_amount AS "oriChaConAmount",
+			a.currency_type AS "currencyType",
+			a.rec_oper AS "recOper",
+			a.trx_code AS "trxCode",
+			a.supplement_flag AS "supplementFlag"
+		  from sac_rec_differences a
+		    left join sac_rec_differences b
+		    on a.trx_serial_no = b.trx_serial_no
+		    and a.rec_diff_type !=b.rec_diff_type 
+		    and to_char(a.rec_start_date, 'yyyyMMdd') =
+		    to_char(b.rec_start_date, 'yyyyMMdd') 
+		    where
+            ((a.rec_diff_type = 'INN001') or
+		        (a.rec_diff_type = 'CHA002' and b.rec_diff_type is null) )
+		    <isNotEmpty prepend="AND" property="supplementFlag">  a.supplement_flag = #supplementFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  a.trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  a.trx_code = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffType">  a.rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  a.status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  a.pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  a.currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  a.paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ a.rec_start_date >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ a.rec_start_date < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty>
+          order by a.rec_start_date desc,a.supplement_flag
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE rownums > #start#   
+		]]> 
+	</select>
+	
+		<!-- 过滤b2c真长款交易 只针对B2B的真假长款以及b2c的假长款进行补单操作，b2c真长款在交易系统已经做好了 -->
+	 <select id="selectDifferencesForSupplementCounts" resultClass="java.lang.Integer"> 
+		select 
+			count(1)
+		  from sac_rec_differences a
+		    left join sac_rec_differences b
+		    on a.trx_serial_no = b.trx_serial_no
+		    and a.rec_diff_type !=b.rec_diff_type
+		    and to_char(a.rec_start_date, 'yyyyMMdd') =
+		    to_char(b.rec_start_date, 'yyyyMMdd') 
+		    where
+             ((a.rec_diff_type = 'INN001') or
+		        (a.rec_diff_type = 'CHA002' and b.rec_diff_type is null) )
+		    <isNotEmpty prepend="AND" property="supplementFlag">  a.supplement_flag = #supplementFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  a.trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  a.trx_code = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recDiffType">  a.rec_diff_type = #recDiffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  a.status = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  a.pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  a.currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  a.paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ a.rec_start_date >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ a.rec_start_date < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty>
+          order by a.rec_start_date desc
+	</select>
+	
+	
+</sqlMap>

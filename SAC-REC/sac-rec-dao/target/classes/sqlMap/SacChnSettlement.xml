@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacChnSettlement" class="net.easipay.cbp.model.SacChnSettlement">
+	 <result property="id" column="id"/>
+	 <result property="chnNo" column="chn_no"/>
+	 <result property="chnName" column="chn_name"/>
+	 <result property="accountNumber" column="account_number"/>
+	 <result property="sacDate" column="sac_date"/>
+	 <result property="trxDate" column="trx_date"/>
+	 <result property="transDate" column="trans_date"/>
+	 <result property="type" column="type"/>
+	 <result property="totalNum" column="total_num"/>
+	 <result property="totalSum" column="total_sum"/>
+	 <result property="trxCost" column="trx_cost"/>
+	 <result property="receiveTotSum" column="receive_tot_sum"/>
+	 <result property="realTotAmount" column="real_tot_amount"/>
+	 <result property="currencyType" column="currency_type"/>
+	 <result property="finSign" column="fin_sign"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="memo" column="memo"/>
+ </resultMap>
+   <insert id="insertSacChnSettlement" parameterClass="net.easipay.cbp.model.SacChnSettlement">
+        INSERT INTO SAC_CHN_SETTLEMENT ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnNo">  chn_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnName">  chn_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="accountNumber">  account_number  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacDate">  sac_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxDate">  trx_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="transDate">  trans_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="type">  type  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalNum">  total_num  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalSum">  total_sum  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCost">  trx_cost  </isNotEmpty>
+            <isNotEmpty prepend="," property="receiveTotSum">  receive_tot_sum  </isNotEmpty>
+            <isNotEmpty prepend="," property="realTotAmount">  real_tot_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  currency_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="finSign">  fin_sign  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnNo">  #chnNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnName">  #chnName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="accountNumber">  #accountNumber#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacDate">  #sacDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxDate">  #trxDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="transDate">  #transDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="type">  #type#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="totalNum">  #totalNum#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="totalSum">  #totalSum#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxCost">  #trxCost#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="receiveTotSum">  #receiveTotSum#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="realTotAmount">  #realTotAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="currencyType">  #currencyType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="finSign">  #finSign#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateTime">  #updateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacChnSettlement" resultMap="SacChnSettlement">  
+        SELECT 
+	       id,
+	       chn_no,
+	       chn_name,
+	       account_number,
+	       sac_date,
+	       trx_date,
+	       trans_date,
+	       type,
+	       total_num,
+	       total_sum,
+	       trx_cost,
+	       receive_tot_sum,
+	       real_tot_amount,
+	       currency_type,
+	       fin_sign,
+	       create_time,
+	       update_time,
+	       memo,
+         FROM SAC_CHN_SETTLEMENT
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacChnSettlement" parameterClass="java.util.Map" resultMap="SacChnSettlement">  
+      SELECT 
+	       id,
+	       chn_no,
+	       chn_name,
+	       account_number,
+	       sac_date,
+	       trx_date,
+	       trans_date,
+	       type,
+	       total_num,
+	       total_sum,
+	       trx_cost,
+	       receive_tot_sum,
+	       real_tot_amount,
+	       currency_type,
+	       fin_sign,
+	       create_time,
+	       update_time,
+	       memo,
+	  FROM SAC_CHN_SETTLEMENT
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacChnSettlement" parameterClass="net.easipay.cbp.model.SacChnSettlement">  
+      UPDATE SAC_CHN_SETTLEMENT        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnNo">  chn_no = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnName">  chn_name = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="accountNumber">  account_number = #accountNumber#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacDate">  sac_date = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxDate">  trx_date = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="transDate">  trans_date = #transDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="type">  type = #type#  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalNum">  total_num = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalSum">  total_sum = #totalSum#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCost">  trx_cost = #trxCost#  </isNotEmpty>
+            <isNotEmpty prepend="," property="receiveTotSum">  receive_tot_sum = #receiveTotSum#  </isNotEmpty>
+            <isNotEmpty prepend="," property="realTotAmount">  real_tot_amount = #realTotAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="finSign">  fin_sign = #finSign#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacChnSettlement">  
+        Delete   
+          from SAC_CHN_SETTLEMENT WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacChnSettlement">  
+        Delete 
+        from SAC_CHN_SETTLEMENT
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacChnSettlementCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_CHN_SETTLEMENT
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnNo">  chn_no = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  chn_name = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="accountNumber">  account_number = #accountNumber#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  sac_date = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  trx_date = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="transDate">  trans_date = #transDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="type">  type = #type#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  total_num = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalSum">  total_sum = #totalSum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCost">  trx_cost = #trxCost#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="receiveTotSum">  receive_tot_sum = #receiveTotSum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="realTotAmount">  real_tot_amount = #realTotAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="finSign">  fin_sign = #finSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty> 
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacChnSettlement" parameterClass="java.util.Map" resultMap="SacChnSettlement"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       chn_no,
+	       chn_name,
+	       account_number,
+	       sac_date,
+	       trx_date,
+	       trans_date,
+	       type,
+	       total_num,
+	       total_sum,
+	       trx_cost,
+	       receive_tot_sum,
+	       real_tot_amount,
+	       currency_type,
+	       fin_sign,
+	       create_time,
+	       update_time,
+	       memo,
+	       from SAC_CHN_SETTLEMENT  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnNo">  chn_no = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  chn_name = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="accountNumber">  account_number = #accountNumber#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  sac_date = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  trx_date = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="transDate">  trans_date = #transDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="type">  type = #type#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  total_num = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalSum">  total_sum = #totalSum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCost">  trx_cost = #trxCost#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="receiveTotSum">  receive_tot_sum = #receiveTotSum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="realTotAmount">  real_tot_amount = #realTotAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="finSign">  fin_sign = #finSign#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> modify_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+    <!-- 定时任务  调用清分渠道应收明细 -->
+	<parameterMap id="swapParameters" class="map">
+		<parameter property="p_sac_date" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="err_num" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+		<parameter property="err_msg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="calls_SacChnSettlement" parameterMap="swapParameters">
+
+		{call sp_sac_chn_settlement (?,?,?)}       
+
+     </procedure>    
+     
+    <!-- 定时任务  调用客户每日余额 -->
+	<parameterMap id="cusDailyBalanceSwapParameters" class="map">
+		<parameter property="p_stat_date" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="err_num" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+		<parameter property="err_msg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="calls_CusDailyBalance" parameterMap="cusDailyBalanceSwapParameters">
+
+		{call SP_FIN_STAT_ORG (?,?,?)}  
+
+     </procedure>
+     
+     <!-- 定时任务  调用渠道每日余额 -->
+	<parameterMap id="bankDailyBalanceSwapParameters" class="map">
+		<parameter property="p_stat_date" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="err_num" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+		<parameter property="err_msg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="calls_BankDailyBalance" parameterMap="bankDailyBalanceSwapParameters">
+
+		{call SP_FIN_STAT_BANK (?,?,?)}  
+
+     </procedure>   
+      
+     <!-- 定时任务  处理试算平衡任务 -->
+     <procedure id="calls_FinTrialBalance" >
+
+		{call SP_FIN_TRIAL_BALANCING() }  
+
+     </procedure>    
+  
+</sqlMap>

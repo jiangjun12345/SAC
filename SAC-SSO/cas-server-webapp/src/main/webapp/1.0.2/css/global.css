@@ -1,0 +1,296 @@
+@charset "utf-8";
+/* CSS Document */
+ 
+body{
+	margin:0;
+	padding:0;
+	background-color:#FFFFFF;
+	font-family:"微软雅黑";
+	color: #595959;
+	font-size: 14px;
+}
+img{
+	border:0;
+}
+a{
+	text-decoration:none;
+	color: #208ec3;
+}
+.fontfamily1{
+	font-family:"宋体";
+}
+.fontfamily2{
+	font-family:"微软雅黑";
+}
+.fontsize1{
+	font-size:12px;
+}
+.fontsize2{
+	font-size:14px;
+}
+.fontsize3{
+	font-size:18px;
+}
+.fontsize4{
+	font-size:20px;
+}
+.fontsize5{
+	font-size:24px;
+}
+.fontsize6{
+	font-size:30px;
+}
+.fontcolor1{
+	color:#ffffff;
+}
+.fontcolor2{
+	color:#666666;
+}
+.fontcolor3{
+	color:#999999;
+}
+.fontcolor4{
+	color:#333333;
+}
+.fontcolor5{
+	color:#ab1010;
+}
+.btn1{
+	width:100px;
+	height: 25px;
+	background-color: #F99337;
+	border: 1px solid #F47C02;
+	color:#ffffff;
+	padding: 3px 6px;
+	font-weight: normal;
+	font-size:14px;
+}
+.btn2{
+	width:100px;
+	height:30px;
+	background-color:#b50029;
+	border:1px solid #b50029;
+	color:#ffffff;
+}
+.btn3{
+	width:100px;
+	height:25px;
+	background-color:#cccccc;
+	border:1px solid #cccccc;
+	color:#666666;
+}
+.txt1{
+	border:none;
+	margin:0 10px;
+	border-bottom:1px solid #333333;
+	padding: 2px 8px;
+}
+.txt2{
+	width: 18px;
+	height: 18px;
+	border:1px solid #333333;
+	margin-left:2px;
+	text-align:center;
+	display: block;
+	float: left;
+}
+.txt3{
+	border:none;
+	margin:0 10px;
+	width:200px;
+	height:20px;
+	padding: 2px 8px;
+	border-bottom: 1px dotted #333333;
+	border-top:0px;
+	border-left:0px;
+	border-right:0px;
+}
+
+.error {
+	border-color:red;
+}
+
+.txt4{
+	border:none;
+	margin:0 10px;
+	width:800px;
+	height:20px;
+	padding: 2px 8px;
+}
+.txt5{
+	border:none;
+	margin:0 10px;
+	width:240px;
+	height:20px;
+	padding: 2px 8px;
+}
+.txt6{
+	border:none;
+	margin-left:10px;
+	width:540px;
+	height:100px;
+	overflow:hidden;
+	padding: 2px 8px;
+}
+.txt7{
+	width:140px;
+	height:20px;
+	border:none;
+	margin-left:5px;
+	padding: 2px 8px;
+}
+.txt8{
+	width:140px;
+	height:20px;
+	border:1px solid #cccccc;
+}
+.txt9{
+	width:240px;
+	height:20px;
+	border:1px solid #cccccc;
+}
+.check1{
+	margin-left:10px;
+}
+.check2{
+	margin-left:0px;
+}
+.disabled {
+	background-color: #dddddd;
+}
+.selecte1{
+	width:140px;
+	height:24px;
+	border:1px solid #cccccc;
+}
+
+.center {
+	text-align:center;
+}
+
+.left {
+	text-align:left;
+}
+
+.right {
+	text-align:right;
+}
+
+.blue_small {
+	font-size: 12px;
+	color: #208ec3;
+}
+.grey_small {
+	font-size: 12px;
+	color: #888;
+}
+.letter-spacing {
+	letter-spacing: 2px;
+	word-spacing: 2px;
+}
+
+.ui-input{
+	border: 1px solid #999;
+	padding: 9px;
+	border-radius: 0;
+	box-shadow: none;
+	font-size:14px;
+	color: #595959;
+	margin: 0;
+	float: left;
+	height: 19px;
+}
+
+.blue_bigbutton {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	width: 219px;
+	padding: 0 20px;
+	font-size: 16px;
+	line-height: 40px;
+	height: 40px;
+	color: #fff;
+	text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+	font-weight: 700;
+	background: url(../images/blue_bigbutton.png) repeat-x 0px 0px;
+	border: 0;
+}
+
+.purple_bigbutton {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	width: 219px;
+	padding: 0 20px;
+	font-size: 16px;
+	line-height: 40px;
+	height: 40px;
+	color: #fff;
+	text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+	font-weight: 700;
+	background: url(../images/purple_bigbutton.png) repeat-x 0px 0px;
+	border: 0;
+}
+.blue_smallbutton {
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	width: 80px;
+	padding: 0 10px;
+	font-size: 12px;
+	line-height: 25px;
+	height: 25px;
+	color: #fff;
+	text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+	font-weight: 700;
+	background: url(../images/blue_smallbutton.png) repeat-x 0px 0px;
+	border: 0;
+}
+
+.dateymd {
+	width: 70px;
+	padding: 1px 4px;
+	_margin-top:5px;
+}
+
+.big_money {
+	color: #208ec3;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.separate_blue_line {
+	border-bottom: 1px solid #208ec3;
+}
+
+.separate_grey_line {
+	border-bottom: 1px dashed grey;
+}
+
+.important {
+	color: red;
+	margin-left: 20px;
+}
+
+.aclickbtn {
+	height: 25px;
+	line-height: 25px;
+}
+
+.separate {
+	margin-left: 30px;
+}
+
+.fr {
+	float:right;
+}
+
+.bold {
+	font-weight:700;
+}

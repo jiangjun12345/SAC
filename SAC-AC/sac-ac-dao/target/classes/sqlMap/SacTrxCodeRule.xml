@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="SacTrxCodeRule" class="net.easipay.cbp.model.SacTrxCodeRule">
+		<result property="id" column="id" />
+		<result property="trxCode" column="trx_code" />
+		<result property="trxName" column="trx_name" />
+		<result property="currencyRule" column="currency_rule" />
+		<result property="draccRule" column="dracc_rule" />
+		<result property="craccRule" column="cracc_rule" />
+		<result property="memo" column="memo" />
+	</resultMap>
+
+	<select id="listSacTrxCodeRule" parameterClass="java.util.Map" resultMap="SacTrxCodeRule">
+		SELECT
+		id,
+		trx_code,
+		trx_name,
+		currency_rule,
+		dracc_rule,
+		cracc_rule,
+		memo
+		FROM SAC_TRX_CODE_RULE
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="trxCode"> trx_code = #trxCode# </isNotEmpty>
+		</dynamic>
+	</select>
+</sqlMap>

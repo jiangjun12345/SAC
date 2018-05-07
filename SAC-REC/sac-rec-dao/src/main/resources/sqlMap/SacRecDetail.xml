@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacRecDetail" class="net.easipay.cbp.model.SacRecDetail">
+	 <result property="id" column="id"/>
+	 <result property="recBatchId" column="rec_batch_id"/>
+	 
+	 <result property="recStartDate" column="rec_start_date"/>
+	 <result property="recEndDate" column="rec_end_date"/>
+	 
+	 <result property="trxSerialNo" column="trx_serial_no"/>
+	 <result property="chnCode" column="chn_code"/>
+	 <result property="memo" column="memo"/>
+	 <result property="diffType" column="diff_type"/>
+	 <result property="trxTime" column="trx_time"/>
+	 <result property="payAmount" column="pay_amount"/>
+	 <result property="currencyType" column="currency_type"/>
+	 <result property="bankSerialNo" column="bank_serial_no"/>
+	 <result property="payconType" column="paycon_type"/>
+	 <result property="recOper" column="rec_oper"/>
+	 <result property="busiType" column="busi_type"/>
+	 
+	 <result property="trxCode" column="trx_code"/>
+	 <result property="privDomain" column="priv_domain"/>
+	 
+ </resultMap>
+   <insert id="insertSacRecDetail" parameterClass="net.easipay.cbp.model.SacRecDetail">
+        INSERT INTO SAC_REC_DETAIL ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id  </isNotEmpty>
+            
+            <isNotEmpty prepend="," property="recStartDate">  rec_start_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date  </isNotEmpty>
+            
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+            <isNotEmpty prepend="," property="diffType">  diff_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxTime">  trx_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  currency_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  bank_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="recOper">  rec_oper  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  busi_type  </isNotEmpty>
+            
+            <isNotEmpty prepend="," property="trxCode">  trx_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="privDomain">  priv_domain  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend=""  property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recBatchId">  #recBatchId#  </isNotEmpty>	   
+		        
+		    <isNotEmpty prepend="," property="recStartDate">  #recStartDate#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="recEndDate">  #recEndDate#  </isNotEmpty>	 
+		          
+		    <isNotEmpty prepend="," property="trxSerialNo">  #trxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnCode">  #chnCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="diffType">  #diffType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxTime">  #trxTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="currencyType">  #currencyType#  </isNotEmpty>       
+		    <isNotEmpty prepend="," property="bankSerialNo">  #bankSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payconType">  #payconType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="recOper">  #recOper#  </isNotEmpty>
+		    <isNotEmpty prepend="," property="busiType">  #busiType#  </isNotEmpty>	
+		    
+		    <isNotEmpty prepend="," property="trxCode">  #trxCode#  </isNotEmpty>	  
+		    <isNotEmpty prepend="," property="privDomain">  #privDomain#  </isNotEmpty>	             
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacRecDetail" resultMap="SacRecDetail">  
+        SELECT 
+	       id,
+	       rec_batch_id,
+	       rec_start_date,
+	       rec_end_date,
+	       trx_serial_no,
+	       chn_code,
+	       memo,
+	       diff_type,
+	       trx_time,
+	       pay_amount,
+	       currency_type,
+	       bank_serial_no,
+	       paycon_type,
+	       busi_type,
+	       trx_code,
+	       priv_domain,
+	       rec_oper
+         FROM SAC_REC_DETAIL
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>
+         <isNotEmpty prepend="AND" property="recBatchId"> rec_batch_id = #recBatchId# </isNotEmpty>
+         <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>  
+         <isNotEmpty prepend="AND" property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+         <isNotEmpty prepend="AND" property="recBatchIdGrp"> 
+             rec_batch_id IN ( $recBatchIdGrp$ )
+         </isNotEmpty>
+         <isNotEmpty prepend="AND" property="busiType"> busi_type = #busiType# </isNotEmpty>    
+      </dynamic>
+  </select>
+  <select id="getSacRecDetails" parameterClass="java.util.Map" resultMap="SacRecDetail">  
+      SELECT 
+	       id,
+	       rec_batch_id,
+	       rec_start_date,
+	       rec_end_date,
+	       trx_serial_no,
+	       chn_code,
+	       memo,
+	       diff_type,
+	       trx_time,
+	       pay_amount,
+	       currency_type,
+	       bank_serial_no,
+	       paycon_type,
+	       busi_type,
+	       trx_code,
+	       priv_domain,
+	       rec_oper
+	  FROM SAC_REC_DETAIL
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>
+          <isNotEmpty prepend="AND" property="recBatchId"> rec_batch_id = #recBatchId# </isNotEmpty>
+          <isNotEmpty prepend="AND" property="busiType"> busi_type = #busiType# </isNotEmpty>
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> rec_start_date DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> rec_start_date DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> rec_start_date ASC </isEqual>
+  </select>
+  <update id="updateSacRecDetail" parameterClass="net.easipay.cbp.model.SacRecDetail">  
+      UPDATE SAC_REC_DETAIL        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+           
+            <isNotEmpty prepend="," property="recStartDate">  rec_start_date = #recStartDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+           
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="diffType">  diff_type = #diffType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxTime">  trx_time = #trxTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  busi_type = #busiType#  </isNotEmpty>
+            
+            <isNotEmpty prepend="," property="trxCode">  trx_code = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="privDomain">  priv_domain = #privDomain#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacRecDetail">  
+        Delete   
+          from SAC_REC_DETAIL WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacRecDetail">  
+        Delete 
+        from SAC_REC_DETAIL
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacRecDetailCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_REC_DETAIL
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recStartDate">  rec_start_date = #recStartDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+    
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="diffType">  diff_type = #diffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime">  trx_time = #trxTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            
+            <isNotEmpty prepend="AND" property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  busi_type = #busiType#  </isNotEmpty>
+            
+            <isNotEmpty prepend="AND" property="trxCode">  trx_code = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="privDomain">  priv_domain = #privDomain#  </isNotEmpty>
+            
+			
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacRecDetail" parameterClass="java.util.Map" resultMap="SacRecDetail"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       rec_batch_id,
+	       rec_start_date,
+	       rec_end_date,
+	       trx_serial_no,
+	       chn_code,
+	       memo,
+	       diff_type,
+	       trx_time,
+	       pay_amount,
+	       currency_type,
+	       bank_serial_no,
+	       paycon_type,
+	       busi_type,
+	       trx_code,
+	       priv_domain,
+	       rec_oper
+	       from SAC_REC_DETAIL  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recBatchId">  rec_batch_id = #recBatchId#  </isNotEmpty>
+            
+            <isNotEmpty prepend="AND" property="recStartDate">  rec_start_date = #recStartDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recEndDate">  rec_end_date = #recEndDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankSerialNo">  bank_serial_no = #bankSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="diffType">  diff_type = #diffType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime">  trx_time = #trxTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            
+            <isNotEmpty prepend="AND" property="payconType">  paycon_type = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="recOper">  rec_oper = #recOper#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  busi_type = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  trx_code = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="privDomain">  priv_domain = #privDomain#  </isNotEmpty>
+            
+            
+			
+			
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> rec_start_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

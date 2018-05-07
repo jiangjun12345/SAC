@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <settings enhancementEnabled="true" maxTransactions="24"
+        maxRequests="128" maxSessions="32"/>
+
+   <!--  <sqlMap resource="sqlMap/Person.xml"/> -->
+    <sqlMap resource="sqlMap/ResourceInfo.xml"/>
+    <sqlMap resource="sqlMap/Role.xml"/>
+    <sqlMap resource="sqlMap/RoleResource.xml"/>
+    <!--  <sqlMap resource="sqlMap/SysDic.xml"/> -->
+     <sqlMap resource="sqlMap/Operator.xml"/>
+     <sqlMap resource="sqlMap/OrgInfo.xml"/>
+     <sqlMap resource="sqlMap/UcUser.xml"/>
+     <sqlMap resource="sqlMap/SysParam.xml"/>
+     <!--   <sqlMap resource="sqlMap/UcChannelParam.xml"/>
+      <sqlMap resource="sqlMap/UcCusParameter.xml"/> -->
+      
+      
+</sqlMapConfig>

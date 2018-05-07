@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinYe" class="net.easipay.cbp.model.FinYe">
+	 <result property="yeId" column="YE_ID" />
+	 <result property="totalAmount" column="TOTAL_AMOUNT" />
+ </resultMap>
+   <insert id="insertFinYe" parameterClass="net.easipay.cbp.model.FinYe">
+        INSERT INTO FIN_YE ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="yeId">  YE_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalAmount">  TOTAL_AMOUNT  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="yeId">  #yeId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="totalAmount">  #totalAmount#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getFinYe" resultMap="FinYe">  
+        SELECT 
+	       YE_ID,
+	       TOTAL_AMOUNT
+         FROM FIN_YE
+      <dynamic prepend="WHERE">
+         <isNotEmpty> YE_ID = #yeId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="getFinYes" parameterClass="java.util.Map" resultMap="FinYe">  
+      SELECT 
+	       YE_ID,
+	       TOTAL_AMOUNT
+	  FROM FIN_YE
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="yeId"> YE_ID = #yeId# </isNotEmpty>                  
+        </dynamic>
+		  <isNotEmpty prepend="ORDER BY" property="yeId"> YE_ID ASC </isNotEmpty>
+  </select>
+  
+  <select id="getFinYesIn" parameterClass="java.util.Map" resultMap="FinYe">  
+      SELECT 
+	       YE_ID,
+	       TOTAL_AMOUNT
+	  FROM FIN_YE
+        WHERE YE_ID IN ( $yeId$ ) for update
+  </select>
+  
+  <update id="updateFinYe" parameterClass="net.easipay.cbp.model.FinYe">  
+      UPDATE FIN_YE        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="yeId">  YE_ID = #yeId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+        </dynamic>
+       WHERE YE_ID = #yeId#
+  </update>
+  <delete id="deleteFinYe">  
+        Delete   
+          from FIN_YE WHERE
+         YE_ID = #yeId#
+  </delete>
+  <delete id="deleteListFinYe">  
+        Delete 
+        from FIN_YE
+        WHERE YE_ID IN ( $yeId$ )
+  </delete>
+  
+   <select id="getFinYeCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_YE
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="yeId">  YE_ID = #yeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalAmount">  TOTAL_AMOUNT = #totalAmount#  </isNotEmpty>
+          </dynamic>
+	</select>
+	
+<!-- 	<parameterMap id="callSpFinYeParam" class="java.util.HashMap">
+       <parameter property="ye_id" javaType="java.lang.String" jdbcType="varchar2" mode="IN"/>
+       <parameter property="total_amount" javaType="java.lang.String" jdbcType="number" mode="OUT"/>  
+       <parameter property="err_num" javaType="java.lang.String" jdbcType="number" mode="OUT"/>  
+       <parameter property="err_msg" javaType="java.lang.String" jdbcType="varchar2" mode="OUT"/>  
+    </parameterMap>
+	
+	<procedure id="callSpFinYe" parameterMap="callSpFinYeParam">
+
+		{call SP_FIN_YE(?, ?, ?, ?)}
+	
+	</procedure>   -->
+ 
+ <select id="getBalanceByParam" parameterClass="java.util.Map" resultMap="FinYe">  
+      SELECT 
+	       YE_ID,
+	       TOTAL_AMOUNT
+	  FROM FIN_YE
+        <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="allBizBal">  YE_ID like #allBizBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="singleBizBal">  YE_ID = #singleBizBal#  </isNotEmpty>
+          </dynamic>
+  </select>
+</sqlMap>

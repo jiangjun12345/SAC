@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacB2bCmdBatch" class="net.easipay.cbp.model.SacB2bCmdBatch">
+	 <result property="cmdBatchId" column="CMD_BATCH_ID" />
+	 <result property="batchSerialNo" column="BATCH_SERIAL_NO" />
+	 <result property="vldDate" column="VLD_DATE" />
+	 <result property="msgReceiver" column="MSG_RECEIVER" />
+	 <result property="batchState" column="BATCH_STATE" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="userName" column="USER_NAME" />
+	 <result property="batchCur" column="BATCH_CUR" />
+	 <result property="batchAmount" column="BATCH_AMOUNT" />
+	 <result property="batchCount" column="BATCH_COUNT" />
+	 <result property="operName" column="OPER_NAME" />
+	 <result property="operTime" column="OPER_TIME" />
+	 <result property="checkName" column="CHECK_NAME" />
+	 <result property="checkTime" column="CHECK_TIME" />
+ </resultMap>
+   <insert id="insertSacB2bCmdBatch" parameterClass="net.easipay.cbp.model.SacB2bCmdBatch">
+        INSERT INTO SAC_B2B_CMD_BATCH ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="cmdBatchId">  CMD_BATCH_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="vldDate">  VLD_DATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="msgReceiver">  MSG_RECEIVER  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchState">  BATCH_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="userName">  USER_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchCur">  BATCH_CUR  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchAmount">  BATCH_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchCount">  BATCH_COUNT  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="cmdBatchId">  #cmdBatchId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchSerialNo">  #batchSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="vldDate">  #vldDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="msgReceiver">  #msgReceiver#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchState">  #batchState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="userName">  #userName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchCur">  #batchCur#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchAmount">  #batchAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="batchCount">  #batchCount#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacB2bCmdBatch" parameterClass="java.util.Map" resultMap="SacB2bCmdBatch">  
+        SELECT 
+	       CMD_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       VLD_DATE,
+	       MSG_RECEIVER,
+	       BATCH_STATE,
+	       CREATE_TIME,
+	       USER_NAME,
+	       BATCH_CUR,
+	       BATCH_AMOUNT,
+	       BATCH_COUNT,
+	       OPER_NAME,
+	       OPER_TIME,
+	       CHECK_NAME,
+	       CHECK_TIME
+         FROM SAC_B2B_CMD_BATCH
+         WHERE CMD_BATCH_ID = #cmdBatchId#
+  </select>
+  <select id="listSacB2bCmdBatch" parameterClass="java.util.Map" resultMap="SacB2bCmdBatch">  
+      SELECT 
+	       CMD_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       VLD_DATE,
+	       MSG_RECEIVER,
+	       BATCH_STATE,
+	       CREATE_TIME,
+	       USER_NAME,
+	       BATCH_CUR,
+	       BATCH_AMOUNT,
+	       BATCH_COUNT,
+	       OPER_NAME,
+	       OPER_TIME,
+	       CHECK_NAME,
+	       CHECK_TIME
+	  FROM SAC_B2B_CMD_BATCH
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="cmdBatchId"> CMD_BATCH_ID = #cmdBatchId# </isNotEmpty>                  
+        </dynamic>
+        ORDER　BY CREATE_TIME DESC
+  </select>
+  <update id="updateSacB2bCmdBatch" parameterClass="net.easipay.cbp.model.SacB2bCmdBatch">  
+      UPDATE SAC_B2B_CMD_BATCH        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="cmdBatchId">  CMD_BATCH_ID = #cmdBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="userName">  USER_NAME = #userName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchCur">  BATCH_CUR = #batchCur#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchAmount">  BATCH_AMOUNT = #batchAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="batchCount">  BATCH_COUNT = #batchCount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operName">  OPER_NAME = #operName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operTime">  OPER_TIME = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="checkName">  CHECK_NAME = #checkName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="checkTime">  CHECK_TIME = #checkTime#  </isNotEmpty>
+        </dynamic>
+       WHERE CMD_BATCH_ID = #cmdBatchId#
+  </update>
+  <delete id="deleteSacB2bCmdBatch">  
+        Delete   
+          from SAC_B2B_CMD_BATCH WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacB2bCmdBatch">  
+        Delete 
+        from SAC_B2B_CMD_BATCH
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacB2bCmdBatchCount" parameterClass="java.util.Map" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_B2B_CMD_BATCH
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="cmdBatchId">  CMD_BATCH_ID = #cmdBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="userName">  USER_NAME = #userName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchCur">  BATCH_CUR = #batchCur#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchAmount">  BATCH_AMOUNT = #batchAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchCount">  BATCH_COUNT = #batchCount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchStates">  BATCH_STATE IN ( $batchStates$ )  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+			<![CDATA[ 
+				CREATE_TIME >= to_date(#startDate#,'yyyyMMdd')
+				]]> 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				CREATE_TIME < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+			</isNotEmpty> 
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacB2bCmdBatch" parameterClass="java.util.Map" resultMap="SacB2bCmdBatch"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       CMD_BATCH_ID,
+	       BATCH_SERIAL_NO,
+	       VLD_DATE,
+	       MSG_RECEIVER,
+	       BATCH_STATE,
+	       CREATE_TIME,
+	       USER_NAME,
+	       BATCH_CUR,
+	       BATCH_AMOUNT,
+	       BATCH_COUNT,
+	       OPER_NAME,
+	       OPER_TIME,
+	       CHECK_NAME,
+	       CHECK_TIME
+	       from SAC_B2B_CMD_BATCH  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="cmdBatchId">  CMD_BATCH_ID = #cmdBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchSerialNo">  BATCH_SERIAL_NO = #batchSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="vldDate">  VLD_DATE = #vldDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="msgReceiver">  MSG_RECEIVER = #msgReceiver#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchState">  BATCH_STATE = #batchState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="userName">  USER_NAME = #userName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchCur">  BATCH_CUR = #batchCur#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchAmount">  BATCH_AMOUNT = #batchAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchCount">  BATCH_COUNT = #batchCount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="batchStates">  BATCH_STATE IN  ( $batchStates$ )  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+			<![CDATA[ 
+				CREATE_TIME >= to_date(#startDate#,'yyyyMMdd')
+				]]> 
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				CREATE_TIME < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+			</isNotEmpty> 
+          </dynamic> 
+          ORDER BY CREATE_TIME DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

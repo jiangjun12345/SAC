@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <settings enhancementEnabled="true" maxTransactions="24"
+        maxRequests="128" maxSessions="32"/>
+
+     <sqlMap resource="sqlMap/SacOtrxInfo.xml"/>
+     <sqlMap resource="sqlMap/SacFundTransferCmd.xml"/>
+     <sqlMap resource="sqlMap/SacB2CExrefundApply.xml"/>
+     <sqlMap resource="sqlMap/SacRefundCommand.xml"/>
+     <sqlMap resource="sqlMap/SacB2BCommand.xml"/>
+     <sqlMap resource="sqlMap/SacDepositDetail.xml"/>
+     <sqlMap resource="sqlMap/SacOflCommand.xml"/>
+     <sqlMap resource="sqlMap/SacCusParameter.xml"/>
+     <sqlMap resource="sqlMap/SacB2bCmdBatch.xml"/>
+     <sqlMap resource="sqlMap/Sequence.xml"/>
+     <sqlMap resource="sqlMap/SacCusSettlement.xml"/>
+     <sqlMap resource="sqlMap/SacExceptMonitor.xml"/>
+</sqlMapConfig>

@@ -1,0 +1,358 @@
+@charset "utf-8";
+/* CSS Document */
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.header {
+	width: 100%;
+	height: 35px;
+	background-color: #000000;
+	overflow: hidden
+}
+
+.header .center {
+	width: 1200px;
+	height: 35px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden
+}
+
+.header .center .left {
+	float: left;
+	line-height: 35px;
+}
+
+.header .center .left img {
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.header .center .right {
+	float: right;
+	line-height: 35px;
+}
+
+.header .center .right img {
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.header .center .right a:link {
+	color: #ffffff;
+}
+
+.header .center .right a:visited {
+	color: #ffffff;
+}
+
+.logo {
+	width: 220px;
+	height: 50px;
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.login {
+	width: 330px;
+	height: 220px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 100px;
+	border: 1px solid #cccccc;
+	background-color: #fafafa;
+}
+
+.login .title {
+	width: 330px;
+	height: 35px;
+	border-bottom: 1px solid #cccccc;
+	background-image: url(../images/titbg.png);
+	line-height: 35px;
+}
+
+.login .title img {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.login .enter {
+	width: 330px;
+	height: auto;
+}
+
+.login .enter tr {
+	height: 40px;
+}
+
+.login .enter td {
+/*	height: 40px; */
+/*	border-bottom: 1px solid #cccccc; */
+}
+
+.login .operate {
+	width: 270px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	overflow: hidden;
+}
+
+.login .operate .left {
+	float: left;
+	width: autos;
+	height: auto;
+	margin-top: 20px;
+	margin-left: 10px;
+	display: inline;
+}
+
+.login .operate .right {
+	float: right;
+	width: autos;
+	height: auto;
+	margin-top: 20px;
+	margin-right: 5px;
+	display: inline;
+}
+
+.top {
+	width: 1200px;
+	height: auto;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+
+.top .left {
+	float: left;
+	width: auto;
+	height: auto;
+	margin-top: 10px;
+}
+
+.top .right {
+	float: right;
+	width: 70px;
+	height: 55px;
+	border: 1px solid #cccccc;
+	background-image: url(../images/btn.png);
+	text-align: center;
+}
+
+.top .right img {
+	margin-top: 10px;
+}
+
+.main {
+	width: 1245px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+
+.main .sidenav {
+	float: left;
+	width: 158px;
+	height: auto;
+	overflow: hidden;
+}
+
+.main .sidenav .title {
+	width: 210px;
+	height: 35px;
+	background-image: url(../images/titbg1.png);
+	line-height: 35px;
+}
+
+.main .sidenav .title span {
+	margin-left: 20px;
+}
+
+.main .sidenav .item {
+	width: 156px;
+	height: auto;
+	background-color: #ffffff;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	line-height: 25px;
+}
+
+.main .sidenav .item ul {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.main .sidenav .item a:link {
+	margin-left: 30px;
+	color: #666666;
+}
+
+.main .sidenav .item a:hover {
+	margin-left: 30px;
+	color: #3a74ae;
+}
+
+.main .sidenav .item a:visited {
+	margin-left: 30px;
+	color: #666666;
+}
+
+.main .sidenav .item .selected {
+	color: #3a74ae;
+	text-decoration: underline;
+	background-image: url(../images/arr.png);
+	background-repeat: no-repeat;
+	background-position: 10%;
+}
+
+.main .content {
+	float: right;
+	width: 975px;
+	height: auto;
+	overflow: hidden;
+}
+
+.main .content .title {
+	width: 975px;
+	height: 35px;
+	background-image: url(../images/titbg1.png);
+	line-height: 35px;
+}
+
+.main .content .title span {
+	margin-left: 20px;
+}
+
+.passtitle {
+	width: 480px;
+	height: auto;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 30px;
+	border-bottom: 3px solid #1276bc;
+	overflow: hidden;
+}
+
+.passtitle a:link {
+	color: #1276bc;
+}
+
+.passtitle a:visited {
+	color: #1276bc;
+}
+
+.passtable {
+	width: 480px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.passcon {
+	width: 280px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.passcon .left {
+	display: none;
+	float: left;
+	width: 48px;
+	height: 48px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.passcon .right {
+	display: none;
+	float: right;
+	width: 180px;
+	height: 48px;
+	margin-top: 30px;
+	margin-left: 20px;
+}
+
+.passtable tr {
+	height: 50px;
+}
+
+/* 企业备案页面样式 */
+.main .content {
+	float: right;
+	width: 1085px;
+	height: auto;
+	min-height: 500px;
+	background-color: #ffffff;
+	overflow: hidden;
+}
+
+.main .content .title {
+	width: 1085px;
+	height: 35px;
+	background-image: url(../images/titbg1.png);
+	line-height: 35px;
+}
+
+.main .content .title span {
+	margin-left: 20px;
+}
+
+.main .content .con {
+	width: 1075px;
+	height: auto;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+}
+
+.main .content .con tr {
+	height: 40px;
+}
+
+.main .content .stitle {
+	width: 915px;
+	height: auto;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 25px;
+	border-bottom: 1px solid #cccccc;
+}
+
+.footer {
+	width: 100%;
+	height: 45px;
+	margin-top: 15px;
+	background-color: #000000;
+	text-align: center;
+	line-height: 45px;
+	overflow: hidden
+}
+
+.table a:link {
+	color: #666666;
+}
+
+.table a:visited {
+	color: #666666;
+}

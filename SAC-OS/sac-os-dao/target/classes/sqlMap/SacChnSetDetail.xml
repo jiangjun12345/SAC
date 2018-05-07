@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacChnSetDetail" class="net.easipay.cbp.model.SacChnSetDetail">
+	 <result property="id" column="ID" />
+	 <result property="chnNo" column="CHN_NO" />
+	 <result property="chnName" column="CHN_NAME" />
+	 <result property="accountNumber" column="ACCOUNT_NUMBER" />
+	 <result property="sacDate" column="SAC_DATE" />
+	 <result property="trxDate" column="TRX_DATE" />
+	 <result property="transDate" column="trans_date"/>
+	 <result property="totalNum" column="TOTAL_NUM" />
+	 <result property="totalSum" column="TOTAL_SUM" />
+	 <result property="trxCost" column="TRX_COST" />
+	 <result property="currencyType" column="CURRENCY_TYPE" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="updateTime" column="UPDATE_TIME" />
+	 <result property="memo" column="MEMO" />
+	 <result property="payconType" column="PAYCON_TYPE" />
+	 <result property="chnBatchNo" column="CHN_BATCH_NO" />
+	 <result property="busiType" column="BUSI_TYPE" />
+	 <result property="bankNodeCode" column="BANK_NODE_CODE" />
+	 <result property="type" column="TYPE" />
+	 <result property="sacBankName" column="SAC_BANK_NAME" />
+ </resultMap>
+   
+   <select id="getSacChnSetDetail" resultMap="SacChnSetDetail">  
+        SELECT 
+	       ID,
+	       CHN_NO,
+	       CHN_NAME,
+	       ACCOUNT_NUMBER,
+	       SAC_DATE,
+	       TRX_DATE,
+	       trans_date,
+	       TOTAL_NUM,
+	       TOTAL_SUM,
+	       TRX_COST,
+	       CURRENCY_TYPE,
+	       CREATE_TIME,
+	       UPDATE_TIME,
+	       MEMO,
+	       PAYCON_TYPE,
+	       CHN_BATCH_NO,
+	       BUSI_TYPE,
+	       BANK_NODE_CODE,
+	       TYPE,
+	       SAC_BANK_NAME
+         FROM SAC_CHN_SET_DETAIL
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  
+  <select id="listSacChnSetDetail" parameterClass="java.util.Map" resultMap="SacChnSetDetail">  
+      SELECT 
+	       ID,
+	       CHN_NO,
+	       CHN_NAME,
+	       ACCOUNT_NUMBER,
+	       SAC_DATE,
+	       TRX_DATE,
+	       trans_date,
+	       TOTAL_NUM,
+	       TOTAL_SUM,
+	       TRX_COST,
+	       CURRENCY_TYPE,
+	       CREATE_TIME,
+	       UPDATE_TIME,
+	       MEMO,
+	       PAYCON_TYPE,
+	       CHN_BATCH_NO,
+	       BUSI_TYPE,
+	       BANK_NODE_CODE,
+	       TYPE,
+	       SAC_BANK_NAME
+	  FROM SAC_CHN_SET_DETAIL
+        <dynamic prepend="WHERE">
+          	<isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnNo">  CHN_NO = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  CHN_NAME = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="accountNumber">  ACCOUNT_NUMBER = #accountNumber#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalSum">  TOTAL_SUM = #totalSum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCost">  TRX_COST = #trxCost#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnBatchNo">  CHN_BATCH_NO = #chnBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="type">  TYPE = #type#  </isNotEmpty>
+           <isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				create_time >= to_date(#startDate# ,'yyyyMMdd')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				create_time < to_date(#endDate# ,'yyyyMMdd')+1  
+				]]>
+			</isNotEmpty>        
+        </dynamic>
+        ORDER BY CREATE_TIME DESC
+  </select>
+  
+  
+   <select id="getSacChnSetDetailCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_CHN_SET_DETAIL
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnNo">  CHN_NO = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  CHN_NAME = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="accountNumber">  ACCOUNT_NUMBER = #accountNumber#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalSum">  TOTAL_SUM = #totalSum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCost">  TRX_COST = #trxCost#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnBatchNo">  CHN_BATCH_NO = #chnBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="type">  TYPE = #type#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				create_time >= to_date(#startDate# ,'yyyyMMdd')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				create_time < to_date(#endDate# ,'yyyyMMdd')+1  
+				]]>
+			</isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacChnSetDetail" parameterClass="java.util.Map" resultMap="SacChnSetDetail"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       ID,
+	       CHN_NO,
+	       CHN_NAME,
+	       ACCOUNT_NUMBER,
+	       SAC_DATE,
+	       TRX_DATE,
+	       trans_date,
+	       TOTAL_NUM,
+	       TOTAL_SUM,
+	       TRX_COST,
+	       CURRENCY_TYPE,
+	       CREATE_TIME,
+	       UPDATE_TIME,
+	       MEMO,
+	       PAYCON_TYPE,
+	       CHN_BATCH_NO,
+	       BUSI_TYPE,
+	       BANK_NODE_CODE,
+	       TYPE,
+	       SAC_BANK_NAME
+	       from SAC_CHN_SET_DETAIL  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnNo">  CHN_NO = #chnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnName">  CHN_NAME = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="accountNumber">  ACCOUNT_NUMBER = #accountNumber#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacDate">  SAC_DATE = #sacDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxDate">  TRX_DATE = #trxDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalNum">  TOTAL_NUM = #totalNum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="totalSum">  TOTAL_SUM = #totalSum#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCost">  TRX_COST = #trxCost#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="currencyType">  CURRENCY_TYPE = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chnBatchNo">  CHN_BATCH_NO = #chnBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bankNodeCode">  BANK_NODE_CODE = #bankNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="type">  TYPE = #type#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ 
+				create_time >= to_date(#startDate# ,'yyyyMMdd')
+				]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ 
+				create_time < to_date(#endDate# ,'yyyyMMdd') +1 
+				]]>
+			</isNotEmpty>    
+          </dynamic> 
+ 		  ORDER BY SAC_DATE DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

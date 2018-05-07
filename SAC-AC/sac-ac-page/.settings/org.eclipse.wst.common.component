@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sac-ac-page">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="sac-ac-view-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-ac-view/sac-ac-view">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-ac-core-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-ac-core/sac-ac-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-ac-config-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-ac-config/sac-ac-config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-ac-dao-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-ac-dao/sac-ac-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-ac-model-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-ac-model/sac-ac-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-ac-util-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-ac-util/sac-ac-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/sac-ac-page/target/classes"/>
+        <property name="context-root" value="ac-${warName.suf}-${maven.build.timestamp}-2.0.1"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <settings enhancementEnabled="true" maxTransactions="24"
+        maxRequests="128" maxSessions="32"/>
+
+     <sqlMap resource="sqlMap/FinCode.xml"/>
+     <sqlMap resource="sqlMap/FinCode1.xml"/>
+     <sqlMap resource="sqlMap/FinCode2.xml"/>
+     <sqlMap resource="sqlMap/FinCode3.xml"/>
+     <sqlMap resource="sqlMap/FinCode4.xml"/>
+     <sqlMap resource="sqlMap/FinCode5.xml"/>
+     <sqlMap resource="sqlMap/FinCode6.xml"/>
+     <sqlMap resource="sqlMap/FinMx.xml"/>
+     <sqlMap resource="sqlMap/FinPz.xml"/>
+     <sqlMap resource="sqlMap/FinYe.xml"/>
+     <sqlMap resource="sqlMap/FinCodeRule.xml"/>
+     <sqlMap resource="sqlMap/FinPzNoSequence.xml"/>
+     <sqlMap resource="sqlMap/FinTask.xml"/>
+     <sqlMap resource="sqlMap/FinStatBank.xml"/>
+     <sqlMap resource="sqlMap/SacOtrxInfo.xml"/>
+</sqlMapConfig>

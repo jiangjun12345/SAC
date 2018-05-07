@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacChargeApply" class="net.easipay.cbp.model.SacChargeApply">
+	 <result property="chargeApplyId" column="CHARGE_APPLY_ID" />
+	 <result property="applyOrgId" column="APPLY_ORG_ID" />
+	 <result property="applyDbtCode" column="APPLY_DBT_CODE" />
+	 <result property="applyOrgName" column="APPLY_ORG_NAME" />
+	 <result property="applyCode" column="APPLY_CODE" />
+	 <result property="payCurrency" column="PAY_CURRENCY" />
+	 <result property="payAmount" column="PAY_AMOUNT" />
+	 <result property="applyDate" column="APPLY_DATE" />
+	 <result property="expiredDate" column="EXPIRED_DATE" />
+	 <result property="craccNo" column="CRACC_NO" />
+	 <result property="craccName" column="CRACC_NAME" />
+	 <result property="craccNodeCode" column="CRACC_NODE_CODE" />
+	 <result property="craccBankName" column="CRACC_BANK_NAME" />
+	 <result property="applyState" column="APPLY_STATE" />
+	 <result property="checkedSerialNo" column="CHECKED_SERIAL_NO" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="lastUpdateTime" column="LAST_UPDATE_TIME" />
+	 <result property="applyMemo" column="APPLY_MEMO" />
+	 <result property="draccNo" column="DRACC_NO" />
+	 <result property="draccName" column="DRACC_NAME" />
+ </resultMap>
+   <insert id="insertSacChargeApply" parameterClass="net.easipay.cbp.model.SacChargeApply">
+        INSERT INTO SAC_CHARGE_APPLY ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="chargeApplyId">  CHARGE_APPLY_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyOrgId">  APPLY_ORG_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyDbtCode">  APPLY_DBT_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyOrgName">  APPLY_ORG_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyCode">  APPLY_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyDate">  APPLY_DATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="expiredDate">  EXPIRED_DATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  CRACC_NODE_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankName">  CRACC_BANK_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyState">  APPLY_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="checkedSerialNo">  CHECKED_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  LAST_UPDATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyMemo">  APPLY_MEMO  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="chargeApplyId">  #chargeApplyId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyOrgId">  #applyOrgId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyDbtCode">  #applyDbtCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyOrgName">  #applyOrgName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyCode">  #applyCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payCurrency">  #payCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyDate">  #applyDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="expiredDate">  #expiredDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNo">  #craccNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccName">  #craccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNodeCode">  #craccNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBankName">  #craccBankName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyState">  #applyState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="checkedSerialNo">  #checkedSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="lastUpdateTime">  #lastUpdateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="applyMemo">  #applyMemo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccNo">  #draccNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccName">  #draccName#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacChargeApply" resultMap="SacChargeApply">  
+        SELECT 
+	       CHARGE_APPLY_ID,
+	       APPLY_ORG_ID,
+	       APPLY_DBT_CODE,
+	       APPLY_ORG_NAME,
+	       APPLY_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       APPLY_DATE,
+	       EXPIRED_DATE,
+	       CRACC_NO,
+	       CRACC_NAME,
+	       CRACC_NODE_CODE,
+	       CRACC_BANK_NAME,
+	       APPLY_STATE,
+	       CHECKED_SERIAL_NO,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       APPLY_MEMO,
+	       DRACC_NO,
+	       DRACC_NAME
+         FROM SAC_CHARGE_APPLY
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacChargeApply" parameterClass="java.util.Map" resultMap="SacChargeApply">  
+      SELECT 
+	       CHARGE_APPLY_ID,
+	       APPLY_ORG_ID,
+	       APPLY_DBT_CODE,
+	       APPLY_ORG_NAME,
+	       APPLY_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       APPLY_DATE,
+	       EXPIRED_DATE,
+	       CRACC_NO,
+	       CRACC_NAME,
+	       CRACC_NODE_CODE,
+	       CRACC_BANK_NAME,
+	       APPLY_STATE,
+	       CHECKED_SERIAL_NO,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       APPLY_MEMO,
+	       DRACC_NO,
+	       DRACC_NAME
+	  FROM SAC_CHARGE_APPLY
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyOrgId">  APPLY_ORG_ID = #applyOrgId#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyDbtCode">  APPLY_DBT_CODE = #applyDbtCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyOrgName">  APPLY_ORG_NAME = #applyOrgName#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyCode">  APPLY_CODE = #applyCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyDate">  APPLY_DATE = #applyDate#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="expiredDate">  EXPIRED_DATE = #expiredDate#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="checkedSerialNo">  CHECKED_SERIAL_NO = #checkedSerialNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="applyMemo">  APPLY_MEMO = #applyMemo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+          <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+        </dynamic>
+  </select>
+  <update id="updateSacChargeApply" parameterClass="net.easipay.cbp.model.SacChargeApply">  
+      UPDATE SAC_CHARGE_APPLY        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyOrgId">  APPLY_ORG_ID = #applyOrgId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyDbtCode">  APPLY_DBT_CODE = #applyDbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyOrgName">  APPLY_ORG_NAME = #applyOrgName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyCode">  APPLY_CODE = #applyCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyDate">  APPLY_DATE = #applyDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="expiredDate">  EXPIRED_DATE = #expiredDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="checkedSerialNo">  CHECKED_SERIAL_NO = #checkedSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="applyMemo">  APPLY_MEMO = #applyMemo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+        </dynamic>
+       WHERE CHARGE_APPLY_ID = #chargeApplyId#
+  </update>
+  <delete id="deleteSacChargeApply">  
+        Delete   
+          from SAC_CHARGE_APPLY WHERE
+         CHARGE_APPLY_ID = #chargeApplyId#
+  </delete>
+  <delete id="deleteListSacChargeApply">  
+        Delete 
+        from SAC_CHARGE_APPLY
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacChargeApplyCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_CHARGE_APPLY
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyOrgId">  APPLY_ORG_ID = #applyOrgId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyDbtCode">  APPLY_DBT_CODE = #applyDbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyOrgName">  APPLY_ORG_NAME like '%$applyOrgName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyCode">  APPLY_CODE like '%$applyCode$%' </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyDate">  APPLY_DATE = #applyDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="expiredDate">  EXPIRED_DATE = #expiredDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="checkedSerialNo">  CHECKED_SERIAL_NO = #checkedSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyMemo">  APPLY_MEMO = #applyMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ APPLY_DATE >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ APPLY_DATE < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacChargeApply" parameterClass="java.util.Map" resultMap="SacChargeApply"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       CHARGE_APPLY_ID,
+	       APPLY_ORG_ID,
+	       APPLY_DBT_CODE,
+	       APPLY_ORG_NAME,
+	       APPLY_CODE,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       APPLY_DATE,
+	       EXPIRED_DATE,
+	       CRACC_NO,
+	       CRACC_NAME,
+	       CRACC_NODE_CODE,
+	       CRACC_BANK_NAME,
+	       APPLY_STATE,
+	       CHECKED_SERIAL_NO,
+	       CREATE_TIME,
+	       LAST_UPDATE_TIME,
+	       APPLY_MEMO,
+	       DRACC_NO,
+	       DRACC_NAME
+	       from SAC_CHARGE_APPLY  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="chargeApplyId">  CHARGE_APPLY_ID = #chargeApplyId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyOrgId">  APPLY_ORG_ID = #applyOrgId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyDbtCode">  APPLY_DBT_CODE = #applyDbtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyOrgName">  APPLY_ORG_NAME like '%$applyOrgName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyCode">  APPLY_CODE like '%$applyCode$%' </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyDate">  APPLY_DATE = #applyDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="expiredDate">  EXPIRED_DATE = #expiredDate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyState">  APPLY_STATE = #applyState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="checkedSerialNo">  CHECKED_SERIAL_NO = #checkedSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  LAST_UPDATE_TIME = #lastUpdateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="applyMemo">  APPLY_MEMO = #applyMemo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate"> 
+				<![CDATA[ APPLY_DATE >= to_date(#startDate#,'yyyyMMdd') ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+				<![CDATA[ APPLY_DATE < to_date(#endDate#,'yyyyMMdd')+1   ]]>
+			</isNotEmpty>
+          </dynamic> 
+          ORDER BY APPLY_DATE DESC,CHARGE_APPLY_ID DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

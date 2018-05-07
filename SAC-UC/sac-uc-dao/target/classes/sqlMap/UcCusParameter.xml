@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.UcCusParameter">
+
+	<typeAlias alias="UcCusParameter" type="net.easipay.cbp.model.UcCusParameter" />	    
+	    
+	<resultMap id="UcCusParameterResult" class="UcCusParameter">
+		<result property="id" column="ID" />
+		<result property="cusNo" column="CUS_NO" />
+		<result property="cusPlatAcc" column="CUS_PLAT_ACC" />
+		<result property="cusPlatAccName" column="CUS_PLAT_ACC_NAME" />
+		<result property="businessType" column="BUSINESS_TYPE" />
+		<result property="trxType" column="TRX_TYPE" />
+		<result property="refundFlag" column="REFUND_FLAG" />
+		<result property="currencyType" column="CURRENCY_TYPE" />
+		<result property="sacBankAcc" column="SAC_BANK_ACC" />
+		<result property="accName" column="ACC_NAME" />
+		<result property="depositBank" column="DEPOSIT_BANK" />
+		<result property="craccBankCode" column="CRACC_BANK_CODE" />
+		<result property="feeRate" column="FEE_RATE" />
+		<result property="feeComWay" column="FEE_COM_WAY" />
+		<result property="feeSacWay" column="FEE_SAC_WAY" />
+		<result property="sacPeriod" column="SAC_PERIOD" />
+		<result property="trcUplim" column="TRX_UP_LIM" />
+		<result property="CreateTime" column="CREATE_TIME" />
+		<result property="memo" column="MEMO" />
+	</resultMap>
+
+	<insert id="insertUcCusParameter" parameterClass="UcCusParameter">
+	      <![CDATA[
+	         insert into UC_CUS_PARAMETER
+	         (
+	            ID                
+				,CUS_NO            
+				,CUS_PLAT_ACC      
+				,CUS_PLAT_ACC_NAME 
+				,BUSINESS_TYPE     
+				,TRX_TYPE          
+				,REFUND_FLAG       
+				,CURRENCY_TYPE     
+				,SAC_BANK_ACC      
+				,ACC_NAME          
+				,DEPOSIT_BANK      
+				,CRACC_BANK_CODE   
+				,FEE_RATE          
+				,FEE_COM_WAY       
+				,FEE_SAC_WAY       
+				,SAC_PERIOD        
+				,TRX_UP_LIM        
+				,CREATE_TIME       
+				,MEMO                            
+	         )
+	         values
+	         (
+	            #id#,
+				#cusNo#,
+				#cusPlatAcc#,
+				#cusPlatAccName#,
+				#businessType#,
+				#trxType#,
+				#refundFlag#,
+				#currencyType#,
+				#sacBankAcc#,
+				#accName#,
+				#depositBank#,
+				#craccBankCode#,
+				#feeRate#,
+				#feeComWay#,
+				#feeSacWay#,
+				#sacPeriod#,
+				#trcUplim#,
+				#CreateTime#,
+				#memo#
+	         )
+	      ]]>
+	</insert>
+	
+	
+	 <update id="updateUcCusParameter" parameterClass="UcCusParameter">
+	    <![CDATA[
+	          update 
+	        	UC_CUS_PARAMETER 
+	          set
+	         ]]>
+		<isNotEmpty prepend="" property="cusNo">
+			CUS_NO =#cusNo# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="cusPlatAcc">
+			CUS_PLAT_ACC =#cusPlatAcc#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="cusPlatAccName">
+			CUS_PLAT_ACC_NAME =#cusPlatAccName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="businessType">
+			BUSINESS_TYPE =#businessType#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="trxType">
+			TRX_TYPE =#trxType#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="refundFlag">
+			REFUND_FLAG =#refundFlag# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="currencyType">
+			CURRENCY_TYPE =#currencyType#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="sacBankAcc">
+			SAC_BANK_ACC =#sacBankAcc#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="accName">
+			ACC_NAME =#accName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="depositBank">
+			DEPOSIT_BANK =#depositBank#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="craccBankCode">
+			CRACC_BANK_CODE =#craccBankCode#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="feeRate">
+			FEE_RATE =#feeRate#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="feeComWay">
+			FEE_COM_WAY =#feeComWay#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="feeSacWay">
+			FEE_SAC_WAY =#feeSacWay#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="sacPeriod">
+			SAC_PERIOD =#sacPeriod#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="trcUplim">
+			TRX_UP_LIM =#trcUplim#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="memo">
+			MEMO =#memo#,
+		</isNotEmpty>		
+		<![CDATA[		
+				ID = #id#
+				where ID = #id#	
+	    ]]>
+	</update>
+
+</sqlMap>

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.UcOrgInfo">
+
+	<typeAlias alias="ucOrgInfo" type="net.easipay.cbp.model.UcOrgInfo" />
+
+	<resultMap id="ucOrgInfoResult" class="ucOrgInfo">
+		<result property="orgId" column="ORG_ID"/>                     
+		<result property="orgCode" column="ORG_CODE"/>
+		<result property="orgName" column="ORG_NAME"/>
+		<result property="shortName" column="SHORT_NAME"/>
+		<result property="engName" column="ENG_NAME"/>                                         
+		<result property="regCountry" column="REG_COUNTRY"/>                                   
+		<result property="locCountry" column="LOC_COUNTRY"/>                                   
+		<result property="corporation" column="CORPORATION"/>                                  
+		<result property="zip" column="ZIP"/>                                                  
+		<result property="address" column="ADDRESS"/>                                          
+		<result property="fax" column="FAX"/>                                                  
+		<result property="linkman" column="LINKMAN"/>                                          
+		<result property="phone" column="PHONE"/>                                              
+		<result property="email" column="EMAIL"/>                                              
+		<result property="createTime" column="CREATE_TIME"/>                                   
+		<result property="updateTime" column="UPDATE_TIME"/>                                   
+		<result property="orgType" column="ORG_TYPE"/>                                 
+		<result property="customerCode" column="CUSTOMER_CODE"/>                       
+		<result property="title" column="TITLE"/>                                      
+		<result property="status" column="STATUS"/>                                    
+		<result property="dutyScope" column="DUTY_SCOPE"/>                             
+		<result property="lawman" column="LAWMAN"/>                                    
+		<result property="lawmanPasstype" column="LAWMAN_PASSTYPE"/>                   
+		<result property="lawmanPasscode" column="LAWMAN_PASSCODE"/>                   
+		<result property="auditUser" column="AUDIT_USER"/>                             
+		<result property="approvaledStatus" column="APPROVALED_STATUS"/>               
+		<result property="approvaledNotes" column="APPROVALED_NOTES"/>                 
+		<result property="approvaledDate" column="APPROVALED_DATE"/>                           
+		<result property="dutyLicenseFile" column="DUTY_LICENSE_FILE"/>                        
+		<result property="orgLicenseFile" column="ORG_LICENSE_FILE"/>                          
+		<result property="taxyRegLicenseFile" column="TAXY_REG_LICENSE_FILE"/>                 
+		<result property="lawManLicenseFile" column="LAW_MAN_LICENSE_FILE"/>                   
+		<result property="orgPhone" column="ORG_PHONE"/>                                    
+		<result property="regAddress" column="REG_ADDRESS"/>                                   
+		<result property="mobilePhone" column="MOBILE_PHONE"/>                                 
+		<result property="orgBranch" column="ORG_BRANCH"/>                                  
+		<result property="updateUserName" column="UPDATE_USER_NAME"/>                          
+		<result property="updateUserId" column="UPDATE_USER_ID"/>                              
+		<result property="memo" column="MEMO"/>                                                
+		<result property="merchantNcode" column="MERCHANT_NCODE"/> 
+		<result property="merchantSecure" column="MERCHANT_SECURE"/> 
+		  
+	</resultMap>
+	    
+	<select id="selectUcOrgInfoById" resultMap="ucOrgInfoResult"
+		parameterClass="java.lang.Long">
+	    <![CDATA[
+	            
+	            select * from uc_org_info  
+				where ORG_ID = #id#
+		]]>
+	</select>
+	
+	<select id="selectUcOrgInfoByParamter" resultMap="ucOrgInfoResult"
+		parameterClass="ucOrgInfo">
+	      select * from ( select * from uc_org_info  
+        <dynamic prepend="WHERE"  >
+       		<isNotEmpty prepend="AND" property="orgId">
+				<![CDATA[ORG_ID =#orgId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orgName">
+				<![CDATA[ORG_NAME =#orgName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orgCode">
+				<![CDATA[ORG_CODE =#orgCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="shortName">
+				<![CDATA[SHORT_NAME =#shortName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="engName">
+				<![CDATA[ENG_NAME =#engName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="regCountry">
+				<![CDATA[REG_COUNTRY =#regCountry#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="locCountry">
+				<![CDATA[LOC_COUNTRY =#locCountry#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="corporation">
+				<![CDATA[CORPORATION =#corporation#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="zip">
+				<![CDATA[ZIP =#zip#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="address">
+				<![CDATA[ADDRESS =#address#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="fax">
+				<![CDATA[FAX =#fax#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="linkman">
+				<![CDATA[LINKMAN =#linkman#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="phone">
+				<![CDATA[PHONE =#phone#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="email">
+				<![CDATA[EMAIL =#email#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="createTime">
+				<![CDATA[CREATE_TIME =#createTime#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateTime">
+				<![CDATA[UPDATE_TIME =#updateTime# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orgType">
+				<![CDATA[ORG_TYPE =#orgType#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="customerCode">
+				<![CDATA[CUSTOMER_CODE =#customerCode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="title">
+				<![CDATA[TITLE =#title#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="status">
+				<![CDATA[STATUS =#status#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="dutyScope">
+				<![CDATA[DUTY_SCOPE =#dutyScope#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="lawman">
+				<![CDATA[LAWMAN =#lawman#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="lawmanPasstype">
+				<![CDATA[LAWMAN_PASSTYPE =#lawmanPasstype#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="lawmanPasscode">
+				<![CDATA[LAWMAN_PASSCODE =#lawmanPasscode#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="auditUser">
+				<![CDATA[AUDIT_USER =#auditUser#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="approvaledStatus">
+				<![CDATA[APPROVALED_STATUS =#approvaledStatus#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="approvaledNotes">
+				<![CDATA[APPROVALED_NOTES =#approvaledNotes#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="approvaledDate">
+				<![CDATA[APPROVALED_DATE =#approvaledDate#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="dutyLicenseFile">
+				<![CDATA[DUTY_LICENSE_FILE =#dutyLicenseFile#]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="orgLicenseFile">
+				<![CDATA[ORG_LICENSE_FILE =#orgLicenseFile#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="taxyRegLicenseFile">
+				<![CDATA[TAXY_REG_LICENSE_FILE =#taxyRegLicenseFile#]]>
+			</isNotEmpty>
+			
+			<isNotEmpty prepend="AND" property="lawManLicenseFile">
+				<![CDATA[LAW_MAN_LICENSE_FILE =#lawManLicenseFile#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orgPhone">
+				<![CDATA[ORG_PHONE =#orgPhone#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="regAddress">
+				<![CDATA[REG_ADDRESS =#regAddress#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="mobilePhone">
+				<![CDATA[MOBILE_PHONE =#mobilePhone#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="orgBranch">
+				<![CDATA[ORG_BRANCH =#orgBranch#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateUserName">
+				<![CDATA[UPDATE_USER_NAME =#updateUserName#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="updateUserId">
+				<![CDATA[UPDATE_USER_ID =#updateUserId#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="memo">
+				<![CDATA[MEMO =#memo#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="merchantNcode">
+				<![CDATA[MERCHANT_NCODE =#merchantNcode#]]>
+			</isNotEmpty>
+			</dynamic>
+			<![CDATA[
+		) where ROWNUM < 11
+		]]>
+	</select>
+	
+	<select id="selectAllUcOrgInfo" resultMap="ucOrgInfoResult" parameterClass="java.util.HashMap">
+	    <![CDATA[
+	            SELECT *
+				FROM
+				   (SELECT ROWNUM AS RN, XX.*
+				    FROM
+				   (
+	            select * from uc_org_info order by  CREATE_TIME
+	            ) XX
+				   WHERE ROWNUM < #rownum#)
+				WHERE RN > #rn#
+		]]>
+	</select>
+	
+	 <select id="selectUcOrgInfoTotal" resultClass="java.lang.Integer">
+	    <![CDATA[
+	        select count(*)
+	        from
+	        uc_org_info
+		]]>
+	</select>	
+
+	<update id="updateUcOrgInfo" parameterClass="ucOrgInfo">
+	    <![CDATA[
+	          update 
+	        	uc_org_info 
+	          set
+	         ]]>
+		<isNotEmpty prepend="" property="orgName">
+			ORG_NAME =#orgName# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="orgCode">
+			ORG_CODE =#orgCode#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="shortName">
+			SHORT_NAME =#shortName# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="engName">
+			ENG_NAME =#engName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="regCountry">
+			REG_COUNTRY =#regCountry# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="locCountry">
+			LOC_COUNTRY =#locCountry#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="corporation">
+			CORPORATION =#corporation# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="zip">
+			ZIP =#zip#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="address">
+			ADDRESS =#address# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="fax">
+			FAX =#fax#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="linkman">
+			LINKMAN =#linkman# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="phone">
+			PHONE =#phone#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="email">
+			EMAIL =#email# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createTime">
+			CREATE_TIME =#createTime#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateTime">
+			UPDATE_TIME =#updateTime# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="orgType">
+			ORG_TYPE =#orgType#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="customerCode">
+			CUSTOMER_CODE =#customerCode# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="title">
+			TITLE =#title#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="status">
+			STATUS =#status# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="dutyScope">
+			DUTY_SCOPE =#dutyScope#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="lawman">
+			LAWMAN =#lawman# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="lawmanPasstype">
+			LAWMAN_PASSTYPE =#lawmanPasstype#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="lawmanPasscode">
+			LAWMAN_PASSCODE =#lawmanPasscode# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="auditUser">
+			AUDIT_USER =#auditUser#,
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="" property="approvaledStatus">
+			APPROVALED_STATUS =#approvaledStatus# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="approvaledNotes">
+			APPROVALED_NOTES =#approvaledNotes#,
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="" property="approvaledDate">
+			APPROVALED_DATE =#approvaledDate# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="dutyLicenseFile">
+			DUTY_LICENSE_FILE =#dutyLicenseFile#,
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="" property="orgLicenseFile">
+			ORG_LICENSE_FILE =#orgLicenseFile# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="taxyRegLicenseFile">
+			TAXY_REG_LICENSE_FILE =#taxyRegLicenseFile#,
+		</isNotEmpty>
+		
+		<isNotEmpty prepend="" property="lawManLicenseFile">
+			LAW_MAN_LICENSE_FILE =#lawManLicenseFile# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="orgPhone">
+			ORG_PHONE =#orgPhone#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="regAddress">
+			REG_ADDRESS =#regAddress# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="mobilePhone">
+			MOBILE_PHONE =#mobilePhone#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="orgBranch">
+			ORG_BRANCH =#orgBranch# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateUserName">
+			UPDATE_USER_NAME =#updateUserName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateUserId">
+			UPDATE_USER_ID =#updateUserId#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="memo">
+			MEMO =#memo# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="merchantNcode">
+			MERCHANT_NCODE =#merchantNcode#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="merchantSecure">
+			MERCHANT_SECURE =#merchantSecure#,
+		</isNotEmpty>
+		<![CDATA[		
+				ORG_ID = #orgId#
+				where ORG_ID = #orgId#	
+	    ]]>
+	</update>
+
+	<insert id="insertUcOrgInfo" parameterClass="ucOrgInfo">
+	      <![CDATA[
+	         insert into uc_org_info
+	         (
+	            ORG_ID                 
+				,ORG_CODE              
+				,ORG_NAME              
+				,SHORT_NAME            
+				,ENG_NAME              
+				,REG_COUNTRY           
+				,LOC_COUNTRY           
+				,CORPORATION           
+				,ZIP                   
+				,ADDRESS               
+				,FAX                   
+				,LINKMAN               
+				,PHONE                 
+				,EMAIL                 
+				,CREATE_TIME           
+				,UPDATE_TIME           
+				,ORG_TYPE              
+				,CUSTOMER_CODE         
+				,TITLE                 
+				,STATUS                
+				,DUTY_SCOPE            
+				,LAWMAN                
+				,LAWMAN_PASSTYPE       
+				,LAWMAN_PASSCODE       
+				,AUDIT_USER            
+				,APPROVALED_STATUS     
+				,APPROVALED_NOTES      
+				,APPROVALED_DATE       
+				,DUTY_LICENSE_FILE     
+				,ORG_LICENSE_FILE      
+				,TAXY_REG_LICENSE_FILE 
+				,LAW_MAN_LICENSE_FILE  
+				,ORG_PHONE             
+				,REG_ADDRESS           
+				,MOBILE_PHONE          
+				,ORG_BRANCH            
+				,UPDATE_USER_NAME      
+				,UPDATE_USER_ID        
+				,MEMO                  
+				,MERCHANT_NCODE 
+				,MERCHANT_SECURE       
+ 
+	         )
+	         values
+	         (
+	            #orgId#,                 
+				#orgCode#,           
+				#orgName#,           
+				#shortName#,         
+				#engName#,           
+				#regCountry#,        
+				#locCountry#,        
+				#corporation#,       
+				#zip#,               
+				#address#,           
+				#fax#,               
+				#linkman#,           
+				#phone#,             
+				#email#,             
+				#createTime#,          
+				#updateTime#,          
+				#orgType#,           
+				#customerCode#,      
+				#title#,             
+				#status#,            
+				#dutyScope#,         
+				#lawman#,            
+				#lawmanPasstype#,    
+				#lawmanPasscode#,    
+				#auditUser#,         
+				#approvaledStatus#,  
+				#approvaledNotes#,   
+				#approvaledDate#,      
+				#dutyLicenseFile#,   
+				#orgLicenseFile#,    
+				#taxyRegLicenseFile#,
+				#lawManLicenseFile#, 
+				#orgPhone#,       
+				#regAddress#,        
+				#mobilePhone#,       
+				#orgBranch#,      
+				#updateUserName#,    
+				#updateUserId#,        
+				#memo#,              
+				#merchantNcode#,
+				#merchantSecure#       
+	         )
+	      ]]>
+	</insert>
+</sqlMap>

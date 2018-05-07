@@ -1,0 +1,2 @@
+10.68.30.116 - - [07/May/2018:14:03:07 +0800] "POST /uc/interface/resourceManageTree HTTP/1.1" 200 109200 http-bio-8086-exec-1 727
+10.68.30.116 - - [07/May/2018:14:03:07 +0800] "POST /uc/interface/selectOrgInfoById HTTP/1.1" 200 820 http-bio-8086-exec-3 18

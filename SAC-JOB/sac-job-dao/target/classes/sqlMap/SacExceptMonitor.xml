@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+	
+<sqlMap>
+
+	<resultMap id="SacExceptMonitorInfo" class="net.easipay.cbp.model.SacExceptMonitor">
+		<result property="id" column="id"/>
+		<result property="serverIp" column="server_ip"/>
+		<result property="clientIp" column="client_ip"/>
+		<result property="reqChanner" column="req_channer"/>
+		<result property="serChanner" column="ser_channer"/>
+		<result property="serviceId" column="service_id"/>
+		<result property="reqUrl" column="req_url"/>
+		<result property="operateType" column="operate_type"/>
+		<result property="createTime" column="create_time"/>
+		<result property="busiType" column="busi_type"/>
+		<result property="txnCode" column="txn_code"/>
+		<result property="trxSerialId" column="trx_serial_id"/>
+		<result property="recBatchId" column="rec_batch_id"/>
+		<result property="reqData" column="req_data"/>
+		<result property="errorNo" column="error_no"/>
+		<result property="errorMsg" column="error_msg"/>
+		<result property="errorReason" column="error_reason"/>
+		<result property="status" column="status"/>
+		<result property="tableId" column="table_id"/>
+	</resultMap>
+	
+	
+	<!-- sac_record_log关系映射 -->
+	<resultMap id="SacRecordLogInfo" class="net.easipay.cbp.model.SacExceptMonitor">
+		<result property="reqChanner" column="origin"/>
+		<result property="serChanner" column="channel"/>
+		<result property="serverIp" column="serverip"/>
+		<result property="clientIp" column="clientip"/>
+		<result property="serviceId" column="interfaceid"/>
+		<result property="reqUrl" column="url"/>
+		<result property="txnCode" column="trxcode"/>
+		<result property="reqData" column="data"/>
+		<result property="errorNo" column="code"/>
+		<result property="errorReason" column="message"/>
+		<result property="errorMsg" column="demo"/>
+		<result property="recordTime" column="create_time"/>
+		<result property="operateType" column="operate_type"/>
+		<result property="tableId" column="id"/>
+	</resultMap>
+	<!-- dsfs_alarm关系映射 -->
+	<resultMap id="DsfsAlarmInfo" class="net.easipay.cbp.model.SacExceptMonitor">
+		<result property="serviceId" column="service_id"/>
+		<result property="errorNo" column="error_no"/>
+		<result property="errorReason" column="error_desc"/>
+		<result property="errorMsg" column="error_desc"/>
+		<result property="recordTime" column="alarm_time"/>
+		<result property="operateType" column="operate_type"/>
+		<result property="tableId" column="id"/>
+	</resultMap>
+	<!-- sac_rec_differences关系映射 -->
+	<resultMap id="SacRecDifferenceInfo" class="net.easipay.cbp.model.SacExceptMonitor">
+		<result property="trxSerialId" column="trx_serial_no"/>
+		<result property="errorNo" column="rec_diff_type"/>
+		<result property="errorReason" column="rec_diff_desc"/>
+		<result property="recordTime" column="create_time"/>
+		<result property="recBatchId" column="rec_batch_id"/>
+		<result property="operateType" column="operate_type"/>
+		<result property="tableId" column="id"/>
+	</resultMap>
+	<!-- sac_rec_job_log关系映射 -->
+	<resultMap id="SacRecJobLogInfo" class="net.easipay.cbp.model.SacExceptMonitor">
+		<result property="errorReason" column="message"/>
+		<result property="errorMsg" column="stacktrace"/>
+		<result property="recordTime" column="logdate"/>
+		<result property="reqUrl" column="jobclass"/>
+		<result property="serChanner" column="jobname"/>
+		<result property="operateType" column="operate_type"/>
+		<result property="tableId" column="id"/>
+	</resultMap>
+	<!-- fin_task关系映射 -->
+	<resultMap id="FinTaskInfo" class="net.easipay.cbp.model.SacExceptMonitor">
+		<result property="txnCode" column="trx_code"/>
+		<result property="recordTime" column="create_time"/>
+		<result property="busiType" column="busi_type"/>
+		<result property="errorReason" column="err_desc"/>
+		<result property="errorMsg" column="digest"/>
+		<result property="trxSerialId" column="serno"/>
+		<result property="reqData" column="params"/>
+		<result property="operateType" column="operate_type"/>
+		<result property="tableId" column="task_id"/>
+	</resultMap>
+	
+	<select id= "getSacRecordLogInfo" resultMap="SacRecordLogInfo">
+	   select ID,
+       TRANSACTIONID,
+       CHANNEL,
+       ORIGIN,
+       SERVERIP,
+       CLIENTIP,
+       TIMEMILLIS,
+       INTERFACEID,
+       URL,
+       TRXCODE,
+       CODE,
+       MESSAGE,
+       DATA,
+       CREATE_TIME,
+       DEMO,
+       '01' as operate_type
+       from sac_record_log
+       where (sysdate + interval '30' minute) > CREATE_TIME and create_time >= (sysdate - interval '30' minute) 
+	</select>
+	
+	<select id = "getDsfsAlarmInfo" resultMap = "DsfsAlarmInfo" parameterClass="net.easipay.cbp.model.SacExceptMonitor">
+		select 
+		ID,
+		SERVICE_ID,
+   		CACHE_NUM,
+   		ERROR_NO,
+  		ERROR_DESC,
+   		ALARM_TIME,
+   		RECOVER_TIME,
+   		RECOVER_WAY,
+   		MEMO,
+   		OPERATE_TYPE,
+   		ALARM_COUNTS,
+   		'01' as operate_type
+   	 	from DSFS_ALARM
+		where (sysdate + interval '30' minute) > ALARM_TIME and ALARM_TIME >= (sysdate - interval '30' minute) 
+	</select>
+	
+	<select id="getSacRecDifferenceInfo" resultMap="SacRecDifferenceInfo" parameterClass="net.easipay.cbp.model.SacExceptMonitor">
+		select 
+		ID,
+		REC_DETAIL_ID,
+		TRX_SERIAL_NO,
+		REC_DIFF_TYPE,
+		REC_DIFF_DESC,
+		BANK_NODE_CODE,
+		STATUS,
+		DEAL_TYPE,
+		DEAL_OPER,
+		CREATE_TIME,
+		MEMO,
+		REC_BATCH_ID,
+		TRX_TIME,
+		PAY_AMOUNT,
+		BANK_SERIAL_NO,
+		PAYCON_TYPE,
+		UPDATE_TIME,
+		ORI_TRX_STATE,
+		ORI_INN_CON_AMOUNT,
+		ORI_CHA_CON_AMOUNT,
+		CHN_CODE,
+		REC_OPER,
+		CURRENCY_TYPE,
+		REC_START_DATE,
+		REC_END_DATE,
+		BUSI_TYPE,
+		TRX_CODE,
+		PRIV_DOMAIN,
+		SUPPLEMENT_FLAG,
+		'03' as operate_type
+		from SAC_REC_DIFFERENCES
+		where (sysdate + interval '30' minute) > CREATE_TIME and create_time >= (sysdate - interval '30' minute) 
+	</select>
+
+	<select id="getSacRecJobLogInfo" resultMap="SacRecJobLogInfo" parameterClass="net.easipay.cbp.model.SacExceptMonitor">
+		select
+		ID,
+		EXECUTIONID,
+		LOGLEVEL,
+		LOGDATE,
+		JOBCLASS,
+		JOBGROUP,
+		JOBNAME,
+		TRIGGERGROUP,
+		TRIGGERNAME,
+		MESSAGE,
+		STACKTRACE,
+		ROOTCAUSE,
+		'02' as operate_type
+		from SAC_REC_JOB_LOG
+		where (sysdate + interval '30' minute)  > LOGDATE and LOGDATE >= (sysdate - interval '30' minute) 
+	</select>
+
+	<select id="getFinTaskInfo" resultMap="FinTaskInfo" parameterClass="net.easipay.cbp.model.SacExceptMonitor">
+		select
+		TASK_ID,
+		TRX_CODE,
+		BUSI_TYPE,
+		STEP,
+		PARAMS,
+		DIGEST,
+		SERNO,
+		TRADE_TIME,
+		STATUS,
+		ERR_DESC,
+		CREATE_TIME,
+		'04' as operate_type
+		from FIN_TASK
+		where status in('-1','-2')
+		and (sysdate + interval '30' minute)  > CREATE_TIME and create_time >= (sysdate - interval '30' minute) 
+	</select>
+	
+<!-- 	<insert id = "insertSacexceptMonitor"  parameterClass= "java.util.List">
+	    <![CDATA[ 
+        	INSERT ALL 
+    	]]>
+    	<iterate conjunction=" ">  
+        <![CDATA[ 
+        	INTO SAC_EXCEPT_MONITOR(id,server_ip,client_ip,req_channer,ser_channer,service_id,
+        	req_url,operate_type,record_time,busi_type,txn_code,trx_serial_id,rec_batch_id,req_data
+        	,error_no,error_msg,error_reason,status,table_id,create_time)VALUES
+            (#codes[].id#,#codes[].serverIp#, #codes[].clientIp#, #codes[].reqChanner#,#codes[].serChanner#,#codes[].serviceId#,
+            #codes[].reqUrl#,#codes[].operateType#,#codes[].recordTime#,#codes[].busiType#,#codes[].txnCode#,
+            #codes[].trxSerialId#,#codes[].recBatchId#,#codes[].reqData#,#codes[].errorNo#,#codes[].errorMsg#,
+            #codes[].errorReason#,#codes[].status#,#codes[].tableId#,#codes[].createTime#) 
+        ]]>  
+    	</iterate>  
+    	<![CDATA[ 
+        	select 1 from  dual
+    	]]>
+	</insert> -->
+	
+	<select id="getSacExcetMonitorList" parameterClass="java.util.Map" resultMap="SacExceptMonitorInfo">
+		select
+		ID,
+		SERVER_IP,
+		CLIENT_IP,
+		REQ_CHANNER,
+		SER_CHANNER,
+		SERVICE_ID,
+		REQ_URL,
+		OPERATE_TYPE,
+		CREATE_TIME,
+		BUSI_TYPE,
+		TXN_CODE,
+		TRX_SERIAL_ID,
+		REC_BATCH_ID,
+		REQ_DATA,
+		ERROR_NO,
+		ERROR_MSG,
+		ERROR_REASON,
+		STATUS,
+		TABLE_ID
+		from SAC_EXCEPT_MONITOR
+		where 
+		(#createTime# + interval '60' minute) > CREATE_TIME and create_time >= (#createTime# - interval '60' minute) 
+		order by create_time desc
+	</select>
+	
+	<insert id="insertSacExceptMonitor" parameterClass="net.easipay.cbp.model.SacExceptMonitor">
+        INSERT INTO SAC_EXCEPT_MONITOR ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="serverIp">  server_ip  </isNotEmpty>
+            <isNotEmpty prepend="," property="clientIp">  client_ip  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqChanner">  req_channer  </isNotEmpty>
+            <isNotEmpty prepend="," property="serChanner">  ser_channer  </isNotEmpty>
+            <isNotEmpty prepend="," property="serviceId">  service_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqUrl">  req_url  </isNotEmpty>
+            <isNotEmpty prepend="," property="operateType">  operate_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="recordTime">  record_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  busi_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="txnCode">  txn_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialId">  trx_serial_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  rec_batch_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqData">  req_data  </isNotEmpty>
+            <isNotEmpty prepend="," property="errorNo">  error_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="errorMsg">  error_msg  </isNotEmpty>
+            <isNotEmpty prepend="," property="errorReason">  error_reason  </isNotEmpty>
+            <isNotEmpty prepend="," property="status">  status  </isNotEmpty>
+            <isNotEmpty prepend="," property="tableId">  table_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="id">  #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="serverIp">  #serverIp#  </isNotEmpty>
+            <isNotEmpty prepend="," property="clientIp">  #clientIp#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqChanner">  #reqChanner#  </isNotEmpty>
+            <isNotEmpty prepend="," property="serChanner">  #serChanner#  </isNotEmpty>
+            <isNotEmpty prepend="," property="serviceId"> #serviceId#   </isNotEmpty>
+            <isNotEmpty prepend="," property="reqUrl">  #reqUrl#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operateType">  #operateType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recordTime">  #recordTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="txnCode">  #txnCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialId">  #trxSerialId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="recBatchId">  #recBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqData">  #reqData#  </isNotEmpty>
+            <isNotEmpty prepend="," property="errorNo">  #errorNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="errorMsg">  #errorMsg#  </isNotEmpty>
+            <isNotEmpty prepend="," property="errorReason">  #errorReason#  </isNotEmpty>
+            <isNotEmpty prepend="," property="status">  #status#  </isNotEmpty>
+            <isNotEmpty prepend="," property="tableId">  #tableId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+	
+	
+</sqlMap>

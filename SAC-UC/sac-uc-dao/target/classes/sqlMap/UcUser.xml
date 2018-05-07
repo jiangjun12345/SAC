@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.UcUser">
+
+    <typeAlias alias="ucUser" type="net.easipay.cbp.model.UcUser"/>
+
+    <resultMap id="ucUserResult" class="ucUser">
+        <result property="id" column="ID"/>                                    
+		<result property="personName" column="PERSON_NAME"/>                   
+		<result property="personState" column="PERSON_STATE"/>                 
+		<result property="loginName" column="LOGIN_NAME"/>                     
+		<result property="identifyType" column="IDENTIFY_TYPE"/>               
+		<result property="identifyCode" column="IDENTIFY_CODE"/>               
+		<result property="identifyVerifyFlag" column="IDENTIFY_VERIFY_FLAG"/>  
+		<result property="customerCode" column="CUSTOMER_CODE"/>               
+		<result property="mobile" column="MOBILE"/>                            
+		<result property="mobileVerifyFlag" column="MOBILE_VERIFY_FLAG"/>      
+		<result property="countryCode" column="COUNTRY_CODE"/>                 
+		<result property="email" column="EMAIL"/>                              
+		<result property="emailVerifyFlag" column="EMAIL_VERIFY_FLAG"/>        
+		<result property="address" column="ADDRESS"/>                          
+		<result property="queryPassword" column="QUERY_PASSWORD"/>             
+		<result property="payPassword" column="PAY_PASSWORD"/>                 
+		<result property="sex" column="SEX"/>                                  
+		<result property="createUserId" column="CREATE_USER_ID"/>              
+		<result property="createTime" column="CREATE_TIME"/>                   
+		<result property="updateUserId" column="UPDATE_USER_ID"/>              
+		<result property="updateTime" column="UPDATE_TIME"/>                   
+		<result property="lastLoginTime" column="LAST_LOGIN_TIME"/>            
+		<result property="certifyChannel" column="CERTIFY_CHANNEL"/>           
+		<result property="certificationId" column="CERTIFICATION_ID"/>         
+		<result property="memo" column="MEMO"/>                                
+		<result property="identifyPath" column="IDENTIFY_PATH"/>     
+		<result property="grantCode" column="GRANT_CODE"/>          
+    </resultMap>
+
+      <select id="selectUcUserById" resultMap="ucUserResult" parameterClass="java.lang.Long">
+	    <![CDATA[
+	        SELECT *
+				FROM
+				   UC_USER where id = #ID#
+		]]>
+
+	    </select>
+	    
+	    <select id="selectUcUserByParameter" resultMap="ucUserResult" parameterClass="java.util.HashMap">
+			<![CDATA[
+		           SELECT *
+				FROM
+				   (SELECT ROWNUM AS RN, XX.*
+				    FROM
+				   (SELECT *
+				      FROM uc_user
+				      where 1=1
+			]]>
+				    <isNotEmpty prepend=" AND " property="personName">
+						<![CDATA[PERSON_NAME like '%'||#personName#||'%' ]]>
+					 </isNotEmpty>
+					 <isNotEmpty prepend=" AND " property="identifyCode">
+						<![CDATA[ IDENTIFY_CODE like '%'||#identifyCode#||'%']]>
+					 </isNotEmpty>
+					 <isNotEmpty prepend=" AND " property="mobile">
+						<![CDATA[ MOBILE like '%'||#mobile#||'%' ]]>
+					 </isNotEmpty>
+					 <isNotEmpty prepend=" AND " property="email">
+						<![CDATA[ EMAIL like '%'||#email#||'%']]>
+					 </isNotEmpty>
+		<![CDATA[
+				   ) XX
+				   WHERE ROWNUM < #endNo#)
+				WHERE RN > #startNo#
+		]]>
+		</select>
+		
+		  <select id="selectUcUserCountsByParameter" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+			<![CDATA[
+				   	SELECT Count(1)
+				      FROM uc_user
+				      where 1=1
+			]]>
+				     <isNotEmpty prepend=" AND " property="personName">
+						<![CDATA[PERSON_NAME like '%'||#personName#||'%' ]]>
+					 </isNotEmpty>
+					 <isNotEmpty prepend=" AND " property="identifyCode">
+						<![CDATA[ IDENTIFY_CODE like '%'||#identifyCode#||'%']]>
+					 </isNotEmpty>
+					 <isNotEmpty prepend=" AND " property="mobile">
+						<![CDATA[ MOBILE like '%'||#mobile#||'%' ]]>
+					 </isNotEmpty>
+					 <isNotEmpty prepend=" AND " property="email">
+						<![CDATA[ EMAIL like '%'||#email#||'%']]>
+					 </isNotEmpty>
+		</select>
+		<select id="selectUcUserCountsForValidate" resultClass="java.lang.Integer" parameterClass="ucUser">
+			<![CDATA[
+				   	SELECT Count(1)
+				      FROM uc_user
+				      where 1=1
+			]]>
+					 <isNotEmpty prepend=" AND " property="mobile">
+						<![CDATA[ MOBILE = #mobile# ]]>
+					 </isNotEmpty>
+					 <isNotEmpty prepend=" AND " property="email">
+						<![CDATA[ EMAIL = #email# ]]>
+					 </isNotEmpty>
+		</select>
+	    
+	   <update id="updateUcUser" parameterClass="ucUser">
+	    <![CDATA[
+	          update 
+	        	UC_USER 
+	          set
+	         ]]>
+		<isNotEmpty prepend="" property="personName">
+			PERSON_NAME =#personName# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="personState">
+			PERSON_STATE =#personState#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="loginName">
+			LOGIN_NAME =#loginName#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="identifyType">
+			IDENTIFY_TYPE =#identifyType#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="identifyCode">
+			IDENTIFY_CODE =#identifyCode#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="identifyVerifyFlag">
+			IDENTIFY_VERIFY_FLAG =#identifyVerifyFlag# ,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="customerCode">
+			CUSTOMER_CODE =#customerCode#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="mobile">
+			MOBILE =#mobile#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="mobileVerifyFlag">
+			MOBILE_VERIFY_FLAG =#mobileVerifyFlag#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="countryCode">
+			COUNTRY_CODE =#countryCode#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="email">
+			EMAIL =#email#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="emailVerifyFlag">
+			EMAIL_VERIFY_FLAG =#emailVerifyFlag#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="address">
+			ADDRESS =#address#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="queryPassword">
+			QUERY_PASSWORD =#queryPassword#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="payPassword">
+			PAY_PASSWORD =#payPassword#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="sex">
+			SEX =#sex#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createUserId">
+			CREATE_USER_ID =#createUserId#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="createTime">
+			CREATE_TIME =#createTime#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateUserId">
+			UPDATE_USER_ID =#updateUserId#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="updateTime">
+			UPDATE_TIME =#updateTime#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="lastLoginTime">
+			LAST_LOGIN_TIME =#lastLoginTime#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="certifyChannel">
+			CERTIFY_CHANNEL =#certifyChannel#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="certificationId">
+			CERTIFICATION_ID =#certificationId#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="memo">
+			MEMO =#memo#,
+		</isNotEmpty>
+		<isNotEmpty prepend="" property="identifyPath">
+			IDENTIFY_PATH =#identifyPath#,
+		</isNotEmpty>
+		<![CDATA[		
+				ID = #id#
+				where ID = #id#	
+	    ]]>
+	</update>
+
+	<insert id="insertUcUser" parameterClass="ucUser">
+	      <![CDATA[
+	         insert into UC_USER
+	         (
+	            ID                   
+				,PERSON_NAME          
+				,PERSON_STATE         
+				,LOGIN_NAME           
+				,IDENTIFY_TYPE        
+				,IDENTIFY_CODE        
+				,IDENTIFY_VERIFY_FLAG 
+				,CUSTOMER_CODE        
+				,MOBILE               
+				,MOBILE_VERIFY_FLAG   
+				,COUNTRY_CODE         
+				,EMAIL                
+				,EMAIL_VERIFY_FLAG    
+				,ADDRESS              
+				,QUERY_PASSWORD       
+				,PAY_PASSWORD         
+				,SEX                  
+				,CREATE_USER_ID       
+				,CREATE_TIME          
+				,UPDATE_USER_ID       
+				,UPDATE_TIME          
+				,LAST_LOGIN_TIME      
+				,CERTIFY_CHANNEL      
+				,CERTIFICATION_ID     
+				,MEMO                 
+				,IDENTIFY_PATH 
+				,GRANT_CODE        
+	         )
+	         values
+	         (
+	            #id#,
+				#personName#,
+				#personState#,
+				#loginName#,
+				#identifyType#,
+				#identifyCode#,
+				#identifyVerifyFlag#,
+				#customerCode#,
+				#mobile#,
+				#mobileVerifyFlag#,
+				#countryCode#,
+				#email#,
+				#emailVerifyFlag#,
+				#address#,
+				#queryPassword#,
+				#payPassword#,
+				#sex#,
+				#createUserId#,
+				#createTime#,
+				#updateUserId#,
+				#updateTime#,
+				#lastLoginTime#,
+				#certifyChannel#,
+				#certificationId#,
+				#memo#,
+				#identifyPath#,
+				#grantCode#  
+	         )
+	      ]]>
+	</insert>
+
+	  
+</sqlMap>

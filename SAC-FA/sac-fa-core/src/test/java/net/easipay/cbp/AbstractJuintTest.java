@@ -1,0 +1,31 @@
+package net.easipay.cbp;
+
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
+
+/**
+ * @Description: TODO(用一句话描述该文件做什么)
+ * @author dell (Cyrus)
+ * @date 2015-7-20 下午01:41:38
+ * @version V1.0
+ * @jdk v1.6
+ * @tomcat v7.0
+ */
+@RunWith(SpringJUnit4ClassRunner.class)  
+@WebAppConfiguration(value = "sac-fa-page/src/main/webapp")
+@ContextHierarchy({ @ContextConfiguration(name = "parent", locations = "classpath:applicationContext.xml") })
+@Transactional
+@TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = false)  
+public class AbstractJuintTest
+{
+    @Autowired
+    protected WebApplicationContext wac;
+
+}

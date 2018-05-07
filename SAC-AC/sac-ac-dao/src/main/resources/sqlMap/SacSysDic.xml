@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacSysDic" class="net.easipay.cbp.model.SacSysDic">
+	 <result property="dicCode" column="dic_code"/>
+	 <result property="dicDesc" column="dic_desc"/>
+	 <result property="dicType" column="dic_type"/>
+	 <result property="dicTypeDesc" column="dic_type_desc"/>
+	 <result property="parentCode" column="parent_code"/>
+	 <result property="memo" column="memo"/>
+ </resultMap>
+ 
+   <select id="getSacSysDic" parameterClass="java.util.Map" resultMap="SacSysDic">  
+        SELECT 
+	       dic_code,
+	       dic_desc,
+	       dic_type,
+	       dic_type_desc,
+	       parent_code,
+	       memo
+         FROM SAC_SYS_DIC
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="dicType"> dic_type = #dicType# </isNotEmpty>         
+      </dynamic>
+    </select>
+  
+  
+</sqlMap>

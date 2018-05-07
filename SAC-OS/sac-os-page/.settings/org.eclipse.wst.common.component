@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sac-os-page">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="sac-os-view-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-os-view/sac-os-view">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-os-core-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-os-core/sac-os-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-os-dao-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-os-dao/sac-os-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-os-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-os-model/sac-os-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-os-config-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-os-config/sac-os-config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sac-os-util-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sac-os-util/sac-os-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="os${maven.build.timestamp}-1.0.0"/>
+        <property name="java-output-path" value="/sac-os-page/target/classes"/>
+    </wb-module>
+</project-modules>

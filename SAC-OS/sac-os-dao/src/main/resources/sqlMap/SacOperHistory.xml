@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacOperHistory" class="net.easipay.cbp.model.SacOperHistory">
+	 <result property="id" column="id"/>
+	 <result property="userId" column="user_id"/>
+	 <result property="userName" column="user_name"/>
+	 <result property="channel" column="channel"/>
+	 <result property="operType" column="oper_type"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="loginIp" column="login_ip"/>
+	 <result property="memo" column="memo"/>
+ </resultMap>
+   <insert id="insertSacOperHistory" parameterClass="net.easipay.cbp.model.SacOperHistory">
+        INSERT INTO SAC_OPER_HISTORY ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="userId">  user_id  </isNotEmpty>
+            <isNotEmpty prepend="," property="userName">  user_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="channel">  channel  </isNotEmpty>
+            <isNotEmpty prepend="," property="operType">  oper_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="loginIp">  login_ip  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="userId">  #userId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="userName">  #userName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="channel">  #channel#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operType">  #operType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="loginIp">  #loginIp#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacOperHistory" resultMap="SacOperHistory">  
+        SELECT 
+	       id,
+	       user_id,
+	       user_name,
+	       channel,
+	       oper_type,
+	       create_time,
+	       login_ip,
+	       memo
+         FROM SAC_OPER_HISTORY
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacOperHistory" parameterClass="java.util.Map" resultMap="SacOperHistory">  
+      SELECT 
+	       id,
+	       user_id,
+	       user_name,
+	       channel,
+	       oper_type,
+	       create_time,
+	       login_ip,
+	       memo
+	  FROM SAC_OPER_HISTORY
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacOperHistory" parameterClass="net.easipay.cbp.model.SacOperHistory">  
+      UPDATE SAC_OPER_HISTORY        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="userId">  user_id = #userId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="userName">  user_name = #userName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="channel">  channel = #channel#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operType">  oper_type = #operType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="loginIp">  login_ip = #loginIp#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacOperHistory">  
+        Delete   
+          from SAC_OPER_HISTORY WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacOperHistory">  
+        Delete 
+        from SAC_OPER_HISTORY
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacOperHistoryCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_OPER_HISTORY
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="userId">  user_id = #userId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="userName">  user_name like '%$userName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="channel">  channel = #channel#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operType">  oper_type = #operType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="loginIp">  login_ip = #loginIp#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacOperHistory" parameterClass="java.util.Map" resultMap="SacOperHistory"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       user_id,
+	       user_name,
+	       channel,
+	       oper_type,
+	       create_time,
+	       login_ip,
+	       memo
+	       from SAC_OPER_HISTORY  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="userId">  user_id = #userId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="userName">  user_name like '%$userName$%'  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="channel">  channel = #channel#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operType">  oper_type = #operType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="loginIp">  login_ip = #loginIp#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+          </dynamic> 
+          ORDER BY create_time DESC
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

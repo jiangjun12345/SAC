@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinTask" class="net.easipay.cbp.model.FinTask">
+	 <result property="taskId" column="TASK_ID"/>
+	 <result property="trxCode" column="TRX_CODE"/>
+	 <result property="busiType" column="BUSI_TYPE"/>
+	 <result property="step" column="STEP"/>
+	 <result property="params" column="PARAMS"/>
+	 <result property="digest" column="DIGEST"/>
+	 <result property="serno" column="SERNO"/>
+	 <result property="tradeTime" column="TRADE_TIME"/>
+	 <result property="status" column="STATUS"/>
+	 <result property="errDesc" column="ERR_DESC"/>
+ </resultMap>
+   <insert id="insertFinTask" parameterClass="net.easipay.cbp.model.FinTask">
+		
+		INSERT INTO FIN_TASK (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="taskId"> task_id  </isNotEmpty>
+			<isNotEmpty prepend="," property="trxCode"> trx_code  </isNotEmpty>
+			<isNotEmpty prepend="," property="busiType"> busi_type  </isNotEmpty>
+			<isNotEmpty prepend="," property="step"> step  </isNotEmpty>
+			<isNotEmpty prepend="," property="params"> params  </isNotEmpty>
+			<isNotEmpty prepend="," property="digest"> digest  </isNotEmpty>
+			<isNotEmpty prepend="," property="serno"> serno  </isNotEmpty>
+			<isNotEmpty prepend="," property="tradeTime"> trade_time  </isNotEmpty>
+			<isNotEmpty prepend="," property="status"> status  </isNotEmpty>
+		</dynamic>
+		) VALUES (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="taskId"> #taskId#  </isNotEmpty>
+			<isNotEmpty prepend="," property="trxCode"> #trxCode#  </isNotEmpty>
+			<isNotEmpty prepend="," property="busiType"> #busiType#  </isNotEmpty>
+			<isNotEmpty prepend="," property="step"> #step#  </isNotEmpty>
+			<isNotEmpty prepend="," property="params"> #params#  </isNotEmpty>
+			<isNotEmpty prepend="," property="digest"> #digest#  </isNotEmpty>
+			<isNotEmpty prepend="," property="serno"> #serno#  </isNotEmpty>
+			<isNotEmpty prepend="," property="tradeTime"> #tradeTime#  </isNotEmpty>
+			<isNotEmpty prepend="," property="status"> #status#  </isNotEmpty>
+		</dynamic>
+		)
+	</insert>
+	
+   <select id="getFinTask" resultMap="FinTask">  
+        SELECT 
+	       TASK_ID,
+	       TRX_CODE,
+	       BUSI_TYPE,
+	       STEP,
+	       PARAMS,
+	       DIGEST,
+	       SERNO,
+	       TRADE_TIME,
+	       STATUS,
+	       ERR_DESC
+         FROM FIN_TASK
+      <dynamic prepend="WHERE">
+         <isNotEmpty> TASK_ID = #taskId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="getFinTasks" parameterClass="java.util.Map" resultMap="FinTask">  
+  	SELECT 
+  		   TASK_ID,
+	       TRX_CODE,
+	       BUSI_TYPE,
+	       STEP,
+	       PARAMS,
+	       DIGEST,
+	       SERNO,
+	       TRADE_TIME,
+	       STATUS,
+	       ERR_DESC
+	  FROM (
+	      SELECT 
+		       TASK_ID,
+		       TRX_CODE,
+		       BUSI_TYPE,
+		       STEP,
+		       PARAMS,
+		       DIGEST,
+		       SERNO,
+		       TRADE_TIME,
+		       STATUS,
+		       ERR_DESC
+		  FROM FIN_TASK
+	        WHERE
+	          <![CDATA[TRADE_TIME >=trunc(sysdate-30) AND TRADE_TIME < trunc(sysdate+1) ]]>
+	          <isNotEmpty prepend="AND" property="status" > STATUS = #status# </isNotEmpty>   
+			ORDER BY TASK_ID ASC
+		)
+		<isNotEmpty prepend="where" property="maxSize" ><![CDATA[ ROWNUM < #maxSize# ]]></isNotEmpty>
+  </select>
+  <update id="updateFinTask" parameterClass="net.easipay.cbp.model.FinTask">  
+      UPDATE FIN_TASK        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="step">  STEP = #step#  </isNotEmpty>
+            <isNotEmpty prepend="," property="params">  PARAMS = #params#  </isNotEmpty>
+            <isNotEmpty prepend="," property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="," property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="," property="tradeTime">  TRADE_TIME = #tradeTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="status">  STATUS = #status#  </isNotEmpty>
+            <isNotEmpty prepend="," property="errDesc">  ERR_DESC = #errDesc#  </isNotEmpty>
+        </dynamic>
+       WHERE TASK_ID = #taskId#
+  </update>
+  <delete id="deleteFinTask">  
+        Delete   
+          from FIN_TASK WHERE
+         TASK_ID = #taskId#
+  </delete>
+  <delete id="deleteListFinTask">  
+        Delete 
+        from FIN_TASK
+        WHERE TASK_ID IN ( $taskId$ )
+  </delete>
+  
+   <select id="getFinTaskCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_TASK
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="step">  STEP = #step#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="params">  PARAMS = #params#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime">  TRADE_TIME = #tradeTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="status">  STATUS = #status#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="errDesc"> ERR_DESC = #errDesc#  </isNotEmpty>
+          </dynamic>
+	</select>
+	
+	<select id="getFinTasksBySerno" parameterClass="java.util.Map" resultMap="FinTask">
+		SELECT
+		task_id,
+		trx_code,
+		busi_type,
+		step,
+		params,
+		digest,
+		serno,
+		trade_time,
+		status,
+		ERR_DESC
+		FROM FIN_TASK
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="serno"> serno = #serno# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="status"> status = #status# </isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getNextValBySeqName" resultClass="java.lang.Long"  parameterClass="java.lang.String">  
+		SELECT $seq$.nextVal  FROM DUAL
+	</select>
+  
+</sqlMap>

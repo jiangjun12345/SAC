@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model">
+
+    <typeAlias alias="sysParam" type="net.easipay.cbp.model.SysParam"/>
+    
+    <select id="queryValueByKey"  parameterClass="sysParam" resultClass="java.lang.String">
+    <![CDATA[
+        select 
+        	PARAM_VALUE 
+        from 
+        	UC_SYS_PARAM_DEFINE 
+        where 
+        	PARAM_KEY = #paramKey# and MAGIC_TYPE = #magicType#
+    ]]>
+    </select>
+     
+</sqlMap>

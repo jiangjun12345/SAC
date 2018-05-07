@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacRefund" class="net.easipay.cbp.model.SacRefund">
+	 <result property="id" column="id"/>
+	 <result property="rtrxSerialNo" column="rtrx_serial_no"/>
+	 <result property="refundTime" column="refund_time"/>
+	 <result property="otrxSerialNo" column="otrx_serial_no"/>
+	 <result property="otrxDate" column="otrx_date"/>
+	 <result property="opayChnNo" column="opay_chn_no"/>
+	 <result property="opayChnName" column="opay_chn_name"/>
+	 <result property="omerBillNo" column="omer_bill_no"/>
+	 <result property="otrxAmount" column="otrx_amount"/>
+	 <result property="refundAmount" column="refund_amount"/>
+	 <result property="refundStatus" column="refund_status"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="confirmUser" column="confirm_user"/>
+	 <result property="confirmStatus" column="confirm_status"/>
+	 <result property="confirmTime" column="confirm_time"/>
+	 <result property="trxErrDealType" column="TRX_ERR_DEAL_TYPE"/>
+ </resultMap>
+   <insert id="insertSacRefund" parameterClass="net.easipay.cbp.model.SacRefund">
+        INSERT INTO SAC_REFUND ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtrxSerialNo">  rtrx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundTime">  refund_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  otrx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxDate">  otrx_date  </isNotEmpty>
+            <isNotEmpty prepend="," property="opayChnNo">  opay_chn_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="opayChnName">  opay_chn_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="omerBillNo">  omer_bill_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxAmount">  otrx_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundAmount">  refund_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundStatus">  refund_status  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+            <isNotEmpty prepend="," property="confirmUser">  confirm_user  </isNotEmpty>
+            <isNotEmpty prepend="," property="confirmStatus">  confirm_status  </isNotEmpty>
+            <isNotEmpty prepend="," property="confirmTime">  confirm_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxErrDealType">  TRX_ERR_DEAL_TYPE  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="rtrxSerialNo">  #rtrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundTime">  #refundTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxSerialNo">  #otrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxDate">  #otrxDate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="opayChnNo">  #opayChnNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="opayChnName">  #opayChnName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="omerBillNo">  #omerBillNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxAmount">  #otrxAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundAmount">  #refundAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="refundStatus">  #refundStatus#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="confirmUser">  #confirmUser#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="confirmStatus">  #confirmStatus#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="confirmTime">  #confirmTime#  </isNotEmpty>	
+		    <isNotEmpty prepend="," property="trxErrDealType">  #trxErrDealType#  </isNotEmpty>       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacRefundById" resultMap="SacRefund" parameterClass="net.easipay.cbp.model.SacRefund">  
+        SELECT 
+	       id,
+	       rtrx_serial_no,
+	       refund_time,
+	       otrx_serial_no,
+	       otrx_date,
+	       opay_chn_no,
+	       opay_chn_name,
+	       omer_bill_no,
+	       otrx_amount,
+	       refund_amount,
+	       refund_status,
+	       create_time,
+	       memo,
+	       confirm_user,
+	       confirm_status,
+	       confirm_time,
+	       TRX_ERR_DEAL_TYPE
+         FROM SAC_REFUND
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacRefund" parameterClass="java.util.Map" resultMap="SacRefund">  
+      SELECT 
+	       id,
+	       rtrx_serial_no,
+	       refund_time,
+	       otrx_serial_no,
+	       otrx_date,
+	       opay_chn_no,
+	       opay_chn_name,
+	       omer_bill_no,
+	       otrx_amount,
+	       refund_amount,
+	       refund_status,
+	       create_time,
+	       memo,
+	       confirm_user,
+	       confirm_status,
+	       confirm_time,
+	       TRX_ERR_DEAL_TYPE
+	  FROM SAC_REFUND
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacRefund" parameterClass="net.easipay.cbp.model.SacRefund">  
+      UPDATE SAC_REFUND        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="rtrxSerialNo">  rtrx_serial_no = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundTime">  refund_time = #refundTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxDate">  otrx_date = #otrxDate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="opayChnNo">  opay_chn_no = #opayChnNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="opayChnName">  opay_chn_name = #opayChnName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="omerBillNo">  omer_bill_no = #omerBillNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxAmount">  otrx_amount = #otrxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundAmount">  refund_amount = #refundAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="refundStatus">  refund_status = #refundStatus#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="confirmUser">  confirm_user = #confirmUser#  </isNotEmpty>
+            <isNotEmpty prepend="," property="confirmStatus">  confirm_status = #confirmStatus#  </isNotEmpty>
+            <isNotEmpty prepend="," property="confirmTime">  confirm_time = #confirmTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxErrDealType">  TRX_ERR_DEAL_TYPE = #trxErrDealType#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacRefund">  
+        Delete   
+          from SAC_REFUND WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacRefund">  
+        Delete 
+        from SAC_REFUND
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacRefundCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_REFUND
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rtrxSerialNo">  rtrx_serial_no = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundTime"> <![CDATA[ refund_time between  trunc(#refundTime#,'dd') and TRUNC(#refundTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxDate"> <![CDATA[ otrx_date between  trunc(#otrxDate#,'dd') and TRUNC(#otrxDate#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="opayChnNo">  opay_chn_no = #opayChnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="opayChnName">  opay_chn_name = #opayChnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="omerBillNo">  omer_bill_no = #omerBillNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxAmount">  otrx_amount = #otrxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundAmount">  refund_amount = #refundAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundStatus">  refund_status = #refundStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmUser">  confirm_user = #confirmUser#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmStatus">  confirm_status = #confirmStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxErrDealType">  TRX_ERR_DEAL_TYPE = #trxErrDealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmTime"> <![CDATA[ confirm_time between  trunc(#confirmTime#,'dd') and TRUNC(#confirmTime#)+1-1/86400]]> </isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacRefund" parameterClass="java.util.Map" resultMap="SacRefund"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       rtrx_serial_no,
+	       refund_time,
+	       otrx_serial_no,
+	       otrx_date,
+	       opay_chn_no,
+	       opay_chn_name,
+	       omer_bill_no,
+	       otrx_amount,
+	       refund_amount,
+	       refund_status,
+	       create_time,
+	       memo,
+	       confirm_user,
+	       confirm_status,
+	       confirm_time,
+	       TRX_ERR_DEAL_TYPE
+	       from SAC_REFUND  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="rtrxSerialNo">  rtrx_serial_no = #rtrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundTime"> <![CDATA[ refund_time between  trunc(#refundTime#,'dd') and TRUNC(#refundTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxDate"> <![CDATA[ otrx_date between  trunc(#otrxDate#,'dd') and TRUNC(#otrxDate#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="opayChnNo">  opay_chn_no = #opayChnNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="opayChnName">  opay_chn_name = #opayChnName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="omerBillNo">  omer_bill_no = #omerBillNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxAmount">  otrx_amount = #otrxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundAmount">  refund_amount = #refundAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="refundStatus">  refund_status = #refundStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime"> <![CDATA[ create_time between  trunc(#createTime#,'dd') and TRUNC(#createTime#)+1-1/86400]]> </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmUser">  confirm_user = #confirmUser#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmStatus">  confirm_status = #confirmStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxErrDealType">  TRX_ERR_DEAL_TYPE = #trxErrDealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="confirmTime"> <![CDATA[ confirm_time between  trunc(#confirmTime#,'dd') and TRUNC(#confirmTime#)+1-1/86400]]> </isNotEmpty>
+          </dynamic> 
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>

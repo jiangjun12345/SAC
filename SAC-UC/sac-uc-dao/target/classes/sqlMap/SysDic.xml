@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.SysDic">
+
+    <typeAlias alias="SysDic" type="net.easipay.cbp.model.SysDic"/>
+	
+    <resultMap id="sysDicResult" class="sysDic">
+        <result property="dicCode" column="DIC_CODE"/>
+		<result property="dicDesc" column="DIC_DESC"/>
+        <result property="dicType" column="DIC_TYPE"/>
+		<result property="dicTypeDesc" column="DIC_TYPE_DESC"/>
+		<result property="parentCode" column="PARENT_CODE"/>
+		<result property="memo" column="memo"/>
+    </resultMap>
+
+      <select id="selectSysDic" resultMap="sysDicResult" parameterClass="sysDic">
+          <![CDATA[
+            select * from uc_sys_dic where 1=1		
+	      ]]>
+         <isNotEmpty prepend=" AND " property="dicCode">  
+           DIC_CODE = #dicCode#      
+         </isNotEmpty> 
+         <isNotEmpty prepend=" AND " property="dicType">  
+           DIC_TYPE = #dicType#      
+         </isNotEmpty> 
+   </select>  
+   
+   
+   <insert id="insertSysDic" parameterClass="sysDic">
+	      <![CDATA[
+	         insert into uc_sys_dic
+	         (
+	            DIC_CODE,
+	            DIC_DESC,    
+				DIC_TYPE,
+				DIC_TYPE_DESC,      
+				PARENT_CODE,        
+				memo    
+	         )
+	         values
+	         (
+	            #dicCode#,
+	            #dicDesc#,   
+				#dicType#, 
+				#dicTypeDesc#,    
+				#parentCode#,      
+				#memo#         
+	         )
+	      ]]>
+	</insert>
+         
+	    
+	  
+</sqlMap>

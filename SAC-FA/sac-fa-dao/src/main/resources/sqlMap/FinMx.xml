@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinMxCnt" class="net.easipay.cbp.model.FinMx">
+	 <result property="mxId" column="MX_ID" />
+	 <result property="pzId" column="PZ_ID" />
+	 <result property="codeId" column="CODE_ID" />
+	 <result property="direction" column="DIRECTION" />
+	 <result property="amount" column="AMOUNT" />
+	 <result property="digest" column="DIGEST" />
+	 <result property="mxTime" column="MX_TIME" />
+	 <result property="tradeTime" column="TRADE_TIME" />
+	 <result property="busiType" column="BUSI_TYPE" />
+	 <result property="serno" column="SERNO" />
+	 <result property="pzNo" column="PZ_NO" />
+	 <result property="openBal" column="OPEN_BAL" />
+	 <result property="closeBal" column="CLOSE_BAL" />
+	 <result property="fDebit" column="FDEBIT" />
+	 <result property="fCredit" column="FCREDIT" />
+	 <result property="isShow" column="IS_SHOW" />
+	 <result property="taskId" column="TASK_ID" />
+	 <result property="trxCode" column="TRX_CODE" />
+	 <result property="totCnt" column="TOT_CNT" />
+	 <result property="gains" column="GAINS" />
+ </resultMap>
+ <resultMap id="FinMx" class="net.easipay.cbp.model.FinMx">
+	 <result property="mxId" column="MX_ID" />
+	 <result property="pzId" column="PZ_ID" />
+	 <result property="codeId" column="CODE_ID" />
+	 <result property="direction" column="DIRECTION" />
+	 <result property="amount" column="AMOUNT" />
+	 <result property="digest" column="DIGEST" />
+	 <result property="mxTime" column="MX_TIME" />
+	 <result property="tradeTime" column="TRADE_TIME" />
+	 <result property="busiType" column="BUSI_TYPE" />
+	 <result property="serno" column="SERNO" />
+	 <result property="pzNo" column="PZ_NO" />
+	 <result property="openBal" column="OPEN_BAL" />
+	 <result property="closeBal" column="CLOSE_BAL" />
+	 <result property="fDebit" column="FDEBIT" />
+	 <result property="fCredit" column="FCREDIT" />
+	 <result property="isShow" column="IS_SHOW" />
+	 <result property="taskId" column="TASK_ID" />
+	 <result property="trxCode" column="TRX_CODE" />
+	 <result property="gains" column="GAINS" />
+ </resultMap>
+   <insert id="insertFinMx" parameterClass="net.easipay.cbp.model.FinMx">
+        INSERT INTO FIN_MX ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="mxId">  MX_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzId">  PZ_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="codeId">  CODE_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="direction">  DIRECTION  </isNotEmpty>
+            <isNotEmpty prepend="," property="amount">  AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="digest">  DIGEST  </isNotEmpty>
+            <isNotEmpty prepend="," property="tradeTime">  TRADE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  BUSI_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="serno">  SERNO  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzNo">  PZ_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="openBal">  OPEN_BAL  </isNotEmpty>
+            <isNotEmpty prepend="," property="closeBal">  CLOSE_BAL  </isNotEmpty>
+            <isNotEmpty prepend="," property="fDebit">  FDEBIT  </isNotEmpty>
+            <isNotEmpty prepend="," property="fCredit">  FCREDIT  </isNotEmpty>
+            <isNotEmpty prepend="," property="isShow">  IS_SHOW  </isNotEmpty>
+            <isNotEmpty prepend="," property="taskId">  TASK_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCode">  TRX_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="gains">  GAINS  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="mxId">  #mxId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="pzId">  #pzId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="codeId">  #codeId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="direction">  #direction#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="amount">  #amount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="digest">  #digest#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="tradeTime">  #tradeTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="busiType">  #busiType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="serno">  #serno#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="pzNo">  #pzNo#  </isNotEmpty>	 
+		    <isNotEmpty prepend="," property="openBal">  #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="," property="closeBal">  #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="," property="fDebit">  #fDebit#  </isNotEmpty>
+            <isNotEmpty prepend="," property="fCredit">  #fCredit#  </isNotEmpty>
+            <isNotEmpty prepend="," property="isShow">  #isShow#  </isNotEmpty>   
+            <isNotEmpty prepend="," property="taskId">  #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCode">  #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="gains">  #gains#  </isNotEmpty>
+           </dynamic>
+         )
+    </insert>
+   <select id="getFinMx" resultMap="FinMx">  
+        SELECT 
+	       MX_ID,
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       AMOUNT,
+	       DIGEST,
+	       MX_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       OPEN_BAL,
+	       CLOSE_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       PZ_NO,
+	       IS_SHOW,
+	       TASK_ID,
+	       TRX_CODE,
+	       GAINS
+         FROM FIN_MX
+      <dynamic prepend="WHERE">
+         <isNotEmpty> MX_ID = #mxId# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="getFinMxs" parameterClass="java.util.Map" resultMap="FinMx">  
+      SELECT 
+	       MX_ID,
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       AMOUNT,
+	       DIGEST,
+	       MX_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       OPEN_BAL,
+	       CLOSE_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       PZ_NO,
+	       IS_SHOW,
+	       TASK_ID,
+	       TRX_CODE,
+	       GAINS
+	  FROM FIN_MX
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="mxId"> MX_ID = #mxId# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="codeId"> CODE_ID ASC </isEmpty>
+		  <isEmpty prepend="ORDER BY" property="pzNo"> PZ_NO ASC </isEmpty>
+  </select>
+  
+  <select id="getFinMxList" parameterClass="java.util.Map" resultMap="FinMxCnt">  
+      SELECT * FROM
+		( SELECT A.*
+		<isNotEmpty property="start">
+		, ROWNUM R 
+		</isNotEmpty>
+		FROM
+		(SELECT 
+	       MX_ID,
+	       PZ_ID,
+	       CODE_ID,
+	       DIRECTION,
+	       AMOUNT,
+	       DIGEST,
+	       MX_TIME,
+	       TRADE_TIME,
+	       BUSI_TYPE,
+	       SERNO,
+	       OPEN_BAL,
+	       CLOSE_BAL,
+	       FDEBIT,
+	       FCREDIT,
+	       PZ_NO,
+	       IS_SHOW,
+	       TASK_ID,
+	       TRX_CODE,
+	       count(*) over () TOT_CNT,
+	       GAINS
+	  FROM FIN_MX
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="isShow"> IS_SHOW = #isShow# </isNotEmpty>  
+          <isNotEmpty prepend="AND" property="codeId"> CODE_ID = #codeId# </isNotEmpty>
+          <isNotEmpty prepend="AND" property="beginDate">
+			<![CDATA[ 
+			MX_TIME >= to_date(#beginDate#,'yyyy-MM-dd')
+			]]> 
+		  </isNotEmpty>  
+		  <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			MX_TIME < to_date(#endDate#,'yyyy-MM-dd')
+			]]> 
+		  </isNotEmpty>                  
+        </dynamic>
+        ORDER BY MX_TIME DESC
+		 	) A
+		 <isNotEmpty property="end">
+			  <![CDATA[
+				WHERE ROWNUM <= #end# ]]> 
+		</isNotEmpty> ) B
+		 <isNotEmpty property="start">
+				 <![CDATA[
+				WHERE R > #start#   
+				]]> 
+		</isNotEmpty> 
+		
+  </select>
+ 
+  	
+  <update id="updateFinMx" parameterClass="net.easipay.cbp.model.FinMx">  
+      UPDATE FIN_MX        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="" property="mxId">  MX_ID = #mxId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzId">  PZ_ID = #pzId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="," property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="," property="mxTime">  MX_TIME = #mxTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="tradeTime">  TRADE_TIME = #tradeTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="," property="openBal">  OPEN_BAL = #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="," property="closeBal">  CLOSE_BAL = #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="," property="fDebit">  FDEBIT = #fDebit#  </isNotEmpty>
+            <isNotEmpty prepend="," property="fCredit">  FCREDIT = #fCredit#  </isNotEmpty>
+            <isNotEmpty prepend="," property="pzNo">  PZ_NO = #pzNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="isSHow">  IS_SHOW = #isShow#  </isNotEmpty>
+            <isNotEmpty prepend="," property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="gains">  GAINS = #gains#  </isNotEmpty>
+        </dynamic>
+       WHERE MX_ID = #mxId#
+  </update>
+  <delete id="deleteFinMx">  
+        Delete   
+          from FIN_MX WHERE
+         MX_ID = #mxId#
+  </delete>
+  <delete id="deleteListFinMx">  
+        Delete 
+        from FIN_MX
+        WHERE MX_ID IN ( $mxId$ )
+  </delete>
+  
+  <select id="getFinMxCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM FIN_MX
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="mxId">  MX_ID = #mxId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzId">  PZ_ID = #pzId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="codeId">  CODE_ID = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="direction">  DIRECTION = #direction#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="amount">  AMOUNT = #amount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="digest">  DIGEST = #digest#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="mxTime">  MX_TIME = #mxTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="tradeTime">  TRADE_TIME = #tradeTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="busiType">  BUSI_TYPE = #busiType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="serno">  SERNO = #serno#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="openBal">  OPEN_BAL = #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="closeBal">  CLOSE_BAL = #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fDebit">  FDEBIT = #fDebit#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fCredit">  FCREDIT = #"fCredit"#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="pzNo">  PZ_NO = #pzNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="isShow">  IS_SHOW = #isShow#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taskId">  TASK_ID = #taskId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxCode">  TRX_CODE = #trxCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="gains">  GAINS = #gains#  </isNotEmpty>
+          </dynamic>
+	</select>
+  
+</sqlMap>

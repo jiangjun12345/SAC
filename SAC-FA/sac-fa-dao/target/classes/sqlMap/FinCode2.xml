@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="FinCode2" class="net.easipay.cbp.model.FinCode2">
+		<result property="code2Id" column="CODE2_ID" />
+		<result property="codeName" column="CODE_NAME" />
+	</resultMap>
+	<insert id="insertFinCode2" parameterClass="net.easipay.cbp.model.FinCode2">
+		INSERT INTO FIN_CODE2 (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="code2Id"> CODE2_ID  </isNotEmpty>
+			<isNotEmpty prepend="," property="codeName"> CODE_NAME  </isNotEmpty>
+		</dynamic>
+		) VALUES (
+		<dynamic prepend="">
+			<isNotEmpty prepend="," property="code2Id"> #code2Id#  </isNotEmpty>
+			<isNotEmpty prepend="," property="codeName"> #codeName#  </isNotEmpty>
+		</dynamic>
+		)
+	</insert>
+	<select id="getFinCode2" resultMap="FinCode2">
+		SELECT
+		CODE2_ID,
+		CODE_NAME
+		FROM FIN_CODE2
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="code2Id"> CODE2_ID = #code2Id# </isNotEmpty>
+		</dynamic>
+	</select>
+	<select id="getFinCode2s" parameterClass="java.util.Map"
+		resultMap="FinCode2">
+		SELECT
+		CODE2_ID,
+		CODE_NAME
+		FROM FIN_CODE2
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="code2Id"> CODE2_ID = #code2Id# </isNotEmpty>
+		</dynamic>
+		<isNotEmpty prepend="ORDER BY" property="code2Id">
+			CODE2_ID ASC
+		</isNotEmpty>
+	</select>
+	<update id="updateFinCode2" parameterClass="net.easipay.cbp.model.FinCode2">
+		UPDATE FIN_CODE2
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="code2Id"> CODE2_ID = #code2Id#  </isNotEmpty>
+			<isNotEmpty prepend="," property="codeName"> CODE_NAME = #codeName#  </isNotEmpty>
+		</dynamic>
+		WHERE CODE2_ID = #code2Id#
+	</update>
+	<delete id="deleteFinCode2">
+		Delete
+		from FIN_CODE2 WHERE
+		CODE2_ID = #code2Id#
+  </delete>
+	<delete id="deleteListFinCode2">
+		Delete
+		from FIN_CODE2
+		WHERE CODE2_ID IN ( $code2Id$ )
+  </delete>
+
+	<select id="getFinCode2Count" resultClass="java.lang.Integer">
+		SELECT COUNT(*) C FROM FIN_CODE2
+		<dynamic prepend="WHERE">
+			<isNotEmpty prepend="AND" property="code2Id"> CODE2_ID = #code2Id#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="codeName"> CODE_NAME = #codeName#  </isNotEmpty>
+		</dynamic>
+	</select>
+
+</sqlMap>

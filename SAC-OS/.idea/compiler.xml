@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="fd-chn-config" />
+        <module name="fd-chn-core" />
+        <module name="fd-chn-dao" />
+        <module name="fd-chn-model" />
+        <module name="fd-chn-page" />
+        <module name="fd-chn-util" />
+        <module name="fd-chn-view" />
+        <module name="sac-ac-config" />
+        <module name="sac-ac-core" />
+        <module name="sac-ac-dao" />
+        <module name="sac-ac-model" />
+        <module name="sac-ac-page" />
+        <module name="sac-ac-util" />
+        <module name="sac-ac-view" />
+        <module name="sac-fa-config" />
+        <module name="sac-fa-core" />
+        <module name="sac-fa-dao" />
+        <module name="sac-fa-model" />
+        <module name="sac-fa-page" />
+        <module name="sac-fa-util" />
+        <module name="sac-fa-view" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="fd-chn" target="1.6" />
+      <module name="fd-chn-config" target="1.6" />
+      <module name="fd-chn-core" target="1.6" />
+      <module name="fd-chn-dao" target="1.6" />
+      <module name="fd-chn-model" target="1.6" />
+      <module name="fd-chn-page" target="1.6" />
+      <module name="fd-chn-util" target="1.6" />
+      <module name="fd-chn-view" target="1.6" />
+      <module name="sac-ac" target="1.6" />
+      <module name="sac-ac-config" target="1.6" />
+      <module name="sac-ac-core" target="1.6" />
+      <module name="sac-ac-dao" target="1.6" />
+      <module name="sac-ac-model" target="1.6" />
+      <module name="sac-ac-page" target="1.6" />
+      <module name="sac-ac-util" target="1.6" />
+      <module name="sac-ac-view" target="1.6" />
+      <module name="sac-fa" target="1.6" />
+      <module name="sac-fa-config" target="1.6" />
+      <module name="sac-fa-core" target="1.6" />
+      <module name="sac-fa-dao" target="1.6" />
+      <module name="sac-fa-model" target="1.6" />
+      <module name="sac-fa-page" target="1.6" />
+      <module name="sac-fa-util" target="1.6" />
+      <module name="sac-fa-view" target="1.6" />
+      <module name="sac-os" target="1.6" />
+      <module name="sac-os-config" target="1.6" />
+      <module name="sac-os-core" target="1.6" />
+      <module name="sac-os-dao" target="1.6" />
+      <module name="sac-os-model" target="1.6" />
+      <module name="sac-os-page" target="1.6" />
+      <module name="sac-os-util" target="1.6" />
+      <module name="sac-os-view" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

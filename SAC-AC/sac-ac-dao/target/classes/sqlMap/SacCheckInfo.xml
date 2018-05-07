@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="SacCheckInfo" class="net.easipay.cbp.model.SacCheckInfo">
+		<result property="id" column="id" />
+		<result property="trxType" column="trx_type" />
+		<result property="checkStatus" column="CHECK_STATUS" />
+		<result property="operator" column="operator" />
+		<result property="operatorTime" column="OPERATOR_TIME" />
+		<result property="digst" column="DIGST" />
+		<result property="updateTime" column="update_time" />
+		<result property="createTime" column="create_time" />
+		<result property="memo" column="memo" />
+	</resultMap>
+
+	<insert id="insertSacCheckInfo" parameterClass="net.easipay.cbp.model.SacCheckInfo">
+		INSERT INTO SAC_CHECK_INFO (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="id"> id  </isNotEmpty>
+			<isNotEmpty prepend="," property="trxType"> trx_type  </isNotEmpty>
+			<isNotEmpty prepend="," property="checkStatus"> CHECK_STATUS</isNotEmpty>
+			<isNotEmpty prepend="," property="operator"> operator</isNotEmpty>
+			<isNotEmpty prepend="," property="operatorTime"> OPERATOR_TIME</isNotEmpty>
+			<isNotEmpty prepend="," property="digst"> DIGST</isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> update_time  </isNotEmpty>
+			<isNotEmpty prepend="," property="createTime"> create_time  </isNotEmpty>
+			<isNotEmpty prepend="," property="memo"> memo  </isNotEmpty>
+		</dynamic>
+		) VALUES (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="id"> #id#  </isNotEmpty>
+			<isNotEmpty prepend="," property="trxType"> #trxType#  </isNotEmpty>
+			<isNotEmpty prepend="," property="checkStatus"> #checkStatus#</isNotEmpty>
+			<isNotEmpty prepend="," property="operator"> #operator#</isNotEmpty>
+			<isNotEmpty prepend="," property="operatorTime"> #operatorTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="digst"> #digst#</isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime"> #updateTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime"> #createTime#</isNotEmpty>
+			<isNotEmpty prepend="," property="memo"> #memo#  </isNotEmpty>
+		</dynamic>
+		)
+	</insert>
+
+</sqlMap>

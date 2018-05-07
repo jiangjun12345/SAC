@@ -1,0 +1,459 @@
+2018-05-07 14:01:51,072 INFO [net.easipay.pepp.peps.util.PepsPropertiesSupport] - Loading properties file from class path resource [cas-service.properties]
+2018-05-07 14:01:52,743 INFO [net.easipay.pepp.peps.util.PepsPropertiesSupport] - Loading properties file from class path resource [cas-service.properties]
+2018-05-07 14:01:52,811 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - Found action method [public void net.easipay.pepp.peps.web.AuthCodeCheckController.achieveAuthCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception]
+2018-05-07 14:01:52,811 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - Found action method [public void net.easipay.pepp.peps.web.AuthCodeCheckController.verifyAuthCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception]
+2018-05-07 14:01:53,016 DEBUG [org.springframework.webflow.definition.registry.FlowDefinitionRegistryImpl] - Registering flow definition 'ServletContext resource [/WEB-INF/login-webflow.xml]' under id 'login'
+2018-05-07 14:01:53,016 DEBUG [org.springframework.webflow.definition.registry.FlowDefinitionRegistryImpl] - Registering flow definition 'ServletContext resource [/WEB-INF/login-webflow.xml]' under id 'loginB'
+2018-05-07 14:01:53,395 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - Mapping request with URI '/sso/login' to flow with id 'login'
+2018-05-07 14:01:53,405 DEBUG [org.springframework.webflow.executor.FlowExecutorImpl] - Launching new execution of flow 'login' with input map['service' -> 'http://10.68.30.116:8083/fm/j_spring_cas_security_check']
+2018-05-07 14:01:53,406 DEBUG [org.springframework.webflow.definition.registry.FlowDefinitionRegistryImpl] - Getting FlowDefinition with id 'login'
+2018-05-07 14:01:53,406 DEBUG [org.springframework.webflow.engine.builder.DefaultFlowHolder] - Assembling the flow for the first time
+2018-05-07 14:01:53,574 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImplFactory] - Creating new execution of 'login'
+2018-05-07 14:01:53,578 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImpl] - Starting in org.springframework.webflow.mvc.servlet.MvcExternalContext@31731840 with input map['service' -> 'http://10.68.30.116:8083/fm/j_spring_cas_security_check']
+2018-05-07 14:01:53,584 DEBUG [org.springframework.webflow.engine.Flow] - Creating [FlowVariable@1fe48af2 name = 'credentials', valueFactory = [BeanFactoryVariableValueFactory@555e2639 type = EnhanceUsernamePasswordCredentials]]
+2018-05-07 14:01:53,591 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@1b2ffe78 expression = initialFlowSetupAction, resultExpression = [null]]
+2018-05-07 14:01:53,591 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:01:53,595 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.jasig.cas.web.flow.InitialFlowSetupAction@27f7c6e1
+2018-05-07 14:01:53,595 INFO [org.jasig.cas.web.flow.InitialFlowSetupAction] - Setting path for cookies to: /sso/
+2018-05-07 14:01:53,599 DEBUG [org.jasig.cas.web.flow.InitialFlowSetupAction] - Placing service in FlowScope: http://10.68.30.116:8083/fm/j_spring_cas_security_check
+2018-05-07 14:01:53,599 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.jasig.cas.web.flow.InitialFlowSetupAction@27f7c6e1; result = success
+2018-05-07 14:01:53,599 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:01:53,599 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@1b2ffe78 expression = initialFlowSetupAction, resultExpression = [null]]; result = success
+2018-05-07 14:01:53,600 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@720c653f expression = initServiceViewAction, resultExpression = [null]]
+2018-05-07 14:01:53,600 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:01:53,600 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing net.easipay.pepp.peps.web.flow.InitServiceViewAction@bcb4598
+2018-05-07 14:01:53,604 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - loginViewName=orderReceiverLoginView
+2018-05-07 14:01:53,604 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - domain=${ord.url}
+2018-05-07 14:01:53,604 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - pepsDomain=${pc.url}
+2018-05-07 14:01:53,604 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - regUrl=${rc.url}/registerInit
+2018-05-07 14:01:53,604 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing net.easipay.pepp.peps.web.flow.InitServiceViewAction@bcb4598; result = success
+2018-05-07 14:01:53,604 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:01:53,604 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@720c653f expression = initServiceViewAction, resultExpression = [null]]; result = success
+2018-05-07 14:01:53,605 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'ticketGrantingTicketExistsCheck' of flow 'login'
+2018-05-07 14:01:53,610 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@180cf393 on = flowScope.ticketGrantingTicketId neq null, to = hasServiceCheck]
+2018-05-07 14:01:53,610 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'ticketGrantingTicketExistsCheck'
+2018-05-07 14:01:53,610 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'hasServiceCheck' of flow 'login'
+2018-05-07 14:01:53,610 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@7a4b443a on = flowScope.service != null, to = renewRequestCheck]
+2018-05-07 14:01:53,610 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'hasServiceCheck'
+2018-05-07 14:01:53,610 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'renewRequestCheck' of flow 'login'
+2018-05-07 14:01:53,614 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@203f97d7 on = *, to = checkPerClientService]
+2018-05-07 14:01:53,614 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'renewRequestCheck'
+2018-05-07 14:01:53,614 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'checkPerClientService' of flow 'login'
+2018-05-07 14:01:53,615 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@2f09b4cb expression = getUserNameAction, resultExpression = [null]]
+2018-05-07 14:01:53,615 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing net.easipay.pepp.peps.web.flow.GetUserNameAction@263c938d
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing net.easipay.pepp.peps.web.flow.GetUserNameAction@263c938d; result = loginB
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@2f09b4cb expression = getUserNameAction, resultExpression = [null]]; result = loginB
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@52fb2197 on = loginB, to = generateServiceTicket]
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'checkPerClientService'
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'generateServiceTicket' of flow 'login'
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@655a6b10 expression = generateServiceTicketAction, resultExpression = [null]]
+2018-05-07 14:01:53,616 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:01:53,617 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.jasig.cas.web.flow.GenerateServiceTicketAction@132b1b6c
+2018-05-07 14:01:53,637 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: audit:unknown
+WHAT: http://10.68.30.116:8083/fm/j_spring_cas_security_check
+ACTION: SERVICE_TICKET_NOT_CREATED
+APPLICATION: CAS
+WHEN: Mon May 07 14:01:53 CST 2018
+CLIENT IP ADDRESS: 10.68.30.116
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:01:53,637 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.jasig.cas.web.flow.GenerateServiceTicketAction@132b1b6c; result = error
+2018-05-07 14:01:53,637 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:01:53,637 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@655a6b10 expression = generateServiceTicketAction, resultExpression = [null]]; result = error
+2018-05-07 14:01:53,637 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@58220e8b on = error, to = generateLoginTicket]
+2018-05-07 14:01:53,637 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'generateServiceTicket'
+2018-05-07 14:01:53,637 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'generateLoginTicket' of flow 'login'
+2018-05-07 14:01:53,637 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@23e8f4e1 expression = generateLoginTicketAction.generate(flowRequestContext), resultExpression = [null]]
+2018-05-07 14:01:53,638 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:01:53,639 DEBUG [org.jasig.cas.web.flow.GenerateLoginTicketAction] - Generated login ticket LT-1-dn6Wi7xkconsfoz0D7N7XO3P5fg2OD
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@23e8f4e1 expression = generateLoginTicketAction.generate(flowRequestContext), resultExpression = [null]]; result = generated
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@1478e67f on = generated, to = viewLoginForm]
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'generateLoginTicket'
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.engine.ViewState] - Entering state 'viewLoginForm' of flow 'login'
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [SetAction@d64a659 name = viewScope.commandName, value = 'credentials']
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:01:53,640 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [SetAction@d64a659 name = viewScope.commandName, value = 'credentials']; result = success
+2018-05-07 14:01:53,649 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'name' with value login
+2018-05-07 14:01:53,649 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'caption' with value null
+2018-05-07 14:01:53,650 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'description' with value null
+2018-05-07 14:01:53,651 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'flowExecutionSnapshotGroup' with value org.springframework.webflow.execution.repository.impl.SimpleFlowExecutionSnapshotGroup@4bce79b8
+2018-05-07 14:01:53,652 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImpl] - Assigned key e1s1
+2018-05-07 14:01:53,766 DEBUG [org.springframework.webflow.engine.ViewState] - Rendering + [ServletMvcView@213c7aef view = org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]]
+2018-05-07 14:01:53,766 DEBUG [org.springframework.webflow.engine.ViewState] -   Flash scope = map[[empty]]
+2018-05-07 14:01:53,766 DEBUG [org.springframework.webflow.engine.ViewState] -   Messages = [DefaultMessageContext@9aaf1f5 sourceMessages = map[[null] -> list[[empty]]]]
+2018-05-07 14:01:53,772 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Rendering MVC [org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]] with model map [{flowRequestContext=[RequestControlContextImpl@49a1afb1 externalContext = org.springframework.webflow.mvc.servlet.MvcExternalContext@31731840, currentEvent = generated, requestScope = map[[empty]], attributes = map[[empty]], messageContext = [DefaultMessageContext@9aaf1f5 sourceMessages = map[[null] -> list[[empty]]]], flowExecution = [FlowExecutionImpl@1615b33b flow = 'login', flowSessions = list[[FlowSessionImpl@6aa9f1d0 flow = 'login', state = 'viewLoginForm', scope = map['ServiceDomain' -> '${ord.url}', 'protocol' -> '${pc.url}/agreement.jsp', 'loginTicket' -> 'LT-1-dn6Wi7xkconsfoz0D7N7XO3P5fg2OD', 'regUrl' -> '${rc.url}/registerInit', 'warnCookieValue' -> false, 'pepsDomain' -> '${pc.url}', 'payRegUrl' -> '${rc.url}/registerInit?requestType=innerType', 'pwdUrl' -> '${rc.url}/findPassInit', 'formPageName' -> 'forms/orderReceiver.jsp', 'loginViewName' -> 'orderReceiverLoginView', 'service' -> http://10.68.30.116:8083/fm/j_spring_cas_security_check, 'credentials' -> [username: null], 'targetService' -> 'fm', 'linkUs' -> '${pc.url}/contact.jsp', 'ticketGrantingTicketId' -> 'TGT-5-dLURtBHPQddhbXPxo5iyEZdMuSfnVfjkKlMbfRPM5U4pXgSQ7r-cas', 'viewScope' -> map['commandName' -> 'credentials']]]]]], ServiceDomain=${ord.url}, protocol=${pc.url}/agreement.jsp, currentUser=null, regUrl=${rc.url}/registerInit, loginTicket=LT-1-dn6Wi7xkconsfoz0D7N7XO3P5fg2OD, org.springframework.validation.BindingResult.credentials=org.springframework.webflow.mvc.view.BindingModel: 0 errors, flowExecutionKey=e1s1, warnCookieValue=false, pepsDomain=${pc.url}, payRegUrl=${rc.url}/registerInit?requestType=innerType, flashScope=map[[empty]], pwdUrl=${rc.url}/findPassInit, formPageName=forms/orderReceiver.jsp, loginViewName=orderReceiverLoginView, service=http://10.68.30.116:8083/fm/j_spring_cas_security_check, commandName=credentials, linkUs=${pc.url}/contact.jsp, targetService=fm, credentials=[username: null], flowExecutionUrl=/sso/login?service=%5BLjava.lang.String%3B%4051b1373d, ticketGrantingTicketId=TGT-5-dLURtBHPQddhbXPxo5iyEZdMuSfnVfjkKlMbfRPM5U4pXgSQ7r-cas, viewScope=map['commandName' -> 'credentials']}]
+2018-05-07 14:01:54,968 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:01:54,968 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:01:54,968 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:01:54,969 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:01:54,969 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:01:54,969 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:01:54,969 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Locking conversation 1
+2018-05-07 14:01:54,970 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Putting flow execution '[FlowExecutionImpl@1615b33b flow = 'login', flowSessions = list[[FlowSessionImpl@6aa9f1d0 flow = 'login', state = 'viewLoginForm', scope = map['ServiceDomain' -> '${ord.url}', 'protocol' -> '${pc.url}/agreement.jsp', 'loginTicket' -> 'LT-1-dn6Wi7xkconsfoz0D7N7XO3P5fg2OD', 'regUrl' -> '${rc.url}/registerInit', 'warnCookieValue' -> false, 'pepsDomain' -> '${pc.url}', 'payRegUrl' -> '${rc.url}/registerInit?requestType=innerType', 'pwdUrl' -> '${rc.url}/findPassInit', 'formPageName' -> 'forms/orderReceiver.jsp', 'loginViewName' -> 'orderReceiverLoginView', 'service' -> http://10.68.30.116:8083/fm/j_spring_cas_security_check, 'credentials' -> [username: null], 'targetService' -> 'fm', 'linkUs' -> '${pc.url}/contact.jsp', 'ticketGrantingTicketId' -> 'TGT-5-dLURtBHPQddhbXPxo5iyEZdMuSfnVfjkKlMbfRPM5U4pXgSQ7r-cas', 'viewScope' -> map['commandName' -> 'credentials']]]]]' into repository
+2018-05-07 14:01:55,003 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Adding snapshot to group with id 1
+2018-05-07 14:01:55,004 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'scope' with value map['flashScope' -> map['messagesMemento' -> map[[empty]]]]
+2018-05-07 14:01:55,004 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Unlocking conversation 1
+2018-05-07 14:01:55,108 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - No flow mapping found for request with URI '/sso/image/achieveAuthCode.html'
+2018-05-07 14:01:55,111 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - ===开始获取验证随机码====
+2018-05-07 14:01:57,128 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - ====验证码已经生成====
+2018-05-07 14:02:33,703 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - Mapping request with URI '/sso/login' to flow with id 'login'
+2018-05-07 14:02:33,703 DEBUG [org.springframework.webflow.executor.FlowExecutorImpl] - Launching new execution of flow 'login' with input map['service' -> 'http://10.68.30.116:8083/fm/j_spring_cas_security_check']
+2018-05-07 14:02:33,704 DEBUG [org.springframework.webflow.definition.registry.FlowDefinitionRegistryImpl] - Getting FlowDefinition with id 'login'
+2018-05-07 14:02:33,704 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImplFactory] - Creating new execution of 'login'
+2018-05-07 14:02:33,704 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImpl] - Starting in org.springframework.webflow.mvc.servlet.MvcExternalContext@3db6fb5d with input map['service' -> 'http://10.68.30.116:8083/fm/j_spring_cas_security_check']
+2018-05-07 14:02:33,704 DEBUG [org.springframework.webflow.engine.Flow] - Creating [FlowVariable@1fe48af2 name = 'credentials', valueFactory = [BeanFactoryVariableValueFactory@555e2639 type = EnhanceUsernamePasswordCredentials]]
+2018-05-07 14:02:33,705 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@1b2ffe78 expression = initialFlowSetupAction, resultExpression = [null]]
+2018-05-07 14:02:33,705 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:33,705 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.jasig.cas.web.flow.InitialFlowSetupAction@27f7c6e1
+2018-05-07 14:02:33,705 DEBUG [org.jasig.cas.web.flow.InitialFlowSetupAction] - Placing service in FlowScope: http://10.68.30.116:8083/fm/j_spring_cas_security_check
+2018-05-07 14:02:33,706 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.jasig.cas.web.flow.InitialFlowSetupAction@27f7c6e1; result = success
+2018-05-07 14:02:33,706 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:33,706 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@1b2ffe78 expression = initialFlowSetupAction, resultExpression = [null]]; result = success
+2018-05-07 14:02:33,706 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@720c653f expression = initServiceViewAction, resultExpression = [null]]
+2018-05-07 14:02:33,706 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:33,706 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing net.easipay.pepp.peps.web.flow.InitServiceViewAction@bcb4598
+2018-05-07 14:02:33,706 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - loginViewName=orderReceiverLoginView
+2018-05-07 14:02:33,707 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - domain=${ord.url}
+2018-05-07 14:02:33,707 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - pepsDomain=${pc.url}
+2018-05-07 14:02:33,707 DEBUG [net.easipay.pepp.peps.web.flow.InitServiceViewAction] - regUrl=${rc.url}/registerInit
+2018-05-07 14:02:33,707 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing net.easipay.pepp.peps.web.flow.InitServiceViewAction@bcb4598; result = success
+2018-05-07 14:02:33,707 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:33,707 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@720c653f expression = initServiceViewAction, resultExpression = [null]]; result = success
+2018-05-07 14:02:33,707 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'ticketGrantingTicketExistsCheck' of flow 'login'
+2018-05-07 14:02:33,708 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@180cf393 on = flowScope.ticketGrantingTicketId neq null, to = hasServiceCheck]
+2018-05-07 14:02:33,708 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'ticketGrantingTicketExistsCheck'
+2018-05-07 14:02:33,708 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'hasServiceCheck' of flow 'login'
+2018-05-07 14:02:33,709 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@7a4b443a on = flowScope.service != null, to = renewRequestCheck]
+2018-05-07 14:02:33,709 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'hasServiceCheck'
+2018-05-07 14:02:33,709 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'renewRequestCheck' of flow 'login'
+2018-05-07 14:02:33,710 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@203f97d7 on = *, to = checkPerClientService]
+2018-05-07 14:02:33,710 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'renewRequestCheck'
+2018-05-07 14:02:33,710 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'checkPerClientService' of flow 'login'
+2018-05-07 14:02:33,711 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@2f09b4cb expression = getUserNameAction, resultExpression = [null]]
+2018-05-07 14:02:33,711 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:33,711 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing net.easipay.pepp.peps.web.flow.GetUserNameAction@263c938d
+2018-05-07 14:02:33,712 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing net.easipay.pepp.peps.web.flow.GetUserNameAction@263c938d; result = loginB
+2018-05-07 14:02:33,712 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:33,712 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@2f09b4cb expression = getUserNameAction, resultExpression = [null]]; result = loginB
+2018-05-07 14:02:33,722 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@52fb2197 on = loginB, to = generateServiceTicket]
+2018-05-07 14:02:33,722 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'checkPerClientService'
+2018-05-07 14:02:33,722 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'generateServiceTicket' of flow 'login'
+2018-05-07 14:02:33,722 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@655a6b10 expression = generateServiceTicketAction, resultExpression = [null]]
+2018-05-07 14:02:33,722 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:33,722 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.jasig.cas.web.flow.GenerateServiceTicketAction@132b1b6c
+2018-05-07 14:02:33,723 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: audit:unknown
+WHAT: http://10.68.30.116:8083/fm/j_spring_cas_security_check
+ACTION: SERVICE_TICKET_NOT_CREATED
+APPLICATION: CAS
+WHEN: Mon May 07 14:02:33 CST 2018
+CLIENT IP ADDRESS: 10.68.30.55
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:02:33,724 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.jasig.cas.web.flow.GenerateServiceTicketAction@132b1b6c; result = error
+2018-05-07 14:02:33,724 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:33,725 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@655a6b10 expression = generateServiceTicketAction, resultExpression = [null]]; result = error
+2018-05-07 14:02:33,725 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@58220e8b on = error, to = generateLoginTicket]
+2018-05-07 14:02:33,734 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'generateServiceTicket'
+2018-05-07 14:02:33,734 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'generateLoginTicket' of flow 'login'
+2018-05-07 14:02:33,734 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@23e8f4e1 expression = generateLoginTicketAction.generate(flowRequestContext), resultExpression = [null]]
+2018-05-07 14:02:33,734 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:33,735 DEBUG [org.jasig.cas.web.flow.GenerateLoginTicketAction] - Generated login ticket LT-2-B4dk4MxuDMkfFGGq5v6LW7hOzOpbaA
+2018-05-07 14:02:33,735 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:33,735 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@23e8f4e1 expression = generateLoginTicketAction.generate(flowRequestContext), resultExpression = [null]]; result = generated
+2018-05-07 14:02:33,736 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@1478e67f on = generated, to = viewLoginForm]
+2018-05-07 14:02:33,736 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'generateLoginTicket'
+2018-05-07 14:02:33,736 DEBUG [org.springframework.webflow.engine.ViewState] - Entering state 'viewLoginForm' of flow 'login'
+2018-05-07 14:02:33,736 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [SetAction@d64a659 name = viewScope.commandName, value = 'credentials']
+2018-05-07 14:02:33,736 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:33,736 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:33,736 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [SetAction@d64a659 name = viewScope.commandName, value = 'credentials']; result = success
+2018-05-07 14:02:33,737 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'name' with value login
+2018-05-07 14:02:33,737 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'caption' with value null
+2018-05-07 14:02:33,737 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'description' with value null
+2018-05-07 14:02:33,737 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'flowExecutionSnapshotGroup' with value org.springframework.webflow.execution.repository.impl.SimpleFlowExecutionSnapshotGroup@200e5602
+2018-05-07 14:02:33,737 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImpl] - Assigned key e1s1
+2018-05-07 14:02:33,737 DEBUG [org.springframework.webflow.engine.ViewState] - Rendering + [ServletMvcView@76dedd5c view = org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]]
+2018-05-07 14:02:33,737 DEBUG [org.springframework.webflow.engine.ViewState] -   Flash scope = map[[empty]]
+2018-05-07 14:02:33,738 DEBUG [org.springframework.webflow.engine.ViewState] -   Messages = [DefaultMessageContext@2196fffc sourceMessages = map[[null] -> list[[empty]]]]
+2018-05-07 14:02:33,738 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Rendering MVC [org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]] with model map [{flowRequestContext=[RequestControlContextImpl@16392c27 externalContext = org.springframework.webflow.mvc.servlet.MvcExternalContext@3db6fb5d, currentEvent = generated, requestScope = map[[empty]], attributes = map[[empty]], messageContext = [DefaultMessageContext@2196fffc sourceMessages = map[[null] -> list[[empty]]]], flowExecution = [FlowExecutionImpl@381bfd7 flow = 'login', flowSessions = list[[FlowSessionImpl@3b59be0d flow = 'login', state = 'viewLoginForm', scope = map['ServiceDomain' -> '${ord.url}', 'protocol' -> '${pc.url}/agreement.jsp', 'loginTicket' -> 'LT-2-B4dk4MxuDMkfFGGq5v6LW7hOzOpbaA', 'regUrl' -> '${rc.url}/registerInit', 'warnCookieValue' -> false, 'pepsDomain' -> '${pc.url}', 'payRegUrl' -> '${rc.url}/registerInit?requestType=innerType', 'pwdUrl' -> '${rc.url}/findPassInit', 'formPageName' -> 'forms/orderReceiver.jsp', 'loginViewName' -> 'orderReceiverLoginView', 'service' -> http://10.68.30.116:8083/fm/j_spring_cas_security_check, 'credentials' -> [username: null], 'targetService' -> 'fm', 'linkUs' -> '${pc.url}/contact.jsp', 'ticketGrantingTicketId' -> 'TGT-6-HVfmLTGGdDgSZdzLxOAKaT0954Ips9hfQUFkybYBkobfl0vqbG-cas', 'viewScope' -> map['commandName' -> 'credentials']]]]]], ServiceDomain=${ord.url}, protocol=${pc.url}/agreement.jsp, currentUser=null, regUrl=${rc.url}/registerInit, loginTicket=LT-2-B4dk4MxuDMkfFGGq5v6LW7hOzOpbaA, org.springframework.validation.BindingResult.credentials=org.springframework.webflow.mvc.view.BindingModel: 0 errors, flowExecutionKey=e1s1, warnCookieValue=false, pepsDomain=${pc.url}, payRegUrl=${rc.url}/registerInit?requestType=innerType, flashScope=map[[empty]], pwdUrl=${rc.url}/findPassInit, formPageName=forms/orderReceiver.jsp, loginViewName=orderReceiverLoginView, service=http://10.68.30.116:8083/fm/j_spring_cas_security_check, commandName=credentials, linkUs=${pc.url}/contact.jsp, targetService=fm, credentials=[username: null], flowExecutionUrl=/sso/login?service=%5BLjava.lang.String%3B%4040800a9e, ticketGrantingTicketId=TGT-6-HVfmLTGGdDgSZdzLxOAKaT0954Ips9hfQUFkybYBkobfl0vqbG-cas, viewScope=map['commandName' -> 'credentials']}]
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Locking conversation 1
+2018-05-07 14:02:33,747 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Putting flow execution '[FlowExecutionImpl@381bfd7 flow = 'login', flowSessions = list[[FlowSessionImpl@3b59be0d flow = 'login', state = 'viewLoginForm', scope = map['ServiceDomain' -> '${ord.url}', 'protocol' -> '${pc.url}/agreement.jsp', 'loginTicket' -> 'LT-2-B4dk4MxuDMkfFGGq5v6LW7hOzOpbaA', 'regUrl' -> '${rc.url}/registerInit', 'warnCookieValue' -> false, 'pepsDomain' -> '${pc.url}', 'payRegUrl' -> '${rc.url}/registerInit?requestType=innerType', 'pwdUrl' -> '${rc.url}/findPassInit', 'formPageName' -> 'forms/orderReceiver.jsp', 'loginViewName' -> 'orderReceiverLoginView', 'service' -> http://10.68.30.116:8083/fm/j_spring_cas_security_check, 'credentials' -> [username: null], 'targetService' -> 'fm', 'linkUs' -> '${pc.url}/contact.jsp', 'ticketGrantingTicketId' -> 'TGT-6-HVfmLTGGdDgSZdzLxOAKaT0954Ips9hfQUFkybYBkobfl0vqbG-cas', 'viewScope' -> map['commandName' -> 'credentials']]]]]' into repository
+2018-05-07 14:02:33,749 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Adding snapshot to group with id 1
+2018-05-07 14:02:33,749 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'scope' with value map['flashScope' -> map['messagesMemento' -> map[[empty]]]]
+2018-05-07 14:02:33,749 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Unlocking conversation 1
+2018-05-07 14:02:34,536 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - No flow mapping found for request with URI '/sso/image/achieveAuthCode.html'
+2018-05-07 14:02:34,537 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - ===开始获取验证随机码====
+2018-05-07 14:02:34,544 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - ====验证码已经生成====
+2018-05-07 14:02:51,499 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - Mapping request with URI '/sso/login' to flow with id 'login'
+2018-05-07 14:02:51,501 DEBUG [org.springframework.webflow.executor.FlowExecutorImpl] - Resuming flow execution with key 'e1s1
+2018-05-07 14:02:51,501 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Locking conversation 1
+2018-05-07 14:02:51,501 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Getting flow execution with key 'e1s1'
+2018-05-07 14:02:51,502 DEBUG [org.springframework.webflow.definition.registry.FlowDefinitionRegistryImpl] - Getting FlowDefinition with id 'login'
+2018-05-07 14:02:51,525 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImpl] - Resuming in org.springframework.webflow.mvc.servlet.MvcExternalContext@29f12030
+2018-05-07 14:02:51,525 DEBUG [org.springframework.webflow.engine.Flow] - Restoring [FlowVariable@1fe48af2 name = 'credentials', valueFactory = [BeanFactoryVariableValueFactory@555e2639 type = EnhanceUsernamePasswordCredentials]]
+2018-05-07 14:02:51,526 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Processing user event 'submit'
+2018-05-07 14:02:51,526 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Resolved model [username: null]
+2018-05-07 14:02:51,526 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Binding to model
+2018-05-07 14:02:51,530 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Adding mapping for parameter 'username'
+2018-05-07 14:02:51,530 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Adding mapping for parameter 'password'
+2018-05-07 14:02:51,530 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Adding mapping for parameter 'authCode'
+2018-05-07 14:02:51,543 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Validating model
+2018-05-07 14:02:51,545 DEBUG [org.springframework.webflow.validation.ValidationHelper] - Invoking Spring Validator 'LocalValidatorFactoryBean'
+2018-05-07 14:02:51,576 DEBUG [org.springframework.webflow.engine.ViewState] - Event 'submit' returned from view [ServletMvcView@2a43a8b8 view = org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]]
+2018-05-07 14:02:51,576 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@2d4ab6e3 expression = authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials), resultExpression = [null]]
+2018-05-07 14:02:51,576 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:51,577 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:51,577 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@2d4ab6e3 expression = authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials), resultExpression = [null]]; result = success
+2018-05-07 14:02:51,577 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@42d0850 on = submit, to = authCodeCheck]
+2018-05-07 14:02:51,577 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'viewLoginForm'
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'authCodeCheck' of flow 'login'
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@bf020af expression = authCodeCheckAction, resultExpression = [null]]
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing net.easipay.pepp.peps.web.flow.AuthCodeCheckAction@41f1c748
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing net.easipay.pepp.peps.web.flow.AuthCodeCheckAction@41f1c748; result = success
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@bf020af expression = authCodeCheckAction, resultExpression = [null]]; result = success
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@685269ca on = success, to = realSubmit]
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'authCodeCheck'
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'realSubmit' of flow 'login'
+2018-05-07 14:02:51,578 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@7a9f8247 expression = authenticationViaFormAction.submit(flowRequestContext, flowScope.credentials, messageContext), resultExpression = [null]]
+2018-05-07 14:02:51,579 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:51,996 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: [username: cb@qq.com]
+WHAT: supplied credentials: [username: cb@qq.com]
+ACTION: AUTHENTICATION_FAILED
+APPLICATION: CAS
+WHEN: Mon May 07 14:02:51 CST 2018
+CLIENT IP ADDRESS: 10.68.30.55
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:02:51,996 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: [username: cb@qq.com]
+WHAT: error.authentication.credentials.bad
+ACTION: TICKET_GRANTING_TICKET_NOT_CREATED
+APPLICATION: CAS
+WHEN: Mon May 07 14:02:51 CST 2018
+CLIENT IP ADDRESS: 10.68.30.55
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:02:52,023 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:52,023 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@7a9f8247 expression = authenticationViaFormAction.submit(flowRequestContext, flowScope.credentials, messageContext), resultExpression = [null]]; result = error
+2018-05-07 14:02:52,023 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@5ab5b91 on = error, to = generateLoginTicket]
+2018-05-07 14:02:52,023 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'realSubmit'
+2018-05-07 14:02:52,023 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'generateLoginTicket' of flow 'login'
+2018-05-07 14:02:52,023 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@23e8f4e1 expression = generateLoginTicketAction.generate(flowRequestContext), resultExpression = [null]]
+2018-05-07 14:02:52,023 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:52,024 DEBUG [org.jasig.cas.web.flow.GenerateLoginTicketAction] - Generated login ticket LT-3-MejZbYaRntBDBnm6BlcUCCq0IGYzfK
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@23e8f4e1 expression = generateLoginTicketAction.generate(flowRequestContext), resultExpression = [null]]; result = generated
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@1478e67f on = generated, to = viewLoginForm]
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'generateLoginTicket'
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.engine.ViewState] - Entering state 'viewLoginForm' of flow 'login'
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [SetAction@d64a659 name = viewScope.commandName, value = 'credentials']
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [SetAction@d64a659 name = viewScope.commandName, value = 'credentials']; result = success
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImpl] - Assigned key e1s2
+2018-05-07 14:02:52,024 DEBUG [org.springframework.webflow.engine.ViewState] - Rendering + [ServletMvcView@4504f60c view = org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]]
+2018-05-07 14:02:52,025 DEBUG [org.springframework.webflow.engine.ViewState] -   Flash scope = map[[empty]]
+2018-05-07 14:02:52,025 DEBUG [org.springframework.webflow.engine.ViewState] -   Messages = [DefaultMessageContext@48b5b13a sourceMessages = map[[null] -> list[[Message@10867c21 source = [null], severity = ERROR, text = '帐户名或者密码有误。']]]]
+2018-05-07 14:02:52,026 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Rendering MVC [org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]] with model map [{flowRequestContext=[RequestControlContextImpl@4a893f08 externalContext = org.springframework.webflow.mvc.servlet.MvcExternalContext@29f12030, currentEvent = generated, requestScope = map[[empty]], attributes = map[[empty]], messageContext = [DefaultMessageContext@48b5b13a sourceMessages = map[[null] -> list[[Message@10867c21 source = [null], severity = ERROR, text = '帐户名或者密码有误。']]]], flowExecution = [FlowExecutionImpl@287cbe54 flow = 'login', flowSessions = list[[FlowSessionImpl@40199011 flow = 'login', state = 'viewLoginForm', scope = map['ServiceDomain' -> '${ord.url}', 'protocol' -> '${pc.url}/agreement.jsp', 'loginTicket' -> 'LT-3-MejZbYaRntBDBnm6BlcUCCq0IGYzfK', 'regUrl' -> '${rc.url}/registerInit', 'warnCookieValue' -> false, 'pepsDomain' -> '${pc.url}', 'payRegUrl' -> '${rc.url}/registerInit?requestType=innerType', 'pwdUrl' -> '${rc.url}/findPassInit', 'formPageName' -> 'forms/orderReceiver.jsp', 'loginViewName' -> 'orderReceiverLoginView', 'authCodeShow' -> true, 'service' -> http://10.68.30.116:8083/fm/j_spring_cas_security_check, 'linkUs' -> '${pc.url}/contact.jsp', 'targetService' -> 'fm', 'credentials' -> [username: cb@qq.com], 'ticketGrantingTicketId' -> 'TGT-6-HVfmLTGGdDgSZdzLxOAKaT0954Ips9hfQUFkybYBkobfl0vqbG-cas', 'viewScope' -> map['commandName' -> 'credentials']]]]]], ServiceDomain=${ord.url}, protocol=${pc.url}/agreement.jsp, currentUser=null, regUrl=${rc.url}/registerInit, loginTicket=LT-3-MejZbYaRntBDBnm6BlcUCCq0IGYzfK, org.springframework.validation.BindingResult.credentials=org.springframework.webflow.mvc.view.BindingModel: 1 errors
+Error in object 'credentials': codes []; arguments []; default message [帐户名或者密码有误。], flowExecutionKey=e1s2, warnCookieValue=false, pepsDomain=${pc.url}, payRegUrl=${rc.url}/registerInit?requestType=innerType, flashScope=map[[empty]], pwdUrl=${rc.url}/findPassInit, formPageName=forms/orderReceiver.jsp, loginViewName=orderReceiverLoginView, authCodeShow=true, service=http://10.68.30.116:8083/fm/j_spring_cas_security_check, commandName=credentials, credentials=[username: cb@qq.com], targetService=fm, linkUs=${pc.url}/contact.jsp, flowExecutionUrl=/sso/login?service=%5BLjava.lang.String%3B%406d3f6300&username=%5BLjava.lang.String%3B%405c7ccd08&password=%5BLjava.lang.String%3B%40578f7a8&authCode=%5BLjava.lang.String%3B%4048cb3966&lt=%5BLjava.lang.String%3B%4016257ce0&execution=%5BLjava.lang.String%3B%407729617b&_eventId=%5BLjava.lang.String%3B%403dbf0f5b, ticketGrantingTicketId=TGT-6-HVfmLTGGdDgSZdzLxOAKaT0954Ips9hfQUFkybYBkobfl0vqbG-cas, viewScope=map['commandName' -> 'credentials']}]
+2018-05-07 14:02:52,030 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:52,030 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:52,030 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:52,030 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the new state is 'viewLoginForm' in flow 'login'
+2018-05-07 14:02:52,030 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Putting flow execution '[FlowExecutionImpl@287cbe54 flow = 'login', flowSessions = list[[FlowSessionImpl@40199011 flow = 'login', state = 'viewLoginForm', scope = map['ServiceDomain' -> '${ord.url}', 'protocol' -> '${pc.url}/agreement.jsp', 'loginTicket' -> 'LT-3-MejZbYaRntBDBnm6BlcUCCq0IGYzfK', 'regUrl' -> '${rc.url}/registerInit', 'warnCookieValue' -> false, 'pepsDomain' -> '${pc.url}', 'payRegUrl' -> '${rc.url}/registerInit?requestType=innerType', 'pwdUrl' -> '${rc.url}/findPassInit', 'formPageName' -> 'forms/orderReceiver.jsp', 'loginViewName' -> 'orderReceiverLoginView', 'authCodeShow' -> true, 'service' -> http://10.68.30.116:8083/fm/j_spring_cas_security_check, 'linkUs' -> '${pc.url}/contact.jsp', 'targetService' -> 'fm', 'credentials' -> [username: cb@qq.com], 'ticketGrantingTicketId' -> 'TGT-6-HVfmLTGGdDgSZdzLxOAKaT0954Ips9hfQUFkybYBkobfl0vqbG-cas', 'viewScope' -> map['commandName' -> 'credentials']]]]]' into repository
+2018-05-07 14:02:52,031 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Adding snapshot to group with id 2
+2018-05-07 14:02:52,031 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Putting conversation attribute 'scope' with value map['flashScope' -> map['messagesMemento' -> map[[empty]]]]
+2018-05-07 14:02:52,031 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Unlocking conversation 1
+2018-05-07 14:02:52,606 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - No flow mapping found for request with URI '/sso/image/achieveAuthCode.html'
+2018-05-07 14:02:52,607 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - ===开始获取验证随机码====
+2018-05-07 14:02:52,611 DEBUG [net.easipay.pepp.peps.web.AuthCodeCheckController] - ====验证码已经生成====
+2018-05-07 14:03:06,118 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - Mapping request with URI '/sso/login' to flow with id 'login'
+2018-05-07 14:03:06,118 DEBUG [org.springframework.webflow.executor.FlowExecutorImpl] - Resuming flow execution with key 'e1s2
+2018-05-07 14:03:06,118 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Locking conversation 1
+2018-05-07 14:03:06,119 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Getting flow execution with key 'e1s2'
+2018-05-07 14:03:06,119 DEBUG [org.springframework.webflow.definition.registry.FlowDefinitionRegistryImpl] - Getting FlowDefinition with id 'login'
+2018-05-07 14:03:06,120 DEBUG [org.springframework.webflow.engine.impl.FlowExecutionImpl] - Resuming in org.springframework.webflow.mvc.servlet.MvcExternalContext@58911b9f
+2018-05-07 14:03:06,120 DEBUG [org.springframework.webflow.engine.Flow] - Restoring [FlowVariable@1fe48af2 name = 'credentials', valueFactory = [BeanFactoryVariableValueFactory@555e2639 type = EnhanceUsernamePasswordCredentials]]
+2018-05-07 14:03:06,120 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Processing user event 'submit'
+2018-05-07 14:03:06,120 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Resolved model [username: cb@qq.com]
+2018-05-07 14:03:06,120 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Binding to model
+2018-05-07 14:03:06,120 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Adding mapping for parameter 'username'
+2018-05-07 14:03:06,121 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Adding mapping for parameter 'password'
+2018-05-07 14:03:06,121 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Adding mapping for parameter 'authCode'
+2018-05-07 14:03:06,121 DEBUG [org.springframework.webflow.mvc.view.AbstractMvcView] - Validating model
+2018-05-07 14:03:06,121 DEBUG [org.springframework.webflow.validation.ValidationHelper] - Invoking Spring Validator 'LocalValidatorFactoryBean'
+2018-05-07 14:03:06,122 DEBUG [org.springframework.webflow.engine.ViewState] - Event 'submit' returned from view [ServletMvcView@536d6585 view = org.springframework.web.servlet.view.JstlView: name 'orderReceiverLoginView'; URL [/WEB-INF/view/jsp/default/ui/services/orderReceiverLoginView.jsp]]
+2018-05-07 14:03:06,122 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@2d4ab6e3 expression = authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials), resultExpression = [null]]
+2018-05-07 14:03:06,122 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:03:06,122 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:03:06,122 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@2d4ab6e3 expression = authenticationViaFormAction.doBind(flowRequestContext, flowScope.credentials), resultExpression = [null]]; result = success
+2018-05-07 14:03:06,122 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@42d0850 on = submit, to = authCodeCheck]
+2018-05-07 14:03:06,122 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'viewLoginForm'
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'authCodeCheck' of flow 'login'
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@bf020af expression = authCodeCheckAction, resultExpression = [null]]
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing net.easipay.pepp.peps.web.flow.AuthCodeCheckAction@41f1c748
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing net.easipay.pepp.peps.web.flow.AuthCodeCheckAction@41f1c748; result = success
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@bf020af expression = authCodeCheckAction, resultExpression = [null]]; result = success
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@685269ca on = success, to = realSubmit]
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'authCodeCheck'
+2018-05-07 14:03:06,123 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'realSubmit' of flow 'login'
+2018-05-07 14:03:06,124 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@7a9f8247 expression = authenticationViaFormAction.submit(flowRequestContext, flowScope.credentials, messageContext), resultExpression = [null]]
+2018-05-07 14:03:06,124 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:03:06,131 DEBUG [net.easipay.pepp.peps.person.PepsPersonAttributeDao] - Created seed map='{username=[bc@qq.com]}' for uid='bc@qq.com'
+2018-05-07 14:03:06,190 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: [username: bc@qq.com]
+WHAT: supplied credentials: [username: bc@qq.com]
+ACTION: AUTHENTICATION_SUCCESS
+APPLICATION: CAS
+WHEN: Mon May 07 14:03:06 CST 2018
+CLIENT IP ADDRESS: 10.68.30.55
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:03:06,191 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: [username: bc@qq.com]
+WHAT: TGT-1-UDcnr3ZbhyfOAkSfaiSZC2gu5OswaOfuTE7fCDGprHn2rik4Sp-cas
+ACTION: TICKET_GRANTING_TICKET_CREATED
+APPLICATION: CAS
+WHEN: Mon May 07 14:03:06 CST 2018
+CLIENT IP ADDRESS: 10.68.30.55
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@7a9f8247 expression = authenticationViaFormAction.submit(flowRequestContext, flowScope.credentials, messageContext), resultExpression = [null]]; result = success
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@59ff062 on = success, to = sendTicketGrantingTicket]
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'realSubmit'
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'sendTicketGrantingTicket' of flow 'login'
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@475eb4d0 expression = sendTicketGrantingTicketAction, resultExpression = [null]]
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:03:06,192 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.jasig.cas.web.flow.SendTicketGrantingTicketAction@1ab0e84b
+2018-05-07 14:03:06,194 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: audit:unknown
+WHAT: TGT-6-HVfmLTGGdDgSZdzLxOAKaT0954Ips9hfQUFkybYBkobfl0vqbG-cas
+ACTION: TICKET_GRANTING_TICKET_DESTROYED
+APPLICATION: CAS
+WHEN: Mon May 07 14:03:06 CST 2018
+CLIENT IP ADDRESS: 10.68.30.55
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:03:06,194 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.jasig.cas.web.flow.SendTicketGrantingTicketAction@1ab0e84b; result = success
+2018-05-07 14:03:06,194 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:03:06,194 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@475eb4d0 expression = sendTicketGrantingTicketAction, resultExpression = [null]]; result = success
+2018-05-07 14:03:06,194 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@5462a19d on = *, to = serviceCheck]
+2018-05-07 14:03:06,194 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'sendTicketGrantingTicket'
+2018-05-07 14:03:06,194 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'serviceCheck' of flow 'login'
+2018-05-07 14:03:06,195 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@176075b3 on = flowScope.service neq null, to = generateServiceTicket]
+2018-05-07 14:03:06,195 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'serviceCheck'
+2018-05-07 14:03:06,195 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'generateServiceTicket' of flow 'login'
+2018-05-07 14:03:06,195 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@655a6b10 expression = generateServiceTicketAction, resultExpression = [null]]
+2018-05-07 14:03:06,195 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:03:06,195 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.jasig.cas.web.flow.GenerateServiceTicketAction@132b1b6c
+2018-05-07 14:03:06,197 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: bc@qq.com
+WHAT: ST-1-7BQOZcol1cvSB0nzUEMq-cas for http://10.68.30.116:8083/fm/j_spring_cas_security_check
+ACTION: SERVICE_TICKET_CREATED
+APPLICATION: CAS
+WHEN: Mon May 07 14:03:06 CST 2018
+CLIENT IP ADDRESS: 10.68.30.55
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+
+2018-05-07 14:03:06,197 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.jasig.cas.web.flow.GenerateServiceTicketAction@132b1b6c; result = success
+2018-05-07 14:03:06,197 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:03:06,197 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@655a6b10 expression = generateServiceTicketAction, resultExpression = [null]]; result = success
+2018-05-07 14:03:06,197 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@2b9f7952 on = success, to = warn]
+2018-05-07 14:03:06,197 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'generateServiceTicket'
+2018-05-07 14:03:06,197 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'warn' of flow 'login'
+2018-05-07 14:03:06,198 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@72d60cdd on = *, to = redirect]
+2018-05-07 14:03:06,198 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'warn'
+2018-05-07 14:03:06,198 DEBUG [org.springframework.webflow.engine.ActionState] - Entering state 'redirect' of flow 'login'
+2018-05-07 14:03:06,198 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@42e6bc11 expression = flowScope.service.getResponse(requestScope.serviceTicketId), resultExpression = requestScope.response]
+2018-05-07 14:03:06,198 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:03:06,201 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:03:06,201 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@42e6bc11 expression = flowScope.service.getResponse(requestScope.serviceTicketId), resultExpression = requestScope.response]; result = success
+2018-05-07 14:03:06,201 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@10d5b614 on = *, to = postRedirectDecision]
+2018-05-07 14:03:06,202 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'redirect'
+2018-05-07 14:03:06,202 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'postRedirectDecision' of flow 'login'
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@3b5fd4a3 on = *, to = redirectView]
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'postRedirectDecision'
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.engine.DecisionState] - Entering state 'redirectView' of flow 'login'
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.engine.Transition] - Executing [Transition@108137c9 on = activeFlow.id eq 'login', to = redirectViewA]
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.engine.Transition] - Exiting state 'redirectView'
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.engine.EndState] - Entering state 'redirectViewA' of flow 'login'
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing [EvaluateAction@13757596 expression = fixedSessionAction, resultExpression = [null]]
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Putting action execution attributes map[[empty]]
+2018-05-07 14:03:06,204 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing net.easipay.pepp.peps.web.flow.FixedSessionAction@47ad4d5
+2018-05-07 14:03:06,205 DEBUG [net.easipay.pepp.peps.web.flow.FixedSessionAction] - cas's redirectUrl ==http://10.68.30.116:8083/fm/j_spring_cas_security_check?ticket=ST-1-7BQOZcol1cvSB0nzUEMq-cas&ssid=0991913620B1A7A6B79FEEA305EAE518
+2018-05-07 14:03:06,205 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing net.easipay.pepp.peps.web.flow.FixedSessionAction@47ad4d5; result = success
+2018-05-07 14:03:06,205 DEBUG [org.springframework.webflow.execution.AnnotatedAction] - Clearing action execution attributes map[[empty]]
+2018-05-07 14:03:06,205 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing [EvaluateAction@13757596 expression = fixedSessionAction, resultExpression = [null]]; result = success
+2018-05-07 14:03:06,205 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.springframework.webflow.action.ViewFactoryActionAdapter@1c2aee3f
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Executing org.springframework.webflow.action.ExternalRedirectAction@3cc7e580
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.springframework.webflow.action.ExternalRedirectAction@3cc7e580; result = success
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.execution.ActionExecutor] - Finished executing org.springframework.webflow.action.ViewFactoryActionAdapter@1c2aee3f; result = success
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.engine.Transition] - Completed transition execution.  As a result, the flow execution has ended
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.execution.repository.impl.DefaultFlowExecutionRepository] - Removing flow execution '[Ended execution of 'login']' from repository
+2018-05-07 14:03:06,206 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Ending conversation 1
+2018-05-07 14:03:06,207 DEBUG [org.springframework.webflow.conversation.impl.SessionBindingConversationManager] - Unlocking conversation 1
+2018-05-07 14:03:06,207 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerAdapter] - Sending external redirect to 'http://10.68.30.116:8083/fm/j_spring_cas_security_check?ticket=ST-1-7BQOZcol1cvSB0nzUEMq-cas&ssid=0991913620B1A7A6B79FEEA305EAE518'
+2018-05-07 14:03:06,232 DEBUG [org.springframework.webflow.mvc.servlet.FlowHandlerMapping] - No flow mapping found for request with URI '/sso/serviceValidate'
+2018-05-07 14:03:06,236 INFO [com.github.inspektr.audit.support.Slf4jLoggingAuditTrailManager] - Audit trail record BEGIN
+=============================================================
+WHO: audit:unknown
+WHAT: ST-1-7BQOZcol1cvSB0nzUEMq-cas
+ACTION: SERVICE_TICKET_VALIDATED
+APPLICATION: CAS
+WHEN: Mon May 07 14:03:06 CST 2018
+CLIENT IP ADDRESS: 10.68.30.116
+SERVER IP ADDRESS: 10.68.30.91
+=============================================================
+
+

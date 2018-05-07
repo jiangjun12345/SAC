@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinTrialBalancing" class="net.easipay.cbp.model.FinTrialBalancing">
+	 <result property="id" column="id"/>
+	 <result property="codeId" column="code_id"/>
+	 <result property="sacCurrency" column="sac_currency"/>
+	 <result property="balance" column="balance"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="codeName" column="code_name"/>
+	 <result property="direction" column="direction"/>
+	 <result property="diffBalance" column="diffBalance"/>
+ </resultMap>
+ 
+ <resultMap id="FinTrialBalancingV" class="net.easipay.cbp.model.FinTrialBalancing">
+	 <result property="codeId" column="code_id"/>
+	 <result property="sacCurrency" column="sac_currency"/>
+	 <result property="balance" column="balance"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="codeName" column="code_name"/>
+	 <result property="direction" column="direction"/>
+	 <result property="diffBalance" column="diffBalance"/>
+ </resultMap>
+ 
+   	<select id="gettrialBalancingCountsV" resultClass="java.lang.Integer"  parameterClass="java.util.Map">  
+	   SELECT 
+	     Count(1)
+       FROM V_FIN_TRIAL_BALANCING M,FIN_CODE1 N
+       where 
+        M.code_id = N.code1_id
+		<isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ M.create_time >= to_date(#queryDate#,'yyyymmdd') ]]></isNotEmpty>
+		<isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ M.create_time < to_date(#queryDate#,'yyyymmdd')+1 ]]></isNotEmpty>
+		<isNotEmpty prepend="AND" property="sacCurrency" > M.sac_currency=#sacCurrency# </isNotEmpty>
+	</select>
+
+   <select id="gettrialBalancingBySplitV" parameterClass="java.util.Map" resultMap="FinTrialBalancingV"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+		     M.code_id,
+		     M.sac_currency,
+		     M.BALANCE,
+		     M.create_time,
+		     M.memo,
+		     N.code_name,
+		     N.direction,
+		     S.diffBalance
+	       FROM V_FIN_TRIAL_BALANCING M,FIN_CODE1 N,
+	       ( select q.sac_currency,sum(q.balance*d.direction) as diffBalance from V_FIN_TRIAL_BALANCING q,fin_code1 d where q.code_id=d.code1_id 
+	      and <![CDATA[ q.create_time >= to_date(#queryDate#,'yyyymmdd') ]]>
+	      and <![CDATA[ q.create_time < to_date(#queryDate#,'yyyymmdd')+1 ]]>
+	       group by q.sac_currency
+            )S
+           where 
+           M.code_id = N.code1_id
+           and M.sac_currency = S.sac_currency
+		   <isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ create_time >= to_date(#queryDate#,'yyyymmdd') ]]></isNotEmpty>
+		   <isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ create_time < to_date(#queryDate#,'yyyymmdd')+1 ]]></isNotEmpty>
+		   <isNotEmpty prepend="AND" property="sacCurrency" > M.sac_currency=#sacCurrency# </isNotEmpty>
+           order by create_time desc, sac_currency
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+   	<select id="gettrialBalancingCountsT" resultClass="java.lang.Integer"  parameterClass="java.util.Map">  
+	   SELECT 
+	     Count(1)
+       FROM FIN_TRIAL_BALANCING M,FIN_CODE1 N
+       where 
+        M.code_id = N.code1_id
+		<isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ create_time >= to_date(#queryDate#,'yyyymmdd') ]]></isNotEmpty>
+		<isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ create_time < to_date(#queryDate#,'yyyymmdd')+1 ]]></isNotEmpty>
+		<isNotEmpty prepend="AND" property="sacCurrency" > M.sac_currency=#sacCurrency# </isNotEmpty>
+	</select>
+
+   <select id="gettrialBalancingBySplitT" parameterClass="java.util.Map" resultMap="FinTrialBalancing"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+		     M.id,
+		     M.code_id,
+		     M.sac_currency,
+		     M.balance,
+		     M.create_time,
+		     M.memo,
+		     N.code_name,
+		     N.direction,
+		     S.diffBalance
+	       FROM FIN_TRIAL_BALANCING M,FIN_CODE1 N,
+	       ( select q.sac_currency,sum(q.balance*d.direction) as diffBalance from FIN_TRIAL_BALANCING q,fin_code1 d where q.code_id=d.code1_id 
+	      and <![CDATA[ q.create_time >= to_date(#queryDate#,'yyyymmdd') ]]>
+	      and <![CDATA[ q.create_time < to_date(#queryDate#,'yyyymmdd')+1 ]]>
+	       group by q.sac_currency
+            )S
+           where 
+           M.code_id = N.code1_id
+           and M.sac_currency = S.sac_currency
+		   <isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ create_time >= to_date(#queryDate#,'yyyymmdd') ]]></isNotEmpty>
+		   <isNotEmpty prepend="AND" property="queryDate" > <![CDATA[ create_time < to_date(#queryDate#,'yyyymmdd')+1 ]]></isNotEmpty>
+		   <isNotEmpty prepend="AND" property="sacCurrency" > M.sac_currency=#sacCurrency# </isNotEmpty>
+           order by create_time desc, sac_currency
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	
+	
+</sqlMap> 	

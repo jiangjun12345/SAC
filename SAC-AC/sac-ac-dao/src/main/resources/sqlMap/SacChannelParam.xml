@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacChannelParam" class="net.easipay.cbp.model.SacChannelParam">
+	 <result property="id" column="id"/>
+	 <result property="chnNo" column="chn_no"/>
+	 <result property="bankNodeCode" column="bank_node_code"/>
+	 <result property="chnCode" column="chn_code"/>
+	 <result property="chnType" column="chn_type"/>
+	 <result property="chnName" column="chn_name"/>
+	 <result property="sacBankName" column="sac_bank_name"/>
+	 <result property="accountName" column="account_name"/>
+	 <result property="bankAcc" column="bank_acc"/>
+	 <result property="craccBankCode" column="cracc_bank_code"/>
+	 <result property="currencyType" column="currency_type"/>
+	 <result property="sacPeriod" column="sac_period"/>
+	 <result property="costRate" column="cost_rate"/>
+	 <result property="costComWay" column="cost_com_way"/>
+	 <result property="costSacWay" column="cost_sac_way"/>
+	 <result property="createTime" column="create_time"/>
+	 <result property="memo" column="memo"/>
+	 <result property="updateTime" column="update_time"/>
+	 <result property="isValidFlag" column="is_valid_flag"/>
+ </resultMap>
+   <insert id="insertSacChannelParam" parameterClass="net.easipay.cbp.model.SacChannelParam">
+        INSERT INTO SAC_CHANNEL_PARAM ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnNo">  chn_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  bank_node_code  </isNotEmpty>
+			<isNotEmpty prepend="," property="chnCode">  chn_code  </isNotEmpty>
+			<isNotEmpty prepend="," property="chnType">  chn_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnName">  chn_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacBankName">  sac_bank_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="accountName">  account_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankAcc">  bank_acc  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  cracc_bank_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  currency_type  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacPeriod">  sac_period  </isNotEmpty>
+            <isNotEmpty prepend="," property="costRate">  cost_rate  </isNotEmpty>
+            <isNotEmpty prepend="," property="costComWay">  cost_com_way  </isNotEmpty>
+            <isNotEmpty prepend="," property="costSacWay">  cost_sac_way  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="isValidFlag">  is_valid_flag  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="chnNo">  #chnNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankNodeCode">  #bankNodeCode#  </isNotEmpty>	      
+			<isNotEmpty prepend="," property="chnCode">  #chnCode#  </isNotEmpty> 
+			<isNotEmpty prepend="," property="chnType">  #chnType#  </isNotEmpty> 
+		    <isNotEmpty prepend="," property="chnName">  #chnName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacBankName">  #sacBankName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="accountName">  #accountName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bankAcc">  #bankAcc#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBankCode">  #craccBankCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="currencyType">  #currencyType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="sacPeriod">  #sacPeriod#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="costRate">  #costRate#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="costComWay">  #costComWay#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="costSacWay">  #costSacWay#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="memo">  #memo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="updateTime">  #updateTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="isValidFlag">  #isValidFlag#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="listSacChannelParam" parameterClass="java.util.Map" resultMap="SacChannelParam">  
+        SELECT 
+	       id,
+	       chn_no,
+	       bank_node_code,
+	       chn_code,
+	       chn_type,
+	       chn_name,
+	       sac_bank_name,
+	       account_name,
+	       bank_acc,
+	       cracc_bank_code,
+	       currency_type,
+	       sac_period,
+	       cost_rate,
+	       cost_com_way,
+	       cost_sac_way,
+	       create_time,
+	       memo,
+	       update_time,
+	       is_valid_flag
+         FROM SAC_CHANNEL_PARAM
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="chnCode"> chn_code = #chnCode# </isNotEmpty>
+         <isNotEmpty prepend="AND" property="chnType"> chn_type = #chnType# </isNotEmpty>
+         <isNotEmpty prepend="AND" property="currencyType"> currency_type = #currencyType# </isNotEmpty>
+         <isNotEmpty prepend="AND" property="isValidFlag"> is_valid_flag = #isValidFlag# </isNotEmpty> 
+      </dynamic>
+  </select>
+  
+  <update id="updateSacChannelParam" parameterClass="net.easipay.cbp.model.SacChannelParam">  
+      UPDATE SAC_CHANNEL_PARAM        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id# </isNotEmpty>
+            <isNotEmpty prepend="," property="chnNo">  chn_no = #chnNo# </isNotEmpty>
+            <isNotEmpty prepend="," property="bankNodeCode">  bank_node_code = #bankNodeCode# </isNotEmpty>
+			<isNotEmpty prepend="," property="chnCode">  chn_code = #chnCode#  </isNotEmpty>
+			<isNotEmpty prepend="," property="chnType">  chn_type = #chnType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="chnName">  chn_name = #chnName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacBankName">  sac_bank_name = #sacBankName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="accountName">  account_name = #accountName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bankAcc">  bank_acc = #bankAcc#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankCode">  cracc_bank_code = #craccBankCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="currencyType">  currency_type = #currencyType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="sacPeriod">  sac_period = #sacPeriod#  </isNotEmpty>
+            <isNotEmpty prepend="," property="costRate">  cost_rate = #costRate#  </isNotEmpty>
+            <isNotEmpty prepend="," property="costComWay">  cost_com_way = #costComWay#  </isNotEmpty>
+            <isNotEmpty prepend="," property="costSacWay">  cost_sac_way = #costSacWay#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="memo">  memo = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="updateTime">  update_time = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="isValidFlag">  is_valid_flag = #isValidFlag#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id# AND chn_code = #chnCode#  AND chn_type = #chnType# AND currency_type = #currencyType#
+  </update>
+  
+</sqlMap>

@@ -1,0 +1,16 @@
+<decorators defaultdir="/decorators">
+    <excludes>
+    	<pattern>WEB-INF/jsp/orgInfo/*.*</pattern>
+        <pattern>/40*.jsp</pattern>
+        <pattern>/*ajax=true*</pattern>
+        <pattern>/struts/*</pattern>
+        <pattern>/resources/*</pattern>
+        <pattern>/images/*</pattern>
+        <pattern>/styles/*</pattern>
+        <pattern>/scripts/*</pattern>
+        <pattern>/htmls/*.jsp</pattern>
+    </excludes> 
+    <decorator name="default" page="default.jsp">
+        <pattern>*</pattern>
+    </decorator>
+</decorators>

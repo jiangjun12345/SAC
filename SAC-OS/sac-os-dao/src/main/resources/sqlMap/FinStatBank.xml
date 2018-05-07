@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="FinStatBank" class="net.easipay.cbp.model.FinStatBank">
+	 <result property="statBankId" column="stat_bank_id"/>
+	 <result property="codeId" column="code_id"/>
+	 <result property="openBal" column="open_bal"/>
+	 <result property="closeBal" column="close_bal"/>
+	 <result property="fDebit" column="fdebit"/>
+	 <result property="fCredit" column="fcredit"/>
+	 <result property="amount" column="amount"/>
+	 <result property="direction" column="direction"/>
+	 <result property="statTime" column="stat_time"/>
+ </resultMap>
+ 
+  <resultMap id="FinStatBankForm" class="net.easipay.cbp.model.FinStatBankForm">
+	 <result property="statBankId" column="stat_bank_id"/>
+	 <result property="codeId" column="code_id"/>
+	 <result property="openBal" column="open_bal"/>
+	 <result property="closeBal" column="close_bal"/>
+	 <result property="fDebit" column="fdebit"/>
+	 <result property="fCredit" column="fcredit"/>
+	 <result property="amount" column="amount"/>
+	 <result property="direction" column="direction"/>
+	 <result property="statTime" column="stat_time"/>
+	 <result property="sacBankName" column="sac_bank_name"/>
+	 <result property="bankAcc" column="bank_acc"/>
+	 <result property="currency" column="currency"/>
+	 <result property="diffSum" column="diff_Sum"/>
+	 <result property="dealSum" column="deal_Sum"/>
+ </resultMap>
+   	<select id="getFinStatBankCount" resultClass="java.lang.Integer"  parameterClass="java.util.Map">  
+		SELECT COUNT(1) C FROM (
+			 SELECT 
+			      M.stat_bank_id AS "stat_bank_id",
+			      M.code_id AS "code_id",
+			      M.open_bal AS "open_bal",
+			      M.close_bal AS "close_bal",
+			      M.fdebit AS "fdebit",
+			      M.fcredit AS "fcredit" ,
+				  M.amount*direction AS "amount",
+				  M.direction AS "direction",
+				  M.stat_time AS "stat_time",
+				  N.sac_bank_name AS "sac_bank_name",
+				  N.currency_type AS "currency",
+				  N.bank_acc AS "bank_acc",
+				  V.total_sum AS "diffSum",
+			  	  V.total_sum+M.close_bal AS "dealSum"
+		       FROM FIN_STAT_BANK M left join SAC_CHANNEL_PARAM N
+		       ON substr(M.code_id,7,19)=N.chn_no and  substr(M.code_id, 26, 2) = (select f.code4_id from fin_code4 f where f.code_value=N.Currency_Type )
+		       left join v_fin_stat_bank_diff V
+	       	   ON M.code_id = V.chn_no and to_char(M.stat_time,'yyyyMMdd')=V.trans_date
+	           <dynamic prepend="WHERE">
+	            <isNotEmpty prepend="AND" property="statBankId">  stat_bank_id = #statBankId#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="codeId">  code_id = #codeId#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="openBal">  open_bal = #openBal#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="closeBal">  close_bal = #closeBal#  </isNotEmpty>
+	            <isNotEmpty prepend="AND" property="fDebit">  <![CDATA[ fdebit = #fDebit# ]]> </isNotEmpty>
+				<isNotEmpty prepend="AND" property="fCredit" > <![CDATA[ fcredit =#fCredit# ]]></isNotEmpty>
+				<isNotEmpty prepend="AND" property="amount" > amount =#amount# </isNotEmpty>
+				<isNotEmpty prepend="AND" property="direction" > direction=#direction# </isNotEmpty>
+				<isNotEmpty prepend="AND" property="statTime" > stat_time=#statTime# </isNotEmpty>
+				<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ stat_time >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+				<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ stat_time < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+				<isNotEmpty prepend="AND" property="currency" > <![CDATA[ substr(code_id,26,2)=#currency# ]]></isNotEmpty>
+				<isNotEmpty prepend="AND" property="chnNo" > <![CDATA[ substr(code_id,7,19)=#chnNo# ]]></isNotEmpty>
+	          </dynamic>
+		)
+	</select>
+
+   <select id="listSplitFinStatBank" parameterClass="java.util.Map" resultMap="FinStatBankForm"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+		      M.stat_bank_id AS "stat_bank_id",
+		      M.code_id AS "code_id",
+		      M.open_bal AS "open_bal",
+		      M.close_bal AS "close_bal",
+		      M.fdebit AS "fdebit",
+		      M.fcredit AS "fcredit" ,
+			  M.amount*direction AS "amount",
+			  M.direction AS "direction",
+			  M.stat_time AS "stat_time",
+			  N.sac_bank_name AS "sac_bank_name",
+			  N.currency_type AS "currency",
+			  N.bank_acc AS "bank_acc",
+			  V.total_sum AS "diff_Sum",
+			  V.total_sum+M.close_bal AS "deal_Sum"
+	       FROM FIN_STAT_BANK M left join SAC_CHANNEL_PARAM N
+	       ON substr(M.code_id,7,19)=N.chn_no and  substr(M.code_id, 26, 2) = (select f.code4_id from fin_code4 f where f.code_value=N.Currency_Type )
+	       left join v_fin_stat_bank_diff_new V
+	       ON M.code_id = V.chn_no and to_char(M.stat_time,'yyyyMMdd')=V.trans_date
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="statBankId">  stat_bank_id = #statBankId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="codeId">  code_id = #codeId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="openBal">  open_bal = #openBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="closeBal">  close_bal = #closeBal#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="fDebit">  <![CDATA[ fdebit = #fDebit# ]]> </isNotEmpty>
+			<isNotEmpty prepend="AND" property="fCredit" > <![CDATA[ fcredit =#fCredit# ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="amount" > amount =#amount# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="direction" > direction=#direction# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="statTime" > stat_time=#statTime# </isNotEmpty>
+			<isNotEmpty prepend="AND" property="startDate" > <![CDATA[ stat_time >= to_date(#startDate#,'yyyy-mm-dd') ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate" > <![CDATA[ stat_time < to_date(#endDate#,'yyyy-mm-dd')+1 ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="currency" > <![CDATA[ substr(code_id,26,2)=#currency# ]]></isNotEmpty>
+			<isNotEmpty prepend="AND" property="chnNo" > <![CDATA[ substr(code_id,7,19)=#chnNo# ]]></isNotEmpty>
+          </dynamic>
+          order by stat_time desc, code_id , currency_type
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+	
+	
+</sqlMap> 	

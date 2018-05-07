@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<resultMap id="SacOtrxInfo" class="net.easipay.cbp.model.SacOtrxInfo">
+		 <result property="id" column="ID" />
+		 <result property="cusBillNo" column="CUS_BILL_NO" />
+		 <result property="platBillNo" column="PLAT_BILL_NO" />
+		 <result property="trxSerialNo" column="TRX_SERIAL_NO" />
+		 <result property="otrxSerialNo" column="OTRX_SERIAL_NO" />
+		 <result property="etrxSerialNo" column="ETRX_SERIAL_NO" />
+		 <result property="trxState" column="TRX_STATE" />
+		 <result property="craccCusCode" column="CRACC_CUS_CODE" />
+		 <result property="craccCusType" column="CRACC_CUS_TYPE" />
+		 <result property="craccNo" column="CRACC_NO" />
+		 <result property="craccName" column="CRACC_NAME" />
+		 <result property="craccNodeCode" column="CRACC_NODE_CODE" />
+		 <result property="craccBankName" column="CRACC_BANK_NAME" />
+		 <result property="draccCusCode" column="DRACC_CUS_CODE" />
+		 <result property="draccCusType" column="DRACC_CUS_TYPE" />
+		 <result property="draccNo" column="DRACC_NO" />
+		 <result property="draccName" column="DRACC_NAME" />
+		 <result property="draccNodeCode" column="DRACC_NODE_CODE" />
+		 <result property="draccBankName" column="DRACC_BANK_NAME" />
+		 <result property="payCurrency" column="PAY_CURRENCY" />
+		 <result property="payAmount" column="PAY_AMOUNT" />
+		 <result property="bussType" column="BUSS_TYPE" />
+		 <result property="trxType" column="TRX_TYPE" />
+		 <result property="payWay" column="PAY_WAY" />
+		 <result property="sacFlag" column="SAC_FLAG" />
+		 <result property="innConFlag" column="INN_CON_FLAG" />
+		 <result property="innConStatus" column="INN_CON_STATUS" />
+		 <result property="payconType" column="PAYCON_TYPE" />
+		 <result property="chaConFlag" column="CHA_CON_FLAG" />
+		 <result property="chaConStatus" column="CHA_CON_STATUS" />
+		 <result property="trxBatchNo" column="TRX_BATCH_NO" />
+		 <result property="updateTime" column="UPDATE_TIME" />
+		 <result property="createTime" column="CREATE_TIME" />
+		 <result property="memo" column="MEMO" />
+		 <result property="trxErrDealType" column="TRX_ERR_DEAL_TYPE" />
+		 <result property="exRate" column="EX_RATE" />
+		 <result property="sacCurrency" column="SAC_CURRENCY" />
+		 <result property="sacAmount" column="SAC_AMOUNT" />
+		 <result property="craccCusName" column="CRACC_CUS_NAME" />
+		 <result property="draccCusName" column="DRACC_CUS_NAME" />
+		 <result property="taxAmount" column="TAX_AMOUNT" />
+		 <result property="transportExpenses" column="TRANSPORT_EXPENSES" />
+		 <result property="accountStatus" column="ACCOUNT_STATUS" />
+		 <result property="reversalStatus" column="REVERSAL_STATUS" />
+		 <result property="channelCost" column="CHANNEL_COST" />
+		 <result property="cusCharge" column="CUS_CHARGE" />
+		 <result property="trxTime" column="TRX_TIME" />
+		 <result property="trxSuccTime" column="TRX_SUCC_TIME" />
+		 <result property="craccCardId" column="CRACC_CARD_ID" />
+		 <result property="draccCardId" column="DRACC_CARD_ID" />
+		 <result property="remittanceBatchId" column="REMITTANCE_BATCH_ID" />
+	</resultMap>
+	
+	
+	<select id="listSacOtrxInfo" parameterClass="java.util.Map" resultMap="SacOtrxInfo">
+		SELECT
+		   ID,
+	       CUS_BILL_NO,
+	       PLAT_BILL_NO,
+	       TRX_SERIAL_NO,
+	       OTRX_SERIAL_NO,
+	       ETRX_SERIAL_NO,
+	       TRX_STATE,
+	       CRACC_CUS_CODE,
+	       CRACC_CUS_TYPE,
+	       CRACC_NO,
+	       CRACC_NAME,
+	       CRACC_NODE_CODE,
+	       CRACC_BANK_NAME,
+	       DRACC_CUS_CODE,
+	       DRACC_CUS_TYPE,
+	       DRACC_NO,
+	       DRACC_NAME,
+	       DRACC_NODE_CODE,
+	       DRACC_BANK_NAME,
+	       PAY_CURRENCY,
+	       PAY_AMOUNT,
+	       BUSS_TYPE,
+	       TRX_TYPE,
+	       PAY_WAY,
+	       SAC_FLAG,
+	       INN_CON_FLAG,
+	       INN_CON_STATUS,
+	       PAYCON_TYPE,
+	       CHA_CON_FLAG,
+	       CHA_CON_STATUS,
+	       TRX_BATCH_NO,
+	       UPDATE_TIME,
+	       CREATE_TIME,
+	       MEMO,
+	       TRX_ERR_DEAL_TYPE,
+	       EX_RATE,
+	       SAC_CURRENCY,
+	       SAC_AMOUNT,
+	       CRACC_CUS_NAME,
+	       DRACC_CUS_NAME,
+	       TAX_AMOUNT,
+	       TRANSPORT_EXPENSES,
+	       ACCOUNT_STATUS,
+	       REVERSAL_STATUS,
+	       CHANNEL_COST,
+	       CUS_CHARGE,
+	       TRX_TIME,
+	       TRX_SUCC_TIME,
+	       CRACC_CARD_ID,
+	       DRACC_CARD_ID,
+	       REMITTANCE_BATCH_ID
+		FROM SAC_OTRX_INFO
+		<dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusBillNo">  CUS_BILL_NO = #cusBillNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="platBillNo">  PLAT_BILL_NO = #platBillNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  TRX_SERIAL_NO = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  OTRX_SERIAL_NO = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="etrxSerialNo">  ETRX_SERIAL_NO = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxState">  TRX_STATE = #trxState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccCusCode">  CRACC_CUS_CODE = #craccCusCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccCusType">  CRACC_CUS_TYPE = #craccCusType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccCusCode">  DRACC_CUS_CODE = #draccCusCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccCusType">  DRACC_CUS_TYPE = #draccCusType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNo">  DRACC_NO = #draccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccName">  DRACC_NAME = #draccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxType">  TRX_TYPE = #trxType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payWay">  PAY_WAY = #payWay#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacFlag">  SAC_FLAG = #sacFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="innConFlag">  INN_CON_FLAG = #innConFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="innConStatus">  INN_CON_STATUS = #innConStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payconType">  PAYCON_TYPE = #payconType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chaConFlag">  CHA_CON_FLAG = #chaConFlag#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="chaConStatus">  CHA_CON_STATUS = #chaConStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxBatchNo">  TRX_BATCH_NO = #trxBatchNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="updateTime">  UPDATE_TIME = #updateTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="memo">  MEMO = #memo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxErrDealType">  TRX_ERR_DEAL_TYPE = #trxErrDealType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="exRate">  EX_RATE = #exRate#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacCurrency">  SAC_CURRENCY = #sacCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="sacAmount">  SAC_AMOUNT = #sacAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccCusName">  CRACC_CUS_NAME = #craccCusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccCusName">  DRACC_CUS_NAME = #draccCusName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="taxAmount">  TAX_AMOUNT = #taxAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="transportExpenses">  TRANSPORT_EXPENSES = #transportExpenses#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="accountStatus">  ACCOUNT_STATUS = #accountStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reversalStatus">  REVERSAL_STATUS = #reversalStatus#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="channelCost">  CHANNEL_COST = #channelCost#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cusCharge">  CUS_CHARGE = #cusCharge#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTime">  TRX_TIME = #trxTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSuccTime">  TRX_SUCC_TIME = #trxSuccTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccCardId">  CRACC_CARD_ID = #craccCardId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccCardId">  DRACC_CARD_ID = #draccCardId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="remittanceBatchId">  REMITTANCE_BATCH_ID = #remittanceBatchId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxTypeList"> TRX_TYPE in
+            	<iterate property="trxTypeList" open="(" conjunction="," close=")">  
+                	#trxTypeList[]#  
+                </iterate>  
+            </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNoList"> TRX_SERIAL_NO in
+            	<iterate property="trxSerialNoList" open="(" conjunction="," close=")">  
+                	#trxSerialNoList[]#  
+                </iterate>  
+            </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNoList"> OTRX_SERIAL_NO in
+            	<iterate property="otrxSerialNoList" open="(" conjunction="," close=")">  
+                	#otrxSerialNoList[]#  
+                </iterate>  
+            </isNotEmpty>
+            <isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+				create_time >= to_date(#beginDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				create_time < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty>
+        </dynamic>
+		order by create_time desc
+	</select>
+</sqlMap>

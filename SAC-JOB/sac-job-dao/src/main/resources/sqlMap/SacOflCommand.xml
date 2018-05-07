@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacOflCommand" class="net.easipay.cbp.model.SacOflCommand">
+	 <result property="id" column="id" />
+	 <result property="trxSerialNo" column="trx_serial_no" />
+	 <result property="otrxSerialNo" column="otrx_serial_no" />
+	 <result property="etrxSerialNo" column="etrx_serial_no" />
+	 <result property="state" column="state" />
+	 <result property="draccNodeCode" column="dracc_node_code" />
+	 <result property="crtCode" column="crt_Code" />
+	 <result property="craccNo" column="cracc_no" />
+	 <result property="craccName" column="cracc_name" />
+	 <result property="craccNodeCode" column="cracc_node_code" />
+	 <result property="craccBankName" column="cracc_bank_name" />
+	 <result property="payAmount" column="pay_amount" />
+	 <result property="payCurrency" column="pay_currency" />
+	 <result property="operName" column="oper_name" />
+	 <result property="operTime" column="oper_time" />
+	 <result property="createTime" column="create_time" />
+	 <result property="lastUpdateTime" column="last_update_time" />
+ </resultMap>
+   <insert id="insertSacOflCommand" parameterClass="net.easipay.cbp.model.SacOflCommand">
+        INSERT INTO SAC_OFL_COMMAND ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="," property="id">  id  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  otrx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="etrxSerialNo">  etrx_serial_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="state">  state  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNodeCode">  dracc_node_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCode">  crt_Code  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  cracc_no  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  cracc_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  cracc_node_code  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankName">  cracc_bank_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  pay_currency  </isNotEmpty>
+            <isNotEmpty prepend="," property="operName">  oper_name  </isNotEmpty>
+            <isNotEmpty prepend="," property="operTime">  oper_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  last_update_time  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="," property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="trxSerialNo">  #trxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="otrxSerialNo">  #otrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="etrxSerialNo">  #etrxSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="state">  #state#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccNodeCode">  #draccNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="crtCode">  #crtCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNo">  #craccNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccName">  #craccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNodeCode">  #craccNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBankName">  #craccBankName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payCurrency">  #payCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operName">  #operName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="operTime">  #operTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="lastUpdateTime">  #lastUpdateTime#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacOflCommand" resultMap="SacOflCommand">  
+        SELECT 
+	       id,
+	       trx_serial_no,
+	       otrx_serial_no,
+	       etrx_serial_no,
+	       state,
+	       dracc_node_code,
+	       crt_Code,
+	       cracc_no,
+	       cracc_name,
+	       cracc_node_code,
+	       cracc_bank_name,
+	       pay_amount,
+	       pay_currency,
+	       oper_name,
+	       oper_time,
+	       create_time,
+	       last_update_time
+         FROM SAC_OFL_COMMAND
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacOflCommand" parameterClass="java.util.Map" resultMap="SacOflCommand">  
+      SELECT 
+	       id,
+	       trx_serial_no,
+	       otrx_serial_no,
+	       etrx_serial_no,
+	       state,
+	       dracc_node_code,
+	       crt_Code,
+	       cracc_no,
+	       cracc_name,
+	       cracc_node_code,
+	       cracc_bank_name,
+	       pay_amount,
+	       pay_currency,
+	       oper_name,
+	       oper_time,
+	       create_time,
+	       last_update_time
+	  FROM SAC_OFL_COMMAND
+        <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="etrxSerialNo">  etrx_serial_no = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="state">  state = #state#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  dracc_node_code = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtCode">  crt_Code = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  cracc_no = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  cracc_name = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  cracc_node_code = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  cracc_bank_name = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  pay_currency = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operName">  oper_name = #operName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operTime">  oper_time = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  last_update_time = #lastUpdateTime#  </isNotEmpty>                  
+            
+            <isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+				create_time >= to_date(#beginDate#,'yyyyMMdd')
+				]]> 
+		    </isNotEmpty>
+		    <isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+				create_time < to_date(#endDate#,'yyyyMMdd')+1
+				]]> 
+		    </isNotEmpty> 
+          </dynamic> 
+		  ORDER BY CREATE_TIME DESC
+  </select>
+   <update id="updateSacOflCommand" parameterClass="net.easipay.cbp.model.SacOflCommand">  
+      UPDATE SAC_OFL_COMMAND        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="otrxSerialNo">  otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="etrxSerialNo">  etrx_serial_no = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="state">  state = #state#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNodeCode">  dracc_node_code = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="crtCode">  crt_Code = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  cracc_no = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  cracc_name = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  cracc_node_code = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankName">  cracc_bank_name = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  pay_currency = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operName">  oper_name = #operName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="operTime">  oper_time = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="lastUpdateTime">  last_update_time = #lastUpdateTime#  </isNotEmpty>
+        </dynamic>
+       WHERE trx_serial_no = #trxSerialNo# 
+  </update>
+  <delete id="deleteSacOflCommand">  
+        Delete   
+          from SAC_OFL_COMMAND WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacOflCommand">  
+        Delete 
+        from SAC_OFL_COMMAND
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacOflCommandCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(*) C FROM SAC_OFL_COMMAND
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="etrxSerialNo">  etrx_serial_no = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="state">  state = #state#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  dracc_node_code = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtCode">  crt_Code = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  cracc_no = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  cracc_name = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  cracc_node_code = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  cracc_bank_name = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  pay_currency = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operName">  oper_name = #operName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operTime">  oper_time = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  last_update_time = #lastUpdateTime#  </isNotEmpty>
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacOflCommand" parameterClass="java.util.Map" resultMap="SacOflCommand"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       id,
+	       trx_serial_no,
+	       otrx_serial_no,
+	       etrx_serial_no,
+	       state,
+	       dracc_node_code,
+	       crt_Code,
+	       cracc_no,
+	       cracc_name,
+	       cracc_node_code,
+	       cracc_bank_name,
+	       pay_amount,
+	       pay_currency,
+	       oper_name,
+	       oper_time,
+	       create_time,
+	       last_update_time
+	       from SAC_OFL_COMMAND  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  id = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="trxSerialNo">  trx_serial_no = #trxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="otrxSerialNo">  otrx_serial_no = #otrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="etrxSerialNo">  etrx_serial_no = #etrxSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="state">  state = #state#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  dracc_node_code = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="crtCode">  crt_Code = #crtCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  cracc_no = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  cracc_name = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  cracc_node_code = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  cracc_bank_name = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  pay_amount = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  pay_currency = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operName">  oper_name = #operName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="operTime">  oper_time = #operTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  create_time = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="lastUpdateTime">  last_update_time = #lastUpdateTime#  </isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> modify_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select> 
+  
+</sqlMap>

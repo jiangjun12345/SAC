@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+ <description>iecp html format Library</description>
+ <display-name>iecp html format</display-name>
+ <tlib-version>1.0</tlib-version>
+ <short-name>fmt</short-name>
+ <uri>http://www.easipay.net/</uri>
+ <!-- ******************************tage begin******************************* -->
+ <tag>
+  <name>page</name>
+  <tag-class>net.easipay.pepp.iecp.tag.PageTag</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+   <name>pageNo</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>count</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>url</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>params</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>pageNum</name>
+  <tag-class>net.easipay.cbp.view.taglib.PageTagNum</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+   <name>pageNo</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>count</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>pageSize</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>url</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>params</name>
+   <required>false</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>pageAjax</name>
+  <tag-class>net.easipay.cbp.view.taglib.PageTagAjax</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+   <name>pageNo</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>count</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>pageSize</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>url</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>params</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>pageTagNo</name>
+  <tag-class>net.easipay.cbp.view.taglib.PageTagNo</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+   <name>pageNo</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>count</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>pageSize</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>url</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>params</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <!--<tag>
+  <name>error</name>
+  <tag-class>net.easipay.pepp.iecp.tag.ErrorMessageTag</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+   <name>name</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>style</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>LeftMenu</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRoleHt</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRoleHtTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRoleHKstock</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRoleHKstockTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRoleFund</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRoleFundTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRoleBond</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRoleBondTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRoleWarrant</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRoleWarrantTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRoleOut</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRoleOutTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRole</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRoleTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>LeftMenuRolePool</name>
+  <tag-class>net.easipay.pepp.iecp.tag.LeftMenuRolePoolTag</tag-class>
+  <body-content>empty</body-content>
+ </tag>
+ <tag>
+  <name>autoComplete</name>
+  <tag-class>net.easipay.pepp.iecp.tag.AutoCompleteTag</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+   <name>serviceName</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>name</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>width</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>defaultValue</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>maxLength</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>functionName</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ -->
+ <tag>
+  <description>Prints the common select Tabs</description>
+  <name>SelectCommon</name>
+  <tag-class>net.easipay.cbp.view.taglib.SelectCommonTag</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+   <name>thisName</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>flag</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>cssStyle</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>defaultValue</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>onchange</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>valueMap</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>className</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <!-- ******************************tag end******************************* 
+ *****************************function begin******************************* -->
+ <!--<function>
+  <description>getLimitLenStr value</description>
+  <name>getLimitLenStr</name>
+  <function-class>net.easipay.pepp.iecp.util.Utils</function-class>
+  <function-signature>String getLimitLenStr(String,int,String)</function-signature>
+ </function>
+ <function>
+  <description>getLimitLenStr1 value</description>
+  <name>getLimitLenStr1</name>
+  <function-class>net.easipay.pepp.iecp.util.Utils</function-class>
+  <function-signature>String getLimitLenStr1(String,int,String)</function-signature>
+ </function>
+ <function>
+  <description>getTargetnames value</description>
+  <name>getTargetnames</name>
+  <function-class>net.easipay.pepp.iecp.util.Utils</function-class>
+  <function-signature>String getTargetnames(String)</function-signature>
+ </function>
+ 
+  <function>
+  <description>getStrReportDegree value</description>
+  <name>getStrReportDegree</name>
+  <function-class>com.gaotime.web.common.UtilHtsc</function-class>
+  <function-signature>String getStrReportDegree(String)</function-signature>
+ </function>
+ <function>
+  <description>getStrReportLevel value</description>
+  <name>getStrReportLevel</name>
+  <function-class>com.gaotime.web.common.UtilHtsc</function-class>
+  <function-signature>String getStrReportLevel(String)</function-signature>
+ </function>
+ <function>
+  <description>getStrInvestRating value</description>
+  <name>getStrInvestRating</name>
+  <function-class>com.gaotime.web.common.UtilHtsc</function-class>
+  <function-signature>String getStrInvestRating(String)</function-signature>
+ </function>
+ <function>
+  <description>getStrsecuabbr value</description>
+  <name>getStrsecuabbr</name>
+  <function-class>com.gaotime.web.common.UtilHtsc</function-class>
+  <function-signature>String getStrsecuabbr(String)</function-signature>
+ </function>
+ <function>
+  <description>getStrPoolName value</description>
+  <name>getStrPoolName</name>
+  <function-class>com.gaotime.web.common.UtilHtsc</function-class>
+  <function-signature>String getStrPoolName(String)</function-signature>
+ </function>
+ <function>
+  <description>getStrOperation value</description>
+  <name>getStrOperation</name>
+  <function-class>com.gaotime.web.common.UtilHtsc</function-class>
+  <function-signature>String getStrOperation(String)</function-signature>
+ </function>
+ --><!-- ******************************function end******************************* -->
+</taglib>

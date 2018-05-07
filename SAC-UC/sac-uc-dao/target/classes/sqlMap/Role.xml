@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="net.easipay.cbp.model.UcRole">
+
+    <typeAlias alias="UcRole" type="net.easipay.cbp.model.UcRole"/>
+
+    <resultMap id="ucRoleResult" class="ucRole">
+        <result property="id" column="ID"/>
+		<result property="roleCode" column="ROLE_CODE"/>
+		<result property="roleName" column="ROLE_NAME"/>
+		<result property="status" column="STATUS"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="createUserId" column="CREATE_USER_ID"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="updateUserId" column="UPDATE_USER_ID"/>
+		<result property="updateTime" column="UPDATE_TIME"/>
+		<result property="memo" column="MEMO"/>
+    </resultMap>
+
+      <select id="selectUcRoles" resultMap="ucRoleResult" parameterClass="java.util.HashMap">
+	    <![CDATA[
+	        SELECT *
+				FROM
+				   (SELECT ROWNUM AS RN, XX.*
+				    FROM
+				   (SELECT *
+				      FROM uc_role  
+				          where 1=1
+			]]>
+				    <isNotEmpty prepend=" AND " property="createUserId">
+						<![CDATA[CREATE_USER_ID = #createUserId# ]]>
+					 </isNotEmpty>
+		<![CDATA[			 
+				    order by  CREATE_TIME 
+				   ) XX
+				   WHERE ROWNUM < #rownum#)
+				WHERE RN > #rn#
+		]]>
+
+	    </select>
+	    
+	    
+	    <insert id = "insertUcRole" parameterClass="ucRole">
+	      <![CDATA[
+	         insert into uc_role
+	         (
+	            ID,
+				ROLE_CODE,
+				ROLE_NAME,
+				STATUS,
+				DESCRIPTION,
+				CREATE_USER_ID,
+				CREATE_TIME,
+				UPDATE_USER_ID,
+				UPDATE_TIME,
+				MEMO
+	         )
+	         values
+	         (
+	           #id#,
+	           #roleCode#,
+	           #roleName#,
+	           #status#,
+	           #description#,
+	           #createUserId#,
+	           #createTime#,
+	           #updateUserId#,
+	           #updateTime#,
+	           #memo#
+	         )
+	      ]]>
+	    </insert>
+	    
+	    <update id="updateUcRole" parameterClass="ucRole">
+			    <![CDATA[
+			        update 
+			        	uc_role 
+			          set	
+							 ROLE_CODE     =	#roleCode#   
+							,ROLE_NAME     =	#roleName#   
+							,STATUS        =	#status#     
+							,DESCRIPTION   =	#description#
+							,CREATE_USER_ID=	#createUserId#
+							,CREATE_TIME   =	#createTime# 
+							,UPDATE_USER_ID=	#updateUserId#
+							,UPDATE_TIME   =	#updateTime# 
+							,MEMO  	      = #memo#
+						where ID = #id#	
+			    ]]>
+    </update>
+    
+     <select id="selectUcRolesById" resultMap="ucRoleResult" parameterClass="java.lang.Long">
+	    <![CDATA[
+	        select *
+	        from
+	        uc_role where id = #id#
+		]]>
+
+	    </select>
+	    
+	    
+      <select id="UcRole" resultMap="ucRoleResult">
+	    <![CDATA[
+	        select *
+	        from
+	        uc_role
+		]]>
+
+	    </select>
+	    
+	    <select id="selectUcRoleTotal" resultClass="java.lang.Integer">
+	    <![CDATA[
+	        select count(*)
+	        from
+	        uc_role
+		]]>
+
+	    </select>
+	  
+</sqlMap>

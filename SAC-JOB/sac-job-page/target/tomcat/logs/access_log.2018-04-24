@@ -1,0 +1,7 @@
+10.68.30.91 - - [24/Apr/2018:13:22:09 +0800] "POST /job/glass/jobs/DEFAULT/ProcessB2BTransferCmdJob/fire HTTP/1.1" 302 - http-bio-8091-exec-1 107
+10.68.30.91 - - [24/Apr/2018:13:22:09 +0800] "GET /job/glass/jobs/DEFAULT/ProcessB2BTransferCmdJob HTTP/1.1" 200 10878 http-bio-8091-exec-2 236
+10.68.30.91 - - [24/Apr/2018:13:22:09 +0800] "GET /job/glass/css/style.css HTTP/1.1" 200 4577 http-bio-8091-exec-3 9
+10.68.30.91 - - [24/Apr/2018:13:22:09 +0800] "GET /job/glass/js/glass.js HTTP/1.1" 200 3389 http-bio-8091-exec-5 6
+10.68.30.91 - - [24/Apr/2018:13:22:09 +0800] "GET /job/glass/image/pause.png HTTP/1.1" 200 617 http-bio-8091-exec-7 4
+10.68.30.91 - - [24/Apr/2018:13:22:09 +0800] "GET /job/glass/js/jquery-1.6.2.min.js HTTP/1.1" 200 137325 http-bio-8091-exec-4 21
+10.68.30.91 - - [24/Apr/2018:13:22:09 +0800] "GET /job/glass/image/delete.png HTTP/1.1" 200 1580 http-bio-8091-exec-8 3

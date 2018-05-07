@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+ <resultMap id="SacDffOflCommand" class="net.easipay.cbp.model.SacDffOflCommand">
+	 <result property="id" column="ID" />
+	 <result property="ykSerialNo" column="YK_SERIAL_NO" />
+	 <result property="skSerialNo" column="SK_SERIAL_NO" />
+	 <result property="cmdState" column="CMD_STATE" />
+	 <result property="cmdType" column="CMD_TYPE" />
+	 <result property="bussType" column="BUSS_TYPE" />
+	 <result property="payAmount" column="PAY_AMOUNT" />
+	 <result property="payCurrency" column="PAY_CURRENCY" />
+	 <result property="craccCardId" column="CRACC_CARD_ID" />
+	 <result property="craccName" column="CRACC_NAME" />
+	 <result property="craccNo" column="CRACC_NO" />
+	 <result property="craccNodeCode" column="CRACC_NODE_CODE" />
+	 <result property="craccBankName" column="CRACC_BANK_NAME" />
+	 <result property="craccBranchCode" column="CRACC_BRANCH_CODE" />
+	 <result property="draccNodeCode" column="DRACC_NODE_CODE" />
+	 <result property="draccBankName" column="DRACC_BANK_NAME" />
+	 <result property="createTime" column="CREATE_TIME" />
+	 <result property="reqSpt1" column="REQ_SPT1" />
+	 <result property="reqSpt2" column="REQ_SPT2" />
+	 <result property="reqSpt3" column="REQ_SPT3" />
+ </resultMap>
+   <insert id="insertSacDffOflCommand" parameterClass="net.easipay.cbp.model.SacDffOflCommand">
+        INSERT INTO SAC_DFF_OFL_COMMAND ( 
+         <dynamic prepend="">
+            <isNotEmpty prepend="" property="id">  ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="ykSerialNo">  YK_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="skSerialNo">  SK_SERIAL_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdState">  CMD_STATE  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdType">  CMD_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="bussType">  BUSS_TYPE  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccCardId">  CRACC_CARD_ID  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  CRACC_NODE_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankName">  CRACC_BANK_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBranchCode">  CRACC_BRANCH_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNodeCode">  DRACC_NODE_CODE  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankName">  DRACC_BANK_NAME  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt1">  REQ_SPT1  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt2">  REQ_SPT2  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt3">  REQ_SPT3  </isNotEmpty>
+          </dynamic>         
+         ) VALUES (
+          <dynamic prepend="">
+		    <isNotEmpty prepend="" property="id">  #id#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="ykSerialNo">  #ykSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="skSerialNo">  #skSerialNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cmdState">  #cmdState#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="cmdType">  #cmdType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="bussType">  #bussType#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payAmount">  #payAmount#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="payCurrency">  #payCurrency#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccCardId">  #craccCardId#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccName">  #craccName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNo">  #craccNo#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccNodeCode">  #craccNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBankName">  #craccBankName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="craccBranchCode">  #craccBranchCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccNodeCode">  #draccNodeCode#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="draccBankName">  #draccBankName#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="createTime">  #createTime#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqSpt1">  #reqSpt1#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqSpt2">  #reqSpt2#  </isNotEmpty>	       
+		    <isNotEmpty prepend="," property="reqSpt3">  #reqSpt3#  </isNotEmpty>	       
+           </dynamic>
+         )
+    </insert>
+   <select id="getSacDffOflCommand" resultMap="SacDffOflCommand">  
+        SELECT 
+	       ID,
+	       YK_SERIAL_NO,
+	       SK_SERIAL_NO,
+	       CMD_STATE,
+	       CMD_TYPE,
+	       BUSS_TYPE,
+	       PAY_AMOUNT,
+	       PAY_CURRENCY,
+	       CRACC_CARD_ID,
+	       CRACC_NAME,
+	       CRACC_NO,
+	       CRACC_NODE_CODE,
+	       CRACC_BANK_NAME,
+	       CRACC_BRANCH_CODE,
+	       DRACC_NODE_CODE,
+	       DRACC_BANK_NAME,
+	       CREATE_TIME,
+	       REQ_SPT1,
+	       REQ_SPT2,
+	       REQ_SPT3,
+         FROM SAC_DFF_OFL_COMMAND
+      <dynamic prepend="WHERE">
+         <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>         
+      </dynamic>
+  </select>
+  <select id="listSacDffOflCommand" parameterClass="java.util.Map" resultMap="SacDffOflCommand">  
+      SELECT 
+	       ID,
+	       YK_SERIAL_NO,
+	       SK_SERIAL_NO,
+	       CMD_STATE,
+	       CMD_TYPE,
+	       BUSS_TYPE,
+	       PAY_AMOUNT,
+	       PAY_CURRENCY,
+	       CRACC_CARD_ID,
+	       CRACC_NAME,
+	       CRACC_NO,
+	       CRACC_NODE_CODE,
+	       CRACC_BANK_NAME,
+	       CRACC_BRANCH_CODE,
+	       DRACC_NODE_CODE,
+	       DRACC_BANK_NAME,
+	       CREATE_TIME,
+	       REQ_SPT1,
+	       REQ_SPT2,
+	       REQ_SPT3,
+	  FROM SAC_DFF_OFL_COMMAND
+        <dynamic prepend="WHERE">
+          <isNotEmpty prepend="AND" property="id"> ID = #id# </isNotEmpty>                  
+        </dynamic>
+		  <isEmpty prepend="ORDER BY" property="orderByFlag"> CREATE_TIME DESC </isEmpty>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="0"> CREATE_TIME DESC </isEqual>
+          <isEqual prepend="ORDER BY" property="orderByFlag" compareValue="1"> CREATE_TIME ASC </isEqual>
+  </select>
+  <update id="updateSacDffOflCommand" parameterClass="net.easipay.cbp.model.SacDffOflCommand">  
+      UPDATE SAC_DFF_OFL_COMMAND        
+        <dynamic prepend="SET">
+            <isNotEmpty prepend="," property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="," property="ykSerialNo">  YK_SERIAL_NO = #ykSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="skSerialNo">  SK_SERIAL_NO = #skSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="," property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="," property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccCardId">  CRACC_CARD_ID = #craccCardId#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="craccBranchCode">  CRACC_BRANCH_CODE = #craccBranchCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="," property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="," property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="," property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+        </dynamic>
+       WHERE ID = #id#
+  </update>
+  <delete id="deleteSacDffOflCommand">  
+        Delete   
+          from SAC_DFF_OFL_COMMAND WHERE
+         ID = #id#
+  </delete>
+  <delete id="deleteListSacDffOflCommand">  
+        Delete 
+        from SAC_DFF_OFL_COMMAND
+        WHERE ID IN ( $id$ )
+  </delete>
+  
+   <select id="getSacDffOflCommandCount" resultClass="java.lang.Integer">  
+		SELECT COUNT(1) C FROM SAC_DFF_OFL_COMMAND
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="ykSerialNo">  YK_SERIAL_NO = #ykSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="skSerialNo">  SK_SERIAL_NO = #skSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccCardId">  CRACC_CARD_ID = #craccCardId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBranchCode">  CRACC_BRANCH_CODE = #craccBranchCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			CREATE_TIME >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			CREATE_TIME <  #endDate#   
+			]]> 
+			</isNotEmpty> 
+          </dynamic>
+	</select>
+  
+  <select id="listSplitSacDffOflCommand" parameterClass="java.util.Map" resultMap="SacDffOflCommand"> 
+		SELECT * FROM
+		( SELECT A.*, ROWNUM R FROM
+		( SELECT 
+	       ID,
+	       YK_SERIAL_NO,
+	       SK_SERIAL_NO,
+	       CMD_STATE,
+	       CMD_TYPE,
+	       BUSS_TYPE,
+	       PAY_AMOUNT,
+	       PAY_CURRENCY,
+	       CRACC_CARD_ID,
+	       CRACC_NAME,
+	       CRACC_NO,
+	       CRACC_NODE_CODE,
+	       CRACC_BANK_NAME,
+	       CRACC_BRANCH_CODE,
+	       DRACC_NODE_CODE,
+	       DRACC_BANK_NAME,
+	       CREATE_TIME,
+	       REQ_SPT1,
+	       REQ_SPT2,
+	       REQ_SPT3,
+	       from SAC_DFF_OFL_COMMAND  
+           <dynamic prepend="WHERE">
+            <isNotEmpty prepend="AND" property="id">  ID = #id#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="ykSerialNo">  YK_SERIAL_NO = #ykSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="skSerialNo">  SK_SERIAL_NO = #skSerialNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdState">  CMD_STATE = #cmdState#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="cmdType">  CMD_TYPE = #cmdType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="bussType">  BUSS_TYPE = #bussType#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payAmount">  PAY_AMOUNT = #payAmount#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="payCurrency">  PAY_CURRENCY = #payCurrency#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccCardId">  CRACC_CARD_ID = #craccCardId#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccName">  CRACC_NAME = #craccName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNo">  CRACC_NO = #craccNo#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccNodeCode">  CRACC_NODE_CODE = #craccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBankName">  CRACC_BANK_NAME = #craccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="craccBranchCode">  CRACC_BRANCH_CODE = #craccBranchCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccNodeCode">  DRACC_NODE_CODE = #draccNodeCode#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="draccBankName">  DRACC_BANK_NAME = #draccBankName#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="createTime">  CREATE_TIME = #createTime#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt1">  REQ_SPT1 = #reqSpt1#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt2">  REQ_SPT2 = #reqSpt2#  </isNotEmpty>
+            <isNotEmpty prepend="AND" property="reqSpt3">  REQ_SPT3 = #reqSpt3#  </isNotEmpty>
+			<isNotEmpty prepend="AND" property="beginDate"> 
+			<![CDATA[ 
+			modify_date >= #beginDate# 
+			]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="AND" property="endDate">
+			<![CDATA[ 
+			modify_date <  #endDate#   
+			]]> 
+			</isNotEmpty>
+          </dynamic> 
+ 		<isEmpty prepend="ORDER BY" property="orderByFlag"> modify_date DESC </isEmpty>
+		<isNotEmpty prepend="ORDER BY" property="orderByFlag"> $orderByFlag$ </isNotEmpty>
+			) A
+		<![CDATA[
+		WHERE ROWNUM <= #end# ) B
+		WHERE R > #start#   
+		]]> 
+	</select>
+  
+</sqlMap>
