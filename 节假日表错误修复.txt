@@ -1,0 +1,33 @@
+  异常现象：由于节假日表错误导致前一天清分结果异常（结果不对 或者 未清分），
+
+  处理办法：调整节假日表，并将前一日数据重跑。
+  
+  具体步骤（20160919发现数据异常）：通知清算人员暂停勾对操作。
+   
+   1. 将节假日表调整正确.
+
+   2. 备份
+        select * from sac_chn_settlement where sac_date = '20160919';
+
+        select * from sac_chn_set_detail where sac_date = '20160919';
+ 
+        select * from mid_sac_trx_detail；
+    
+   3. 删除
+        delete from sac_chn_settlement where sac_date = '20160919';
+
+        delete from sac_chn_set_detail where sac_date = '20160919';
+ 
+        delete from mid_sac_trx_detail；
+
+   4. 手工修改 SAC_CHN_SET_DETAIL中trans_date和chn_batch_no
+
+   5. 更新SAC_CHN_SET_DETAIL中对应的SAC_TRX_DETAIL记录的chn_batch_no字段  
+
+   6. 更新mid_sac_trx_detail对应的SAC_TRX_DETAIL记录的 chn_batch_no和fin_sign
+         update SAC_TRX_DETAIL s set s.chn_batch_no = null,s.fin_sign = 'N' where s.id in (select id from mid_sac_trx_detail);
+
+   7. 手动重跑sp,SP_SAC_CHN_SETTLEMENT
+   
+   8. 通知清算人员重新勾对。
+    
